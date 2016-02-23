@@ -1,0 +1,389 @@
+.top_slider .slides li {
+	background-position:center top;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.top_slider .slide1 {background-image:url("../img/slider/slide1_bg.jpg");}
+.top_slider .slide2 {background-image:url("../img/slider/slide2_bg.jpg");}
+.top_slider .slide3 {background-image:url("../img/slider/slide3_bg.jpg");}
+
+.flexslider.top_slider4 .container {position:relative;}
+
+body {
+	font-family: Raleway, sans-serif;
+	line-height: 26px;
+	font-size: 14px;
+}
+
+.flag {
+	background: url('../img/flags-sprites.png') no-repeat;
+	margin-right: 10px;
+	display: block;
+	height: 20px;
+	width: 20px;
+	float: left;
+}
+
+.flag.fr {
+	background-position: 0 0;
+}
+
+.flag.en {
+	background-position: 0px -20px;
+}
+
+#header {
+	background: url('../img/saint-lo.jpg') no-repeat 0 0 / cover #654375;
+	padding: 30px 0;
+}
+
+#header #header-content {
+	position: relative;
+	z-index: 9999;
+}
+
+#header #header-navbar {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	font-family: Poppins, sans-serif;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+#header #header-navbar a.navbar-brand {
+	margin-top: 5px;
+	padding-top: 0;
+	height: 40px;
+}
+
+#header #header-navbar ul.nav.navbar-nav li a {
+	color: #fff;
+}
+
+#header #header-navbar ul.nav.navbar-nav li.active a,
+#header #header-navbar ul.nav.navbar-nav li a:hover,
+#footer a.active {
+	color: #f1c40f;
+}
+
+#header #header-navbar ul.nav.navbar-nav li a:hover,
+#header #header-navbar ul.nav.navbar-nav li a {
+	background: none;
+}
+
+#header #header-navbar ul.nav.navbar-nav li.dropdown.open ul.dropdown-menu {
+	background: rgba(0, 0, 0, 0.2);
+	box-shadow: none;
+	min-width: 140px;
+	border: none;
+	padding: 0;
+}
+
+#header #header-navbar ul.nav.navbar-nav li.dropdown.open ul.dropdown-menu li a {
+	font-weight: 700;
+	padding: 10px;
+}
+
+#header #header-navbar ul.nav.navbar-nav li.dropdown a.dropdown-toggle {
+	background: rgba(255, 255, 255, 0.1);
+	transition: all 0.5s;
+	border-radius: 4px;
+	margin-left: 10px;
+	margin-top: 5px;
+	padding: 10px;
+}
+
+#header #header-navbar ul.nav.navbar-nav li.dropdown.open a.dropdown-toggle {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+#header #header-navbar ul.nav.navbar-nav li.dropdown a.dropdown-toggle:hover {
+	background: rgba(255, 255, 255, 0.15);
+}
+
+#header #header-navbar .navbar-toggle .icon-bar {
+	background: #fff;
+}
+
+#header #header-internship {
+	text-transform: uppercase;
+	text-align: center;
+	padding: 200px 0;
+	color: #fff;
+}
+
+#header #header-internship h1 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	line-height: 60px;
+	letter-spacing: 0;
+	font-weight: 700;
+	margin: 0 0 50px;
+	font-size: 48px;
+}
+
+#header #header-internship p {
+	margin-bottom: 20px;
+}
+
+#header #header-internship p:before {
+	border-top: 1px solid #fff;
+	display: inline-block;
+	margin-right: 15px;
+	content: '';
+	height: 6px;
+	width: 70px;
+}
+
+#header #header-internship p:after {
+	border-top: 1px solid #fff;
+	display: inline-block;
+	margin-left: 15px;
+	content: '';
+	height: 6px;
+	width: 70px;
+}
+
+#header #header-internship a.btn {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 15px 20px;
+	font-weight: 700;
+	font-size: 18px;
+	color: #69397e;
+	margin: 15px;
+	width: 200px;
+}
+
+#header a.scroll {
+	background: url('../img/chevron-bottom.png') no-repeat center #fff;
+	border-radius: 60px;
+	position: relative;
+	display: block;
+	margin: auto;
+	height: 60px;
+	width: 60px;
+	top: 60px;
+}
+
+.grid-section {
+	color: #999;
+}
+
+.grid-section .section-title {
+	margin-bottom: 60px;
+}
+
+.section-title h2 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
+    text-align: center;
+	line-height: 60px;
+	letter-spacing: 0;
+	font-weight: 700;
+	font-size: 48px;
+	color: #69397e;
+	margin: 0;
+}
+
+#presentation.grid-section {
+	padding: 150px 0;
+}
+
+#presentation.grid-section .grid span.section-number {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	border-radius: 80px;
+	background: #69397e;
+	margin: 0 auto 30px;
+	text-align: center;
+	line-height: 80px;
+	font-weight: 700;
+	font-size: 36px;
+	display: block;
+	height: 80px;
+	width: 80px;
+	color: #fff;
+}
+
+#presentation.grid-section .grid h3 {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-transform: uppercase;
+	margin-bottom: 50px;
+	text-align: center;
+	font-weight: 800;
+	font-size: 30px;
+	color: #69397e;
+}
+
+#internship-places.grid-section {
+	background: #f1f1f1;
+	text-align: center;
+}
+
+#internship-places.grid-section .grid {
+	padding: 150px 0;
+}
+
+#internship-places.grid-section .grid:first-child {
+	border-right: 1px solid #ededed;
+}
+
+#internship-places.grid-section {
+	background: #f1f1f1;
+	text-align: center;
+}
+
+#internship-places #ireland-shape {
+	background: url('../img/ireland-shape.png') no-repeat center;
+	margin: 0 auto 25px;
+	height: 200px;
+	width: 200px;
+}
+
+#internship-places #france-shape {
+	background: url('../img/france-shape.png') no-repeat center;
+	margin: 0 auto 25px;
+	height: 200px;
+	width: 200px;
+}
+
+#internship-places .internships-number {
+	margin-bottom: 10px;
+	line-height: 62px;
+	font-weight: 700;
+	font-size: 60px;
+	display: block;
+	color: #69397e;
+}
+
+#internship-places .internships-available {
+	line-height: 22px;
+	font-weight: 600;
+	font-size: 22px;
+	display: block;
+	color: #424242;
+}
+
+#partners {
+	background: #eaeaea;
+	padding: 90px 0;
+}
+
+#partners #partners-title {
+	margin-bottom: 60px;
+}
+
+#partners a.partner-case img {
+	width: 100%;
+}
+
+#footer {
+	background: #424242;
+	padding: 90px 0;
+	color: #fff;
+}
+
+#footer ul {
+	text-align: right;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#footer ul li {
+	display: inline-block;
+	margin-left: 30px;
+}
+
+#footer a {
+	color: #fff;
+}
+
+@media (max-width: 480px) {
+	#header #header-internship {
+		padding: 80px 0 40px;
+	}
+}
+
+@media (max-width: 768px) {
+	#header #header-navbar ul.nav.navbar-nav li.dropdown a.dropdown-toggle {
+		margin-right: 10px;
+	}
+
+	#header #header-internship h1,
+	.section-title h2 {
+		line-height: 54px;
+		font-size: 36px
+	}
+
+	#internship-places .grid:first-child {
+		border-bottom: 1px solid #ededed;
+		padding-bottom: 45px;
+	}
+
+	#internship-places .grid:last-child {
+		padding-top: 45px;
+	}
+
+	#partners .col-sm-4 {
+		margin-bottom: 30px;
+	}
+
+	#partners .col-sm-4:last-child {
+		margin-bottom: 0;
+	}
+
+	#footer{
+		text-align: center;
+	}
+
+	#footer ul {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	#header #header-navbar ul.nav.navbar-nav li.dropdown a.dropdown-toggle {
+		min-width: 140px;
+	}
+
+	#presentation.grid-section .grid {
+		padding: 0 60px 60px;
+		min-height: 650px;
+	}
+
+	#presentation.grid-section .grid:first-child,
+	#presentation.grid-section .grid:nth-child(3) {
+		border-right: 1px solid #ededed;
+	}
+
+	#presentation.grid-section .grid:first-child,
+	#presentation.grid-section .grid:nth-child(2) {
+		border-bottom: 1px solid #ededed;
+	}
+
+	#presentation.grid-section .grid:last-child,
+	#presentation.grid-section .grid:nth-child(3) {
+		padding: 60px 60px 0 60px;
+	}
+}
+
+@media (max-width: 992px) {
+	#partners .col-sm-4:nth-last-child(-n+3) {
+		margin-top: 30px;
+	}
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+	#presentation.grid-section .grid {
+		padding: 0 60px 60px;
+		min-height: 500px;
+	}
+}
