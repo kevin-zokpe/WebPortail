@@ -24,6 +24,14 @@ session_start();
   			session_unset();
   			$_SESSION['login']=$_POST['login'];
   			$_SESSION['mdp']=$_POST['mdp'];
+  			
+  			if(isset($_FILES['CV'])){
+        			$dossier = "../../uploads/".$_POST['nom'].'-'.$_POST['prenom'];
+        			mkdir($dossier, 0700);
+        			$fichier = basename($_FILES['CV']['name']);
+        			move_uploaded_file($_FILES['CV']['tmp_name'], $dossier . '/' . $fichier);
+        		}
+        
   			header("location: Consultation-Etudiant.php");
   		}
   		catch(PDOException $e)
