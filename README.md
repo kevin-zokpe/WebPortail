@@ -11,7 +11,6 @@ HADRIEN
 - Créer page de profil étudiant -> (voir,modifier ses données) photo
 
  AK
-- Mentions légales
 - Faire les ORM des tables de la BDD
 - Faire la page FAQ (avec les bourses du coup)
 - Trouver les images du slider
@@ -32,6 +31,7 @@ SONIA
 - Logo portail stage ?
 
 MIKHAIL
+- Mentions légales
 - PDF d'explication prof du site
 - Faire la page A propos du site
 
