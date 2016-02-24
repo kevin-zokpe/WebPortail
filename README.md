@@ -14,7 +14,6 @@ HADRIEN
 - Mentions légales
 - Faire les ORM des tables de la BDD
 - Faire la page FAQ (avec les bourses du coup)
-- Créer une page qui explique le domaine de formation des étudiants Irlandais
 - Trouver les images du slider
 - Redéfinir la charte graphique (Trop de violet et de gris, et les questions sur la page d’accueil) 
 A copier sur étudiant Hadrien 
@@ -26,14 +25,15 @@ VALENTIN
 	 -  Ajouter le Lieu du stage dans la table Stage
 	 -  Ajouter table FAQ
 - Créer une page qui explique le domaine de formation des étudiants français
+- Créer une page qui explique le domaine de formation des étudiants Irlandais
 
 
 SONIA
-- Logo portail stage
+- Logo portail stage ?
 
 MIKHAIL
-- PDF d'explication prof
-- Faire la page à propos
+- PDF d'explication prof du site
+- Faire la page A propos du site
 
 
 /*-------------------------------------------------------------------------------*/
