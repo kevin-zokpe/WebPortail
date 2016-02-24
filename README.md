@@ -8,7 +8,7 @@ HADRIEN
 - Créer le panel d’administration pour monsieur Clouet 
 - Intégrer les images (dégrader,nature ?)
 - Cryptage des mots de passe
--Créer page de profil étudiant -> (voir,modifier ses données) photo
+- Créer page de profil étudiant -> (voir,modifier ses données) photo
 
  AK
 - Mentions légales
