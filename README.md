@@ -29,7 +29,7 @@ VALENTIN
 
 
 SONIA
-- Logo site d’agence 
+- Logo portail stage
 
 MIKHAIL
 - PDF d'explication prof
