@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 25 Février 2016 à 18:10
+-- Généré le :  Jeu 25 Février 2016 à 18:32
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -76,10 +76,10 @@ CREATE TABLE IF NOT EXISTS `internship` (
   `desc` text NOT NULL,
   `company` int(11) NOT NULL,
   `way_num` int(128) NOT NULL,
-  `way_type` enum('Allée','Avenue','Boulevard','Carrrefour','Chemin','Chaussée','Cité','Corniche','Cours','Domaine','Descente','Ecart','Esplanade','Faubourg','Grande Rue','Hameau','Halle','Impasse','Lieu-dit','Lotissement','Marché','Montée','Passage','Place','Plaine','Plateau','Promenade','Parvis','Quartier','Quai','Résidence','Ruelle','Rocade','Rond-point','Route','Rue','Sente','Sentier','Square','Terre-plein','Traverse','Villa','Village') NOT NULL,
+  `way_type` varchar(64) NOT NULL,
   `way_name` varchar(64) NOT NULL,
   `city` varchar(128) NOT NULL,
-  `zip_code` int(11) NOT NULL,
+  `zip_code` varchar(32) NOT NULL,
   `area` int(11) NOT NULL,
   `student` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `internship` (
 --
 
 INSERT INTO `internship` (`id`, `name`, `desc`, `company`, `way_num`, `way_type`, `way_name`, `city`, `zip_code`, `area`, `student`) VALUES
-(1, 'Community manager', 'Notre agence cherche un stagiaire pour remplir le rôle de community manager.', 1, 5, 'Avenue', 'Gowna Plaza', 'Dublin', 15, 1, 1);
+(1, 'Community manager', 'Notre agence cherche un stagiaire pour remplir le rôle de community manager.', 1, 5, 'Avenue', 'Gowna Plaza', 'Dublin', '15', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -130,9 +130,9 @@ INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `area`, `mail
 -- Contraintes pour la table `internship`
 --
 ALTER TABLE `internship`
-  ADD CONSTRAINT `internship_ibfk_3` FOREIGN KEY (`student`) REFERENCES `student` (`id`),
   ADD CONSTRAINT `internship_ibfk_1` FOREIGN KEY (`company`) REFERENCES `company` (`id`),
-  ADD CONSTRAINT `internship_ibfk_2` FOREIGN KEY (`area`) REFERENCES `area` (`id`);
+  ADD CONSTRAINT `internship_ibfk_2` FOREIGN KEY (`area`) REFERENCES `area` (`id`),
+  ADD CONSTRAINT `internship_ibfk_3` FOREIGN KEY (`student`) REFERENCES `student` (`id`);
 
 --
 -- Contraintes pour la table `student`
