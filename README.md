@@ -20,7 +20,7 @@ A copier sur étudiant Hadrien
 
 VALENTIN
 - Remplir la BDD avec les domaines (Irlandais - Français)
-- Refaire la BDD en fonction du blog MMI (http://blogdummi.fr/offres-de-stage/nouvelle-offre/)
+- <b style='color:green'>100%</b> - Refaire la BDD en fonction du blog MMI (http://blogdummi.fr/offres-de-stage/nouvelle-offre/)
 	 -  Ajouter le Lieu du stage dans la table Stage
 	 -  Ajouter table FAQ
 - Créer une page qui explique le domaine de formation des étudiants français
