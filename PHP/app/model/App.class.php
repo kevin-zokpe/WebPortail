@@ -16,6 +16,22 @@
 			return false;
 		}
 
+		public static function getMember() {
+			if (self::isLogged()) {
+				if ($_SESSION['type'] == 'student') {
+					return Etudiant::getStudentById($_SESSION['id']);
+				}
+
+				if ($_SESSION['type'] == 'company') {
+					return Entreprise::getCompanyById($_SESSION['id']);
+				}
+
+				return false;
+			}
+
+			return false;
+		}
+
 		public static function error($log) {
 			echo '
 				<div class="erreur">

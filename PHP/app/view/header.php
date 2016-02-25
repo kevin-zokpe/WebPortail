@@ -35,9 +35,42 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (App::isLogged()) : ?>
-							<li><a href="#">Connecté</a></li>
+							<?php $member = App::getMember(); ?>
+							<?php if (get_class($member) == 'Etudiant') : ?>
+								<li class="dropdown">
+									<a id="student-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+										<?php echo $member->prenom; ?>
+										<span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
+										<li><a href="index.php?page=profile">Profil</a></li>
+										<li><a href="#">Stages demandés</a></li>
+									</ul>
+								</li>
+							<?php else : ?>
+								<li class="dropdown">
+									<a id="company-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+										<?php echo $member->nom; ?>
+										<span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="company-dropdown">
+										<li><a href="index.php?page=profile">Profil</a></li>
+										<li><a href="#">Stages proposés</a></li>
+									</ul>
+								</li>
+							<?php endif; ?>
+							<li><a href="index.php?page=signout">Déconnexion</a></li>
 						<?php else : ?>
-							<li><a href="#">Non connecté</a></li>
+							<li class="dropdown">
+								<a id="login-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									Me connecter
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="login-dropdown">
+									<li><a href="index.php?page=login&amp;type=student">Étudiant</a></li>
+									<li><a href="index.php?page=login&amp;type=company">Entreprise</a></li>
+								</ul>
+							</li>
 						<?php endif; ?>
                     </ul>
 				</div>

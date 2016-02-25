@@ -38,6 +38,7 @@
 						if ($member->id > 0) {
 							$_SESSION['id'] = $member->id;
 							$_SESSION['email'] = $email;
+							$_SESSION['type'] = $type;
 						}
 
 						App::redirect('index.php?page=home');
