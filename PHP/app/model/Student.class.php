@@ -1,13 +1,14 @@
 <?php	
-	class Entreprise {
+	class Student {
 		private $id;
-		private $nom;
-		private $mail;
-		private $mdp;
-		private $pays;
-		private $ville;
-		private $desc;
-		private $website;
+		private $first_name;
+		private $last_name;
+		private $country;
+		private $skill;
+		private $email;
+		private $password;
+		private $cv;
+		private $portfolio;
 		
 		public function __construct(array $args = array()) {
 			if (!empty($args)) {
@@ -22,18 +23,18 @@
 		}
 
 		public function __set($n, $v){
-			$this->$n=$v;
+			$this->$n = $v;
 		}
 
 		public function __toString(){
 		}
 
-		public static function getCompanyById($id) {
+		public static function getStudentById($id) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
-			$sql = 'SELECT * FROM entreprise WHERE id = :id';
+			$sql = 'SELECT * FROM student WHERE id = :id';
 			$sth = $db->prepare($sql);
-			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Entreprise');
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 			$sth->execute(array(
 				':id' => $id
 			));
@@ -41,12 +42,12 @@
 			return $sth->fetch();
 		}
 
-		public static function getCompaniesList() {
+		public static function getStudentsList() {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
-			$sql = 'SELECT * FROM entreprise';
+			$sql = 'SELECT * FROM student';
 			$sth = $db->prepare($sql);
-			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Entreprise');
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 			$sth->execute();
 			
 			return $sth->fetchAll();

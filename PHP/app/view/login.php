@@ -10,18 +10,18 @@
 				$db = PDOConnexion::getInstance();
 
 				if ($type == 'student') {
-					$sql = "SELECT id, mdp FROM etudiant WHERE mail = :email";
+					$sql = "SELECT id, password FROM student WHERE email = :email";
 					$sth = $db->prepare($sql);
-					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Etudiant');
+					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 					$sth->execute(array(
 						':email' => $email
 					));
 				}
 
 				elseif ($type == 'company') {
-					$sql = "SELECT id, mdp FROM entreprise WHERE mail = :email";
+					$sql = "SELECT id, password FROM company WHERE email = :email";
 					$sth = $db->prepare($sql);
-					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Entreprise');
+					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
 					$sth->execute(array(
 						':email' => $email
 					));
@@ -34,7 +34,7 @@
 				$member = $sth->fetch();
 
 				if ($member) {
-					if (Bcrypt::checkPassword($password, $member->mdp)) {
+					if (Bcrypt::checkPassword($password, $member->password)) {
 						if ($member->id > 0) {
 							$_SESSION['id'] = $member->id;
 							$_SESSION['email'] = $email;

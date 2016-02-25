@@ -36,10 +36,10 @@
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (App::isLogged()) : ?>
 							<?php $member = App::getMember(); ?>
-							<?php if (get_class($member) == 'Etudiant') : ?>
+							<?php if (get_class($member) == 'Student') : ?>
 								<li class="dropdown">
 									<a id="student-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-										<?php echo $member->prenom; ?>
+										<?php echo $member->first_name; ?>
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
@@ -50,7 +50,7 @@
 							<?php else : ?>
 								<li class="dropdown">
 									<a id="company-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-										<?php echo $member->nom; ?>
+										<?php echo $member->name; ?>
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="company-dropdown">

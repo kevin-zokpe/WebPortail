@@ -19,11 +19,11 @@
 		public static function getMember() {
 			if (self::isLogged()) {
 				if ($_SESSION['type'] == 'student') {
-					return Etudiant::getStudentById($_SESSION['id']);
+					return Student::getStudentById($_SESSION['id']);
 				}
 
 				if ($_SESSION['type'] == 'company') {
-					return Entreprise::getCompanyById($_SESSION['id']);
+					return Company::getCompanyById($_SESSION['id']);
 				}
 
 				return false;
