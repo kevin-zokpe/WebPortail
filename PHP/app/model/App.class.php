@@ -71,6 +71,13 @@
 			header('Location: ' . $url);
 		}
 
+		public static function dd($var) {
+			echo '<pre>';
+				var_dump($var);
+			echo '</pre>';
+			die();
+		}
+
 		public static function url($url) {
 			$url = strip_tags($url);
 			$url = strtolower($url);

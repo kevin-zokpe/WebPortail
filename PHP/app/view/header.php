@@ -34,7 +34,11 @@
 						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home">Accueil</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index.php?page=signup">Inscription</a></li>
+						<?php if (App::isLogged()) : ?>
+							<li><a href="#">Connecté</a></li>
+						<?php else : ?>
+							<li><a href="#">Non connecté</a></li>
+						<?php endif; ?>
                     </ul>
 				</div>
 			</div>
