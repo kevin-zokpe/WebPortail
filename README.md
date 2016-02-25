@@ -4,11 +4,11 @@ PTUT MMI 2
 
 # To do list
 HADRIEN
-- 80% - Refaire les pages de connexion
-- Créer le panel d’administration pour monsieur Clouet 
-- Intégrer les images (dégrader,nature ?)
-- OK - Cryptage des mots de passe
-- Créer page de profil étudiant -> (voir,modifier ses données) photo
+- <b style='color:green'>100%</b> - Refaire les pages de connexion
+- <b style='color:red'>0%</b> - Créer le panel d’administration pour monsieur Clouet 
+- <b style='color:red'>0%</b> - Intégrer les images (dégrader,nature ?)
+- <b style='color:green'>100%</b> - Cryptage des mots de passe
+- <b style='color:red'>0%</b> - Créer page de profil étudiant -> (voir,modifier ses données) photo
 
  AK
 - Faire les ORM des tables de la BDD
