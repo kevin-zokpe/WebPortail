@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 25 Février 2016 à 18:32
+-- Généré le :  Jeu 25 Février 2016 à 18:37
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -63,6 +63,19 @@ CREATE TABLE IF NOT EXISTS `company` (
 
 INSERT INTO `company` (`id`, `name`, `mail`, `password`, `country`, `city`, `desc`, `website`) VALUES
 (1, 'BDifferent', 'hello@bdifferent.ie', 'ptut', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `faq`
+--
+
+CREATE TABLE IF NOT EXISTS `faq` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
