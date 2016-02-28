@@ -11,10 +11,10 @@ HADRIEN
 - <b style='color:red'>0%</b> - Créer page de profil étudiant -> (voir,modifier ses données) photo
 
  AK
-- <b style='color=red'>70%</b> Faire les ORM des tables de la BDD
-- <b style='color:red'>0%</b> Faire la page FAQ (avec les bourses du coup)
-- <b style='color:orange'>40%</b> Trouver les images du slider
-- <b style='color:red'>0%</b> Redéfinir la charte graphique (Trop de violet et de gris, et les questions sur la page d’accueil) 
+- <b style='color=red'>100%</b> Faire les ORM des tables de la BDD / <pre>GG à celui qui à fait les autres</pre>
+- <b style='color:orange'>60%</b> Trouver les images du slider
+- <b style='color:red'>40%</b> Redéfinir la charte graphique (Trop de violet et de gris, et les questions sur la page d’accueil) 
+- <b style='color:red'>0%</b> Faire la page FAQ 
 
 <b style='color:red'>0%</b> A copier sur étudiant Hadrien 
 	-Créer page de profil une entreprise -> (voir,modifier ses données) logo
