@@ -21,7 +21,7 @@ HADRIEN
 	-Créer page de profil une entreprise -> (voir,modifier ses données) logo
 
 VALENTIN
-- <b style='color:green'>5%</b> - Remplir la BDD avec les domaines (Irlandais - Français)
+- <b style='color:green'>99%</b> - Remplir la BDD avec les domaines (Irlandais - Français) <pre>A valider par Mr.Clouet</pre>
 - <b style='color:green'>100%</b> - Refaire la BDD en fonction du blog MMI (http://blogdummi.fr/offres-de-stage/nouvelle-offre/)
 	 -  Ajouter le Lieu du stage dans la table Stage
 	 -  Ajouter table FAQ
