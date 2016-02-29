@@ -13,7 +13,7 @@ HADRIEN
  AK
 - <b style='color=red'>100%</b> Faire les ORM des tables de la BDD
 - <b style='color:orange'>10%</b> Trouver d'autres images pour le slider <pre>100% Bon il aime po, on recommance</pre>
-- <b style='color:red'>50%</b> Faire la page FAQ <pre>Bon on fait que les questions de la France</pre>
+- <b style='color:red'>50%</b> Faire la page FAQ <pre>Bon on fait que les questions de la France seulement il a dit</pre>
 - <b style='color:red'>40%</b> Redéfinir la charte graphique (Trop de violet et de gris, et les questions sur la page d’accueil) 
 
 <b style='color:red'>0%</b> A copier sur étudiant Hadrien 
