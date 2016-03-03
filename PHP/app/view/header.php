@@ -32,7 +32,8 @@
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home">Accueil</a></li>
-						<li><a href="index.php?page=faq">FAQ</a></li>
+						<li<?php App::isCurrentPage('faq'); ?>><a href="index.php?page=faq">FAQ</a></li>
+						<li<?php App::isCurrentPage('archives'); ?>><a href="index.php?page=archives">Archives</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (App::isLogged()) : ?>
@@ -45,7 +46,11 @@
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
 										<li><a href="index.php?page=profile">Profil</a></li>
-										<li><a href="#">Stages demandés</a></li>
+										<li><a href="index.php?page=internship-request">Demander un stage</a></li>
+										<?php if (App::isAdmin()) : ?>
+											<li class="divider" role="separator"></li>
+											<li><a href="index.php?page=admin/home">Administration</a></li>
+										<?php endif; ?>
 									</ul>
 								</li>
 							<?php else : ?>
@@ -73,6 +78,15 @@
 								</ul>
 							</li>
 						<?php endif; ?>
+						<li class="dropdown">
+							<a id="lang-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								FR
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="lang-dropdown">
+								<li><a href="#">EN</a></li>
+							</ul>
+						</li>
                     </ul>
 				</div>
 			</div>
