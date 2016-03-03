@@ -32,6 +32,7 @@
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home">Accueil</a></li>
+						<li><a href="index.php?page=faq">FAQ</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (App::isLogged()) : ?>
