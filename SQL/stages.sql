@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 03 Mars 2016 à 15:04
+-- Généré le :  Jeu 03 Mars 2016 à 15:20
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `webjuice`
+-- Base de données :  `stages`
 --
 
 -- --------------------------------------------------------
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `last_name` varchar(64) NOT NULL,
   `country` enum('France','Irlande') NOT NULL,
   `area` int(11) NOT NULL,
-  `mail` varchar(64) NOT NULL,
+  `email` varchar(64) NOT NULL,
   `password` varchar(64) NOT NULL,
   `cv` varchar(128) NOT NULL,
   `portfolio` varchar(128) NOT NULL,
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- Contenu de la table `student`
 --
 
-INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `area`, `mail`, `password`, `cv`, `portfolio`, `admin`, `available`) VALUES
+INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `area`, `email`, `password`, `cv`, `portfolio`, `admin`, `available`) VALUES
 (1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', 'ptut', '', '', 0, 1);
 
 --
