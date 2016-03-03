@@ -52,5 +52,25 @@
 			
 			return $sth->fetchAll();
 		}
+
+		public static function changeInternshipRequest($available, $studentId) {
+			$availableBoolean = ($available == 'activate') ? true : false;
+
+			PDOConnexion::setParameters('phonedeals', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE student
+				SET available = :available
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':id' => $studentId,
+				':available' => $availableBoolean
+			));
+
+			return $sth;
+		}
 	}
 ?>
