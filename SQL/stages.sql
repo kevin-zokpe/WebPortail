@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `company` (
 `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `mail` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
   `password` varchar(64) NOT NULL,
   `country` enum('France','Irlande') NOT NULL,
   `city` varchar(64) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `company` (
 -- Contenu de la table `company`
 --
 
-INSERT INTO `company` (`id`, `name`, `mail`, `password`, `country`, `city`, `desc`, `website`) VALUES
+INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `desc`, `website`) VALUES
 (1, 'BDifferent', 'hello@bdifferent.ie', 'ptut', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/'),
 (2, 'Hadrien Design', 'support@hadriendesign.com', '$2y$12$qfiWQpEP8UAwoSyZIMxnzeDCI6f5KVJVoReUuh8Al/YKZ2RZ81s2q', 'France', 'Rennes', 'Hadrien Design est une entreprise qui se charge de regrouper des développeurs et designers pour mettre en commun leur expérience.', 'https://hadriendesign.com/');
 
