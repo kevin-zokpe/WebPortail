@@ -146,8 +146,10 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- Contenu de la table `student`
 --
 
-INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `area`, `email`, `password`, `cv`, `portfolio`, `admin`, `available`) VALUES
-(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', 'ptut', '', '', 0, 1);
+INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `email`, `password`, `cv`, `portfolio`) VALUES
+(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$CyMjfQyBElBAq0wxa3J3j.Txoxza/dwWS.C43RCzqSG7dDR.Qolvu', '', ''),
+(2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', ''),
+(3, 'Ange-Kévin', 'Zokpe', 'France', 2, 'kzokpe@gmail.com', '$2y$12$PHQVWOZuCfgK3h2tYpge0uAD3DNEh9GkKSCyn4iygS8fVY7Hbmtdy', '', '');
 
 --
 -- Contraintes pour les tables exportées
