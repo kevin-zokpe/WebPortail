@@ -7,6 +7,7 @@
     define('PROTOCOLE', (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ? 'https' : 'http');
 	define('SYSTEM', ROOT . DS . 'system');
 	define('APP', ROOT . DS . 'app');
+	define('LANG', ROOT . DS . 'ressources' . DS . 'lang');
 
 	require_once(APP . '/model/PDOConnexion.php');
 	require_once (APP . '/model/Autoloader.php');

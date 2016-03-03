@@ -120,12 +120,12 @@
 			}
 
 			else {
-				header('Location: index.php?page=home');
+				App::redirect('index.php?page=home');
 			}
 		}
 	}
 
 	else {
-		header('Location: index.php?page=home');
+		App::redirect('index.php?page=home');
 	}
 ?>

@@ -16,6 +16,22 @@
 			return false;
 		}
 
+		public static function isStudent() {
+			if (self::isLogged() && $_SESSION['type'] == 'student') {
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function isCompany() {
+			if (self::isLogged() && $_SESSION['type'] == 'company') {
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function getMember() {
 			if (self::isLogged()) {
 				if ($_SESSION['type'] == 'student') {
@@ -84,7 +100,7 @@
 		}
 
 		public static function redirect($url) {
-			header('Location: ' . $url);
+			header('Location: ' . $url, true, 302);
 		}
 
 		public static function dd($var) {
