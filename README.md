@@ -5,7 +5,7 @@ PTUT MMI 2
 # To do list
 HADRIEN
 - <b>100%</b> - Refaire les pages de connexion
-- <b>0%</b> - Créer le panel d’administration pour monsieur Clouet 
+- <b>50%</b> - Créer le panel d’administration pour monsieur Clouet 
 - <b>0%</b> - Intégrer les images (dégrader,nature ?)
 - <b>100%</b> - Cryptage des mots de passe
 - <b>90%</b> - Créer page de profil étudiant -> (voir,modifier ses données) photo
