@@ -73,6 +73,7 @@
 			return $sth;
 		}
 
+
 		public static function countStudentsInternshipRequest() {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
