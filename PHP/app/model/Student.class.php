@@ -72,5 +72,16 @@
 
 			return $sth;
 		}
+
+		public static function countStudentsInternshipRequest() {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT COUNT(*) as count FROM student WHERE available = true';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute();
+			
+			return $sth->fetch()->count;
+		}
 	}
 ?>

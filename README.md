@@ -11,20 +11,21 @@ HADRIEN
 - <b style='color:red'>0%</b> - Créer page de profil étudiant -> (voir,modifier ses données) photo
 
  AK
-- Faire les ORM des tables de la BDD
-- Faire la page FAQ (avec les bourses du coup)
-- Trouver les images du slider
-- Redéfinir la charte graphique (Trop de violet et de gris, et les questions sur la page d’accueil) 
-A copier sur étudiant Hadrien 
+- <b style='color=red'>100%</b> Faire les ORM des tables de la BDD
+- <b style='color:orange'>10%</b> Trouver d'autres images pour le slider <pre>100% Bon il aime po, on recommance</pre>
+- <b style='color:red'>50%</b> Faire la page FAQ <pre>Bon on fait que les questions de la France seulement il a dit</pre>
+- <b style='color:red'>40%</b> Redéfinir la charte graphique (Trop de violet et de gris, et les questions sur la page d’accueil) 
+
+<b style='color:red'>0%</b> A copier sur étudiant Hadrien 
 	-Créer page de profil une entreprise -> (voir,modifier ses données) logo
 
 VALENTIN
-- Remplir la BDD avec les domaines (Irlandais - Français)
+- <b style='color:green'>99%</b> - Remplir la BDD avec les domaines (Irlandais - Français) <pre>A valider par Mr.Clouet</pre>
 - <b style='color:green'>100%</b> - Refaire la BDD en fonction du blog MMI (http://blogdummi.fr/offres-de-stage/nouvelle-offre/)
 	 -  Ajouter le Lieu du stage dans la table Stage
 	 -  Ajouter table FAQ
-- Créer une page qui explique le domaine de formation des étudiants français
-- Créer une page qui explique le domaine de formation des étudiants Irlandais
+- <b style='color:green'>0%</b> - Créer une page qui explique le domaine de formation des étudiants français
+- <b style='color:green'>0%</b> - Créer une page qui explique le domaine de formation des étudiants Irlandais
 
 
 SONIA

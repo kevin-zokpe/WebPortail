@@ -32,6 +32,20 @@
 			return false;
 		}
 
+		public static function isAdmin() {
+			if (self::isStudent()) {
+				$student = Student::getStudentById($_SESSION['id']);
+
+				if ($student->admin) {
+					return true;
+				}
+				
+				return false;
+			}
+
+			return false;
+		}
+
 		public static function getMember() {
 			if (self::isLogged()) {
 				if ($_SESSION['type'] == 'student') {
@@ -87,6 +101,8 @@
 		}
 
 		public static function getHeader($code) {
+			require_once(APP . '/view/header.php');
+
 			switch ($code) {
 				case 404:
 					header("HTTP/1.0 404 Not Found");
@@ -97,6 +113,9 @@
 					header("HTTP/1.0 403 Forbidden");
 				break;
 			}
+
+			require_once(APP . '/view/footer.php');
+			die();
 		}
 
 		public static function redirect($url) {

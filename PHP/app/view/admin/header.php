@@ -6,10 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<link rel="icon" href="img/favicon.png">
-		<title><?php echo App::$siteTitle; ?></title>
+		<title><?php echo App::$siteTitle; ?> - Admin</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -91,3 +90,18 @@
 				</div>
 			</div>
 		</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="nav nav-tabs">
+						<li role="presentation"<?php App::isCurrentPage('admin/home'); ?>><a href="index.php?page=admin/home"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+						<li role="presentation"<?php App::isCurrentPage('admin/students-list'); ?>><a href="index.php?page=admin/students-list"><i class="fa fa-user"></i> Étudiants</a></li>
+						<li role="presentation"<?php App::isCurrentPage('admin/companies-list'); ?>><a href="index.php?page=admin/companies-list"><i class="fa fa-building"></i> Entreprises</a></li>
+						<li role="presentation"<?php App::isCurrentPage('admin/faq-list'); ?>><a href="index.php?page=admin/faq-list"><i class="fa fa-question-circle"></i> FAQ</a></li>
+						<li role="presentation"<?php App::isCurrentPage('admin/settings'); ?>><a href="index.php?page=admin/settings"><i class="fa fa-cog"></i> Réglages</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row">

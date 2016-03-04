@@ -16,7 +16,7 @@
 				}
 
 				else {
-					echo 'Bonjour';
+					echo Student::countStudentsInternshipRequest() . ' étudiants sont en recherche de stage';
 				}
 			?>
 		</div>

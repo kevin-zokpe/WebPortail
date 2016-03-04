@@ -13,12 +13,15 @@
 			}
 		}
 
-		public function __get($nom) {
+		public function __get($nom){
 			return $this->$nom;
 		}
 
-		public function __set($n, $v) {
+		public function __set($n, $v){
 			$this->$n = $v;
+		}
+
+		public function __toString(){
 		}
 
 		public static function getFaqById($id) {
@@ -44,8 +47,8 @@
 			
 			return $sth->fetchAll();
 		}
-		
-		public static function getCompaniesFaq() {
+
+		public static function getCompanyFaq() {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
 			$sql = 'SELECT * FROM faq WHERE target LIKE "company"';
