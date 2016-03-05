@@ -69,6 +69,66 @@
 					App::error('Vous devez remplir tous les champs obligatoires !');
 				}
 			}
+
+			if (isset($_POST['register'])) {
+
+		if(isset($_POST['first_name']) && $_POST['first_name']!="" && preg_match("#^[a-zA-Z]{2,32}$#", $_POST['first_name']) &&
+    		isset($_POST['last_name']) && $_POST['last_name']!="" && preg_match("#^[a-zA-Z]{2,32}$#", $_POST['last_name']) &&
+    		isset($_POST['email']) && $_POST['email']!="" && preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
+    		isset($_POST['email-confirm']) && $_POST['email-confirm']==$_POST['email'] &&
+    	   	isset($_POST['password']) && $_POST['password']!="" && preg_match("#^\w{8,}$#", $_POST['password']) &&
+    	   	isset($_POST['password-confirm']) && $_POST['password-confirm']==$_POST['password'] &&
+    	   	isset($_POST['country'] ) && $_POST['country']!="" &&
+    	   	isset($_POST['skill']) && $_POST['skill']!="" &&
+    	   	/*isset($_FILES['cv']) &&
+    	   	isset($_POST['portfolio']) && $_POST['portfolio']!="" && 
+    	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $POST['portfolio']) && */
+    	   	isset($_POST['accept_terms'])){
+    	    
+			$first_name = $_POST['first_name'];
+			$last_name = $_POST['last_name'];
+			$email = $_POST['email'];
+			$password = $_POST['password'];
+			$country = $_POST['country'];
+			$skill = $_POST['skill'];
+			$portfolio = $_POST['portfolio'];
+    	    
+    	    
+			try{
+				PDOConnexion::setParameters('stages', 'root', 'root');
+				$db = PDOConnexion::getInstance();
+				$sql = "
+					INSERT INTO student(`first_name`, `last_name`, `country`, `skill`, `email`, `password`, `portfolio`)
+							VALUES (:first_name, :last_name, :country, :skill, :email, :password, :portfolio)";
+				$sth = $db->prepare($sql);
+				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+				$sth->execute(array(
+					':first_name' => $first_name,
+					':last_name' => $last_name,
+					':country' => $country,
+					':skill' => $skill,
+					':email' => $email,
+					':password' => Bcrypt::hashPassword($password),
+					':portfolio' => $portfolio
+				));
+
+				if(isset($_FILES['cv'])){
+          			$dossier = "assets/uploads/cv/".$last_name.'-'.$first_name;
+          			$fichier = basename($_FILES['cv']['name']);
+          			move_uploaded_file($_FILES['cv']['tmp_name'], $dossier . '/' . $fichier);
+        		}
+
+				header("location:index.php?page=home");
+			}
+			catch(PDOException$e){
+				echo"<p>Erreur:".$e->getMessage()."</p>";
+				die();
+			}
+		}
+		else{
+			App::error('Vous devez remplir tous les champs obligatoires');
+		}
+	}
 ?>
 <style type="text/css">
 	form .row {
@@ -83,6 +143,7 @@
 			<small>En tant qu'étudiant</small>
 		</h1>
 	</div>
+	<h1>Inscription</h1>
 
 	<div class="row">
 		<div class="col-md-8">
@@ -132,6 +193,7 @@
 						<label for="signup-country">Pays</label>
 						<select name="country" id="signup-country" class="form-control">
 							<option value="" disabled selected>Choisissez votre pays</option>
+							<option value=""></option>
 							<option value="France">France</option>
 							<option value="Irlande">Irlande</option>
 						</select>
@@ -199,3 +261,7 @@
 		App::redirect('index.php?page=home');
 	}
 ?>
+            
+		</div>
+	</div>
+</div>
