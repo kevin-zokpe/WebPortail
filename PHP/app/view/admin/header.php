@@ -52,17 +52,6 @@
 										<?php endif; ?>
 									</ul>
 								</li>
-							<?php else : ?>
-								<li class="dropdown">
-									<a id="company-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-										<?php echo $member->name; ?>
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="company-dropdown">
-										<li><a href="index.php?page=profile">Profil</a></li>
-										<li><a href="#">Stages proposés</a></li>
-									</ul>
-								</li>
 							<?php endif; ?>
 							<li><a href="index.php?page=signout">Déconnexion</a></li>
 						<?php else : ?>
@@ -96,7 +85,7 @@
 				<div class="col-md-12">
 					<ul class="nav nav-tabs">
 						<li role="presentation"<?php App::isCurrentPage('admin/home'); ?>><a href="index.php?page=admin/home"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-						<li role="presentation"<?php App::isCurrentPage('admin/students-list'); ?>><a href="index.php?page=admin/students-list"><i class="fa fa-user"></i> Étudiants</a></li>
+						<li role="presentation"<?php App::isCurrentPage('admin/students-list'); ?>><a href="index.php?page=admin/students-list"><i class="fa fa-user"></i> Étudiants<?php if (Student::getActivatedStudents(false)) {echo ' <span class="badge">' . count(Student::getActivatedStudents(false)) . '</span>';} ?></a></li>
 						<li role="presentation"<?php App::isCurrentPage('admin/companies-list'); ?>><a href="index.php?page=admin/companies-list"><i class="fa fa-building"></i> Entreprises</a></li>
 						<li role="presentation"<?php App::isCurrentPage('admin/faq-list'); ?>><a href="index.php?page=admin/faq-list"><i class="fa fa-question-circle"></i> FAQ</a></li>
 						<li role="presentation"<?php App::isCurrentPage('admin/settings'); ?>><a href="index.php?page=admin/settings"><i class="fa fa-cog"></i> Réglages</a></li>

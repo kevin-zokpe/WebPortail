@@ -62,12 +62,12 @@
 			return false;
 		}
 
-		public static function error($log) {
+		public static function error($message) {
 			echo '
 				<div class="erreur">
 					<div class="container">
 						<i class="fa fa-times-circle"></i>
-						' . $log . '
+						' . $message . '
 					</div>
 				</div>
 			';

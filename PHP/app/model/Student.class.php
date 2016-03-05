@@ -9,6 +9,10 @@
 		private $password;
 		private $cv;
 		private $portfolio;
+		private $admin;
+		private $available;
+		private $activated;
+		private $register_date;
 		
 		public function __construct(array $args = array()) {
 			if (!empty($args)) {
@@ -73,7 +77,6 @@
 			return $sth;
 		}
 
-
 		public static function countStudentsInternshipRequest() {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
@@ -83,6 +86,17 @@
 			$sth->execute();
 			
 			return $sth->fetch()->count;
+		}
+
+		public static function getActivatedStudents($activated = true) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = ($activated == true) ? 'SELECT * FROM student WHERE activated' : 'SELECT * FROM student WHERE !activated';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute();
+			
+			return $sth->fetchAll();
 		}
 	}
 ?>

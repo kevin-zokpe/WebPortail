@@ -1,7 +1,6 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<div>
 			<h2>FAQ Etudiant</h2>
 			<?php
 				foreach(Faq::getStudentsFaq() as $faq) {

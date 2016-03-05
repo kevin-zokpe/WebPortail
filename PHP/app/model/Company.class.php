@@ -8,6 +8,8 @@
 		private $city;
 		private $description;
 		private $website;
+		private $activated;
+		private $register_date;
 		
 		public function __construct(array $args = array()) {
 			if (!empty($args)) {

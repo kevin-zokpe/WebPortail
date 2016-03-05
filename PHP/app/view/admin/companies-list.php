@@ -1,22 +1,27 @@
 <div class="col-md-12">
-	<h1>Liste des entreprises</h1>
+	<div class="page-header">
+		<h1>Liste des entreprises</h1>
+	</div>
+	
 	<table class="table table-striped">
 		<thead>
-			<th>#</th>
-			<th>Nom</th>
-			<th>Email</th>
-			<th>Pays</th>
-			<th>Ville</th>
-			<th>Description</th>
-			<th>URL</th>
-			<th></th>
-			<th></th>
+			<tr>
+				<th>#</th>
+				<th>Nom</th>
+				<th>Email</th>
+				<th>Pays</th>
+				<th>Ville</th>
+				<th>Description</th>
+				<th>URL</th>
+				<th></th>
+				<th></th>
+			</tr>
 		</thead>
 		<?php
 			foreach (Company::getCompaniesList() as $company) {
 				echo '<tr>';
 					echo '<td>' . $company->id . '</td>';
-					echo '<td>' . $company->name . '</a></td>';
+					echo '<td>' . $company->name . '</td>';
 					echo '<td>' . $company->email . '</td>';
 					echo '<td>' . $company->country . '</td>';
 					echo '<td>' . $company->city . '</td>';

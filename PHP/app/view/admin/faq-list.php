@@ -24,18 +24,20 @@
 	</div>
 	<table class="table table-striped">
 		<thead>
-			<th>#</th>
-			<th>Question</th>
-			<th>Réponse</th>
-			<th></th>
-			<th></th>
+			<tr>
+				<th>#</th>
+				<th>Question</th>
+				<th>Réponse</th>
+				<th></th>
+				<th></th>
+			</tr>
 		</thead>
 		<?php
 			if ($type == 'student') {
 				foreach (Faq::getStudentsFaq() as $faq) {
 					echo '<tr>';
 						echo '<td>' . $faq->id . '</td>';
-						echo '<td>' . $faq->question . '</a></td>';
+						echo '<td>' . $faq->question . '</td>';
 						echo '<td>' . $faq->answer . '</td>';
 						echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil"></i></a></td>';
 						echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';
@@ -47,7 +49,7 @@
 				foreach (Faq::getCompaniesFaq() as $faq) {
 					echo '<tr>';
 						echo '<td>' . $faq->id . '</td>';
-						echo '<td>' . $faq->question . '</a></td>';
+						echo '<td>' . $faq->question . '</td>';
 						echo '<td>' . $faq->answer . '</td>';
 						echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil"></i></a></td>';
 						echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Ven 04 Mars 2016 à 12:10
+-- Généré le :  Sam 05 Mars 2016 à 15:13
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -28,16 +28,18 @@ CREATE TABLE `company` (
   `country` enum('France','Irlande') NOT NULL,
   `city` varchar(64) NOT NULL,
   `desc` text NOT NULL,
-  `website` varchar(64) NOT NULL
+  `website` varchar(64) NOT NULL,
+  `activated` tinyint(1) NOT NULL,
+  `register_date` date NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `company`
 --
 
-INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `desc`, `website`) VALUES
-(1, 'BDifferent', 'hello@bdifferent.ie', 'ptut', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/'),
-(2, 'Hadrien Design', 'support@hadriendesign.com', '$2y$12$qfiWQpEP8UAwoSyZIMxnzeDCI6f5KVJVoReUuh8Al/YKZ2RZ81s2q', 'France', 'Rennes', 'Hadrien Design est une entreprise qui se charge de regrouper des développeurs et designers pour mettre en commun leur expérience.', 'https://hadriendesign.com/');
+INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `desc`, `website`, `activated`, `register_date`) VALUES
+(1, 'BDifferent', 'hello@bdifferent.ie', 'ptut', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/', 1, '0000-00-00'),
+(2, 'Hadrien Design', 'support@hadriendesign.com', '$2y$12$qfiWQpEP8UAwoSyZIMxnzeDCI6f5KVJVoReUuh8Al/YKZ2RZ81s2q', 'France', 'Rennes', 'Hadrien Design est une entreprise qui se charge de regrouper des développeurs et designers pour mettre en commun leur expérience.', 'https://hadriendesign.com/', 1, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -143,6 +145,7 @@ CREATE TABLE `student` (
   `portfolio` varchar(128) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   `available` tinyint(1) NOT NULL DEFAULT '1',
+  `activated` tinyint(1) NOT NULL,
   `register_date` date NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -150,9 +153,9 @@ CREATE TABLE `student` (
 -- Contenu de la table `student`
 --
 
-INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `email`, `password`, `cv`, `portfolio`, `admin`, `available`, `register_date`) VALUES
-(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 0, 1, '0000-00-00'),
-(2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', 'http://hadrien.info/portfolio/', 1, 1, '0000-00-00');
+INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `email`, `password`, `cv`, `portfolio`, `admin`, `available`, `activated`, `register_date`) VALUES
+(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 0, 0, 1, '0000-00-00'),
+(2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', 'http://hadrien.info/portfolio/', 1, 1, 1, '0000-00-00');
 
 --
 -- Index pour les tables exportées

@@ -62,6 +62,7 @@
 									<ul class="dropdown-menu" aria-labelledby="company-dropdown">
 										<li><a href="index.php?page=profile">Profil</a></li>
 										<li><a href="#">Stages proposés</a></li>
+										<li><a href="index.php?page=find-student">Rechercher des étudiants</a></li>
 									</ul>
 								</li>
 							<?php endif; ?>

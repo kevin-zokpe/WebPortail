@@ -10,7 +10,7 @@
 				$db = PDOConnexion::getInstance();
 
 				if ($type == 'student') {
-					$sql = "SELECT id, password FROM student WHERE email = :email";
+					$sql = "SELECT id, password, activated FROM student WHERE email = :email";
 					$sth = $db->prepare($sql);
 					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 					$sth->execute(array(
@@ -19,7 +19,7 @@
 				}
 
 				elseif ($type == 'company') {
-					$sql = "SELECT id, password FROM company WHERE email = :email";
+					$sql = "SELECT id, password, activated FROM company WHERE email = :email";
 					$sth = $db->prepare($sql);
 					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
 					$sth->execute(array(
@@ -35,17 +35,25 @@
 
 				if ($member) {
 					if (Bcrypt::checkPassword($password, $member->password)) {
-						if ($member->id > 0) {
-							$_SESSION['id'] = $member->id;
-							$_SESSION['email'] = $email;
-							$_SESSION['type'] = $type;
+						if ($member->activated) {
+							if ($member->id > 0) {
+								$_SESSION['id'] = $member->id;
+								$_SESSION['email'] = $email;
+								$_SESSION['type'] = $type;
+							}
+
+							App::redirect('index.php?page=home');
 						}
 
-						App::redirect('index.php?page=home');
+						else {
+							App::error('Votre compte n\'a pas encore été confirmé par l\'administrateur.');
+						}
+					}
+
+					else {
+						App::error('Identifiants incorrects !');
 					}
 				}
-
-				App::error('Identifiants incorrects !');
 			}
 
 			catch(PDOException $e) {
