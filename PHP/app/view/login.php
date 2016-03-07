@@ -114,7 +114,7 @@
 					<input type="password" placeholder="Mot de passe" class="form-control" id="inputPassword" name="password" required />
 				</p>
 				<p style="font-size: 12px; margin-bottom: 30px;">
-					<a href="index.php?page=register&amp;type=<?php echo $type; ?>">Je veux m'inscrire</a> | <a href="index.php?page=login&amp;type=<?php echo $otherType; ?>">Me connecter <?php echo $asOther; ?></a>
+					<a href="index.php?page=<?php if($type=='student'){echo 'register_student';}else{echo 'register_company';} ?>&amp;type=<?php echo $type; ?>">Je veux m'inscrire</a> | <a href="index.php?page=login&amp;type=<?php echo $otherType; ?>">Me connecter <?php echo $asOther; ?></a>
 				</p>
 				<p>
 					<input type="hidden" name="type" value="<?php echo $type; ?>" />
