@@ -54,6 +54,10 @@
 						App::error('Identifiants incorrects !');
 					}
 				}
+
+				else {
+					App::error('Cet utilisateur n\'existe pas');
+				}
 			}
 
 			catch(PDOException $e) {
