@@ -36,7 +36,7 @@
 						<li<?php App::isCurrentPage('archives'); ?>><a href="index.php?page=archives">Archives</a></li>
 						<li class="dropdown"
 							<?php App::isCurrentPage('formations-france');
-								  App::isCurrentPage('formations-france'); ?>>
+							     	App::isCurrentPage('formations-ireland'); ?>>
 								  	<a id="formations-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 										Formations
 										<span class="caret"></span>
