@@ -79,7 +79,7 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `target`) VALUES
 CREATE TABLE `internship` (
   `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `desc` text NOT NULL,
+  `description` text NOT NULL,
   `company` int(11) NOT NULL,
   `address` varchar(128) NOT NULL,
   `city` varchar(128) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `internship` (
 -- Contenu de la table `internship`
 --
 
-INSERT INTO `internship` (`id`, `name`, `desc`, `company`, `address`, `city`, `zip_code`, `skill`, `student`) VALUES
+INSERT INTO `internship` (`id`, `name`, `description`, `company`, `address`, `city`, `zip_code`, `skill`, `student`) VALUES
 (1, 'Community manager', 'Notre agence cherche un stagiaire pour remplir le rôle de community manager.', 1, 'Gowna Plaza', 'Dublin', '15', 1, 1);
 
 -- --------------------------------------------------------
