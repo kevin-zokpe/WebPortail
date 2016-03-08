@@ -13,7 +13,11 @@
 				</div>
 			</div>
 		</footer>
-
 	    <script src="js/bootstrap.min.js"></script>
+	    <script type="text/javascript">
+	    	$(function () {
+  				$('[data-toggle="tooltip"]').tooltip()
+			})
+	    </script>
 	</body>
 </html>
