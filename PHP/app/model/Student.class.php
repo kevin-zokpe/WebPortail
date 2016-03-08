@@ -30,9 +30,6 @@
 			$this->$n = $v;
 		}
 
-		public function __toString(){
-		}
-
 		public static function getStudentById($id) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
@@ -53,6 +50,19 @@
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 			$sth->execute();
+			
+			return $sth->fetchAll();
+		}
+
+		public static function getStudentsBySkill($skill) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT * FROM student WHERE skill = :skill && activated && available';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':skill' => $skill
+			));
 			
 			return $sth->fetchAll();
 		}
