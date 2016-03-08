@@ -27,7 +27,7 @@ CREATE TABLE `company` (
   `password` varchar(64) NOT NULL,
   `country` enum('France','Irlande') NOT NULL,
   `city` varchar(64) NOT NULL,
-  `desc` text NOT NULL,
+  `description` text NOT NULL,
   `website` varchar(64) NOT NULL,
   `activated` tinyint(1) NOT NULL,
   `register_date` date NOT NULL
@@ -37,7 +37,7 @@ CREATE TABLE `company` (
 -- Contenu de la table `company`
 --
 
-INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `desc`, `website`, `activated`, `register_date`) VALUES
+INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `description`, `website`, `activated`, `register_date`) VALUES
 (1, 'BDifferent', 'hello@bdifferent.ie', '$2y$12$IXNKWxY7WyWyWRfIRxfyKOtkOz41PJA1uxXSIDKLmljd5S3om4P1G', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/', 1, '0000-00-00'),
 (2, 'Hadrien Design', 'support@hadriendesign.com', '$2y$12$qfiWQpEP8UAwoSyZIMxnzeDCI6f5KVJVoReUuh8Al/YKZ2RZ81s2q', 'France', 'Rennes', 'Hadrien Design est une entreprise qui se charge de regrouper des développeurs et designers pour mettre en commun leur expérience.', 'https://hadriendesign.com/', 1, '0000-00-00');
 
