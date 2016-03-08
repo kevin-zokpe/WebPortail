@@ -34,6 +34,18 @@
 						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home">Accueil</a></li>
 						<li<?php App::isCurrentPage('faq'); ?>><a href="index.php?page=faq">FAQ</a></li>
 						<li<?php App::isCurrentPage('archives'); ?>><a href="index.php?page=archives">Archives</a></li>
+						<li class="dropdown"
+							<?php App::isCurrentPage('formations-france');
+								  App::isCurrentPage('formations-france'); ?>>
+								  	<a id="formations-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+										Formations
+										<span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
+										<li><a href="index.php?page=formations-france">France</a></li>
+										<li><a href="index.php?page=formations-ireland">Irlande</a></li>
+									</ul>
+						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (App::isLogged()) : ?>
