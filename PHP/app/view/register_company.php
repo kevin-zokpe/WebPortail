@@ -2,15 +2,15 @@
 	
 	if(isset($_POST['register'])){
 
-		if(isset($_POST['name']) && $_POST['name']!="" && preg_match("#^[a-zA-Z]{2,32}$#", $_POST['name']) &&
+		if(isset($_POST['name']) && $_POST['name']!="" && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
     		isset($_POST['email']) && $_POST['email']!="" && preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
     		isset($_POST['email-confirm']) && $_POST['email-confirm']==$_POST['email'] &&
-    	   	isset($_POST['password']) && $_POST['password']!="" && preg_match("#^\w{8,}$#", $_POST['password']) &&
+    	   	isset($_POST['password']) && $_POST['password']!="" && preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['password']) &&
     	   	isset($_POST['password-confirm']) && $_POST['password-confirm']==$_POST['password'] &&
     	   	isset($_POST['country'] ) && $_POST['country']!="" &&
-    	   	isset($_POST['city']) && $_POST['city']!="" && preg_match("#^[a-zA-Z]{2,32}$#", $_POST['city']) &&
+    	   	isset($_POST['city']) && $_POST['city']!="" && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city']) &&
     	   	/*isset($_FILES['cv']) &&*/
-    	   	isset($_POST['desc']) && $_POST['desc']!="" && preg_match("#^[a-zA-Z]{2,128}$#", $_POST['desc']) &&
+    	   	isset($_POST['desc']) && $_POST['desc']!="" && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['desc']) &&
     	   	isset($_POST['website']) && $_POST['website']!="" && 
     	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website']) && 
     	   	isset($_POST['accept_terms'])){
@@ -28,7 +28,7 @@
 				PDOConnexion::setParameters('stages', 'root', 'root');
 				$db = PDOConnexion::getInstance();
 				$sql = "
-					INSERT INTO student(`name`, `email`, `country`, `city`, `desc`, `password`, `website`)
+					INSERT INTO company(`name`, `email`, `country`, `city`, `desc`, `password`, `website`)
 							VALUES (:name, :email, :country, :city, :desc, :password, :website)";
 				$sth = $db->prepare($sql);
 				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
@@ -65,13 +65,13 @@
 			(!isset($_POST['website']) || $_POST['website']=="")){
 				App::error('Vous devez remplir tous les champs obligatoires');
 			}
-			if(!preg_match("#^[a-zA-Z]{2,32}$#", $_POST['name'])){
+			if(!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name'])){
 				App::error("Veuillez entrer un nom approprié");
 			}
 			if(!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
 				App::error("Veuillez entrer un email approprié");
 			}
-			if(!preg_match("#^\w{8,}$#", $_POST['password'])){
+			if(!preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['password'])){
 				App::error("Veuillez entrer un mot de passe approprié");
 			}
 			if(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website'])){
