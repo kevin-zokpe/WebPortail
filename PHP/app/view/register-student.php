@@ -46,7 +46,7 @@
     				echo "FILE UPLOADED!";
 				}*/
 
-				header("location:index.php?page=home");
+				App::redirect('Location: index.php?page=home');
 			}
 			catch(PDOException$e){
 				echo"<p>Erreur:".$e->getMessage()."</p>";
@@ -100,11 +100,16 @@
 </style>
 
 <div class="container">
-	<h1>Inscription <small><small>en tant qu'étudiant</small></small></h1>
+	<div class="page-header">
+		<h1>
+			Inscription
+			<small>en tant qu'étudiant</small>
+		</h1>
+	</div>
 
 	<div class="row">
 		<div class="col-md-8">
-			<form name="login" method="POST" action="index.php?page=register_student">
+			<form name="login" method="POST" action="index.php?page=register-student">
 				<div class="row">
 					<div class="col-md-6">
 						<label for="signup-firstname">Prénom</label>
@@ -149,7 +154,7 @@
 					<div class="col-md-6">
 						<label for="signup-country">Pays</label>
 						<select name="country" id="signup-country" required="required" class="form-control">
-							<option value=""></option>
+							<option value="" disabled selected>Choisissez votre pays</option>
 							<option value="France">France</option>
 							<option value="Irlande">Irlande</option>
 						</select>
