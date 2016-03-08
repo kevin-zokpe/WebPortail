@@ -8,7 +8,7 @@
     	   	isset($_POST['country'] ) && $_POST['country']!="" &&
     	   	isset($_POST['city']) && $_POST['city']!="" && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city']) &&
     	   	/*isset($_FILES['cv']) &&*/
-    	   	isset($_POST['desc']) && $_POST['desc']!="" && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['desc']) &&
+    	   	isset($_POST['description']) && $_POST['description']!="" && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['description']) &&
     	   	isset($_POST['website']) && $_POST['website']!="" && 
     	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website']) && 
     	   	isset($_POST['accept_terms'])) {
@@ -18,7 +18,7 @@
 			$email = $_POST['email'];
 			$password = $_POST['password'];
 			$country = $_POST['country'];
-			$desc = $_POST['desc'];
+			$description = $_POST['description'];
 			$website = $_POST['website'];
     	    
     	    
@@ -26,8 +26,8 @@
 				PDOConnexion::setParameters('stages', 'root', 'root');
 				$db = PDOConnexion::getInstance();
 				$sql = "
-					INSERT INTO company(`name`, `email`, `country`, `city`, `desc`, `password`, `website`)
-							VALUES (:name, :email, :country, :city, :desc, :password, :website)";
+					INSERT INTO company(`name`, `email`, `country`, `city`, `description`, `password`, `website`)
+							VALUES (:name, :email, :country, :city, :description, :password, :website)";
 				$sth = $db->prepare($sql);
 				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 				$sth->execute(array(
@@ -35,7 +35,7 @@
 					':email' => $email,
 					':country' => $country,
 					':city' => $city,
-					':desc' => $desc,
+					':description' => $description,
 					':password' => Bcrypt::hashPassword($password),
 					':website' => $website
 				));
@@ -61,7 +61,7 @@
 			(!isset($_POST['password']) || $_POST['password']=="") ||
 			(!isset($_POST['password-confirm']) || $_POST['password-confirm']=="") ||
 			(!isset($_POST['country']) || $_POST['country']=="") ||
-			(!isset($_POST['desc']) || $_POST['desc']=="") ||
+			(!isset($_POST['description']) || $_POST['description']=="") ||
 			(!isset($_POST['website']) || $_POST['website']=="")){
 				App::error('Vous devez remplir tous les champs obligatoires');
 			}
@@ -162,8 +162,8 @@
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-desc">Description</label>
-						<textarea name="desc" id="signup-desc" class="form-control" rows="3" placeholder="Description" data-validation-length="2-30"  data-validation-error-msg="Rédigez une description de l'entreprise !" required></textarea>
+						<label for="signup-description">Description</label>
+						<textarea name="description" id="signup-description" class="form-control" rows="3" placeholder="Description" data-validation-length="2-30"  data-validation-error-msg="Rédigez une description de l'entreprise !" required></textarea>
 					</div>
 				</div>
 
