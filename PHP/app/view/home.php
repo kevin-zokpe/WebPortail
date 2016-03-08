@@ -21,4 +21,13 @@
 			?>
 		</div>
 	</div>
+	<div class="row" style="text-align: center">
+		<div class="col-md-12 col-ofset-5">
+			<p>
+				<h2>Les formations</h2>
+				<a class="btn btn-primary btn-lg" href="index.php?page=formation-france" role="button" style="margin-right: 10px;">France</a>
+				<a class="btn btn-primary btn-lg" href="index.php?page=formation-irlande" role="button">Irlande</a>
+			</p>
+		</div>
+	</div>
 </div>
