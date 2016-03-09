@@ -17,7 +17,7 @@
 					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
 					$sth->execute(array(
 						':id' => $company->id,
-						':desc' => $_POST['description'],
+						':desc' => $_POST['desc'],
 						':website' => $_POST['website']
 					));
 
@@ -78,14 +78,14 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Description</label> 
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="description" name="description" value="<?php echo $company->desc; ?>" placeholder="Description">
+									<input type="text" class="form-control" id="profile-description" name="desc" value="<?php echo $company->desc; ?>" placeholder="Description">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="profile-portfolio" class="col-sm-2 control-label">Site internet</label>
 								<div class="col-sm-10">
-									<input type="url" class="form-control" id="website" name="website" value="<?php echo $company->website; ?>" placeholder="Lien du site web">
+									<input type="url" class="form-control" id="profile-website" name="website" value="<?php echo $company->website; ?>" placeholder="Lien du site web">
 								</div>
 							</div>
 
