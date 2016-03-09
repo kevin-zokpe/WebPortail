@@ -1,12 +1,13 @@
 <div class="container">
 	<div class="row">
 		<?php
-			if (!isset($_GET['id']) || empty($_GET['id'])) {
+			$id = htmlentities($_GET['id']);
+
+			if (!isset($id) || empty($id)) {
 				App::redirect('index.php?page=find-internship');
 			}
 			
 			else {
-				$id = $_GET['id'];
 				$internship = Internship::getInternshipById($id);
 		?>
 			<div class="col-sm-12">
