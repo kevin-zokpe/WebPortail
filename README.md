@@ -6,10 +6,12 @@ PTUT MMI 2
 HADRIEN
 
 - <b>0%</b> - Faire les pages éditer et l'ajax pour supprimer  
+- <b>0%</b> - Integration Final
 
 
  AK
 -  <b>0%</b> - Faire les pages de recherche pour les étudiants en fonction des domaines
+-  <b>0%</b  - Récupérer les photos chez les étudiants irlandais 
 
 VALENTIN
 - <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants français
