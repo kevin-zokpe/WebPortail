@@ -1,6 +1,12 @@
-# WebPortail
+# WebPortal
 PTUT MMI 2
 
+Membres du groupe :
+- Sonia Hamelin
+- Mikhail Orlov
+- [Valentin Gougeon](https://github.com/ValGou)
+- [Ange Kévin Zokpé](https://github.com/Ange-Kevin)
+- [Hadrien Rannou](https://github.com/HadrienX)
 
 # To do list
 HADRIEN
