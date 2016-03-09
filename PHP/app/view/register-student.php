@@ -39,9 +39,6 @@
 					':portfolio' => $portfolio
 				));
 
-				/*if($_FILES['cv']){
-    				echo "FILE UPLOADED!";
-				}*/
 
 				App::redirect('Location: index.php?page=home');
 			}
@@ -202,15 +199,9 @@
 				<input type="submit" name="register" class="btn btn-primary" value="S'inscrire">
 			</form>
             
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-            <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js"></script>
-                modules : 'security'
-            }); </script> -->
-            
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>            
 		</div>
 	</div>
-<<<<<<< HEAD
 </div>
-=======
 </div>
->>>>>>> origin/master
+

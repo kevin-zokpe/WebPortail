@@ -7,7 +7,6 @@
     	   	isset($_POST['password-confirm']) && $_POST['password-confirm']==$_POST['password'] &&
     	   	isset($_POST['country'] ) && $_POST['country']!="" &&
     	   	isset($_POST['city']) && $_POST['city']!="" && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city']) &&
-    	   	/*isset($_FILES['cv']) &&*/
     	   	isset($_POST['description']) && $_POST['description']!="" && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['description']) &&
     	   	isset($_POST['website']) && $_POST['website']!="" && 
     	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website']) && 
@@ -39,10 +38,6 @@
 					':password' => Bcrypt::hashPassword($password),
 					':website' => $website
 				));
-
-				/*if($_FILES['cv']){
-    				echo "FILE UPLOADED!";
-				}*/
 
 				App::redirect('Location: index.php?page=home');
 			}
@@ -191,14 +186,7 @@
 			</form>
             
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-            <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js"></script>
-                modules : 'security'
-            }); </script> -->
-            
 		</div>
 	</div>
-<<<<<<< HEAD
 </div>
-=======
 </div>
->>>>>>> origin/master
