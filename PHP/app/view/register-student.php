@@ -1,8 +1,6 @@
 <?php
-	
-	if(isset($_POST['register'])){
-
-		if(isset($_POST['first_name']) && $_POST['first_name']!="" && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name']) &&
+	if (isset($_POST['register'])) {
+		if (isset($_POST['first_name']) && $_POST['first_name']!="" && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name']) &&
     		isset($_POST['last_name']) && $_POST['last_name']!="" && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['last_name']) &&
     		isset($_POST['email']) && $_POST['email']!="" && preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
     		isset($_POST['email-confirm']) && $_POST['email-confirm']==$_POST['email'] &&
@@ -13,7 +11,7 @@
     	   	/*isset($_FILES['cv']) &&*/
     	   	isset($_POST['portfolio']) && $_POST['portfolio']!="" && 
     	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio']) && 
-    	   	isset($_POST['accept_terms'])){
+    	   	isset($_POST['accept_terms'])) {
     	    
 			$first_name = $_POST['first_name'];
 			$last_name = $_POST['last_name'];
@@ -23,13 +21,12 @@
 			$skill = $_POST['skill'];
 			$portfolio = $_POST['portfolio'];
     	    
-    	    
-			try{
+			try {
 				PDOConnexion::setParameters('stages', 'root', 'root');
 				$db = PDOConnexion::getInstance();
 				$sql = "
-					INSERT INTO student(`first_name`, `last_name`, `country`, `skill`, `email`, `password`, `portfolio`)
-							VALUES (:first_name, :last_name, :country, :skill, :email, :password, :portfolio)";
+					INSERT INTO student(first_name, last_name, country, skill, email, password, portfolio, admin, available, activated, register_date)
+							VALUES (:first_name, :last_name, :country, :skill, :email, :password, :portfolio, false, false, false, NOW())";
 				$sth = $db->prepare($sql);
 				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 				$sth->execute(array(
@@ -53,6 +50,7 @@
 				die();
 			}
 		}
+		
 		else{
 			if((!isset($_POST['first_name']) || $_POST['first_name']=="") || 
 			(!isset($_POST['last_name']) || $_POST['last_name']=="") ||
