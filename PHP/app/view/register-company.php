@@ -26,8 +26,8 @@
 				PDOConnexion::setParameters('stages', 'root', 'root');
 				$db = PDOConnexion::getInstance();
 				$sql = "
-					INSERT INTO company(`name`, `email`, `country`, `city`, `description`, `password`, `website`)
-							VALUES (:name, :email, :country, :city, :description, :password, :website)";
+					INSERT INTO company(name, email, country, city, description, password, website, activated, register_date)
+					VALUES (:name, :email, :country, :city, :description, :password, :website, false, NOW())";
 				$sth = $db->prepare($sql);
 				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 				$sth->execute(array(
