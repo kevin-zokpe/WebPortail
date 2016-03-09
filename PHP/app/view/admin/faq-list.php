@@ -59,4 +59,8 @@
 		?>
 	</table>
 	<a href="index.php?page=admin/add-faq&amp;type=<?php echo $type; ?>" class="btn btn-primary">Ajouter une question</a>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> origin/master

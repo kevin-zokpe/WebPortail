@@ -197,4 +197,8 @@
             
 		</div>
 	</div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> origin/master

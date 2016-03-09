@@ -50,6 +50,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (App::isLogged()) : ?>
 							<?php $member = App::getMember(); ?>
+
 							<?php if (get_class($member) == 'Student') : ?>
 								<li class="dropdown">
 									<a id="student-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -72,8 +73,13 @@
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="company-dropdown">
+<<<<<<< HEAD
 										<li><a href="index.php?page=profile-company">Profil</a></li>
 										<li><a href="index.php?page=my-internships">Stages proposés</a></li>
+=======
+										<li><a href="index.php?page=profile_company">Profil</a></li>
+										<li><a href="#">Stages proposés</a></li>
+>>>>>>> origin/master
 										<li><a href="index.php?page=find-student">Rechercher des étudiants</a></li>
 									</ul>
 								</li>
