@@ -38,14 +38,9 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `description`, `website`, `activated`, `register_date`) VALUES
-<<<<<<< HEAD
 (1, 'BDifferent', 'hello@bdifferent.ie', '$2y$12$IXNKWxY7WyWyWRfIRxfyKOtkOz41PJA1uxXSIDKLmljd5S3om4P1G', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/', 1, '2016-03-01'),
 (2, 'Hadrien Design', 'support@hadriendesign.com', '$2y$12$qfiWQpEP8UAwoSyZIMxnzeDCI6f5KVJVoReUuh8Al/YKZ2RZ81s2q', 'France', 'Rennes', 'Hadrien Design est une entreprise qui se charge de regrouper des développeurs et designers pour mettre en commun leur expérience.', 'https://hadriendesign.com/', 1, '2016-03-03'),
 (3, 'Quinze-Mille', 'studio@quinze-mille.com', '$2y$12$fUEX85oTdDiH.Jo9V6cjM.9O1/NE55/YsmPifuHdBXqkKiSUogsHO', 'France', 'Rennes', 'Studio graphique et plus encore. Les plus, ce sont l’oxygène breton, le mix de sept cerveaux gauche et droit, des nez au vent et dans le guidon, des chats et des souris, du talent et du travail. Et la recette fonctionne depuis 2000.', 'http://www.quinze-mille.com/', 0, '2016-03-08');
-=======
-(1, 'BDifferent', 'hello@bdifferent.ie', '$2y$12$IXNKWxY7WyWyWRfIRxfyKOtkOz41PJA1uxXSIDKLmljd5S3om4P1G', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/', 1, '0000-00-00'),
-(2, 'Hadrien Design', 'support@hadriendesign.com', '$2y$12$qfiWQpEP8UAwoSyZIMxnzeDCI6f5KVJVoReUuh8Al/YKZ2RZ81s2q', 'France', 'Rennes', 'Hadrien Design est une entreprise qui se charge de regrouper des développeurs et designers pour mettre en commun leur expérience.', 'https://hadriendesign.com/', 1, '0000-00-00');
->>>>>>> origin/master
 
 -- --------------------------------------------------------
 
@@ -97,14 +92,9 @@ CREATE TABLE `internship` (
 -- Contenu de la table `internship`
 --
 
-<<<<<<< HEAD
 INSERT INTO `internship` (`id`, `name`, `description`, `company`, `address`, `city`, `zip_code`, `skill`) VALUES
 (1, 'Community Manager', 'Test', 1, '12 Wood Quay', 'Dublin', '15', 13),
 (2, 'Codeur Laravel', 'Nous recherchons un codeur Laravel pour migrer notre site actuel vers Laravel 5.', 2, '15 rue des Trentes', 'Rennes', '35000', 8);
-=======
-INSERT INTO `internship` (`id`, `name`, `description`, `company`, `address`, `city`, `zip_code`, `skill`, `student`) VALUES
-(1, 'Community manager', 'Notre agence cherche un stagiaire pour remplir le rôle de community manager.', 1, 'Gowna Plaza', 'Dublin', '15', 1, 1);
->>>>>>> origin/master
 
 -- --------------------------------------------------------
 
@@ -165,16 +155,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `email`, `password`, `cv`, `portfolio`, `admin`, `available`, `activated`, `register_date`) VALUES
-<<<<<<< HEAD
-(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 0, 1, 1, '2016-02-18'),
+(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 1, 1, 1, '2016-02-18'),
 (2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', 'http://hadrien.info/portfolio/', 1, 1, 1, '2016-02-20'),
 (3, 'Ange Kevin', 'Zokpe', 'France', 13, 'kzokpe@gmail.com', '$2y$12$svwYSh7MopBR0UIc9rSuWuS2qnVQ5Wa/6Cntlofw3SPYTRgE/0Y0e', '', 'https://akdesign.com', 1, 1, 1, '2016-03-08');
-=======
-(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 0, 0, 1, '0000-00-00'),
-(2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', 'http://hadrien.info/portfolio/', 1, 1, 1, '0000-00-00'),
-(3, 'Ange Kevin', 'Zokpe', 'France', 13, 'kzokpe@gmail.com', '$2y$12$svwYSh7MopBR0UIc9rSuWuS2qnVQ5Wa/6Cntlofw3SPYTRgE/0Y0e', '', 'https://akdesign.com', 1, 1, 1, '2016-03-08');
-
->>>>>>> origin/master
 
 --
 -- Index pour les tables exportées
