@@ -46,7 +46,7 @@
     				echo "FILE UPLOADED!";
 				}*/
 
-				App::redirect('Location: index.php?page=home');
+				App::redirect('index.php?page=home');
 			}
 
 			catch(PDOException$e) {
