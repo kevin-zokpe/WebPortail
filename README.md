@@ -14,7 +14,7 @@ HADRIEN
 VALENTIN
 - <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants français
 - <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants Irlandais
-- <b>0%</b  -  Créer page product 
+- <b>0%</b>  -  Créer page product 
 
 
 SONIA
