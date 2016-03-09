@@ -22,8 +22,7 @@ SONIA
 - <b>0%</b> - Diapo de présentation ?
 
 MIKHAIL
-<b>-100%</b> - Parler poliment
+-<b>100%</b> - Parler poliment
 -<b>0%</b>   - Faire le pdf explicatif pour le prof
 -<b>0%</b>   - Préparer les pages de traductions pour M.Clouet
 
-/*-------------------------------------------------------------------------------*/
