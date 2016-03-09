@@ -39,8 +39,8 @@
 						echo '<td>' . $faq->id . '</td>';
 						echo '<td>' . $faq->question . '</td>';
 						echo '<td>' . $faq->answer . '</td>';
-						echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
+						echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil"></i></a></td>';
+						echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';
 					echo '</tr>';
 				}
 			}
@@ -51,11 +51,12 @@
 						echo '<td>' . $faq->id . '</td>';
 						echo '<td>' . $faq->question . '</td>';
 						echo '<td>' . $faq->answer . '</td>';
-						echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
+						echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil"></i></a></td>';
+						echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';
 					echo '</tr>';
 				}
 			}
 		?>
 	</table>
+	<a href="index.php?page=admin/add-faq&amp;type=<?php echo $type; ?>" class="btn btn-primary">Ajouter une question</a>
 </div>
