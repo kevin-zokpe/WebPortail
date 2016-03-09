@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Sam 05 Mars 2016 à 15:13
+-- Généré le :  Mer 09 Mars 2016 à 13:36
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -27,19 +27,20 @@ CREATE TABLE `company` (
   `password` varchar(64) NOT NULL,
   `country` enum('France','Irlande') NOT NULL,
   `city` varchar(64) NOT NULL,
-  `desc` text NOT NULL,
+  `description` text NOT NULL,
   `website` varchar(64) NOT NULL,
   `activated` tinyint(1) NOT NULL,
   `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `company`
 --
 
-INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `desc`, `website`, `activated`, `register_date`) VALUES
-(1, 'BDifferent', 'hello@bdifferent.ie', 'ptut', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/', 1, '0000-00-00'),
-(2, 'Hadrien Design', 'support@hadriendesign.com', '$2y$12$qfiWQpEP8UAwoSyZIMxnzeDCI6f5KVJVoReUuh8Al/YKZ2RZ81s2q', 'France', 'Rennes', 'Hadrien Design est une entreprise qui se charge de regrouper des développeurs et designers pour mettre en commun leur expérience.', 'https://hadriendesign.com/', 1, '0000-00-00');
+INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `description`, `website`, `activated`, `register_date`) VALUES
+(1, 'BDifferent', 'hello@bdifferent.ie', '$2y$12$IXNKWxY7WyWyWRfIRxfyKOtkOz41PJA1uxXSIDKLmljd5S3om4P1G', 'Irlande', 'Dublin', 'Une agence de marketing digital. Oui oui, c''est une vraie !', 'http://www.bdifferent.ie/', 1, '2016-03-01'),
+(2, 'Hadrien Design', 'support@hadriendesign.com', '$2y$12$qfiWQpEP8UAwoSyZIMxnzeDCI6f5KVJVoReUuh8Al/YKZ2RZ81s2q', 'France', 'Rennes', 'Hadrien Design est une entreprise qui se charge de regrouper des développeurs et designers pour mettre en commun leur expérience.', 'https://hadriendesign.com/', 1, '2016-03-03'),
+(3, 'Quinze-Mille', 'studio@quinze-mille.com', '$2y$12$fUEX85oTdDiH.Jo9V6cjM.9O1/NE55/YsmPifuHdBXqkKiSUogsHO', 'France', 'Rennes', 'Studio graphique et plus encore. Les plus, ce sont l’oxygène breton, le mix de sept cerveaux gauche et droit, des nez au vent et dans le guidon, des chats et des souris, du talent et du travail. Et la recette fonctionne depuis 2000.', 'http://www.quinze-mille.com/', 0, '2016-03-08');
 
 -- --------------------------------------------------------
 
@@ -79,21 +80,21 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `target`) VALUES
 CREATE TABLE `internship` (
   `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `desc` text NOT NULL,
+  `description` text NOT NULL,
   `company` int(11) NOT NULL,
   `address` varchar(128) NOT NULL,
   `city` varchar(128) NOT NULL,
   `zip_code` varchar(32) NOT NULL,
-  `skill` int(11) NOT NULL,
-  `student` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `skill` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `internship`
 --
 
-INSERT INTO `internship` (`id`, `name`, `desc`, `company`, `address`, `city`, `zip_code`, `skill`, `student`) VALUES
-(1, 'Community manager', 'Notre agence cherche un stagiaire pour remplir le rôle de community manager.', 1, 'Gowna Plaza', 'Dublin', '15', 1, 1);
+INSERT INTO `internship` (`id`, `name`, `description`, `company`, `address`, `city`, `zip_code`, `skill`) VALUES
+(1, 'Community Manager', 'Test', 1, '12 Wood Quay', 'Dublin', '15', 13),
+(2, 'Codeur Laravel', 'Nous recherchons un codeur Laravel pour migrer notre site actuel vers Laravel 5.', 2, '15 rue des Trentes', 'Rennes', '35000', 8);
 
 -- --------------------------------------------------------
 
@@ -147,15 +148,16 @@ CREATE TABLE `student` (
   `available` tinyint(1) NOT NULL DEFAULT '1',
   `activated` tinyint(1) NOT NULL,
   `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `student`
 --
 
 INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `email`, `password`, `cv`, `portfolio`, `admin`, `available`, `activated`, `register_date`) VALUES
-(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 0, 0, 1, '0000-00-00'),
-(2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', 'http://hadrien.info/portfolio/', 1, 1, 1, '0000-00-00');
+(1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 0, 1, 1, '2016-02-18'),
+(2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', 'http://hadrien.info/portfolio/', 1, 1, 1, '2016-02-20'),
+(3, 'Ange Kevin', 'Zokpe', 'France', 13, 'kzokpe@gmail.com', '$2y$12$svwYSh7MopBR0UIc9rSuWuS2qnVQ5Wa/6Cntlofw3SPYTRgE/0Y0e', '', 'https://akdesign.com', 1, 1, 1, '2016-03-08');
 
 --
 -- Index pour les tables exportées
@@ -177,10 +179,7 @@ ALTER TABLE `faq`
 -- Index pour la table `internship`
 --
 ALTER TABLE `internship`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `company` (`company`,`skill`,`student`),
-  ADD KEY `skill` (`skill`),
-  ADD KEY `student` (`student`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `skill`
@@ -203,7 +202,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT pour la table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `faq`
 --
@@ -213,7 +212,7 @@ ALTER TABLE `faq`
 -- AUTO_INCREMENT pour la table `internship`
 --
 ALTER TABLE `internship`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `skill`
 --
@@ -223,18 +222,10 @@ ALTER TABLE `skill`
 -- AUTO_INCREMENT pour la table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Contraintes pour les tables exportées
 --
-
---
--- Contraintes pour la table `internship`
---
-ALTER TABLE `internship`
-  ADD CONSTRAINT `internship_ibfk_1` FOREIGN KEY (`company`) REFERENCES `company` (`id`),
-  ADD CONSTRAINT `internship_ibfk_2` FOREIGN KEY (`skill`) REFERENCES `skill` (`id`),
-  ADD CONSTRAINT `internship_ibfk_3` FOREIGN KEY (`student`) REFERENCES `student` (`id`);
 
 --
 -- Contraintes pour la table `student`

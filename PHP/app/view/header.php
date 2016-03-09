@@ -27,13 +27,25 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.php?page=home"><?php echo App::$siteTitle; ?></a>
+					<a class="navbar-brand" href="index.php?page=home"><img src="img/logo.png" alt="Logo" style="float: left; margin-right: 10px; width: 20px;"><?php echo App::$siteTitle; ?></a>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home">Accueil</a></li>
 						<li<?php App::isCurrentPage('faq'); ?>><a href="index.php?page=faq">FAQ</a></li>
 						<li<?php App::isCurrentPage('archives'); ?>><a href="index.php?page=archives">Archives</a></li>
+						<li class="dropdown"
+							<?php App::isCurrentPage('formations-france');
+							     	App::isCurrentPage('formations-ireland'); ?>>
+								  	<a id="formations-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+										Formations
+										<span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
+										<li><a href="index.php?page=formations-france">France</a></li>
+										<li><a href="index.php?page=formations-ireland">Irlande</a></li>
+									</ul>
+						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if (App::isLogged()) : ?>
@@ -60,8 +72,8 @@
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="company-dropdown">
-										<li><a href="index.php?page=profile">Profil</a></li>
-										<li><a href="#">Stages proposés</a></li>
+										<li><a href="index.php?page=profile-company">Profil</a></li>
+										<li><a href="index.php?page=my-internships">Stages proposés</a></li>
 										<li><a href="index.php?page=find-student">Rechercher des étudiants</a></li>
 									</ul>
 								</li>
