@@ -29,12 +29,12 @@
 			$array[$id] = array(
 				'name' => $result->name,
 				'description' => $result->description,
-				'company' => Company::getCompanyById($result->skill)->name,
+				'company' => Company::getCompanyById($result->company)->name,
 				'address' => $result->address,
 				'city' => $result->city,
 				'zip_code' => $result->zip_code,
 				'skill' => Skill::getSkillById($result->skill)->name,
-				'email' => Company::getCompanyById($result->skill)->email
+				'email' => Company::getCompanyById($result->company)->email
 			);
 
 			$data = json_encode($array);
