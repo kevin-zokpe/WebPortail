@@ -11,15 +11,16 @@
 				UPDATE faq
 				SET question = :question,
 					answer = :answer,
-					target = :faq-target
+					target = :target
 				WHERE id = :id
 			";
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
 			$sth->execute(array(
+				':id' => $id,
 				':question' => $_POST['question'],
 				':answer' => $_POST['answer'],
-				':target' => $_POST['faq-target']
+				':target' => $_POST['target']
 			));
 			
 			if ($sth) {
@@ -41,7 +42,7 @@
 
 						<div class="form-group">
 							<label for="faq-target">Pays</label>
-							<select name="faq-target" id="faq-target" class="form-control">
+							<select name="target" id="faq-target" class="form-control">
 								<option value="" disabled>Choisissez le pays pour lequel la question est destinée</option>
 								<option value="student"<?php if ($faq->target == 'student') {echo ' selected';} ?>>Etudiant</option>
 								<option value="company"<?php if ($faq->target == 'company') {echo ' selected';} ?>>Entreprise</option>
