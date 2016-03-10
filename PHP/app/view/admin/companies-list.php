@@ -30,13 +30,12 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>#</th>
 				<th>Nom</th>
 				<th>Email</th>
 				<th>Pays</th>
 				<th>Ville</th>
 				<th>Description</th>
-				<th>URL</th>
+				<th>Site Internet</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -44,7 +43,6 @@
 		<?php
 			foreach (Company::getActivatedCompanies() as $company) {
 				echo '<tr>';
-					echo '<td>' . $company->id . '</td>';
 					echo '<td>' . $company->name . '</td>';
 					echo '<td>' . $company->email . '</td>';
 					echo '<td>' . $company->country . '</td>';
@@ -67,7 +65,6 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Pays</th>
@@ -82,15 +79,14 @@
 			<?php
 				foreach (Company::getActivatedCompanies(false) as $company) {
 					echo '<tr>';
-						echo '<td>' . $company->id . '</td>';
 						echo '<td>' . $company->name . '</td>';
 						echo '<td>' . $company->email . '</td>';
 						echo '<td>' . $company->country . '</td>';
 						echo '<td>' . $company->city . '</td>';
 						echo '<td>' . $company->description . '</td>';
 						echo '<td>' . $company->website . '</td>';
-						echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';
+						echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
+						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 					echo '</tr>';
 				}
 			?>
