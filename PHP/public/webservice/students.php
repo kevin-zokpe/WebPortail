@@ -45,8 +45,4 @@
 	else {
 		echo json_encode(array('no_result' => 'Aucun étudiant.'));
 	}
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> origin/master
