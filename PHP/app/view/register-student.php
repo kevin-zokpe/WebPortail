@@ -3,7 +3,7 @@
 		$recaptchaClass = new Recaptcha('6Lc2cBoTAAAAAFUipDOigbn4PrJIScG6bwUqWbTQ');
 
 		$my_file = basename($_FILES['cv']['name']);
-		$max_file_size = 2000000;
+		$max_file_size = 6000000;
 		$file_size = filesize($_FILES['cv']['tmp_name']);
 		$file_ext = strrchr($_FILES['cv']['name'], '.'); 
 
