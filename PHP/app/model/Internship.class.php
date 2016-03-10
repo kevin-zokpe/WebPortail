@@ -62,5 +62,18 @@
 			
 			return $sth->fetchAll();
 		}
+
+		public static function getInternshipBySkill($skill) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT * FROM internship WHERE skill = :skill';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Internship');
+			$sth->execute(array(
+				':skill' => $skill
+			));
+			
+			return $sth->fetchAll();
+		}
 	}
 ?>
