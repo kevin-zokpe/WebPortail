@@ -87,6 +87,8 @@
 						<li role="presentation"<?php App::isCurrentPage('admin/students-list'); ?>><a href="index.php?page=admin/students-list"><i class="fa fa-user"></i> Étudiants<?php if (Student::getActivatedStudents(false)) {echo ' <span class="badge">' . count(Student::getActivatedStudents(false)) . '</span>';} ?></a></li>
 						<li role="presentation"<?php App::isCurrentPage('admin/companies-list'); ?>><a href="index.php?page=admin/companies-list"><i class="fa fa-building"></i> Entreprises</a></li>
 						<li role="presentation"<?php App::isCurrentPage('admin/faq-list'); ?>><a href="index.php?page=admin/faq-list"><i class="fa fa-question-circle"></i> FAQ</a></li>
+						<li role="presentation"<?php App::isCurrentPage('admin/testimonials-list'); ?>><a href="index.php?page=admin/testimonials-list"><i class="fa fa-quote-left"></i> Témoignages</a></li>
+						<li role="presentation"<?php App::isCurrentPage('admin/partners-list'); ?>><a href="index.php?page=admin/partners-list"><i class="fa fa-link"></i> Partenaires</a></li>
 						<li role="presentation"<?php App::isCurrentPage('admin/settings'); ?>><a href="index.php?page=admin/settings"><i class="fa fa-cog"></i> Réglages</a></li>
 					</ul>
 				</div>
