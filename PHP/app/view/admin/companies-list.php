@@ -76,6 +76,7 @@
 				<th>Date d'inscription</th>
 				<th></th>
 				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 			<?php
@@ -88,7 +89,8 @@
 						echo '<td>' . $company->description . '</td>';
 						echo '<td><a href="' . $company->website . '" target="_blank">' . $company->website . '</a></td>';
 						echo '<td>' . $company->register_date . '</td>';	
-						echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil"></i></a></td>';
+						echo'<td><a href="#"><i class="fa fa-check" data-toggle="tooltip" title="Activer"></i></a></td>';
+						echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
 						echo '<td><a href="#" title="Supprimer" data-action="delete" data-toggle="tooltip" title="Supprimer"><i class="fa fa-trash"></i></a></td>';
 
 					echo '</tr>';
