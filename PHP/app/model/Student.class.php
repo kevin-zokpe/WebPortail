@@ -43,6 +43,39 @@
 			return $sth->fetch();
 		}
 
+		public static function checkEmailExist($email) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT id FROM student WHERE email = :email';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':email' => $email
+			));
+			
+			$res = $sth->fetch();
+			
+			if(isset($res->id)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+
+		public static function getStudentIDByEmail($email) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT id FROM student WHERE email = :email';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':email' => $email
+			));
+			
+			return $sth->fetch();
+		}
+
 		public static function getStudentsList() {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
