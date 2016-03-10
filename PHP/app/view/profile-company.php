@@ -96,11 +96,10 @@
 								<label for="profile-password-confirm" class="col-sm-2 control-label">Confirmer</label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control" id="profile-password-confirm" name="password-confirm" placeholder="Confirmer le mot de passe">
-									<p class="help-block">Entrez votre mot de passe pour confirmer votre identité</p>
+									<p class="help-block">Entrez votre mot de passe pour confirmer votre identité et valider les changements</p>
 								</div>
 							</div>
-
-
+							
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button type="submit" class="btn btn-primary" name="edit">Mettre à jour</button>

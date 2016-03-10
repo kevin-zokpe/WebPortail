@@ -83,21 +83,6 @@
 							</div>
 
 							<div class="form-group">
-								<label for="profile-password" class="col-sm-2 control-label">Mot de passe</label>
-								<div class="col-sm-10">
-									<input type="password" class="form-control" id="profile-password" name="password" placeholder="Mot de passe">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="profile-password-confirm" class="col-sm-2 control-label">Confirmer</label>
-								<div class="col-sm-10">
-									<input type="password" class="form-control" id="profile-password-confirm" name="password-confirm" placeholder="Confirmer le mot de passe">
-									<p class="help-block">Entrez votre mot de passe pour confirmer votre identité</p>
-								</div>
-							</div>
-
-							<div class="form-group">
 								<label for="profile-cv" class="col-sm-2 control-label">CV</label>
 								<div class="col-sm-10">
 									<input type="file" id="profile-cv" name="cv">
@@ -109,6 +94,21 @@
 								<label for="profile-portfolio" class="col-sm-2 control-label">Portfolio</label>
 								<div class="col-sm-10">
 									<input type="url" class="form-control" id="profile-portfolio" name="portfolio" value="<?php echo $student->portfolio; ?>" placeholder="Lien du portfolio">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="profile-password" class="col-sm-2 control-label">Mot de passe</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="profile-password" name="password" placeholder="Mot de passe">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="profile-password-confirm" class="col-sm-2 control-label">Confirmer</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="profile-password-confirm" name="password-confirm" placeholder="Confirmer le mot de passe">
+									<p class="help-block">Entrez votre mot de passe pour confirmer votre identité et valider les modifications</p>
 								</div>
 							</div>
 
