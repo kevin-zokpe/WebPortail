@@ -42,7 +42,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-9">
-						<form action="index.php?page=profile_company" method="POST" class="form-horizontal">
+						<form action="index.php?page=profile-company" method="POST" class="form-horizontal">
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Nom</label>
 								<div class="col-sm-10">
