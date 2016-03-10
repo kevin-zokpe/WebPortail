@@ -10,7 +10,7 @@ Membres du groupe :
 
 # To do list
 HADRIEN
-- <b>15%</b> - Faire les pages éditer et l'ajax pour supprimer
+- <b>30%</b> - Faire les pages éditer et l'ajax pour supprimer
 - <b>0%</b> - Faire le système d'envoi de mail automatique au prof
 - <b>0%</b> - Integration Final
 
