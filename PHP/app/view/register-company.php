@@ -3,11 +3,11 @@
 		if (isset($_POST['name']) && !empty($_POST['name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
     		isset($_POST['email']) && !empty($_POST['email']) && preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
     		isset($_POST['email-confirm']) && $_POST['email-confirm'] == $_POST['email'] &&
+    		Company::checkEmailExist($_POST['email'])==false &&
     	   	isset($_POST['password']) && !empty($_POST['password']) && preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['password']) &&
     	   	isset($_POST['password-confirm']) && $_POST['password-confirm'] == $_POST['password'] &&
     	   	isset($_POST['country'] ) && !empty($_POST['country']) &&
     	   	isset($_POST['city']) && !empty($_POST['city']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city']) &&
-    	   	/*isset($_FILES['cv']) &&*/
     	   	isset($_POST['description']) && !empty($_POST['description']) && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['description']) &&
     	   	isset($_POST['website']) && !empty($_POST['website']) && 
     	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website']) && 
@@ -42,19 +42,13 @@
 					':website' => $website
 				));
 
-				/*if($_FILES['cv']){
-    				echo "FILE UPLOADED!";
-				}*/
-
 				App::redirect('index.php?page=home');
 			}
-
 			catch(PDOException$e) {
 				echo '<p>Erreur : ' . $e->getMessage() . '</p>';
 				die();
 			}
 		}
-
 		else {
 			if ((!isset($_POST['name']) || empty($_POST['name'])) || 
 			(!isset($_POST['city']) || empty($_POST['city'])) ||
@@ -74,6 +68,10 @@
 
 			if (!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
 				App::error("Veuillez entrer un email approprié");
+			}
+
+			if (Company::checkEmailExist($_POST['email'])==true){
+				App::error("Cette adresse email est déjà utilisée");
 			}
 
 			if (!preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['password'])){
@@ -101,7 +99,6 @@
 			}
 		}
 	}
-
 ?>
 <style type="text/css">
 	form .row {
