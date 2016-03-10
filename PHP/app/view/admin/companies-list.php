@@ -90,7 +90,7 @@
 						echo '<td>' . $company->description . '</td>';
 						echo '<td>' . $company->website . '</td>';
 						echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';
+						echo '<td><a href="#" title="Supprimer" data-action="delete" data-toggle="tooltip" title="Supprimer"><i class="fa fa-trash"></i></a></td>';
 					echo '</tr>';
 				}
 			?>
