@@ -98,6 +98,7 @@
 						echo '<td>' . $student->portfolio . '</td>';
 						echo '<td>' . $student->register_date . '</td>';
 						echo '<td><a href="#"><i class="fa fa-check" data-toggle="tooltip" title="Activer"></i></a></td>';
+						
 						echo '<td><a href="index.php?page=admin/student-edit&amp;id=' . $student->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
 						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 					echo '</tr>';
