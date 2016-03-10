@@ -36,6 +36,7 @@
 				<th>Ville</th>
 				<th>Description</th>
 				<th>Site Internet</th>
+				<th>Date d'inscription</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -49,6 +50,7 @@
 					echo '<td>' . $company->city . '</td>';
 					echo '<td>' . $company->description . '</td>';
 					echo '<td><a href="' . $company->website . '" target="_blank">' . $company->website . '</a></td>';
+					echo '<td>' . $company->register_date . '</td>';	
 					echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '" data-toggle="tooltip" title="Modifier"><i class="fa fa-pencil"></i></a></td>';
 					echo '<td><a href="#" title="Supprimer" data-action="delete" data-toggle="tooltip" title="Supprimer"><i class="fa fa-trash"></i></a></td>';
 				echo '</tr>';
@@ -63,19 +65,19 @@
 			if (Company::getActivatedCompanies(false)) :
 	?>
 		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Pays</th>
-					<th>Compétence</th>
-					<th>Email</th>
-					<th>Portfolio</th>
-					<th>Date d'inscription</th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Email</th>
+				<th>Pays</th>
+				<th>Ville</th>
+				<th>Description</th>
+				<th>Site Internet</th>
+				<th>Date d'inscription</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
 			<?php
 				foreach (Company::getActivatedCompanies(false) as $company) {
 					echo '<tr>';
@@ -84,7 +86,7 @@
 						echo '<td>' . $company->country . '</td>';
 						echo '<td>' . $company->city . '</td>';
 						echo '<td>' . $company->description . '</td>';
-						echo '<td>' . $company->website . '</td>';
+						echo '<td><a href="' . $company->website . '" target="_blank">' . $company->website . '</a></td>';
 						echo '<td>' . $company->register_date . '</td>';	
 						echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil"></i></a></td>';
 						echo '<td><a href="#" title="Supprimer" data-action="delete" data-toggle="tooltip" title="Supprimer"><i class="fa fa-trash"></i></a></td>';
