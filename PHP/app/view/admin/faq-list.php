@@ -31,30 +31,67 @@
 				<th></th>
 			</tr>
 		</thead>
-		<?php
-			if ($type == 'student') {
-				foreach (Faq::getStudentsFaq() as $faq) {
-					echo '<tr>';
-						echo '<td>' . $faq->question . '</td>';
-						echo '<td>' . $faq->answer . '</td>';
-						echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
-					echo '</tr>';
+		<tbody>
+			<?php
+				if ($type == 'student') {
+					foreach (Faq::getStudentsFaq() as $faq) {
+						echo '<tr data-id="' . $faq->id . '">';
+							echo '<td>' . $faq->question . '</td>';
+							echo '<td>' . $faq->answer . '</td>';
+							echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil"></i></a></td>';
+							echo '<td><a href="#" title="Supprimer" data-action="delete"><i class="fa fa-trash"></i></a></td>';
+						echo '</tr>';
+					}
 				}
-			}
 
-			else {
-				foreach (Faq::getCompaniesFaq() as $faq) {
-					echo '<tr>';
-						echo '<td>' . $faq->question . '</td>';
-						echo '<td>' . $faq->answer . '</td>';
-						echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
-					echo '</tr>';
+				else {
+					foreach (Faq::getCompaniesFaq() as $faq) {
+						echo '<tr data-id="' . $faq->id . '">';
+							echo '<td>' . $faq->question . '</td>';
+							echo '<td>' . $faq->answer . '</td>';
+							echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil"></i></a></td>';
+							echo '<td><a href="#" title="Supprimer" data-action="delete"><i class="fa fa-trash"></i></a></td>';
+						echo '</tr>';
+					}
 				}
-			}
-		?>
+			?>
+		</tbody>
 	</table>
 	<a href="index.php?page=admin/add-faq&amp;type=<?php echo $type; ?>" class="btn btn-primary">Ajouter une question</a>
 </div>
-</div>
+
+<script>
+	$('[data-action="delete"]').click(function(e) {
+		e.preventDefault();
+
+		eAjax(
+			'public/webservice/admin/faq-delete.php',
+			{'delete': true, 'id': $(this).parent().parent().data('id')},
+			'deleteRow'
+		);
+	});
+
+	var eAjaxData = '';
+
+	function eAjax(url, parameters, callback) {
+	    if (!confirm('Êtes-vous sûr ?')) {
+	        return false;
+	    }
+
+	    $.post(url, parameters, function(data) {
+	        eAjaxData = data;
+	        var func = callback + "()";
+	        eval(func);
+	    }, "json");
+	}
+
+	function deleteRow() {
+	    if (eAjaxData.status == 'true') {
+	        $('[data-id="' + eAjaxData.id + '"]').fadeTo('slow', 0.01).slideUp('slow');
+	    }
+	    
+	    else {
+	        alert(eAjaxData.status);
+	    }
+	}
+</script>
