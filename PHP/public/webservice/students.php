@@ -22,10 +22,10 @@
 	$skill = htmlentities($_GET['skill']);
 	$student = Student::getStudentsBySkill($skill);
 
+
 	if ($student) {
 		foreach ($student as $id => $result) {
 			$array[$id] = array(
-				'id' => $result->id,
 				'last_name' => $result->last_name,
 				'first_name' => $result->first_name,
 				'country' => $result->country,
