@@ -45,7 +45,6 @@
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
 										<li><a href="index.php?page=profile">Profil</a></li>
-										<li><a href="index.php?page=internship-request">Demander un stage</a></li>
 										<?php if (App::isAdmin()) : ?>
 											<li class="divider" role="separator"></li>
 											<li><a href="index.php?page=admin/home">Administration</a></li>
