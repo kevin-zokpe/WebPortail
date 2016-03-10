@@ -158,5 +158,42 @@
 			
 			return $sth;
 		}
+
+		public static function changePassword($password, $id) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+			UPDATE student
+			SET password = :password
+			WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':password' => $password,
+				':id' => $id
+			));
+			
+			return $sth;
+		}
+
+		public static function changePortfolio($portfolio, $id) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+			UPDATE student
+			SET portfolio = :portfolio
+			WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':portfolio' => $portfolio,
+				':id' => $id
+			));
+			
+			return $sth;
+		}
+
 	}
 ?>
