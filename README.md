@@ -17,6 +17,7 @@ HADRIEN
 
 AK
 -  <b>100%</b> - Faire les pages de recherche pour les étudiants en fonction des domaines
+-  <b>5%</b> - Faire la page des stages (liste, édition, suppression)
 -  <b>0%</b> - Faire la page des témoignages (liste, édition, suppression)
 -  <b>0%</b>  - Récupérer les photos chez les étudiants irlandais 
 
