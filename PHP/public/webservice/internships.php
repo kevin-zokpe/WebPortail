@@ -33,7 +33,8 @@
 				'address' => $result->address,
 				'city' => $result->city,
 				'zip_code' => $result->zip_code,
-				'skill' => Skill::getSkillById($result->skill)->name
+				'skill' => Skill::getSkillById($result->skill)->name,
+				'email' => Company::getCompanyById($result->skill)->email
 			);
 
 			$data = json_encode($array);
