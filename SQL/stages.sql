@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.10
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost:3306
--- Généré le :  Mer 09 Mars 2016 à 13:36
--- Version du serveur :  5.5.42
--- Version de PHP :  7.0.0
+-- Client :  127.0.0.1
+-- Généré le :  Ven 11 Mars 2016 à 00:44
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données :  `stages`
@@ -20,8 +26,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `company`
 --
 
-CREATE TABLE `company` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `company` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `email` varchar(128) NOT NULL,
   `password` varchar(64) NOT NULL,
@@ -30,8 +36,9 @@ CREATE TABLE `company` (
   `description` text NOT NULL,
   `website` varchar(64) NOT NULL,
   `activated` tinyint(1) NOT NULL,
-  `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `register_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `company`
@@ -48,12 +55,13 @@ INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `de
 -- Structure de la table `faq`
 --
 
-CREATE TABLE `faq` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `faq` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `question` text NOT NULL,
   `answer` text NOT NULL,
-  `target` enum('student','company') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `target` enum('student','company') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `faq`
@@ -77,16 +85,17 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `target`) VALUES
 -- Structure de la table `internship`
 --
 
-CREATE TABLE `internship` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `internship` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `description` text NOT NULL,
   `company` int(11) NOT NULL,
   `address` varchar(128) NOT NULL,
   `city` varchar(128) NOT NULL,
   `zip_code` varchar(32) NOT NULL,
-  `skill` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `skill` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `internship`
@@ -99,13 +108,37 @@ INSERT INTO `internship` (`id`, `name`, `description`, `company`, `address`, `ci
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `partner`
+--
+
+CREATE TABLE IF NOT EXISTS `partner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `logo` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `country` enum('France','Irlande') CHARACTER SET utf8 NOT NULL,
+  `register_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `partner`
+--
+
+INSERT INTO `partner` (`id`, `name`, `logo`, `country`, `register_date`) VALUES
+(1, 'IUT Cherbourg-Manche', '', 'France', '2016-03-11'),
+(2, 'Letterkenny IT', '', 'Irlande', '2016-03-11');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `skill`
 --
 
-CREATE TABLE `skill` (
-  `id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `skill` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Contenu de la table `skill`
@@ -134,8 +167,8 @@ INSERT INTO `skill` (`id`, `name`) VALUES
 -- Structure de la table `student`
 --
 
-CREATE TABLE `student` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `student` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(64) NOT NULL,
   `last_name` varchar(64) NOT NULL,
   `country` enum('France','Irlande') NOT NULL,
@@ -147,8 +180,10 @@ CREATE TABLE `student` (
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   `available` tinyint(1) NOT NULL DEFAULT '1',
   `activated` tinyint(1) NOT NULL,
-  `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `register_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `skill` (`skill`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `student`
@@ -160,70 +195,6 @@ INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `ema
 (3, 'Ange Kevin', 'Zokpe', 'France', 13, 'kzokpe@gmail.com', '$2y$12$svwYSh7MopBR0UIc9rSuWuS2qnVQ5Wa/6Cntlofw3SPYTRgE/0Y0e', '', 'https://akdesign.com', 1, 1, 1, '2016-03-08');
 
 --
--- Index pour les tables exportées
---
-
---
--- Index pour la table `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `faq`
---
-ALTER TABLE `faq`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `internship`
---
-ALTER TABLE `internship`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `skill`
---
-ALTER TABLE `skill`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `skill` (`skill`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `company`
---
-ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT pour la table `faq`
---
-ALTER TABLE `faq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT pour la table `internship`
---
-ALTER TABLE `internship`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT pour la table `skill`
---
-ALTER TABLE `skill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT pour la table `student`
---
-ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
 -- Contraintes pour les tables exportées
 --
 
@@ -232,3 +203,7 @@ ALTER TABLE `student`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`skill`) REFERENCES `skill` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
