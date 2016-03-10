@@ -27,9 +27,6 @@
 			$this->$n = $v;
 		}
 
-		public function __toString(){
-		}
-
 		public static function getCompanyById($id) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
@@ -67,6 +64,17 @@
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
 			$sql = 'SELECT * FROM company';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute();
+			
+			return $sth->fetchAll();
+		}
+
+		public static function getActivatedCompanies($activated = true) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = ($activated == true) ? 'SELECT * FROM company WHERE activated' : 'SELECT * FROM company WHERE !activated';
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
 			$sth->execute();
