@@ -27,10 +27,5 @@
 
 				<button type="submit" class="btn btn-primary btn-lg" style="margin-top:30px;">Contacter</button>
 			</div>
-
-
-		<?php
-			}
-		?>
 	</div>
 </div>
