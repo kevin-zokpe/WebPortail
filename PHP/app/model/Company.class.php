@@ -82,6 +82,23 @@
 			return $sth->fetchAll();
 		}
 
+		public static function activateCompany($companyId) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE company
+				SET activated = true
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute(array(
+				':id' => $companyId
+			));
+			
+			return $sth;
+		}
+
 		public static function deleteCompany($id) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
