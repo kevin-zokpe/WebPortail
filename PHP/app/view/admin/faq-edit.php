@@ -10,16 +10,16 @@
 			$sql = "
 				UPDATE faq
 				SET question = :question,
-					answer = :answer
+					answer = :answer,
+					target = :faq-target
 				WHERE id = :id
 			";
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
 			$sth->execute(array(
-				':id' => $id,
 				':question' => $_POST['question'],
 				':answer' => $_POST['answer'],
-				':target' => $_POST['faq-country']
+				':target' => $_POST['faq-target']
 			));
 			
 			if ($sth) {
@@ -40,11 +40,11 @@
 					<form action="index.php?page=admin/faq-edit&amp;id=<?php echo $id; ?>" method="POST">
 
 						<div class="form-group">
-							<label for="faq-country">Pays</label>
-							<select name="faq-country" id="faq-country" class="form-control">
+							<label for="faq-target">Pays</label>
+							<select name="faq-target" id="faq-target" class="form-control">
 								<option value="" disabled>Choisissez le pays pour lequel la question est destinée</option>
-								<option value="France"<?php if ($faq->target == 'France') {echo ' selected';} ?>>France</option>
-								<option value="Irlande"<?php if ($faq->target == 'Irlande') {echo ' selected';} ?>>Irlande</option>
+								<option value="student"<?php if ($faq->target == 'student') {echo ' selected';} ?>>Etudiant</option>
+								<option value="company"<?php if ($faq->target == 'company') {echo ' selected';} ?>>Entreprise</option>
 							</select>
 						</div>
 
