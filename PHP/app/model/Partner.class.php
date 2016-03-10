@@ -46,5 +46,16 @@
 			return $sth->fetchAll();
 		}
 
+		public static function deletePartner($id) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'DELETE FROM partner WHERE id = :id';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
+			$sth->execute(array(
+				':id' => $id
+			));
+		}
+
 	}
 ?>
