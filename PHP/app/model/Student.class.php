@@ -141,5 +141,20 @@
 			
 			return $sth->fetchAll();
 		}
+
+		public static function activateStudent() {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE student
+				SET available = true
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute();
+			
+			return $sth->fetchAll();
+		}
 	}
 ?>
