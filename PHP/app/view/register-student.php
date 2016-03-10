@@ -1,16 +1,22 @@
 <?php
 	if (isset($_POST['register'])) {
 		$recaptchaClass = new Recaptcha('6Lc2cBoTAAAAAFUipDOigbn4PrJIScG6bwUqWbTQ');
-		
+
+		$my_file = basename($_FILES['cv']['name']);
+		$max_file_size = 2000000;
+		$file_size = filesize($_FILES['cv']['tmp_name']);
+		$file_ext = strrchr($_FILES['cv']['name'], '.'); 
+
 		if (isset($_POST['first_name']) && !empty($_POST['first_name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name']) &&
     		isset($_POST['last_name']) && !empty($_POST['last_name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['last_name']) &&
     		isset($_POST['email']) && !empty($_POST['email']) && preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
     		isset($_POST['email-confirm']) && $_POST['email-confirm'] == $_POST['email'] &&
+    		Student::checkEmailExist($_POST['email'])==false &&
     	   	isset($_POST['password']) && !empty($_POST['password']) && preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['password']) &&
     	   	isset($_POST['password-confirm']) && $_POST['password-confirm'] == $_POST['password'] &&
     	   	isset($_POST['country'] ) && !empty($_POST['country']) &&
     	   	isset($_POST['skill']) && !empty($_POST['skill']) &&
-    	   	/*isset($_FILES['cv']) &&*/
+    	   	isset($_FILES['cv']) && $file_ext == '.pdf' && $file_size < $max_file_size &&
     	   	isset($_POST['portfolio']) && !empty($_POST['portfolio']) && 
     	   	preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio']) && 
     	   	isset($_POST['accept_terms']) &&
@@ -26,6 +32,7 @@
 			$portfolio = $_POST['portfolio'];
     	    
 			try {
+
 				PDOConnexion::setParameters('stages', 'root', 'root');
 				$db = PDOConnexion::getInstance();
 				$sql = "
@@ -44,9 +51,22 @@
 					':portfolio' => $portfolio
 				));
 
-				/*if($_FILES['cv']){
-    				echo "FILE UPLOADED!";
-				}*/
+				$id_stud = Student::getStudentIDByEmail($email);
+
+          		$folder = "uploads/cv";
+          		$file = $folder . '/' . $id_stud->id . '.pdf';
+         		move_uploaded_file($_FILES['cv']['tmp_name'], $file);
+
+         		PDOConnexion::setParameters('stages', 'root', 'root');
+				$dbh = PDOConnexion::getInstance();
+				$req = "UPDATE student SET cv = :cv WHERE id = :id";
+				$st = $dbh->prepare($req);
+				$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+				$st->execute(array(
+					':cv' => $file,
+					':id' => $id_stud->id
+				));
+
 
 				App::redirect('index.php?page=home');
 			}
@@ -66,6 +86,7 @@
 			(!isset($_POST['password-confirm']) || empty($_POST['password-confirm'])) ||
 			(!isset($_POST['country']) || empty($_POST['country'])) ||
 			(!isset($_POST['skill']) || empty($_POST['skill'])) ||
+			(!isset($_FILES['cv'])) ||
 			(!isset($_POST['portfolio']) || empty($_POST['portfolio']))) {
 				App::error('Vous devez remplir tous les champs obligatoires');
 			}
@@ -82,6 +103,10 @@
 				App::error("Veuillez entrer un email approprié");
 			}
 
+			if (Student::checkEmailExist($_POST['email'])==true){
+				App::error("Cette adresse email est déjà utilisée");
+			}
+
 			if (!preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['password'])){
 				App::error("Veuillez entrer un mot de passe approprié");
 			}
@@ -96,6 +121,14 @@
 
 			if ($_POST['password']!=$_POST['password-confirm']){
 				App::error("Le mot de passe doit correspondre");
+			}
+
+			if ($file_ext != '.pdf'){
+				App::error("Votre CV doit être au format PDF");
+			}
+
+			if ($file_size > $max_file_size){
+				App::error("Votre CV est trop lourd, choisissez un autre fichier");
 			}
 
 			if (!isset($_POST['accept_terms'])){
@@ -125,7 +158,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<form name="login" method="POST" action="index.php?page=register-student">
+			<form name="login" method="POST" action="index.php?page=register-student" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-md-6">
 						<label for="signup-firstname">Prénom</label>
@@ -195,7 +228,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<label for="signup-cv">CV</label>
-						<input type="file" name="cv" id="signup-cv" placeholder="Insérer votre CV"  data-validation-error-msg="Vous devez insérer un CV !">
+						<input type="file" name="cv" id="signup-cv" placeholder="Insérer votre CV" data-validation-error-msg="Vous devez insérer un CV !">
 					</div>
 
 					<div class="col-md-6">
