@@ -30,7 +30,6 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Pays</th>
@@ -46,7 +45,6 @@
 			<?php
 				foreach (Student::getActivatedStudents(true) as $student) {
 					echo '<tr>';
-						echo '<td>' . $student->id . '</td>';
 						echo '<td>' . $student->last_name . '</td>';
 						echo '<td>' . $student->first_name . '</td>';
 						echo '<td>' . $student->country . '</td>';
@@ -77,7 +75,6 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Pays</th>
@@ -87,12 +84,12 @@
 					<th>Date d'inscription</th>
 					<th></th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<?php
 				foreach (Student::getActivatedStudents(false) as $student) {
 					echo '<tr>';
-						echo '<td>' . $student->id . '</td>';
 						echo '<td>' . $student->last_name . '</td>';
 						echo '<td>' . $student->first_name . '</td>';
 						echo '<td>' . $student->country . '</td>';
@@ -100,7 +97,8 @@
 						echo '<td>' . $student->email . '</td>';
 						echo '<td>' . $student->portfolio . '</td>';
 						echo '<td>' . $student->register_date . '</td>';
-						echo '<td><a href="index.php?page=admin/student-edit&amp;id=' . $student->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
+						echo '<td><a href="index.php?page=admin/student-edit&amp;id=' . $student->id . '"><i class="fa fa-check" data-toggle="tooltip" title="Activer"></i></a></td>';
+						echo '<td><a><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
 						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 					echo '</tr>';
 				}

@@ -30,7 +30,6 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>#</th>
 				<th>Nom</th>
 				<th>Email</th>
 				<th>Pays</th>
@@ -44,15 +43,14 @@
 		<?php
 			foreach (Company::getActivatedCompanies() as $company) {
 				echo '<tr>';
-					echo '<td>' . $company->id . '</td>';
 					echo '<td>' . $company->name . '</td>';
 					echo '<td>' . $company->email . '</td>';
 					echo '<td>' . $company->country . '</td>';
 					echo '<td>' . $company->city . '</td>';
 					echo '<td>' . $company->description . '</td>';
 					echo '<td>' . $company->website . '</td>';
-					echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil"></i></a></td>';
-					echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';
+					echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
+					echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 				echo '</tr>';
 			}
 		?>
@@ -67,7 +65,6 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Pays</th>
@@ -77,20 +74,22 @@
 					<th>Date d'inscription</th>
 					<th></th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<?php
 				foreach (Company::getActivatedCompanies(false) as $company) {
 					echo '<tr>';
-						echo '<td>' . $company->id . '</td>';
 						echo '<td>' . $company->name . '</td>';
 						echo '<td>' . $company->email . '</td>';
 						echo '<td>' . $company->country . '</td>';
 						echo '<td>' . $company->city . '</td>';
 						echo '<td>' . $company->description . '</td>';
 						echo '<td>' . $company->website . '</td>';
-						echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';
+						echo '<td>' . $company->register_date . '</td>';
+						echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-check" data-toggle="tooltip" title="Activer"></i></a></td>';
+						echo '<td><a><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
+						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 					echo '</tr>';
 				}
 			?>

@@ -12,7 +12,6 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>#</th>
 							<th>Nom</th>
 							<th>Description</th>
 							<th>Entreprise</th>
@@ -27,7 +26,6 @@
 					<?php
 						foreach (Internship::getInternshipsByCompany($member->id) as $internship) {
 							echo '<tr>';
-								echo '<td>' . $internship->id . '</td>';
 								echo '<td>' . $internship->name . '</td>';
 								echo '<td>' . $internship->description . '</td>';
 								echo '<td>' . Company::getCompanyById($internship->company)->name . '</td>';
@@ -35,8 +33,8 @@
 								echo '<td>' . $internship->city . '</td>';
 								echo '<td>' . $internship->zip_code . '</td>';
 								echo '<td>' . Skill::getSkillById($internship->skill)->name . '</td>';
-								echo '<td><a href="index.php?page=edit-internship"><i class="fa fa-pencil"></i></a></td>';
-								echo '<td><a href="#"><i class="fa fa-trash"></i></a></td>';
+								echo '<td><a href="index.php?page=edit-internship"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
+								echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 							echo '</tr>';
 						}
 					?>
