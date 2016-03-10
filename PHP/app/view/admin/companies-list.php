@@ -35,7 +35,7 @@
 				<th>Pays</th>
 				<th>Ville</th>
 				<th>Description</th>
-				<th>URL</th>
+				<th>Site internet</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -48,7 +48,7 @@
 					echo '<td>' . $company->country . '</td>';
 					echo '<td>' . $company->city . '</td>';
 					echo '<td>' . $company->description . '</td>';
-					echo '<td>' . $company->website . '</td>';
+					echo '<td><a href="'.$company->website.'"target="_blank">' . $company->website . '</a></td>';
 					echo '<td><a href="index.php?page=admin/company-edit&amp;id=' . $company->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
 					echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 				echo '</tr>';
