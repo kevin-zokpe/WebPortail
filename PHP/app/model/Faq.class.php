@@ -55,5 +55,16 @@
 			
 			return $sth->fetchAll();
 		}
+
+		public static function deleteFaq($id) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'DELETE FROM faq WHERE id = :id';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
+			$sth->execute(array(
+				':id' => $id
+			));
+		}
 	}
 ?>
