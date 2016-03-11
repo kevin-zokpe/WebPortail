@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 11 Mars 2016 à 00:44
+-- Généré le :  Ven 11 Mars 2016 à 20:47
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `faq` (
   `answer` text NOT NULL,
   `target` enum('student','company') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `faq`
@@ -77,7 +77,7 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `target`) VALUES
 (7, 'Vais-je percevoir des bourses durant mon séjour ?', 'Les bourses dépendent du pays dans lequel tu te trouves, nous t’invitons à prendre contact avec le représentant de ton école pour avoir plus de modalités sur les différents moyens d’obtenir des bourses', 'student'),
 (8, 'Ou vais-je séjourner durant mon stage ? ', 'Plusieurs moyens d’hébergements existent. Selon ton profil les entreprises peuvent te proposer des logements proches de ton futur lieu de travail. Ce qui te permettra de travailler sans te soucier du mauvais temps qu’il fait dehors par exemple', 'student'),
 (9, 'Ou puis-je trouver plus de témoignages et de bonnes adresses ? ', 'Des élèves ayant effectué leurs stages à l’étranger remplissent des fiches à leur retour nous t’invitons à te renseigner auprès de ton école pour bénéficier de ses fiches de témoignages et t’imprégner de leurs expériences', 'student'),
-(10, 'Quel niveau de langue dois-je avoir pour partir à l’étranger ?', 'Un niveau professionnel est exigé pour effectuer un stage à l’étranger. Aucun employé ne souhaite se retrouver avec un stagiaire, certes performants mais qui ne comprend pas ce qu’on lui demande !', 'student');
+(11, 'Qui êtes-vous ?', 'Apple', 'company');
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `partner` (
   `country` enum('France','Irlande') CHARACTER SET utf8 NOT NULL,
   `register_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `partner`
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `partner` (
 
 INSERT INTO `partner` (`id`, `name`, `logo`, `country`, `register_date`) VALUES
 (1, 'IUT Cherbourg-Manche', '', 'France', '2016-03-11'),
-(2, 'Letterkenny IT', '', 'Irlande', '2016-03-11');
+(3, 'LetterKenny IT', '', 'Irlande', '2016-03-11');
 
 -- --------------------------------------------------------
 
