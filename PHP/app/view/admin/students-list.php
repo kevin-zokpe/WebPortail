@@ -50,8 +50,8 @@ if (App::isAdmin()) {
 						echo '<td>' . $student->first_name . '</td>';
 						echo '<td>' . $student->country . '</td>';
 						echo '<td>' . Skill::getSkillById($student->skill)->name . '</td>';
-						echo '<td>' . $student->email . '</td>';
-						echo '<td><a href="'.$student->portfolio.'" target="_blank">' . $student->portfolio . '</td>';
+						echo '<td><a href="mailto:' . $student->email . '">' . $student->email . '</a></td>';
+						echo '<td><a href="' . $student->portfolio . '" target="_blank">' . $student->portfolio . '</a></td>';
 						if ($student->available) {
 							echo '<td><i class="fa fa-check" style="color: #27ae60;"></i></td>';
 						}
@@ -95,7 +95,7 @@ if (App::isAdmin()) {
 						echo '<td>' . $student->first_name . '</td>';
 						echo '<td>' . $student->country . '</td>';
 						echo '<td>' . Skill::getSkillById($student->skill)->name . '</td>';
-						echo '<td>' . $student->email . '</td>';
+						echo '<td><a href="mailto:' . $student->email . '">' . $student->email . '</a></td>';
 						echo '<td><a href="'.$student->portfolio.'" target="_blank">' . $student->portfolio . '</td>';
 						echo '<td>' . $student->register_date . '</td>';
 						echo '<td><a href="#"><i class="fa fa-check" data-toggle="tooltip" title="Activer"></i></a></td>';
