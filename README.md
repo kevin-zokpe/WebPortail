@@ -18,9 +18,9 @@ HADRIEN
 
 AK
 - <b>100%</b> - Faire les pages de recherche pour les étudiants en fonction des domaines
-- <b>5%</b> - Faire la page des stages (liste, édition, suppression)
-- <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants Irlandais
-- <b>0%</b>  - Récupérer les photos chez les étudiants irlandais 
+- <b>60%</b> - Faire la page des stages (liste, édition, suppression)
+- <b>2%</b> - Créer une page qui explique le domaine de formation des étudiants Irlandais
+- <b>40%</b>  - Récupérer les photos chez les étudiants irlandais 
 
 VALENTIN
 - <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants français
@@ -36,7 +36,6 @@ SONIA
 - <b>0%</b> - Diapo de présentation ?
 
 MIKHAIL
-- <b>100%</b> - Parler poliment
 - <b>0%</b> - Faire le pdf explicatif pour le prof
 - <b>0%</b> - Préparer les pages de traductions pour M.Clouet
 - <b>0%</b> - Mettre les mentions légales sur le site
