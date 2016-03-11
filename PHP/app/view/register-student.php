@@ -9,7 +9,7 @@
 
 		if (isset($_POST['first_name']) && !empty($_POST['first_name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name']) &&
     		isset($_POST['last_name']) && !empty($_POST['last_name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['last_name']) &&
-    		isset($_POST['email']) && !empty($_POST['email']) && preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
+    		isset($_POST['email']) && !empty($_POST['email']) && preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
     		isset($_POST['email-confirm']) && $_POST['email-confirm'] == $_POST['email'] &&
     		Student::checkEmailExist($_POST['email'])==false &&
     	   	isset($_POST['password']) && !empty($_POST['password']) && preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['password']) &&
