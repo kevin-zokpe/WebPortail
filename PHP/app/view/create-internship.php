@@ -9,7 +9,7 @@
 						if (isset($_POST['zip_code']) && !empty($_POST['zip_code'])) {
 							if (isset($_POST['city']) && !empty($_POST['city'])) {
 								if (isset($_POST['skill']) && !empty($_POST['skill'])) {
-									PDOConnexion::setParameters('phonedeals', 'root', 'root');
+									PDOConnexion::setParameters('stages', 'root', 'root');
 									$db = PDOConnexion::getInstance();
 									$sql = "
 										INSERT INTO internship (name, description, company, address, zip_code, city, skill)

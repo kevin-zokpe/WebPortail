@@ -6,7 +6,7 @@
 		if (isset($_POST['edit'])) {
 			if(isset($_POST['question']) && isset($_POST['answer'])){
 
-				PDOConnexion::setParameters('phonedeals', 'root', 'root');
+				PDOConnexion::setParameters('stages', 'root', 'root');
 				$db = PDOConnexion::getInstance();
 				$sql = "
 					UPDATE faq
