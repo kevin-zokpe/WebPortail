@@ -36,7 +36,7 @@
 			}
 		?>
 	</table>
-	<a href="index.php?page=admin/add-partner&amp;type=<?php echo $type; ?>" class="btn btn-primary">Ajouter un partenaire</a>
+	<a href="index.php?page=admin/add-partner" class="btn btn-primary">Ajouter un partenaire</a>
 </div>
 
 <script>
