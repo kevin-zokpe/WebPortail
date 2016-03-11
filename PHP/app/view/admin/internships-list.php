@@ -1,23 +1,23 @@
 <?php
-	if (!isset($_GET['type'])) {
-		App::redirect('index.php?page=admin/internships-list&type=france');
+	if (!isset($_GET['country'])) {
+		App::redirect('index.php?page=admin/internships-list&country=france');
 	}
 	
-	$type = ($_GET['type'] == 'France') ? 'France' : 'Irlande';
+	$country = ($_GET['country'] == 'France') ? 'France' : 'Irlande';
 ?>
 <div class="col-md-12">
 	<div class="page-header">
 		<h1>
 			Stages disponibles en
 			<?php
-				if ($type == 'France') {
+				if ($country == 'France') {
 					echo '<small> France </small>';
-					echo '<a href="index.php?page=admin/internships-list&type=Irlande" class="btn btn-primary pull-right">Voir la liste des stages en Irlande</a>';
+					echo '<a href="index.php?page=admin/internships-list&country=Irlande" class="btn btn-primary pull-right">Voir la liste des stages en Irlande</a>';
 				}
 
 				else {
 					echo '<small>Irlande</small>';
-					echo '<a href="index.php?page=admin/internships-list&type=France" class="btn btn-primary pull-right">Voir la liste des stages en France</a>';
+					echo '<a href="index.php?page=admin/internships-list&country=France" class="btn btn-primary pull-right">Voir la liste des stages en France</a>';
 				}
 			?>
 		</h1>
@@ -38,8 +38,8 @@
 		</thead>
 		<tbody>
 			<?php
-				if ($type == 'France') {
-					foreach (Internship::getInternshipByCompanyCountry($type) as $internship) {
+				if ($country == 'France') {
+					foreach (Internship::getInternshipByCompanyCountry($country) as $internship) {
 						echo '<tr data-id="' . $internship->id . '">';
 							echo '<td>' . Company::getCompanyById($internship->company)->name . '</td>';
 							echo '<td>' . $internship->name . '</td>';
@@ -55,7 +55,7 @@
 				}
 
 				else {
-					foreach (Internship::getInternshipByCompanyCountry($type) as $internship) {
+					foreach (Internship::getInternshipByCompanyCountry($country) as $internship) {
 					echo '<tr data-id="' . $internship->id . '">';
 							echo '<td>' . Company::getCompanyById($internship->company)->name . '</td>';
 							echo '<td>' . $internship->name . '</td>';
@@ -72,7 +72,7 @@
 			?>
 		</tbody>
 	</table>
-	<a href="index.php?page=admin/add-internship&amp;type=<?php echo $type; ?>" class="btn btn-primary">Ajouter un stage</a>
+	<a href="index.php?page=admin/create-internship&amp;country=<?php echo $country; ?>" class="btn btn-primary">Ajouter un stage</a>
 </div>
 
 <script>
