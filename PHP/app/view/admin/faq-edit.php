@@ -4,27 +4,39 @@
 		$faq = Faq::getFaqById($id);
 
 		if (isset($_POST['edit'])) {
+			if(isset($_POST['question']) && isset($_POST['answer'])){
 
-			PDOConnexion::setParameters('phonedeals', 'root', 'root');
-			$db = PDOConnexion::getInstance();
-			$sql = "
-				UPDATE faq
-				SET question = :question,
-					answer = :answer,
-					target = :target
-				WHERE id = :id
-			";
-			$sth = $db->prepare($sql);
-			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
-			$sth->execute(array(
-				':id' => $id,
-				':question' => $_POST['question'],
-				':answer' => $_POST['answer'],
-				':target' => $_POST['target']
-			));
+				PDOConnexion::setParameters('phonedeals', 'root', 'root');
+				$db = PDOConnexion::getInstance();
+				$sql = "
+					UPDATE faq
+					SET question = :question,
+						answer = :answer,
+						target = :target
+					WHERE id = :id
+				";
+				$sth = $db->prepare($sql);
+				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
+				$sth->execute(array(
+					':id' => $id,
+					':question' => $_POST['question'],
+					':answer' => $_POST['answer'],
+					':target' => $_POST['target']
+				));
 			
-			if ($sth) {
-				App::success('Cette question a bien été modifiée.');
+				if ($sth) {
+					App::success('Cette question a bien été modifiée.');
+				}
+			}
+			else{
+
+				if(!isset($_POST['question']){
+					App::error('Veuillez entrer une question.');
+				}
+
+				if(!isset($_POST['answer']){
+					App::error('Veuillez entrer une réponse.');
+				}
 			}
 		}
 
@@ -41,7 +53,7 @@
 					<form action="index.php?page=admin/faq-edit&amp;id=<?php echo $id; ?>" method="POST">
 
 						<div class="form-group">
-							<label for="faq-target">Destinataire</label>
+							<label for="faq-target">Pays</label>
 							<select name="target" id="faq-target" class="form-control">
 								<option value="" disabled>Choisissez le pays pour lequel la question est destinée</option>
 								<option value="student"<?php if ($faq->target == 'student') {echo ' selected';} ?>>Etudiant</option>
