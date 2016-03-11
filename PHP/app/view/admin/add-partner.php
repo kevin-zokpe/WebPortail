@@ -9,7 +9,7 @@
 			$file_ext = strrchr($_FILES['logo']['name'], '.'); 
 		}
 
-		if (isset($_POST['name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
+		if (isset($_POST['name']) && $_POST['name']!='' && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
 			isset($_POST['country'])) {
 
 			$name = $_POST['name'];
@@ -34,10 +34,10 @@
 
 				$folder = "uploads/partners";
 				if($file_ext == '.jpg')
-          				$file = $folder . '/' . $id_partner->id . '.jpg';
-          			if($file_ext == '.png')
-          				$file = $folder . '/' . $id_partner->id . '.png';
-         			move_uploaded_file($_FILES['logo']['tmp_name'], $file);
+          			$file = $folder . '/' . $id_partner->id . '.jpg';
+          		if($file_ext == '.png')
+          			$file = $folder . '/' . $id_partner->id . '.png';
+         		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
          		PDOConnexion::setParameters('stages', 'root', 'root');
 				$dbh = PDOConnexion::getInstance();
@@ -50,10 +50,21 @@
 				));
 
 			}
+			else {
+				if ($file_ext != '.jpg' && $file_ext != '.png'){							
+					App::error('Le logo doit être au format JPG ou PNG');
+				}
+				if ($file_size > $max_file_size){							
+					App::error('Le logo est trop lourd, choisissez un autre fichier');
+				}
+			}
 			
 			if ($sth) {
 				App::success('Ce partenaire a bien été ajouté.');
 			}
+		}
+		else {
+			App::error('Veuillez entrer un nom valide pour ce partenaire.')
 		}
 	}
 ?>
