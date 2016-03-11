@@ -5,9 +5,8 @@
 
 		if (isset($_POST['edit'])) {
 
-			if (isset($_POST['name']) && $_POST['name']!='' &&
+			if (isset($_POST['name']) && $_POST['name']!='' && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
 				isset($_POST['country'])){
-				if (preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name'])){
 
 					PDOConnexion::setParameters('phonedeals', 'root', 'root');
 					$db = PDOConnexion::getInstance();
@@ -58,15 +57,10 @@
 							App::success('Ce partenaire a bien été modifié.');
 						}
 					}
-				}
-
-				else {
-					App::error('Veuillez entrer un nom valide pour ce partenaire');
-				}
 			}
 
 			else {
-				App::error('Veuillez entrer un nom pour ce partenaire');
+				App::error('Veuillez entrer un nom valide pour ce partenaire');
 			}
 		}
 
