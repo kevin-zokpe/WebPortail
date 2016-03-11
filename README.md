@@ -16,16 +16,17 @@ HADRIEN
 - <b>0%</b> - Intégration finale
 
 AK
--  <b>100%</b> - Faire les pages de recherche pour les étudiants en fonction des domaines
--  <b>5%</b> - Faire la page des stages (liste, édition, suppression)
--  <b>0%</b> - Faire la page des témoignages (liste, édition, suppression)
--  <b>0%</b>  - Récupérer les photos chez les étudiants irlandais 
+- <b>100%</b> - Faire les pages de recherche pour les étudiants en fonction des domaines
+- <b>5%</b> - Faire la page des stages (liste, édition, suppression)
+- <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants Irlandais
+- <b>0%</b>  - Récupérer les photos chez les étudiants irlandais 
 
 VALENTIN
 - <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants français
-- <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants Irlandais
+- <b>0%</b> - Faire la page des témoignages (liste, édition, suppression)
 - <b>95%</b> - Faire la page des partenaires (liste, édition, suppression)
-- <b>0%</b> - Faire la page d'ajout d'un partenaire
+- <b>100%</b> - Faire la page d'ajout d'un partenaire
+- <b>100%</b> - Faire la page d'ajout FAQ
 - <b>100%</b>  -  Créer page product 
 - <b>100%</b>  -  Upload des CV
 
