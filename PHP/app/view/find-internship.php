@@ -11,7 +11,7 @@
 						}
 
 						else {
-							var table = '<table class="table table-striped"><thead><tr><th>Entrepise</th><th>Poste</th><th>Mission</th><th>Adresse</th><th>Ville</th><th>Zip_code</th><th></th></tr></thead><tbody>';
+							var table = '<table class="table table-striped"><thead><tr><th>Entrepise</th><th>Poste</th><th>Mission</th><th>Adresse</th><th>Ville</th><th>Code postal</th><th></th></tr></thead><tbody>';
 							
 							for (i = 0; i < result.length; i++) {
 								var internshipInfo = result[i];
