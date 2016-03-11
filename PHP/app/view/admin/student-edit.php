@@ -6,7 +6,7 @@
 		if (isset($_POST['edit'])) {
 			$_POST['activated'] = (isset($_POST['activated'])) ? true : false;
 
-			PDOConnexion::setParameters('phonedeals', 'root', 'root');
+			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
 			$sql = "
 				UPDATE student
