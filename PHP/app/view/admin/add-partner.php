@@ -64,7 +64,7 @@
 			}
 		}
 		else {
-			App::error('Veuillez entrer un nom valide pour ce partenaire.')
+			App::error('Veuillez entrer un nom valide pour ce partenaire.');
 		}
 	}
 ?>
