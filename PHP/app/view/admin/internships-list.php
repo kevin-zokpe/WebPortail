@@ -1,6 +1,6 @@
 <?php
-	if (!isset($_GET['country'])) {
-		App::redirect('index.php?page=admin/internships-list&country=france');
+	if (!isset($_GET['country']) && App::isAdmin()) {
+		App::redirect('index.php?page=admin/internships-list&country=France');
 	}
 	
 	$country = ($_GET['country'] == 'France') ? 'France' : 'Irlande';
@@ -48,7 +48,7 @@
 							echo '<td>' . $internship->address . '</td>';
 							echo '<td>' . $internship->city . '</td>';
 							echo '<td>' . $internship->zip_code . '</td>';
-							echo '<td><a href="index.php?page=admin/internship-edit&amp;id=' . $internship->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
+							echo '<td><a href="index.php?page=admin/internship-edit&amp;country='. $country .'&amp;id=' . $internship->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
 							echo '<td><a href="#" title="Supprimer" data-action="delete"><i class="fa fa-trash"  data-toggle="tooltip" title="Supprimer"></i></a></td>';
 						echo '</tr>';
 					}
@@ -80,7 +80,7 @@
 		e.preventDefault();
 
 		eAjax(
-			'public/webservice/admin/faq-delete.php',
+			'public/webservice/admin/internship-delete.php',
 			{'delete': true, 'id': $(this).parent().parent().data('id')},
 			'deleteRow'
 		);
