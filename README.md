@@ -24,7 +24,8 @@ AK
 VALENTIN
 - <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants français
 - <b>0%</b> - Créer une page qui explique le domaine de formation des étudiants Irlandais
-- <b>0%</b> - Faire la page des partenaires (liste, édition, suppression)
+- <b>95%</b> - Faire la page des partenaires (liste, édition, suppression)
+- <b>0%</b> - Faire la page d'ajout d'un partenaire
 - <b>100%</b>  -  Créer page product 
 - <b>100%</b>  -  Upload des CV
 
