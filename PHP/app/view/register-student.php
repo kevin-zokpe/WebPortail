@@ -99,7 +99,7 @@
 				App::error("Veuillez entrer un nom approprié");
 			}
 
-			if (!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
+			if (!preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
 				App::error("Veuillez entrer un email approprié");
 			}
 
