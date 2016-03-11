@@ -1,7 +1,7 @@
 <?php
 		$type = $_GET['type'];
 
-		if (isset($_POST['add'])) {
+		if (isset($_POST['add']) && App::isAdmin()) {
 
 			if (isset($_POST['question']) && isset($_POST['answer'])){
 
@@ -28,12 +28,12 @@
 			}
 
 			else {
-				
-				if(!isset($_POST['question']){
+
+				if(!isset($_POST['question'])){
 					App::error('Veuillez entrer une question.');
 				}
 
-				if(!isset($_POST['answer']){
+				if(!isset($_POST['answer'])){
 					App::error('Veuillez entrer une réponse.');
 				}
 			}
