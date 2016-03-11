@@ -5,26 +5,68 @@
 
 		if (isset($_POST['edit'])) {
 
-			PDOConnexion::setParameters('phonedeals', 'root', 'root');
-			$db = PDOConnexion::getInstance();
-			$sql = "
-				UPDATE partner
-				SET name = :name,
-					logo = :logo,
-					country = :country
-				WHERE id = :id
-			";
-			$sth = $db->prepare($sql);
-			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
-			$sth->execute(array(
-				':id' => $id,
-				':name' => $_POST['name'],
-				':logo' => $_POST['logo'],
-				':country' => $_POST['country']
-			));
-			
-			if ($sth) {
-				App::success('Ce partenaire a bien été modifiée.');
+			if (isset($_POST['name']) && $_POST['name']!='' &&
+				isset($_POST['country'])){
+				if (preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name'])){
+
+					PDOConnexion::setParameters('phonedeals', 'root', 'root');
+					$db = PDOConnexion::getInstance();
+					$sql = "
+						UPDATE partner
+						SET name = :name,
+							country = :country
+						WHERE id = :id
+					";
+					$sth = $db->prepare($sql);
+					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
+					$sth->execute(array(
+						':id' => $id,
+						':name' => $_POST['name'],
+						':country' => $_POST['country']
+					));
+
+					if (isset($_FILES['logo']) && $_FILES['logo']['name']!=''){
+
+						$my_file = basename($_FILES['logo']['name']);
+						$max_file_size = 6000000;
+						$file_size = filesize($_FILES['logo']['tmp_name']);
+						$file_ext = strrchr($_FILES['logo']['name'], '.'); 
+
+						if (($file_ext == '.jpg' || $file_ext == '.png') && $file_size < $max_file_size){
+
+							$folder = "uploads/partners";
+							if($file_ext == '.jpg')
+          						$file = $folder . '/' . $id . '.jpg';
+          					if($file_ext == '.png')
+          						$file = $folder . '/' . $id . '.png';
+          					if(file_exists($file)) unlink($file);
+         					move_uploaded_file($_FILES['logo']['tmp_name'], $file);
+
+         					App::success('Le logo du partenaire a bien été modifié.');
+						}
+						else {
+							if ($file_ext != '.jpg' && $file_ext != '.png'){							
+								App::error('Le logo doit être au format JPG ou PNG');
+							}
+							if ($file_size > $max_file_size){							
+								App::error('Le logo est trop lourd, choisissez un autre fichier');
+							}
+						}	
+					}
+					else {
+						if ($sth) {
+							App::success('Ce partenaire a bien été modifié.');
+						}
+					}
+				}
+
+				else {
+					App::error('Veuillez entrer un nom valide pour ce partenaire');
+				}
+			}
+
+			else {
+				App::error('Veuillez entrer un nom pour ce partenaire');
 			}
 		}
 
