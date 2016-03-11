@@ -2,25 +2,40 @@
 		$type = $_GET['type'];
 
 		if (isset($_POST['add'])) {
-			$question = $_POST['question'];
-			$answer = $_POST['answer'];
 
-			PDOConnexion::setParameters('stages', 'root', 'root');
-			$db = PDOConnexion::getInstance();
-			$sql = "
-				INSERT INTO faq(question, answer, target)
-				VALUES (:question, :answer, :type)
-			";
-			$sth = $db->prepare($sql);
-			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
-			$sth->execute(array(
-				':question' => $question,
-				':answer' => $answer,
-				':type' => $type
-			));
+			if (isset($_POST['question']) && isset($_POST['answer'])){
+
+				$question = $_POST['question'];
+				$answer = $_POST['answer'];
+
+				PDOConnexion::setParameters('stages', 'root', 'root');
+				$db = PDOConnexion::getInstance();
+				$sql = "
+					INSERT INTO faq(question, answer, target)
+					VALUES (:question, :answer, :type)
+				";
+				$sth = $db->prepare($sql);
+				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
+				$sth->execute(array(
+					':question' => $question,
+					':answer' => $answer,
+					':type' => $type
+				));
 			
-			if ($sth) {
-				App::success('Cette question a bien été ajoutée.');
+				if ($sth) {
+					App::success('Cette question a bien été ajoutée.');
+				}
+			}
+
+			else {
+				
+				if(!isset($_POST['question']){
+					App::error('Veuillez entrer une question.');
+				}
+
+				if(!isset($_POST['answer']){
+					App::error('Veuillez entrer une réponse.');
+				}
 			}
 		}
 ?>
