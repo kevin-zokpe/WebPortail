@@ -1,35 +1,61 @@
 <?php
 
-		if (isset($_POST['add'])) {
+	if (isset($_POST['add'])) {
+
+		if(isset($_FILES['logo'])){
+			$my_file = basename($_FILES['logo']['name']);
+			$max_file_size = 6000000;
+			$file_size = filesize($_FILES['logo']['tmp_name']);
+			$file_ext = strrchr($_FILES['logo']['name'], '.'); 
+		}
+
+		if (isset($_POST['name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
+			isset($_POST['country'])) {
+
 			$name = $_POST['name'];
-
-			if (isset($_POST['logo'])){
-				$logo = $_POST['logo'];
-			}
-			else{
-				$logo = '';
-			}
-
 			$country = $_POST['country'];
 
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
 			$sql = "
-				INSERT INTO partner(name, logo, country, register_date)
-				VALUES (:name, :logo, :country, NOW())
+				INSERT INTO partner(name, country, register_date)
+				VALUES (:name, :country, NOW())
 			";
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
 			$sth->execute(array(
 				':name' => $name,
-				':logo' => $logo,
 				':country' => $country
 			));
+
+			if (isset($_FILES['logo']) && ($file_ext == '.jpg' || $file_ext == '.png') && $file_size < $max_file_size){
+
+				$id_partner = Partner::getPartnerIDByName($name);
+
+				$folder = "uploads/partners";
+				if($file_ext == '.jpg')
+          			$file = $folder . '/' . $id_partner->id . '.jpg';
+          		if($file_ext == '.png')
+          			$file = $folder . '/' . $id_partner->id . '.png';
+         		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
+
+         		PDOConnexion::setParameters('stages', 'root', 'root');
+				$dbh = PDOConnexion::getInstance();
+				$req = "UPDATE partner SET logo = :logo WHERE id = :id";
+				$st = $dbh->prepare($req);
+				$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+				$st->execute(array(
+					':logo' => $file,
+					':id' => $id_partner->id
+				));
+
+			}
 			
 			if ($sth) {
 				App::success('Ce partenaire a bien été ajouté.');
 			}
 		}
+	}
 ?>
 				<div class="col-md-8">
 					<div class="page-header">
