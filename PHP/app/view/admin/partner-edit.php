@@ -41,7 +41,23 @@
           					if(file_exists($file)) unlink($file);
          					move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
-         					App::success('Le logo du partenaire a bien été modifié.');
+         					PDOConnexion::setParameters('phonedeals', 'root', 'root');
+							$dbh = PDOConnexion::getInstance();
+							$req = "
+								UPDATE partner
+								SET logo = :logo
+								WHERE id = :id
+							";
+							$stt = $dbh->prepare($req);
+							$stt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
+							$stt->execute(array(
+								':id' => $id,
+								':logo' => $file
+							));
+
+							if ($stt) {
+         						App::success('Le logo du partenaire a bien été modifié.');
+         					}
 						}
 						else {
 							if ($file_ext != '.jpg' && $file_ext != '.png'){							
