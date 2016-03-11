@@ -82,9 +82,16 @@
 								<select name="company" class="form-control">
 									<option value="internship-company" disabled selected>Sélectionnez une entreprise</option>
 									<?php
-										foreach (Company::getCompaniesList() as $company) {
+									if ($country=="France") {
+										foreach (Company::getCompaniesListInFrance() as $company) {
 											echo '<option value="' . $company->id . '">' . $company->name . '</option>';
 										}
+									}
+									else {
+										foreach (Company::getCompaniesListInIrland() as $company) {
+											echo '<option value="' . $company->id . '">' . $company->name . '</option>';
+										}
+									}
 									?>
 								</select>
 							</div>

@@ -71,6 +71,29 @@
 			return $sth->fetchAll();
 		}
 
+		public static function getCompaniesListInFrance() {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT * FROM company WHERE country LIKE "France"';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute();
+			
+			return $sth->fetchAll();
+		}
+
+		public static function getCompaniesListInIrland() {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT * FROM company WHERE country LIKE "Irlande"';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute();
+			
+			return $sth->fetchAll();
+		}
+
+
 		public static function getActivatedCompanies($activated = true) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
