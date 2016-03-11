@@ -41,7 +41,7 @@
 					<form action="index.php?page=admin/faq-edit&amp;id=<?php echo $id; ?>" method="POST">
 
 						<div class="form-group">
-							<label for="faq-target">Pays</label>
+							<label for="faq-target">Destinataire</label>
 							<select name="target" id="faq-target" class="form-control">
 								<option value="" disabled>Choisissez le pays pour lequel la question est destinée</option>
 								<option value="student"<?php if ($faq->target == 'student') {echo ' selected';} ?>>Etudiant</option>
