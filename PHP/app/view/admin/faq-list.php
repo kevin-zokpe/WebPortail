@@ -1,5 +1,5 @@
 <?php
-	if (!isset($_GET['type'])) {
+	if (!isset($_GET['type']) && App::isAdmin()) {
 		App::redirect('index.php?page=admin/faq-list&type=student');
 	}
 	

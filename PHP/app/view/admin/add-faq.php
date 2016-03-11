@@ -1,5 +1,5 @@
 <?php
-		$type = $_GET['type'];
+		$type = $_GET['type']; 
 
 		if (isset($_POST['add']) && App::isAdmin()) {
 
@@ -26,7 +26,7 @@
 					App::success('Cette question a bien été ajoutée.');
 				}
 			}
-
+			
 			else {
 
 				if(!isset($_POST['question'])){

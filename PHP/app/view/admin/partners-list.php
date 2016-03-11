@@ -1,4 +1,5 @@
 <?php
+if (App::isAdmin()) {
 	if (!isset($_GET['type']) || $_GET['type'] != 'awaiting') {
 		$_GET['type'] = 'activated';
 	}
@@ -37,6 +38,12 @@
 		?>
 	</table>
 	<a href="index.php?page=admin/add-partner" class="btn btn-primary">Ajouter un partenaire</a>
+	<?php
+	}
+	else{
+		App::getHeader(404);
+	}
+	?>
 </div>
 
 <script>

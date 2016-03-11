@@ -1,5 +1,5 @@
 <?php
-	if (isset($_GET['id']) && !empty($_GET['id'])) {
+	if (isset($_GET['id']) && !empty($_GET['id']) && App::isAdmin()) {
 		$id = htmlentities($_GET['id']);
 		$student = Student::getStudentById($id);
 		

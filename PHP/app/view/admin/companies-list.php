@@ -1,4 +1,5 @@
 <?php
+if(App::isAdmin()){
 	if (!isset($_GET['type']) || $_GET['type'] != 'awaiting') {
 		$_GET['type'] = 'activated';
 	}
@@ -102,6 +103,10 @@
 				echo 'Aucune entreprise n\'est en attente de confirmation.';
 			endif;
 		endif;
+	}
+	else{
+		App::getHeader(404);
+	}
 	?>
 </div>
 

@@ -1,6 +1,6 @@
 <?php
 
-	if (isset($_POST['add'])) {
+	if (isset($_POST['add']) && App::isAdmin()) {
 
 		if(isset($_FILES['logo'])){
 			$my_file = basename($_FILES['logo']['name']);
