@@ -93,7 +93,6 @@
 			return $sth->fetchAll();
 		}
 
-
 		public static function getActivatedCompanies($activated = true) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
