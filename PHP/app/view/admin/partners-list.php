@@ -25,7 +25,7 @@
 		</thead>
 		<?php
 			foreach (Partner::getPartnersList() as $partner) {
-				echo '<tr>';
+				echo '<tr data-id=' . $partner->id . '>';
 					echo '<td>' . $partner->name . '</td>';
 					echo '<td>' . $partner->logo . '</td>';
 					echo '<td>' . $partner->country . '</td>';
