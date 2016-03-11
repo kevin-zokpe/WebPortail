@@ -34,10 +34,10 @@
 
 				$folder = "uploads/partners";
 				if($file_ext == '.jpg')
-          			$file = $folder . '/' . $id_partner->id . '.jpg';
-          		if($file_ext == '.png')
-          			$file = $folder . '/' . $id_partner->id . '.png';
-         		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
+          				$file = $folder . '/' . $id_partner->id . '.jpg';
+          			if($file_ext == '.png')
+          				$file = $folder . '/' . $id_partner->id . '.png';
+         			move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
          		PDOConnexion::setParameters('stages', 'root', 'root');
 				$dbh = PDOConnexion::getInstance();
