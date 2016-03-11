@@ -43,7 +43,7 @@
 		</thead>
 		<?php
 			foreach (Company::getActivatedCompanies() as $company) {
-				echo '<tr data-id=' .$company->id . '>';
+				echo '<tr data-id=' . $company->id . '>';
 					echo '<td>' . $company->name . '</td>';
 					echo '<td>' . $company->email . '</td>';
 					echo '<td>' . $company->country . '</td>';
