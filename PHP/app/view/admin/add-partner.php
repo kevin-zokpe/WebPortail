@@ -78,7 +78,7 @@
 					<form action="index.php?page=admin/add-partner" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="partner-last-name">Nom</label>
-							<input type="text" class="form-control" id="partner-name" name="name" placeholder="Nom du partenaire">
+							<input type="text" class="form-control" id="partner-name" required="required" name="name" placeholder="Nom du partenaire">
 						</div>
 
 						<div class="form-group">
@@ -88,7 +88,7 @@
 
 						<div class="form-group">
 							<label for="partner-country">Pays</label>
-							<select name="country" id="partner-country" class="form-control">
+							<select name="country" id="partner-country" required="required" class="form-control">
 								<option value="" disabled>Choisissez le pays de l'entreprise</option>
 								<option value="France">France</option>
 								<option value="Irlande">Irlande</option>
