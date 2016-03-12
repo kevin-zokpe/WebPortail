@@ -17,7 +17,7 @@
     	   	isset($_POST['country'] ) && !empty($_POST['country']) &&
     	   	isset($_POST['skill']) && !empty($_POST['skill']) &&
     	   	isset($_FILES['cv']) && $file_ext == '.pdf' && $file_size < $max_file_size &&
-    	   	isset($_POST['portfolio']) && !empty($_POST['portfolio']) && 
+    	   	isset($_POST['portfolio']) &&
     	   	preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio']) && 
     	   	isset($_POST['accept_terms']) &&
     	   	isset($_POST['g-recaptcha-response'])
@@ -220,7 +220,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<label for="signup-cv">CV*</label>
-						<input type="file" name="cv" id="signup-cv" placeholder="Insérer votre CV" data-validation-error-msg="Vous devez insérer un CV !">
+						<input type="file" name="cv" id="signup-cv" placeholder="Insérer votre CV" required="required" data-validation-error-msg="Vous devez insérer un CV !">
 					</div>
 
 					<div class="col-md-6">
