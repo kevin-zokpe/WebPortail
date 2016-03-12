@@ -20,10 +20,10 @@ AK
 - <b>100%</b> - Faire les pages de recherche pour les étudiants en fonction des domaines
 - <b>100%</b> - Option d'ajout entreprise pour l'admin
 - <b>100%</b> - Modification page profil entreprise
+- <b>100%</b>  - Créer une page qui explique le domaine de formation des étudiants Irlandais
 - <b>97%</b> - Faire la page des stages (liste, édition, suppression)
-- <b>42%</b> - Récupérer les photos chez les étudiants irlandais 
-- <b>10%</b>  - Créer une page qui explique le domaine de formation des étudiants Irlandais
-- <b>0%</b>  - Faire la désinscription des étudiants et des entreprises
+- <b>50%</b> - Récupérer les photos chez les étudiants irlandais 
+- <b>0%</b>  - Faire la désinscription des étudiants et des entreprises *
 
 
 VALENTIN
