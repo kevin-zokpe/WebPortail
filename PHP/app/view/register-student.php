@@ -153,47 +153,47 @@
 			<form name="login" method="POST" action="index.php?page=register-student" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-md-6">
-						<label for="signup-firstname">Prénom</label>
+						<label for="signup-firstname">Prénom*</label>
 						<input type="text" name="first_name" class="form-control" required="required" id="signup-firstname" placeholder="Prénom" data-validation="length" data-validation-length="2-20"  data-validation-error-msg="Entrez votre prenom !">
 					</div>
 
 					<div class="col-md-6">
-						<label for="signup-lastname">Nom</label>
+						<label for="signup-lastname">Nom*</label>
 						<input type="text" name="last_name" class="form-control" required="required" id="signup-lastname" placeholder="Nom" data-validation="length" data-validation-length="2-30"  data-validation-error-msg="Entrez votre nom !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-email">Adresse email</label>
+						<label for="signup-email">Adresse email*</label>
 						<input type="text" name="email" class="form-control" required="required" id="signup-email" placeholder="Adresse email" data-validation="email"  data-validation-error-msg="Adresse mail invalide !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-email-confirm">Confirmez votre adresse email</label>
+						<label for="signup-email-confirm">Confirmez votre adresse email*</label>
 						<input type="text" name="email-confirm" class="form-control" required="required" id="signup-email-confirm" placeholder="Confirmez votre adresse email" data-validation="confirmation" data-validation-confirm="email" data-validation-error-msg="L'adresse ne correspond pas à celle saisie plus haut !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-password">Mot de passe</label>
+						<label for="signup-password">Mot de passe*</label>
 						<input type="password" name="password" class="form-control" required="required" id="signup-password" placeholder="Mot de passe (8 caractères minimum)" data-validation="length" data-validation-length="min8" data-validation-error-msg="Le mot de passe doit contenir 8 charactères alphanumérique au minimum !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-password-confirm">Confirmez votre mot de passe</label>
+						<label for="signup-password-confirm">Confirmez votre mot de passe*</label>
 						<input type="password" name="password-confirm" class="form-control" required="required" id="signup-password-confirm" placeholder="Confirmez votre mot de passe" data-validation="confirmation" data-validation-confirm="password" data-validation-error-msg="Le mot de passe ne correspond pas à celui saisi plus haut !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="signup-country">Pays</label>
+						<label for="signup-country">Pays*</label>
 						<select name="country" id="signup-country" required="required" class="form-control">
 							<option value="" disabled selected>Choisissez votre pays</option>
 							<option value="France">France</option>
@@ -204,7 +204,7 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="signup-skill">Domaine de compétences</label>
+						<label for="signup-skill">Domaine de compétences*</label>
 						<select name="skill" id="signup-skill" required="required" class="form-control">
 							<option value="" disabled selected>Choisissez votre domaine de compétences</option>
 							<?php
@@ -219,7 +219,7 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="signup-cv">CV</label>
+						<label for="signup-cv">CV*</label>
 						<input type="file" name="cv" id="signup-cv" placeholder="Insérer votre CV" data-validation-error-msg="Vous devez insérer un CV !">
 					</div>
 
@@ -236,7 +236,7 @@
 						<div class="checkbox">
 							<label>
 								<input type="checkbox" name="accept_terms" required="required" id="signup-terms" data-validation="required" data-validation-error-msg="Vous devez accepter les conditions d'utilisations !">
-								J'ai lu et j'accepte les <a href="#">conditions d'utilisations</a> et la <a href="#">politique de confidentialité</a> de PhoneDeals.
+								J'ai lu et j'accepte les <a href="#">conditions d'utilisations</a> et la <a href="#">politique de confidentialité</a> de webportal
 							</label>
 						</div>
 					</div>
