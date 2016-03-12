@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h1>Formations</h1>
+			<h1>Formations <small>en Irlande</small></h1>
 			<div class="col-md-offset-1 col-md-8"> Les étudiants Irlandais que vous trouverez sur Webportal sont ici de prestigieuses universités Irlandaises. <br/>Ici sont détaillés l'ensemble des cours dispensés à vos futurs stagiaires Irlandais !</div><br /><br />
 			<h2> Carlow IT - <a href="http://www.itcarlow.ie/courses/department/wexford-campus.htm" target="_blank"> Wexford campus courses</a></h2>
 			<br />
