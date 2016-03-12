@@ -18,8 +18,8 @@ HADRIEN
 
 AK
 - <b>100%</b> - Faire les pages de recherche pour les étudiants en fonction des domaines
-- <b>60%</b> - Faire la page des stages (liste, édition, suppression)
-- <b>0%</b>  - Option d'ajout entreprise pour l'admin
+- <b>90%</b> - Faire la page des stages (liste, édition, suppression)
+- <b>10%</b>  - Option d'ajout entreprise pour l'admin
 - <b>2%</b>  - Créer une page qui explique le domaine de formation des étudiants Irlandais
 - <b>40%</b> - Récupérer les photos chez les étudiants irlandais 
 
