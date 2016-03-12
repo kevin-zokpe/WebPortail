@@ -50,17 +50,17 @@
 					<form action="index.php?page=admin/company-edit&amp;id=<?php echo $id; ?>" method="POST">
 						<div class="form-group">
 							<label for="company-last-name">Nom</label>
-							<input type="text" class="form-control" id="company-name" value="<?php echo $company->name; ?>" name="name" placeholder="Nom de l'entreprise">
+							<input type="text" class="form-control" id="company-name" required="required" value="<?php echo $company->name; ?>" name="name" placeholder="Nom de l'entreprise">
 						</div>
 
 						<div class="form-group">
 							<label for="company-email">Adresse email</label>
-							<input type="text" class="form-control" id="company-email" value="<?php echo $company->email; ?>" name="email" placeholder="Adresse email de l'entreprise">
+							<input type="text" class="form-control" id="company-email" required="required" value="<?php echo $company->email; ?>" name="email" placeholder="Adresse email de l'entreprise">
 						</div>
 
 						<div class="form-group">
 							<label for="company-country">Pays</label>
-							<select name="country" id="company-country" class="form-control">
+							<select name="country" id="company-country" required="required" class="form-control">
 								<option value="" disabled>Choisissez le pays de l'entreprise</option>
 								<option value="France"<?php if ($company->country == 'France') {echo ' selected';} ?>>France</option>
 								<option value="Irlande"<?php if ($company->country == 'Irlande') {echo ' selected';} ?>>Irlande</option>
@@ -69,7 +69,7 @@
 
 						<div class="form-group">
 							<label for="company-portfolio">Ville</label>
-							<input type="text" class="form-control" id="company-city" value="<?php echo $company->city; ?>" name="city" placeholder="Ville où est localisée l'entreprise">
+							<input type="text" class="form-control" id="company-city" required="required" value="<?php echo $company->city; ?>" name="city" placeholder="Ville où est localisée l'entreprise">
 						</div>
 
 						<div class="form-group">
