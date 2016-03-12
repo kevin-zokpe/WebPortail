@@ -38,7 +38,7 @@
 							<?php App::isCurrentPage('formations-france');
 							     	App::isCurrentPage('formations-ireland'); ?>>
 								  	<a id="formations-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-										Formations
+										Formations des étudiants
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
