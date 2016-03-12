@@ -15,7 +15,7 @@
 							
 							for (i = 0; i < result.length; i++) {
 								var internshipInfo = result[i];
-								table += '<tr><td>' + internshipInfo.company + '</td><td>' + internshipInfo.name + '</td><td>' + internshipInfo.description + '</td><td>' + internshipInfo.address + '</td><td>' + internshipInfo.city + '</td><td>' + internshipInfo.zip_code + '</td>' + '<td><i class="fa fa-envelope"></i> <a href="mailto:' + internshipInfo.email + '">Contacter</a></td>';
+								table += '<tr><td><a href="' + internshipInfo.website + '"target="_blank">' + internshipInfo.company + '</a></td><td>' + internshipInfo.name + '</td><td>' + internshipInfo.description + '</td><td>' + internshipInfo.address + '</td><td>' + internshipInfo.city + '</td><td>' + internshipInfo.zip_code + '</td>' + '<td><i class="fa fa-envelope"></i> <a href="mailto:' + internshipInfo.email + '">Contacter</a></td>';
 							}
 
 							table += '</tbody></table>';
