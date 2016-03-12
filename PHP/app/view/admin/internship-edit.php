@@ -52,7 +52,7 @@
 
 						<div class="form-group">
 							<label for="internship_company">Poste</label>
-							<input type="text" class="form-control" id="internship_company" value="<?php echo $internship->name ?>" name="internship_company" placeholder="Nom de l'entreprise">
+							<input type="text" class="form-control" id="internship_company" required="required" value="<?php echo $internship->name ?>" name="internship_company" placeholder="Nom de l'entreprise">
 						</div>
 
 
@@ -64,7 +64,7 @@
 
 						<div class="form-group">
 							<label for="internship_domain">Domaine de compétences</label>
-							<select name="internship_domain" id="internship_domain" class="form-control">
+							<select name="internship_domain" id="internship_domain" required="required" class="form-control">
 								<option value="" disabled selected>Choisissez votre domaine de compétences</option>
 								<?php
 									foreach (Skill::getSkillsList() as $skill) {
@@ -77,17 +77,17 @@
 
 						<div class="form-group">
 							<label for="internship_address">Adresse</label>
-							<input type="text" class="form-control" id="internship_address" value="<?php echo $internship->address; ?>" name="internship_address" placeholder="Adresse">
+							<input type="text" class="form-control" id="internship_address" required="required" value="<?php echo $internship->address; ?>" name="internship_address" placeholder="Adresse">
 						</div>
 
 						<div class="form-group">
 							<label for="internship_city">City</label>
-							<input type="text" class="form-control" id="partner-name" value="<?php echo $internship->city; ?>" name="internship_city" placeholder="Ville">
+							<input type="text" class="form-control" id="partner-name" required="required" value="<?php echo $internship->city; ?>" name="internship_city" placeholder="Ville">
 						</div>
 
 						<div class="form-group">
 							<label for="internship_zipcode">Code postale</label>
-							<input type="text" class="form-control" id="internship_zipcode" value="<?php echo $internship->zip_code; ?>" name="internship_zipcode" placeholder="Code postale">
+							<input type="text" class="form-control" id="internship_zipcode" required="required" value="<?php echo $internship->zip_code; ?>" name="internship_zipcode" placeholder="Code postale">
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-primary" name="edit">Éditer</button>
