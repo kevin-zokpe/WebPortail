@@ -8,16 +8,16 @@
 			
 			 <div class="col-xs-6 col-md-4">
     			<a href="http://iutcherbourgmanche.unicaen.fr/d-u-t-/mmi-multimedia-et-internet-/" target="_blank" class="thumbnail">
-      				<img src="public/img/formations-irlande/business.jpg" alt="MMI">
+      				<img src="public/img/formations-france/mmi.jpg" alt="MMI">
       				<div class="caption">
-        				<h3>Métiers du Mutlimdéia et de l'Internet</h3>
+        				<h3>Métiers du Mutlimédia et de l'Internet</h3>
         			</div>
 			    </a>
 			  </div>
 
 			  <div class="col-xs-6 col-md-4">
     			<a href="http://iutcherbourgmanche.unicaen.fr/d-u-t-/gte-energie-environnement-/" target="_blank" class="thumbnail">
-      				<img src="public/img/formations-irlande/humanities.jpg" alt="GTE">
+      				<img src="public/img/formations-france/gte.jpg" alt="GTE">
       				<div class="caption">
         				<h3>Génie Thermique et Énergie</h3>
         			</div>
@@ -26,7 +26,7 @@
 
  			  <div class="col-xs-6 col-md-4">
     			<a href="http://iutcherbourgmanche.unicaen.fr/d-u-t-/gea-gestion-/" target="_blank" class="thumbnail">
-      				<img src="public/img/formations-irlande/science.jpg" alt="GEA">
+      				<img src="public/img/formations-france/gea.jpg" alt="GEA">
       				<div class="caption">
         				<h3>Gestion des Entreprises et des Administrations</h3>
         			</div>
@@ -35,7 +35,7 @@
 
 			  <div class="col-xs-6 col-md-4">
     			<a href="http://iutcherbourgmanche.unicaen.fr/d-u-t-/tc-commerce-/" target="_blank" class="thumbnail">
-      				<img src="public/img/formations-irlande/sport.jpg" alt="TC">
+      				<img src="public/img/formations-france/tc.jpg" alt="TC">
       				<div class="caption">
         				<h3>Techniques de Commercialisation</h3> 
         			</div>
@@ -44,7 +44,7 @@
 
 			  <div class="col-xs-6 col-md-4">
     			<a href="http://iutcherbourgmanche.unicaen.fr/d-u-t-/gim-ingenierie-developpement-durable-/" target="_blank" class="thumbnail">
-      				<img src="public/img/formations-irlande/game.jpg" alt="GIM">
+      				<img src="public/img/formations-france/gim.jpg" alt="GIM">
       				<div class="caption">
         				<h3>Génie Industriel et Maintenance</h3>
         			</div>
@@ -53,7 +53,7 @@
 
 			  <div class="col-xs-6 col-md-4">
     			<a href="http://iutcherbourgmanche.unicaen.fr/d-u-t-/geii-reseaux-automatismes-nouvelles-technologies-/" target="_blank" class="thumbnail">
-      				<img src="public/img/formations-irlande/game.jpg" alt="GEII">
+      				<img src="public/img/formations-france/geii.jpg" alt="GEII">
       				<div class="caption">
         				<h3>Génie Electrique et Informatique Industrielle</h3>
         			</div>
