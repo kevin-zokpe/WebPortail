@@ -79,7 +79,7 @@
 		public static function getInternshipByCompanyCountry($country) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
-			$sql = 'SELECT DISTINCT I.* FROM internship I , company C WHERE I.city = C.city AND C.country = :country';
+			$sql = 'SELECT DISTINCT I.* FROM internship I , company C WHERE I.company = C.id AND C.country = :country';
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Internship');
 			$sth->execute(array(

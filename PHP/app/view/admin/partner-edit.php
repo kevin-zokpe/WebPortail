@@ -8,7 +8,7 @@
 			if (isset($_POST['name']) && $_POST['name']!='' && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
 				isset($_POST['country'])){
 
-					PDOConnexion::setParameters('phonedeals', 'root', 'root');
+					PDOConnexion::setParameters('stages', 'root', 'root');
 					$db = PDOConnexion::getInstance();
 					$sql = "
 						UPDATE partner
