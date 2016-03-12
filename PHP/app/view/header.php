@@ -33,7 +33,7 @@
 					<ul class="nav navbar-nav">
 						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home">Accueil</a></li>
 						<li<?php App::isCurrentPage('faq'); ?>><a href="index.php?page=faq">FAQ</a></li>
-						<li<?php App::isCurrentPage('archives'); ?>><a href="index.php?page=archives">Archives</a></li>
+						<li<?php App::isCurrentPage('testimonials'); ?>><a href="index.php?page=testimonials">Témoignages</a></li>
 						
 						<li class="dropdown"
 							<?php App::isCurrentPage('formations-france');
