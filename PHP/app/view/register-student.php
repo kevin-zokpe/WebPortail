@@ -22,15 +22,7 @@
     	   	isset($_POST['accept_terms']) &&
     	   	isset($_POST['g-recaptcha-response'])
     	   ) {
-    	    
-			$first_name = $_POST['first_name'];
-			$last_name = $_POST['last_name'];
-			$email = $_POST['email'];
-			$password = $_POST['password'];
-			$country = $_POST['country'];
-			$skill = $_POST['skill'];
-			$portfolio = $_POST['portfolio'];
-    	    
+    	        	    
 			try {
 
 				PDOConnexion::setParameters('stages', 'root', 'root');
@@ -42,13 +34,13 @@
 				$sth = $db->prepare($sql);
 				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 				$sth->execute(array(
-					':first_name' => $first_name,
-					':last_name' => $last_name,
-					':country' => $country,
-					':skill' => $skill,
-					':email' => $email,
-					':password' => Bcrypt::hashPassword($password),
-					':portfolio' => $portfolio
+					':first_name' => $_POST['first_name'],
+					':last_name' => $_POST['last_name'],
+					':country' => $_POST['country'],
+					':skill' => $_POST['skill'],
+					':email' => $_POST['email'],
+					':password' => Bcrypt::hashPassword($_POST['password']),
+					':portfolio' => $_POST['portfolio']
 				));
 
 				$id_stud = Student::getStudentIDByEmail($email);

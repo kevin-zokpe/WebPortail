@@ -14,15 +14,7 @@
     	   	isset($_POST['accept_terms']) &&
     	   	isset($_POST['g-recaptcha-response'])
     	   ) {
-    	    
-			$name = $_POST['name'];
-			$city = $_POST['city'];
-			$email = $_POST['email'];
-			$password = $_POST['password'];
-			$country = $_POST['country'];
-			$description = $_POST['description'];
-			$website = $_POST['website'];
-    	    
+    	    	    
 			try {
 				PDOConnexion::setParameters('stages', 'root', 'root');
 				$db = PDOConnexion::getInstance();
@@ -33,13 +25,13 @@
 				$sth = $db->prepare($sql);
 				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 				$sth->execute(array(
-					':name' => $name,
-					':email' => $email,
-					':country' => $country,
-					':city' => $city,
-					':description' => $description,
-					':password' => Bcrypt::hashPassword($password),
-					':website' => $website
+					':name' => $_POST['name'],
+					':email' => $_POST['email'],
+					':country' => $_POST['country'],
+					':city' => $_POST['city'],
+					':description' => $_POST['description'],
+					':password' => Bcrypt::hashPassword($_POST['password']),
+					':website' => $_POST['website']
 				));
 
 				App::redirect('index.php?page=home');
@@ -119,42 +111,42 @@
 			<form name="login" method="POST" action="index.php?page=register-company">
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-name">Nom</label>
+						<label for="signup-name">Nom*</label>
 						<input type="text" name="name" class="form-control" required="required" id="signup-name" placeholder="Nom" data-validation="length" data-validation-length="2-30"  data-validation-error-msg="Entrez le nom de votre entreprise !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-email">Adresse email</label>
+						<label for="signup-email">Adresse email*</label>
 						<input type="text" name="email" class="form-control" required="required" id="signup-email" placeholder="Adresse email" data-validation="email"  data-validation-error-msg="Adresse mail invalide !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-email-confirm">Confirmez votre adresse email</label>
+						<label for="signup-email-confirm">Confirmez votre adresse email*</label>
 						<input type="text" name="email-confirm" class="form-control" required="required" id="signup-email-confirm" placeholder="Confirmez votre adresse email" data-validation="confirmation" data-validation-confirm="email" data-validation-error-msg="L'adresse ne correspond pas à celle saisie plus haut !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-password">Mot de passe</label>
+						<label for="signup-password">Mot de passe*</label>
 						<input type="password" name="password" class="form-control" required="required" id="signup-password" placeholder="Mot de passe (8 caractères minimum)" data-validation="length" data-validation-length="min8" data-validation-error-msg="Le mot de passe doit contenir 8 charactères alphanumérique au minimum !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-password-confirm">Confirmez votre mot de passe</label>
+						<label for="signup-password-confirm">Confirmez votre mot de passe*</label>
 						<input type="password" name="password-confirm" class="form-control" required="required" id="signup-password-confirm" placeholder="Confirmez votre mot de passe" data-validation="confirmation" data-validation-confirm="password" data-validation-error-msg="Le mot de passe ne correspond pas à celui saisi plus haut !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="signup-country">Pays</label>
+						<label for="signup-country">Pays*</label>
 						<select name="country" id="signup-country" required="required" class="form-control">
 							<option value="" disabled selected>Choisissez votre pays</option>
 							<option value="France">France</option>
@@ -162,21 +154,21 @@
 						</select>
 					</div>
 					<div class="col-md-6">
-						<label for="signup-city">Ville</label>
+						<label for="signup-city">Ville*</label>
 						<input type="text" name="city" class="form-control" required="required" id="signup-city" placeholder="Ville" data-validation="city"  data-validation-error-msg="Ville invalide !">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-description">Description</label>
+						<label for="signup-description">Description*</label>
 						<textarea name="description" id="signup-description" class="form-control" rows="3" placeholder="Description" data-validation-length="2-30"  data-validation-error-msg="Rédigez une description de l'entreprise !" required></textarea>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-12">
-						<label for="signup-website">Site web</label>
+						<label for="signup-website">Site web*</label>
 						<input type="text" name="website" class="form-control" id="signup-website" placeholder="Site web" data-validation="length" data-validation-length="16-128" data-validation-error-msg="Vous devez entrer un site web !">
 					</div>
 				</div>

@@ -5,7 +5,7 @@
 
 		if (isset($_POST['create-company'])) {
 			if (isset($_POST['name']) && !empty($_POST['name'])) {
-				if (isset($_POST['email']) && !empty($_POST['email'])) {
+				if (isset($_POST['email']) && !empty($_POST['email']) && Company::checkEmailExist($_POST['email'])==false) {
 					if (isset($_POST['country']) && !empty($_POST['country'])) {
 						if (isset($_POST['city']) && !empty($_POST['city'])) {
 							if (isset($_POST['description']) && !empty($_POST['description'])) {
