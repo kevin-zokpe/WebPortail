@@ -93,7 +93,7 @@
 					<form action="index.php?page=admin/partner-edit&amp;id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="partner-last-name">Nom</label>
-							<input type="text" class="form-control" id="partner-name" value="<?php echo $partner->name; ?>" name="name" placeholder="Nom du partenaire">
+							<input type="text" class="form-control" id="partner-name" required="required" value="<?php echo $partner->name; ?>" name="name" placeholder="Nom du partenaire">
 						</div>
 
 						<div class="form-group">
@@ -103,7 +103,7 @@
 
 						<div class="form-group">
 							<label for="partner-country">Pays</label>
-							<select name="country" id="partner-country" class="form-control">
+							<select name="country" id="partner-country" required="required" class="form-control">
 								<option value="" disabled>Choisissez le pays de l'entreprise</option>
 								<option value="France"<?php if ($partner->country == 'France') {echo ' selected';} ?>>France</option>
 								<option value="Irlande"<?php if ($partner->country == 'Irlande') {echo ' selected';} ?>>Irlande</option>
