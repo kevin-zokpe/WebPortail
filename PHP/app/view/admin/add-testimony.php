@@ -48,12 +48,12 @@
 					<form action="index.php?page=admin/add-testimony" method="POST">
 						<div class="form-group">
 							<label for="testimony-author">Auteur</label>
-							<input type="text" class="form-control" id="testimony-author" name="author" placeholder="Auteur">
+							<input type="text" class="form-control" id="testimony-author" required="required" name="author" placeholder="Auteur">
 						</div>
 
 						<div class="form-group">
 							<label for="testimony-description">Témoignage</label>
-							<input type="text" class="form-control" id="testimony-description" name="description" placeholder="Description">
+							<input type="text" class="form-control" id="testimony-description" required="required" name="description" placeholder="Description">
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-primary" name="add">Ajouter</button>
