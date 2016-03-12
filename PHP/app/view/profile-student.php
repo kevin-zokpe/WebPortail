@@ -121,7 +121,7 @@
 							<div class="form-group">
 								<label for="profile-new-password" class="col-sm-2 control-label">Nouveau mot de passe</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="profile-new-password" name="new-password" placeholder="Nouveau mot de passe">
+									<input type="password" class="form-control" id="profile-new-password" name="new-password" placeholder="Si vous désirez changer de mot de passe">
 								</div>
 							</div>
 
@@ -133,14 +133,14 @@
 							</div>
 
 							<div class="form-group">
-								<label for="profile-password" class="col-sm-2 control-label">Entrer votre mot de passe</label>
+								<label for="profile-password" class="col-sm-2 control-label">Entrer votre mot de passe *</label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control" id="profile-password" required='required' name="password" placeholder="Mot de passe actuel">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="profile-password-confirm" class="col-sm-2 control-label">Confirmer votre mot de passe</label>
+								<label for="profile-password-confirm" class="col-sm-2 control-label">Confirmer votre mot de passe *</label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control" id="profile-password-confirm" required='required' name="password-confirm" placeholder="Confirmer le mot de passe">
 									<p class="help-block">Entrez votre mot de passe pour confirmer votre identité et valider les modifications</p>

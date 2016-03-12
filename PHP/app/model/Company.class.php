@@ -121,6 +121,24 @@
 			return $sth;
 		}
 
+		public static function changePassword($password, $id) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+			UPDATE company
+			SET password = :password
+			WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute(array(
+				':password' => $password,
+				':id' => $id
+			));
+			
+			return $sth;
+		}
+
 		public static function deleteCompany($id) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();

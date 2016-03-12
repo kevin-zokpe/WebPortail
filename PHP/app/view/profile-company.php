@@ -4,7 +4,18 @@
 		if (isset($_POST['edit'])) :
 			if ($_POST['password'] == $_POST['password-confirm']) {
 				if (Bcrypt::checkPassword($_POST['password'], $company->password)) {
-					PDOConnexion::setParameters('phonedeals', 'root', 'root');
+					if(isset($_POST['new-password']) && $_POST['new-password']!=''){
+						if(preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['new-password'])){
+							$new_password = Bcrypt::hashPassword($_POST['new-password']);
+							Company::changePassword($new_password, $company->id);							
+							App::success('Votre mot de passe a bien été modifié');
+						}
+						else{
+							App::error('Veuillez entrer un nouveau mot de passe approprié');
+						}	
+					}
+
+					PDOConnexion::setParameters('stages', 'root', 'root');
 					$db = PDOConnexion::getInstance();
 					$sql = "
 						UPDATE company
@@ -86,14 +97,21 @@
 							</div>
 
 							<div class="form-group">
-								<label for="profile-password" class="col-sm-2 control-label">Mot de passe</label>
+								<label for="profile-new-password" class="col-sm-2 control-label">Nouveau mot de passe</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="profile-new-password" name="new-password" placeholder="Si vous désirez changer de mot de passe">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="profile-password" class="col-sm-2 control-label">Mot de passe*</label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control" id="profile-password" name="password" placeholder="Mot de passe">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="profile-password-confirm" class="col-sm-2 control-label">Confirmer</label>
+								<label for="profile-password-confirm" class="col-sm-2 control-label">Confirmer*</label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control" id="profile-password-confirm" name="password-confirm" placeholder="Confirmer le mot de passe">
 									<p class="help-block">Entrez votre mot de passe pour confirmer votre identité et valider les changements</p>
