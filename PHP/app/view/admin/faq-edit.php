@@ -54,7 +54,7 @@
 
 						<div class="form-group">
 							<label for="faq-target">Pays</label>
-							<select name="target" id="faq-target" class="form-control">
+							<select name="target" id="faq-target" required="required" class="form-control">
 								<option value="" disabled>Choisissez le pays pour lequel la question est destinée</option>
 								<option value="student"<?php if ($faq->target == 'student') {echo ' selected';} ?>>Etudiant</option>
 								<option value="company"<?php if ($faq->target == 'company') {echo ' selected';} ?>>Entreprise</option>
@@ -63,12 +63,12 @@
 
 						<div class="form-group">
 							<label for="faq-question">Questions</label>
-							<input type="text" class="form-control" id="faq-question" value="<?php echo $faq->question; ?>" name="question" placeholder="faq-question">
+							<input type="text" class="form-control" id="faq-question" required="required" value="<?php echo $faq->question; ?>" name="question" placeholder="faq-question">
 						</div>
 
 						<div class="form-group">
 							<label for="faq-answer">Réponse</label>
-							<textarea class="form-control" id="faq-answer" name="answer" placeholder="faq-answer"><?php echo $faq->answer; ?></textarea>
+							<textarea class="form-control" id="faq-answer" required="required" name="answer" placeholder="faq-answer"><?php echo $faq->answer; ?></textarea>
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-primary" name="edit">Éditer</button>
