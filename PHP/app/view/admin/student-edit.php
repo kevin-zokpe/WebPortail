@@ -50,17 +50,17 @@
 					<form action="index.php?page=admin/student-edit&amp;id=<?php echo $id; ?>" method="POST">
 						<div class="form-group">
 							<label for="student-last-name">Nom</label>
-							<input type="text" class="form-control" id="student-last-name" value="<?php echo $student->last_name; ?>" name="last_name" placeholder="Nom de famille de l'étudiant">
+							<input type="text" class="form-control" id="student-last-name" required="required" value="<?php echo $student->last_name; ?>" name="last_name" placeholder="Nom de famille de l'étudiant">
 						</div>
 
 						<div class="form-group">
 							<label for="student-first-name">Prénom</label>
-							<input type="text" class="form-control" id="student-first-name" value="<?php echo $student->first_name; ?>" name="first_name" placeholder="Prénom de l'étudiant">
+							<input type="text" class="form-control" id="student-first-name" required="required" value="<?php echo $student->first_name; ?>" name="first_name" placeholder="Prénom de l'étudiant">
 						</div>
 
 						<div class="form-group">
 							<label for="student-country">Pays</label>
-							<select name="country" id="student-country" class="form-control">
+							<select name="country" id="student-country" required="required" class="form-control">
 								<option value="" disabled>Choisissez le pays de l'étudiant</option>
 								<option value="France"<?php if ($student->country == 'France') {echo ' selected';} ?>>France</option>
 								<option value="Irlande"<?php if ($student->country == 'Irlande') {echo ' selected';} ?>>Irlande</option>
@@ -69,7 +69,7 @@
 
 						<div class="form-group">
 							<label for="student-skill">Domaine de compétences</label>
-							<select name="skill" id="student-skill" class="form-control">
+							<select name="skill" id="student-skill" required="required" class="form-control">
 								<option value="" disabled selected>Choisissez votre domaine de compétences</option>
 								<?php
 									foreach (Skill::getSkillsList() as $skill) {
@@ -82,7 +82,7 @@
 
 						<div class="form-group">
 							<label for="student-email">Adresse email</label>
-							<input type="text" class="form-control" id="student-email" value="<?php echo $student->email; ?>" name="email" placeholder="Adresse email de l'étudiant">
+							<input type="text" class="form-control" id="student-email" required="required" value="<?php echo $student->email; ?>" name="email" placeholder="Adresse email de l'étudiant">
 						</div>
 
 						<div class="form-group">
