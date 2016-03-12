@@ -51,12 +51,12 @@
 
 						<div class="form-group">
 							<label for="testimony-author">Auteur</label>
-							<input type="text" class="form-control" id="testimony-author" value="<?php echo $testimony->author; ?>" name="author" placeholder="Auteur">
+							<input type="text" class="form-control" id="testimony-author" required="required" value="<?php echo $testimony->author; ?>" name="author" placeholder="Auteur">
 						</div>
 
 						<div class="form-group">
 							<label for="testimony-description">Témoignage</label>
-							<textarea class="form-control" id="testimony-description" name="description" placeholder="Description"><?php echo $testimony->description; ?></textarea>
+							<textarea class="form-control" id="testimony-description" required="required" name="description" placeholder="Description"><?php echo $testimony->description; ?></textarea>
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-primary" name="edit">Éditer</button>
