@@ -102,7 +102,7 @@
 						<div class="form-group">
 							<div class="col-md-8">
 								<label for="name">Poste</label>
-								<input type="text" placeholder="Nom du poste" name="name" value="" id="internship-name" class="form-control">
+								<input type="text" placeholder="Nom du poste" required="required" name="name" value="" id="internship-name" class="form-control">
 							</div>
 						</div>
 					</div>
@@ -120,7 +120,7 @@
 						<div class="form-group">
 							<div class="col-md-8">
 								<label for="internship-address">Adresse</label>
-								<input type="text" placeholder="Adresse postale" name="address" value="" id="internship-address" class="form-control">
+								<input type="text" placeholder="Adresse postale" required="required" name="address" value="" id="internship-address" class="form-control">
 							</div>
 						</div>
 					</div>
@@ -129,11 +129,11 @@
 						<div class="form-group">
 							<div class="col-md-4">
 								<label for="internship-zipcode">Code postal</label>
-								<input type="text" placeholder="Code postal" name="zip_code" value="" id="internship-zipcode" class="form-control">
+								<input type="text" placeholder="Code postal" required="required" name="zip_code" value="" id="internship-zipcode" class="form-control">
 							</div>
 							<div class="col-md-4">
 								<label for="internship-city">Ville</label>
-								<input type="text" placeholder="Ville" name="city" value="" id="internship-city" class="form-control">
+								<input type="text" placeholder="Ville" name="city" required="required" value="" id="internship-city" class="form-control">
 							</div>
 						</div>
 					</div>
@@ -142,7 +142,7 @@
 						<div class="form-group">
 							<div class="col-md-8">
 								<label for="skill">Domaine de compétence</label>
-								<select name="skill" class="form-control">
+								<select name="skill" required="required" class="form-control">
 									<option value="" disabled selected>Sélectionnez un domaine de compétence</option>
 									<?php
 										foreach (Skill::getSkillsList() as $skill) {
