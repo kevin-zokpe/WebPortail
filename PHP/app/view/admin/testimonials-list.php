@@ -44,7 +44,7 @@
 		e.preventDefault();
 
 		eAjax(
-			'public/webservice/admin/partner-delete.php',
+			'public/webservice/admin/testimony-delete.php',
 			{'delete': true, 'id': $(this).parent().parent().data('id')},
 			'deleteRow'
 		);
