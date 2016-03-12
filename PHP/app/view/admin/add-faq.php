@@ -49,12 +49,12 @@
 					<form action="index.php?page=admin/add-faq&amp;type=<?php echo $type; ?>" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="faq-question">Question</label>
-							<input type="text" class="form-control" id="faq-question" name="question" placeholder="Votre question">
+							<input type="text" class="form-control" id="faq-question" required="required" name="question" placeholder="Votre question">
 						</div>
 
 						<div class="form-group">
 							<label for="faq-answer">Réponse</label>
-							<input type="text" class="form-control" id="faq-answer" name="answer" placeholder="Votre réponse">
+							<input type="text" class="form-control" id="faq-answer" required="required" name="answer" placeholder="Votre réponse">
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-primary" name="add">Ajouter</button>
