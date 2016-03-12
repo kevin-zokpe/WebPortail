@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 11 Mars 2016 à 20:47
+-- Généré le :  Sam 12 Mars 2016 à 02:20
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -76,8 +76,7 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `target`) VALUES
 (6, 'Comment contacter facilement une entreprise en Irlande ?', 'Notre portail web est la solution ! Si toi aussi tu as envie de faire parti de l’aventure il te suffit de créer un compte et déposer ton CV et ta lettre de motivation pour avoir accès à plusieurs stages étrangers. ', 'student'),
 (7, 'Vais-je percevoir des bourses durant mon séjour ?', 'Les bourses dépendent du pays dans lequel tu te trouves, nous t’invitons à prendre contact avec le représentant de ton école pour avoir plus de modalités sur les différents moyens d’obtenir des bourses', 'student'),
 (8, 'Ou vais-je séjourner durant mon stage ? ', 'Plusieurs moyens d’hébergements existent. Selon ton profil les entreprises peuvent te proposer des logements proches de ton futur lieu de travail. Ce qui te permettra de travailler sans te soucier du mauvais temps qu’il fait dehors par exemple', 'student'),
-(9, 'Ou puis-je trouver plus de témoignages et de bonnes adresses ? ', 'Des élèves ayant effectué leurs stages à l’étranger remplissent des fiches à leur retour nous t’invitons à te renseigner auprès de ton école pour bénéficier de ses fiches de témoignages et t’imprégner de leurs expériences', 'student'),
-(11, 'Qui êtes-vous ?', 'Apple', 'company');
+(9, 'Ou puis-je trouver plus de témoignages et de bonnes adresses ? ', 'Des élèves ayant effectué leurs stages à l’étranger remplissent des fiches à leur retour nous t’invitons à te renseigner auprès de ton école pour bénéficier de ses fiches de témoignages et t’imprégner de leurs expériences', 'student');
 
 -- --------------------------------------------------------
 
@@ -118,15 +117,14 @@ CREATE TABLE IF NOT EXISTS `partner` (
   `country` enum('France','Irlande') CHARACTER SET utf8 NOT NULL,
   `register_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `partner`
 --
 
 INSERT INTO `partner` (`id`, `name`, `logo`, `country`, `register_date`) VALUES
-(1, 'IUT Cherbourg-Manche', '', 'France', '2016-03-11'),
-(3, 'LetterKenny IT', '', 'Irlande', '2016-03-11');
+(1, 'IUT Cherbourg-Manche', 'uploads/partners/1.png', 'France', '2016-03-11');
 
 -- --------------------------------------------------------
 
@@ -193,6 +191,28 @@ INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `ema
 (1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 1, 1, 1, '2016-02-18'),
 (2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', 'http://hadrien.info/portfolio/', 1, 1, 1, '2016-02-20'),
 (3, 'Ange Kevin', 'Zokpe', 'France', 13, 'kzokpe@gmail.com', '$2y$12$svwYSh7MopBR0UIc9rSuWuS2qnVQ5Wa/6Cntlofw3SPYTRgE/0Y0e', '', 'https://akdesign.com', 1, 1, 1, '2016-03-08');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `testimony`
+--
+
+CREATE TABLE IF NOT EXISTS `testimony` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` text CHARACTER SET utf8 NOT NULL,
+  `author` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `register_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `student` (`author`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `testimony`
+--
+
+INSERT INTO `testimony` (`id`, `description`, `author`, `register_date`) VALUES
+(2, 'C''était trop cool ! Génial !', 'Valentin Gougeon', '2016-03-12');
 
 --
 -- Contraintes pour les tables exportées
