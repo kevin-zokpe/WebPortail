@@ -1,0 +1,74 @@
+<?php
+	class Language {
+		private $defaultLanguage = 'en';
+		private $currentLanguage;
+		private $langArray = array();
+
+		public function __construct() {
+		    if (isset($_COOKIE['lang']) || isset($_SESSION['lang'])) {
+		        if (isset($_COOKIE['lang'])) {
+		            $this->currentLanguage = $_COOKIE['lang'];
+		        }
+
+		        if (isset($_SESSION['lang'])) {
+		            $this->currentLanguage = $_SESSION['lang'];
+		        }
+		    }
+
+		    else {
+		        $this->currentLanguage = $this->defaultLanguage;
+		    }
+
+		    if (isset($_GET['lang'])) {
+		    	$this->changeLanguage($_GET['lang']);
+		    }
+		}
+
+		public function changeLanguage($newLanguage) {
+	        if ($this->existLanguage($newLanguage)) {
+	        	$this->currentLanguage = htmlspecialchars($newLanguage);
+	        }
+
+	        else {
+	        	$this->currentLanguage = $this->defaultLanguage;
+	        }
+
+	        $_SESSION['lang'] = $this->currentLanguage;
+	        setcookie('lang', $this->currentLanguage, time() + (3600 * 24 * 30));
+		}
+
+		public function existLanguage($language) {
+			if (file_exists(LANG . DS . $language . '.php')) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public function getCurrentLanguage() {
+			return $this->currentLanguage;
+		}
+
+		public function getOtherLanguage() {
+			if ($this->currentLanguage == 'fr') {
+				return 'en';
+			}
+
+			return 'fr';
+		}
+
+		public function translate($term) {
+			if (!array_key_exists($this->currentLanguage, $this->langArray)) {
+				if (file_exists(LANG . DS . $this->currentLanguage . '.php')) {
+					require_once(LANG . DS . $this->currentLanguage . '.php');
+
+					return $translate[$term];
+				}
+			}
+
+			else {
+				throw new Exception('Le terme "' . $term . '" n\'existe pas dans le fichier de traduction.');
+			}
+		}
+	}
+?>
