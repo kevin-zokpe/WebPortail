@@ -49,15 +49,26 @@
 		}
 
 		public function getCurrentLanguage() {
-			return $this->currentLanguage;
+			$languageName = ($this->currentLanguage == 'fr') ? 'Français' : 'English';
+
+			return array(
+				'code' => $this->currentLanguage,
+				'name' => $languageName
+			);
 		}
 
 		public function getOtherLanguage() {
 			if ($this->currentLanguage == 'fr') {
-				return 'en';
+				return array(
+					'code' => 'en',
+					'name' => 'English'
+				);
 			}
 
-			return 'fr';
+			return array(
+				'code' => 'fr',
+				'name' => 'Français'
+			);
 		}
 
 		public function translate($term) {
