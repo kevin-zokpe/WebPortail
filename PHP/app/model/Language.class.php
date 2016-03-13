@@ -16,7 +16,7 @@
 		    }
 
 		    else {
-		        $this->currentLanguage = $this->defaultLanguage;
+		    	$this->currentLanguage = $this->detectBrowserLanguage();
 		    }
 
 		    if (isset($_GET['lang'])) {
@@ -27,7 +27,15 @@
 		    $this->translate = $translate;
 		}
 
-		public function changeLanguage($newLanguage) {
+		private function existLanguage($language) {
+			if (file_exists(LANG . DS . $language . '.php')) {
+				return true;
+			}
+
+			return false;
+		}
+
+		private function changeLanguage($newLanguage) {
 	        if ($this->existLanguage($newLanguage)) {
 	        	$this->currentLanguage = htmlspecialchars($newLanguage);
 	        }
@@ -40,12 +48,18 @@
 	        setcookie('lang', $this->currentLanguage, time() + (3600 * 24 * 30));
 		}
 
-		public function existLanguage($language) {
-			if (file_exists(LANG . DS . $language . '.php')) {
-				return true;
+		private function detectBrowserLanguage() {
+			if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+				if (substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == 'fr') {
+					return 'fr';
+				}
+
+				else {
+					return 'en';
+				}
 			}
 
-			return false;
+			return $this->defaultLanguage;
 		}
 
 		public function getCurrentLanguage() {
