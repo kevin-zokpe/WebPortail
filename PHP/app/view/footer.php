@@ -2,7 +2,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8">
-						<a href="index.php?page=legal">Mentions légales</a>
+						<a href="index.php?page=terms" style="margin-right: 15px;">Conditions d'utilisation</a>
+						<a href="index.php?page=legal" style="margin-right: 15px;">Mentions légales</a>
+						<a href="index.php?page=about">À propos</a>
 					</div>
 					<div class="col-md-4 text-right">
 						Copyright &copy; <?php echo date('Y') . ' <a href="index.php?page=home">' . App::$siteTitle . '</a>'; ?>
