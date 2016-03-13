@@ -8,8 +8,8 @@
 				?>
 				<p>Me connecter en tant que :</p>
 				<p>
-					<a class="btn btn-primary btn-lg" href="index.php?page=login&amp;type=student" role="button">Étudiant</a>
-					<a class="btn btn-primary btn-lg" href="index.php?page=login&amp;type=company" role="button">Entreprise</a>
+					<a class="btn btn-primary btn-lg" href="index.php?page=login&amp;type=student" role="button"><?php echo $language->translate('student'); ?></a>
+					<a class="btn btn-primary btn-lg" href="index.php?page=login&amp;type=company" role="button"><?php echo $language->translate('company'); ?></a>
 				</p>
 			</div>
 			<?php
