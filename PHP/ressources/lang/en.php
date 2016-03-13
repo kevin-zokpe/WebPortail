@@ -1,5 +1,9 @@
 <?php
 	$translate = array (
-		'hello' => 'Bonjour',
+		'home' => 'Home',
+		'faq' => 'FAQ',
+		'testimonials' => 'Testimonials',
+		'student' => 'Student',
+		'company' => 'Company'
 	);
 ?>
