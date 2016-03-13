@@ -2,7 +2,7 @@
 	class Language {
 		private $defaultLanguage = 'en';
 		private $currentLanguage;
-		private $langArray = array();
+		private $translate = array();
 
 		public function __construct() {
 		    if (isset($_COOKIE['lang']) || isset($_SESSION['lang'])) {
@@ -22,6 +22,9 @@
 		    if (isset($_GET['lang'])) {
 		    	$this->changeLanguage($_GET['lang']);
 		    }
+
+		    require_once(LANG . DS . $this->currentLanguage . '.php');
+		    $this->translate = $translate;
 		}
 
 		public function changeLanguage($newLanguage) {
@@ -58,11 +61,9 @@
 		}
 
 		public function translate($term) {
-			if (!array_key_exists($this->currentLanguage, $this->langArray)) {
+			if (!array_key_exists($this->currentLanguage, $this->translate)) {
 				if (file_exists(LANG . DS . $this->currentLanguage . '.php')) {
-					require_once(LANG . DS . $this->currentLanguage . '.php');
-
-					return $translate[$term];
+					return $this->translate[$term];
 				}
 			}
 
