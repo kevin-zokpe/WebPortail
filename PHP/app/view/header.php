@@ -106,3 +106,5 @@
 				</div>
 			</div>
 		</nav>
+
+		<?php $msg->display(); ?>
