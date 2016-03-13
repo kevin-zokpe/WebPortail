@@ -31,9 +31,9 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home">Accueil</a></li>
-						<li<?php App::isCurrentPage('faq'); ?>><a href="index.php?page=faq">FAQ</a></li>
-						<li<?php App::isCurrentPage('testimonials'); ?>><a href="index.php?page=testimonials">Témoignages</a></li>
+						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home"><?php echo $language->translate('home'); ?></a></li>
+						<li<?php App::isCurrentPage('faq'); ?>><a href="index.php?page=faq"><?php echo $language->translate('faq'); ?></a></li>
+						<li<?php App::isCurrentPage('testimonials'); ?>><a href="index.php?page=testimonials"><?php echo $language->translate('testimonials'); ?></a></li>
 						
 						<li class="dropdown"
 							<?php App::isCurrentPage('formations-france');
@@ -95,11 +95,11 @@
 						<?php endif; ?>
 						<li class="dropdown">
 							<a id="lang-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								FR
+								<?php echo $language->getCurrentLanguage()['name']; ?>
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="lang-dropdown">
-								<li><a href="#">EN</a></li>
+								<li><a href="index.php?page=<?php echo $_GET['page']; ?>&amp;lang=<?php echo $language->getOtherLanguage()['code']; ?>"><?php echo $language->getOtherLanguage()['name']; ?></a></li>
 							</ul>
 						</li>
                     </ul>
