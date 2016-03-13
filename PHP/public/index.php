@@ -12,6 +12,8 @@
 	require_once(APP . '/model/PDOConnexion.php');
 	require_once (APP . '/model/Autoloader.php');
 	Autoloader::register();
+	
+	$language = new Language();
 
 	session_start();
 	ob_start();
