@@ -10,31 +10,21 @@ Membres du groupe :
 
 # To do list
 HADRIEN
-- <b>100%</b> - Faire les pages éditer et l'ajax pour supprimer
 - <b>80%</b> - Faire le système de langues
 - <b>0%</b> - Faire la page des réglages généraux (liste, édition)
 - <b>0%</b> - Faire le système d'envoi de mail automatique au prof
 - <b>0%</b> - Intégration finale
 
 AK
-- <b>100%</b> - Faire les pages de recherche pour les étudiants en fonction des domaines
-- <b>100%</b> - Option d'ajout entreprise pour l'admin
-- <b>100%</b> - Modification page profil entreprise
-- <b>100%</b>  - Créer une page qui explique le domaine de formation des étudiants Irlandais
 - <b>97%</b> - Faire la page des stages (liste, édition, suppression)
 - <b>50%</b> - Récupérer les photos chez les étudiants irlandais 
 - <b>0%</b>  - Faire la désinscription des étudiants et des entreprises *
 
 
 VALENTIN
-- <b>100%</b> - Créer une page qui explique le domaine de formation des étudiants français
 - <b>0%</b> - Créer une page d'ajout de témoignage
-- <b>100%</b> - Faire la page des témoignages (liste, édition, suppression)
-- <b>100%</b> - Faire la page des partenaires (liste, édition, suppression)
-- <b>100%</b> - Faire la page d'ajout d'un partenaire
-- <b>100%</b> - Faire la page d'ajout FAQ
-- <b>100%</b>  -  Créer page product 
-- <b>100%</b>  -  Upload des CV
+- <b>0%</b> - Modification CV étudiants
+- <b>0%</b> - Suppression CV étudiants
 
 SONIA
 - <b>0%</b> - Rapport de projet
