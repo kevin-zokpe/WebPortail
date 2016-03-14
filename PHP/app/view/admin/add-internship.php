@@ -110,6 +110,22 @@
 					<div class="row" style="margin-bottom: 20px;">
 						<div class="form-group">
 							<div class="col-md-8">
+								<label for="skill">Domaine de compétence</label>
+								<select name="skill" required="required" class="form-control">
+									<option value="" disabled selected>Sélectionnez un domaine de compétence</option>
+									<?php
+										foreach (Skill::getSkillsList() as $skill) {
+											echo '<option value="' . $skill->id . '">' . $skill->name . '</option>';
+										}
+									?>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 20px;">
+						<div class="form-group">
+							<div class="col-md-8">
 								<label style="width: 100%;" for="description">Description</label>
 								<textarea placeholder="Décrivez le poste à pourvoir" name="description" value="" id="internship-description" class="form-control"></textarea>
 							</div>
@@ -134,22 +150,6 @@
 							<div class="col-md-4">
 								<label for="internship-city">Ville</label>
 								<input type="text" placeholder="Ville" name="city" required="required" value="" id="internship-city" class="form-control">
-							</div>
-						</div>
-					</div>
-
-					<div class="row" style="margin-bottom: 20px;">
-						<div class="form-group">
-							<div class="col-md-8">
-								<label for="skill">Domaine de compétence</label>
-								<select name="skill" required="required" class="form-control">
-									<option value="" disabled selected>Sélectionnez un domaine de compétence</option>
-									<?php
-										foreach (Skill::getSkillsList() as $skill) {
-											echo '<option value="' . $skill->id . '">' . $skill->name . '</option>';
-										}
-									?>
-								</select>
 							</div>
 						</div>
 					</div>
