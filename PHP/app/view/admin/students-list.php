@@ -90,7 +90,7 @@ if (App::isAdmin()) {
 			</thead>
 			<?php
 				foreach (Student::getActivatedStudents(false) as $student) {
-					echo '<tr>';
+					echo '<tr data-id="' . $student->id . '">';
 						echo '<td>' . $student->last_name . '</td>';
 						echo '<td>' . $student->first_name . '</td>';
 						echo '<td>' . $student->country . '</td>';
@@ -98,10 +98,10 @@ if (App::isAdmin()) {
 						echo '<td><a href="mailto:' . $student->email . '">' . $student->email . '</a></td>';
 						echo '<td><a href="'.$student->portfolio.'" target="_blank">' . $student->portfolio . '</td>';
 						echo '<td>' . $student->register_date . '</td>';
-						echo '<td><a href="#"><i class="fa fa-check" data-toggle="tooltip" title="Activer"></i></a></td>';
+						echo '<td><a href="index.php?page=admin/student-activate&amp;id=' . $student->id . '"><i class="fa fa-check" data-toggle="tooltip" title="Activer"></i></a></td>';
 						
 						echo '<td><a href="index.php?page=admin/student-edit&amp;id=' . $student->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
+						echo '<td><a href="#"><i class="fa fa-trash" data-action="delete" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 					echo '</tr>';
 				}
 			?>
@@ -116,3 +116,38 @@ if (App::isAdmin()) {
 		App::getHeader(404);	}
 	?>
 </div>
+<script>
+	$('[data-action="delete"]').click(function(e) {
+		e.preventDefault();
+
+		eAjax(
+			'public/webservice/admin/student-delete.php',
+			{'delete': true, 'id': $(this).parent().parent().data('id')},
+			'deleteRow'
+		);
+	});
+
+	var eAjaxData = '';
+
+	function eAjax(url, parameters, callback) {
+	    if (!confirm('Êtes-vous sûr ?')) {
+	        return false;
+	    }
+
+	    $.post(url, parameters, function(data) {
+	        eAjaxData = data;
+	        var func = callback + "()";
+	        eval(func);
+	    }, "json");
+	}
+
+	function deleteRow() {
+	    if (eAjaxData.status == 'true') {
+	        $('[data-id="' + eAjaxData.id + '"]').fadeTo('slow', 0.01).slideUp('slow');
+	    }
+	    
+	    else {
+	        alert(eAjaxData.status);
+	    }
+	}
+</script>

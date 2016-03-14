@@ -83,7 +83,7 @@ if(App::isAdmin()){
 		</thead>
 			<?php
 				foreach (Company::getActivatedCompanies(false) as $company) {
-					echo '<tr>';
+					echo '<tr data-id="' . $company->id . '">';
 						echo '<td>' . $company->name . '</td>';
 						echo '<td><a href="mailto:' . $company->email . '">' . $company->email . '</a></td>';
 						echo '<td>' . $company->country . '</td>';
