@@ -15,6 +15,7 @@
 	require_once (APP . '/model/App.class.php');
 	require_once (APP . '/model/Company.class.php');
 	require_once (APP . '/model/Internship.class.php');
+	require_once (APP . '/model/Student.class.php');
 	require_once (APP . '/model/Skill.class.php');
 	
 	header('Content-Type: application/json');
