@@ -33,7 +33,7 @@
 			));
 			
 			if ($sth) {
-				App::success('Cet étudiant a bien été modifié');
+				$msg->success('Cet étudiant a bien été modifié.','index.php?page=admin/students-list');
 			}
 		}
 
