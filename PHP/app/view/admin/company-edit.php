@@ -33,7 +33,7 @@
 			));
 			
 			if ($sth) {
-				App::success('Cette entreprise a bien été modifiée.');
+				$msg->success('Cette entreprise a bien été modifié.','index.php?page=admin/companies-list');
 			}
 		}
 
