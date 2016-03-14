@@ -2,7 +2,7 @@
 	if (App::isAdmin()) :
 		$country = $_GET['country'];
 
-		if (isset($_POST['create-internship'])) {
+		if (isset($_POST['add-internship'])) {
 			if (isset($_POST['name']) && !empty($_POST['name'])) {
 				if (isset($_POST['description']) && !empty($_POST['description'])) {
 					if (isset($_POST['company']) && !empty($_POST['company'])) {
@@ -74,7 +74,7 @@
 				<div class="page-header">
 					<h1> Ajouter un stage en <?php echo $country;?> </h1>
 				</div>
-				<form action="index.php?page=admin/create-internship&amp;country=<?php echo $country; ?>" method="POST">
+				<form action="index.php?page=admin/add-internship&amp;country=<?php echo $country; ?>" method="POST">
 					<div class="row" style="margin-bottom: 20px;">
 						<div class="form-group">
 							<div class="col-md-8">
@@ -154,7 +154,7 @@
 						</div>
 					</div>
 					
-					<button type="submit" class="btn btn-primary" name="create-internship">Ajouter le stage</button>
+					<button type="submit" class="btn btn-primary" name="add-internship">Ajouter le stage</button>
 				</form>
 			</div>
 		</div>
