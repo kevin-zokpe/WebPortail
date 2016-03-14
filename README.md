@@ -16,7 +16,6 @@ HADRIEN
 - <b>0%</b> - Intégration finale
 
 AK
-- <b>97%</b> - Faire la page des stages (liste, édition, suppression)
 - <b>50%</b> - Récupérer les photos chez les étudiants irlandais 
 - <b>0%</b>  - Faire la désinscription des étudiants et des entreprises *
 
