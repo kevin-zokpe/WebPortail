@@ -59,7 +59,7 @@
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
 										<li><a href="index.php?page=profile-student">Profil</a></li>
-										<li><a href="index.php?page=internship-request">Activer/Désactiver la recherche de stage</a></li>
+										<li><a href="index.php?page=internship-request">Ma recherche de stage <span data-toggle="tooltip" data-placement="bottom" title="Recherche <?php if(!$member->available){echo 'dés';} ?>activée" style="background: <?php if($member->available) {echo '#27ae60';} else {echo '#e74c3c';} ?>; display: inline-block; vertical-align: middle; margin-left: 10px; border-radius: 8px; height: 8px; width: 8px;"></span></a></li>
 										<li><a href="index.php?page=find-internship">Rechercher une entreprise</a></li>
 										<?php if (App::isAdmin()) : ?>
 											<li class="divider" role="separator"></li>
