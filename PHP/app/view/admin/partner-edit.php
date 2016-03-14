@@ -92,13 +92,13 @@
 
 					<form action="index.php?page=admin/partner-edit&amp;id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
-							<label for="partner-last-name">Nom</label>
-							<input type="text" class="form-control" id="partner-name" required="required" value="<?php echo $partner->name; ?>" name="name" placeholder="Nom du partenaire">
+							<label for="partner-logo">Logo</label>
+							<input type="file" id="partner-logo" value="<?php echo $partner->logo; ?>" name="logo" placeholder="Logo du partenaire">
 						</div>
 
 						<div class="form-group">
-							<label for="partner-logo">Logo</label>
-							<input type="file" id="partner-logo" value="<?php echo $partner->logo; ?>" name="logo" placeholder="Logo du partenaire">
+							<label for="partner-last-name">Nom</label>
+							<input type="text" class="form-control" id="partner-name" required="required" value="<?php echo $partner->name; ?>" name="name" placeholder="Nom du partenaire">
 						</div>
 
 						<div class="form-group">
