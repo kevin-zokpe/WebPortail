@@ -30,39 +30,39 @@
 									));
 									
 									if ($sth) {
-										App::success('L\'entreprise à bien été ajoutée.');
+										$msg->success('L\'entreprise à bien été ajoutée. <br /> Son mot de passe est le vôtre. <br /> Vous pourez le changer ultérieurement');
 									}
 								
 								else {
-									App::error('L\'en n\'a pas été ajoutée');
+									$msg->error('L\'en n\'a pas été ajoutée','index.php?page=admin/add-company');
 								}
 							}
 
 							else {
-								App::error('Vous devez renseigner un site internet');
+								$msg->error('Vous devez renseigner un site internet','index.php?page=admin/add-company');
 							}
 						}
 
 						else {
-							App::error('Vous devez renseigner une description');
+							$msg->error('Vous devez renseigner une description','index.php?page=admin/add-company');
 						}
 					}
 
 					else {
-						App::error('Vous devez renseigner la ville');
+						$msg->error('Vous devez renseigner la ville','index.php?page=admin/add-company');
 					}
 				}
 
 				else {
-					App::error('Vous devez renseigner le pays');
+					$msg->error('Vous devez renseigner le pays','index.php?page=admin/add-company');
 				}
 			}
 			else {
-				App::error('Email manquant ou déjà existant');
+				$msg->error('Email manquant ou déjà existant','index.php?page=admin/add-company');
 			}
 		}
 		else {
-			App::error('Vous devez renseigner le nom de l\'entreprise');	
+			$msg->error('Vous devez renseigner le nom de l\'entreprise','index.php?page=admin/add-company');	
 		}
 	}
 

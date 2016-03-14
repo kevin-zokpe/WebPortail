@@ -96,3 +96,5 @@
 			</div>
 
 			<div class="row">
+
+			<?php $msg->display(); ?>
