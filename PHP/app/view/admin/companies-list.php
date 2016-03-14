@@ -58,7 +58,7 @@ if(App::isAdmin()){
 			}
 		?>
 	</table>
-	<a href="index.php?page=admin/create-company&amp;type=<?php echo $type; ?>" class="btn btn-primary">Ajouter une entreprise</a>
+	<a href="index.php?page=admin/add-company&amp;type=<?php echo $type; ?>" class="btn btn-primary">Ajouter une entreprise</a>
 	<?php
 			else:
 				echo 'Aucune entreprise n\'a été confirmée.';

@@ -3,7 +3,7 @@
 		$id = $_SESSION['id'];
 		$admin_password = Student::getStudentById($id)->password;
 
-		if (isset($_POST['create-company'])) {
+		if (isset($_POST['add-company'])) {
 			if (isset($_POST['name']) && !empty($_POST['name'])) {
 				if (isset($_POST['email']) && !empty($_POST['email']) && Company::checkEmailExist($_POST['email'])==false) {
 					if (isset($_POST['country']) && !empty($_POST['country'])) {
@@ -30,39 +30,39 @@
 									));
 									
 									if ($sth) {
-										App::success('Le stage à bien été ajouté.');
+										App::success('L\'entreprise à bien été ajoutée.');
 									}
 								
 								else {
-									App::error('Vous devez renseigner le domaine d\'activité du stage.');
+									App::error('L\'en n\'a pas été ajoutée');
 								}
 							}
 
 							else {
-								App::error('Vous devez renseigner la ville où se déroule le stage.');
+								App::error('Vous devez renseigner un site internet');
 							}
 						}
 
 						else {
-							App::error('Vous devez renseigner le code postal du lieu où se déroule le stage.');
+							App::error('Vous devez renseigner une description');
 						}
 					}
 
 					else {
-						App::error('Vous devez renseigner l\'adresse où se déroule le stage.');
+						App::error('Vous devez renseigner la ville');
 					}
 				}
 
 				else {
-					App::error('Vous devez renseigner la description du stage.');
+					App::error('Vous devez renseigner le pays');
 				}
 			}
 			else {
-				App::error('Vous devez renseigner le poste du stage.');
+				App::error('Email manquant ou déjà existant');
 			}
 		}
 		else {
-			App::error('Vous devez renseigner l\'entreprise.');	
+			App::error('Vous devez renseigner le nom de l\'entreprise');	
 		}
 	}
 
@@ -74,7 +74,7 @@
 				<div class="page-header">
 					<h1> Ajouter une entreprise </h1>
 				</div>
-					<form action="index.php?page=admin/create-company" method="POST">
+					<form action="index.php?page=admin/add-company" method="POST">
 
 							<div class="row">
 								<div class="col-md-12">
@@ -118,7 +118,7 @@
 									<input type="text" name="website" class="form-control" id="signup-website" placeholder="Site web" data-validation="length" data-validation-length="16-128" data-validation-error-msg="Vous devez entrer un site web !">
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary" name="create-company">Ajouter le stage</button>
+							<button type="submit" class="btn btn-primary" name="add-company">Ajouter le stage</button>
 						</form>
 			</div>
 		</div>
