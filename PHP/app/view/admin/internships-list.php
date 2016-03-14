@@ -72,7 +72,7 @@
 			?>
 		</tbody>
 	</table>
-	<a href="index.php?page=admin/create-internship&amp;country=<?php echo $country; ?>" class="btn btn-primary">Ajouter un stage</a>
+	<a href="index.php?page=admin/add-internship&amp;country=<?php echo $country; ?>" class="btn btn-primary">Ajouter un stage</a>
 </div>
 
 <script>
