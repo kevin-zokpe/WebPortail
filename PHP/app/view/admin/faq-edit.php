@@ -25,7 +25,7 @@
 				));
 			
 				if ($sth) {
-					App::success('Cette question a bien été modifiée.');
+					$msg->success('Cette question a bien été modifié.','index.php?page=admin/faq-list');
 				}
 			}
 			else{
