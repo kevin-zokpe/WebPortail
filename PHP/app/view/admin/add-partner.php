@@ -62,7 +62,7 @@
 			if ($sth) {
 				App::success('Ce partenaire a bien été ajouté.');
 			}
-		},'index.php?page=admin/add-partner'
+		}
 		else {
 			$msg->error('Veuillez entrer un nom valide pour ce partenaire.','index.php?page=admin/add-partner');
 		}
@@ -77,13 +77,13 @@
 
 					<form action="index.php?page=admin/add-partner" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
-							<label for="partner-last-name">Nom</label>
-							<input type="text" class="form-control" id="partner-name" required="required" name="name" placeholder="Nom du partenaire">
+							<label for="partner-logo">Logo</label>
+							<input type="file" id="partner-logo" name="logo" placeholder="Logo du partenaire">
 						</div>
 
 						<div class="form-group">
-							<label for="partner-logo">Logo</label>
-							<input type="file" id="partner-logo" name="logo" placeholder="Logo du partenaire">
+							<label for="partner-last-name">Nom</label>
+							<input type="text" class="form-control" id="partner-name" required="required" name="name" placeholder="Nom du partenaire">
 						</div>
 
 						<div class="form-group">

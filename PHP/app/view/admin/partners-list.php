@@ -16,8 +16,8 @@ if (App::isAdmin()) {
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Nom</th>
 				<th>Logo</th>
+				<th>Nom</th>
 				<th>Pays</th>
 				<th>Date</th>
 				<th></th>
@@ -27,8 +27,8 @@ if (App::isAdmin()) {
 		<?php
 			foreach (Partner::getPartnersList() as $partner) {
 				echo '<tr data-id=' . $partner->id . '>';
-					echo '<td>' . $partner->name . '</td>';
 					echo '<td><img alt="Aucun logo" src="' . $partner->logo . '" style="width:80px;"/></td>';
+					echo '<td>' . $partner->name . '</td>';
 					echo '<td>' . $partner->country . '</td>';
 					echo '<td>' . $partner->register_date . '</td>';	
 					echo '<td><a href="index.php?page=admin/partner-edit&amp;id=' . $partner->id . '" data-toggle="tooltip" title="Modifier"><i class="fa fa-pencil"></i></a></td>';
