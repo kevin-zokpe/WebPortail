@@ -28,7 +28,7 @@
 			));
 			
 			if ($sth) {
-				App::success('Ce stage a bien été modifiée.');
+				$msg->success('Ce stage a bien été modifié.','index.php?page=admin/internships-list');
 			}
 		}
 
