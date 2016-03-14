@@ -26,10 +26,9 @@ VALENTIN
 - <b>0%</b> - Logo (Etudiants, Entreprise)
 
 SONIA
-- <b>0%</b> - Rapport de projet
-- <b>0%</b> - Diapo de présentation ?
+- <b>40%</b> - Rapport de projet
+- <b>0%</b> - Diapo de présentation
 
 MIKHAIL
 - <b>0%</b> - Faire le pdf explicatif pour le prof
 - <b>0%</b> - Préparer les pages de traductions pour M.Clouet
-- <b>0%</b> - Mettre les mentions légales sur le site
