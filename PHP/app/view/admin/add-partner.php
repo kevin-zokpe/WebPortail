@@ -60,7 +60,7 @@
 			}
 			
 			if ($sth) {
-				App::success('Ce partenaire a bien été ajouté.');
+				$msg->success('Ce partenaire a bien été ajouté.','index.php?page=admin/partners-list');
 			}
 		}
 		else {
