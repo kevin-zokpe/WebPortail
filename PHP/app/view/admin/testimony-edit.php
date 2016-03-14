@@ -23,7 +23,7 @@
 				));
 			
 				if ($sth) {
-					App::success('Ce témoignage a bien été modifiée.');
+					$msg->success('Ce témoignage a bien été modifié.','index.php?page=admin/testimonials-list');
 				}
 			}
 			else{
