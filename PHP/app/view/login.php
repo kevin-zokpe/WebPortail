@@ -42,11 +42,11 @@
 								$_SESSION['type'] = $type;
 							}
 
-							App::redirect('index.php?page=home');
+							$msg->info('Vous êtes maintenant connecté.', 'index.php?page=home');
 						}
 
 						else {
-							$msg->error('Votre compte n\'a pas encore été confirmé par l\'administrateur.','index.php?page=login');
+							$msg->error('Votre compte n\'a pas encore été confirmé par l\'administrateur.', 'index.php?page=login');
 						}
 					}
 
