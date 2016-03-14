@@ -22,7 +22,7 @@
 				));
 			
 				if ($sth) {
-					App::success('Ce témoignage a bien été ajoutée.');
+					$msg->success('Ce témoignage a bien été ajouté','index.php?page=admin/testimonials-list');
 				}
 			}
 			
