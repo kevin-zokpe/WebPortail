@@ -107,4 +107,10 @@
 			</div>
 		</nav>
 
-		<?php $msg->display(); ?>
+		<?php if ($msg->hasMessages()) { ?>
+			<div id="notification">
+				<div class="container">
+					<?php $msg->display(); ?>
+				</div>
+			</div>
+		<?php } ?>
