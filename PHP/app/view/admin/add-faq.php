@@ -23,7 +23,7 @@
 				));
 			
 				if ($sth) {
-					App::success('Cette question a bien été ajoutée.');
+					$msg->success('Cette question a bien été ajouté.','index.php?page=admin/faq-list');
 				}
 			}
 			
