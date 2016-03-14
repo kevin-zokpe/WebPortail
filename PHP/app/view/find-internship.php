@@ -37,6 +37,7 @@
 								<option value="" disabled selected>Domaine de compétence</option>
 								<?php
 									foreach (Skill::getSkillsList() as $skill) {
+										
 										echo '<option value="' . $skill->id . '">' . $skill->name . '</option>';
 									}
 								?>

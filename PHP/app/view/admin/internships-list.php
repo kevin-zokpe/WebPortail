@@ -10,14 +10,14 @@
 		<h1>
 			Stages disponibles en
 			<?php
-				if ($country == 'France') {
+				if ($country == 'Irlande') {
 					echo '<small> France </small>';
-					echo '<a href="index.php?page=admin/internships-list&country=Irlande" class="btn btn-primary pull-right">Voir la liste des stages en Irlande</a>';
+					echo '<a href="index.php?page=admin/internships-list&country=France" class="btn btn-primary pull-right">Voir la liste des stages en France <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
 				}
 
 				else {
 					echo '<small>Irlande</small>';
-					echo '<a href="index.php?page=admin/internships-list&country=France" class="btn btn-primary pull-right">Voir la liste des stages en France</a>';
+					echo '<a href="index.php?page=admin/internships-list&country=Irlande" class="btn btn-primary pull-right">Voir la liste des stages en Irlande <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
 				}
 			?>
 		</h1>
@@ -31,7 +31,7 @@
 				<th>Domaine</th>
 				<th>Adresse</th>
 				<th>Ville</th>
-				<th>Code postale</th>
+				<th>Code postal</th>
 				<th></th>
 				<th></th>
 			</tr>
