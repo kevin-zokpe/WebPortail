@@ -76,7 +76,7 @@
 			}
 
 			else {
-				$msg->error('Veuillez entrer un nom valide pour ce partenaire'),'index.php?page=admin/partner-edit';
+				$msg->error('Veuillez entrer un nom valide pour ce partenaire', 'index.php?page=admin/partner-edit');
 			}
 		}
 
