@@ -9,16 +9,16 @@
 			}
 
 			else {
-				App::error('Erreur lors de la validation de l\'étudiant');
+				$msg->error('Erreur lors de la validation de l\'étudiant','index.php?page=admin/students-list&type=awaiting');
 			}
 		}
 
 		else {
-			App::error('Cet étudiant a déjà été confirmé');
+			$msg->error('Cet étudiant a déjà été confirmé','index.php?page=admin/students-list&type=awaiting');
 		}
 	}
 
 	else {
-		App::redirect('index.php?page=admin/students-list');
+		App::redirect('index.php?page=admin/students-list&type=awaiting');
 	}
 ?>

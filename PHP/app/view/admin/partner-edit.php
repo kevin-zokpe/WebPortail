@@ -61,10 +61,10 @@
 						}
 						else {
 							if ($file_ext != '.jpg' && $file_ext != '.png'){							
-								App::error('Le logo doit être au format JPG ou PNG');
+								$msg->error('Le logo doit être au format JPG ou PNG','index.php?page=admin/partner-edit');
 							}
 							if ($file_size > $max_file_size){							
-								App::error('Le logo est trop lourd, choisissez un autre fichier');
+								$msg->error('Le logo est trop lourd, choisissez un autre fichier','index.php?page=admin/partner-edit');
 							}
 						}	
 					}
@@ -76,7 +76,7 @@
 			}
 
 			else {
-				App::error('Veuillez entrer un nom valide pour ce partenaire');
+				$msg->error('Veuillez entrer un nom valide pour ce partenaire'),'index.php?page=admin/partner-edit';
 			}
 		}
 

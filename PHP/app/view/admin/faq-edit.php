@@ -31,11 +31,11 @@
 			else{
 
 				if(!isset($_POST['question']){
-					App::error('Veuillez entrer une question.');
+					$msg->error('Veuillez entrer une question.','index.php?page=admin/faq-edit');
 				}
 
 				if(!isset($_POST['answer']){
-					App::error('Veuillez entrer une réponse.');
+					$msg->error('Veuillez entrer une réponse.','index.php?page=admin/faq-edit');
 				}
 			}
 		}

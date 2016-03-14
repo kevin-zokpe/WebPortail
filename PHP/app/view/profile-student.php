@@ -12,7 +12,8 @@
 							App::success('Votre mot de passe a bien été modifié');
 						}
 						else{
-							App::error('Veuillez entrer un nouveau mot de passe approprié');
+							$msg->error('Veuillez entrer un nouveau mot de passe approprié','index.php?page=profile-student'
+);
 						}	
 					}
 
@@ -22,7 +23,7 @@
 							App::success('Votre portfolio a bien été modifié');
 						}
 						else{
-							App::error('Veuillez entrer un url approprié');
+							$msg->error('Veuillez entrer un url approprié','index.php?page=profile-student');
 						}	
 					}
 
@@ -45,22 +46,22 @@
 						}
 						else{
 							if($file_ext != '.pdf'){							
-								App::error('Votre CV doit être au format PDF');
+								$msg->error('Votre CV doit être au format PDF','index.php?page=profile-student');
 							}
 							if($file_size > $max_file_size){							
-								App::error('Votre CV est trop lourd, choisissez un autre fichier');
+								$msg->error('Votre CV est trop lourd, choisissez un autre fichier','index.php?page=profile-student');
 							}
 						}	
 					}
 				}
 
 				else {
-					echo App::error('Le mot de passe entré est incorrect, veuillez réessayer');
+					echo $msg->error('Le mot de passe entré est incorrect, veuillez réessayer','index.php?page=profile-student');
 				}
 			}
 
 			else {
-				echo App::error('Les deux mots de passe ne correspondent pas');
+				echo $msg->error('Les deux mots de passe ne correspondent pas','index.php?page=profile-student');
 			}
 		else:
 ?>

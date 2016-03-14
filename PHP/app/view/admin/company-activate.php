@@ -9,16 +9,16 @@
 			}
 
 			else {
-				App::error('Erreur lors de la validation de l\'entreprise');
+				$msg->error('Erreur lors de la validation de l\'entreprise','index.php?page=admin/companies-list&type=awaiting');
 			}
 		}
 
 		else {
-			App::error('Cette entreprise a déjà été confirmée');
+			$msg->error('Cette entreprise a déjà été confirmée','index.php?page=admin/companies-list&type=awaiting');
 		}
 	}
 
 	else {
-		App::redirect('index.php?page=admin/students-list');
+		App::redirect('index.php?page=admin/companies-list&type=awaiting');
 	}
 ?>

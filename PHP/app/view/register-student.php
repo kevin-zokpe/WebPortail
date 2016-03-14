@@ -20,7 +20,7 @@
     	   	isset($_POST['portfolio']) &&
     	   	preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio']) && 
     	   	isset($_POST['accept_terms']) &&
-    	   	isset($_POST['g-recaptcha-response'])
+    	   	isset($_POST['g-recaptcha-response']),'index.php?page=register-student'
     	   ) {
     	        	    
 			try {
@@ -80,55 +80,55 @@
 			(!isset($_POST['skill']) || empty($_POST['skill'])) ||
 			(!isset($_FILES['cv'])) ||
 			(!isset($_POST['portfolio']) || empty($_POST['portfolio']))) {
-				App::error('Vous devez remplir tous les champs obligatoires');
+				$msg->error('Vous devez remplir tous les champs obligatoires','index.php?page=register-student');
 			}
 
 			if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name'])){
-				App::error("Veuillez entrer un prénom approprié");
+				$msg->error("Veuillez entrer un prénom approprié",'index.php?page=register-student');
 			}
 
 			if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['last_name'])){
-				App::error("Veuillez entrer un nom approprié");
+				$msg->error("Veuillez entrer un nom approprié",'index.php?page=register-student');
 			}
 
 			if (!preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
-				App::error("Veuillez entrer un email approprié");
+				$msg->error("Veuillez entrer un email approprié",'index.php?page=register-student');
 			}
 
 			if (Student::checkEmailExist($_POST['email'])==true){
-				App::error("Cette adresse email est déjà utilisée");
+				$msg->error("Cette adresse email est déjà utilisée",'index.php?page=register-student');
 			}
 
 			if (!preg_match("#^[a-zA-Z\@._-]{8}#", $_POST['password'])){
-				App::error("Veuillez entrer un mot de passe approprié");
+				$msg->error("Veuillez entrer un mot de passe approprié",'index.php?page=register-student');
 			}
 
 			if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio'])){
-				App::error("Veuillez entrer une adresse web appropriée");
+				$msg->error("Veuillez entrer une adresse web appropriée",'index.php?page=register-student');
 			}
 
 			if ($_POST['email']!=$_POST['email-confirm']){
-				App::error("L'adresse email doit correspondre");
+				$msg->error("L'adresse email doit correspondre",'index.php?page=register-student');
 			}
 
 			if ($_POST['password']!=$_POST['password-confirm']){
-				App::error("Le mot de passe doit correspondre");
+				$msg->error("Le mot de passe doit correspondre",'index.php?page=register-student');
 			}
 
 			if ($file_ext != '.pdf'){
-				App::error("Votre CV doit être au format PDF");
+				$msg->error("Votre CV doit être au format PDF",'index.php?page=register-student');
 			}
 
 			if ($file_size > $max_file_size){
-				App::error("Votre CV est trop lourd, choisissez un autre fichier");
+				$msg->error("Votre CV est trop lourd, choisissez un autre fichier",'index.php?page=register-student');
 			}
 
 			if (!isset($_POST['accept_terms'])){
-				App::error("Vous devez accepter les conditions d'utilisation");
+				$msg->error("Vous devez accepter les conditions d'utilisation",'index.php?page=register-student');
 			}
 
 			if (!isset($_POST['g-recaptcha-response'])){
-				App::error("Vous devez confirmer que vous n'êtes pas un robot");
+				$msg->error("Vous devez confirmer que vous n'êtes pas un robot",'index.php?page=register-student');
 			}
 		}
 	}

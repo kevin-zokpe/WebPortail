@@ -11,7 +11,7 @@
 							App::success('Votre mot de passe a bien été modifié');
 						}
 						else{
-							App::error('Veuillez entrer un nouveau mot de passe approprié');
+							$msg->error('Veuillez entrer un nouveau mot de passe approprié','index.php?page=profile-company');
 						}	
 					}
 
@@ -35,11 +35,11 @@
 					}
 				}
 				else {
-					echo App::error('Le mot de passe entré est incorrect, veuillez réessayer.');
+					echo $msg->error('Le mot de passe entré est incorrect, veuillez réessayer.','index.php?page=profile-company');
 				}
 			}
 			else {
-				echo App::error('Les deux mots de passes ne correspondent pas');
+				echo $msg->error('Les deux mots de passes ne correspondent pas','index.php?page=profile-company');
 			}
 		else:
 ?>

@@ -33,32 +33,32 @@
 								}
 
 								else {
-									App::error('Vous devez renseigner le domaine d\'activité du stage.');
+									$msg->error('Vous devez renseigner le domaine d\'activité du stage.','index.php?page=create-internship');
 								}
 							}
 
 							else {
-								App::error('Vous devez renseigner la ville où se déroule le stage.');
+								$msg->error('Vous devez renseigner la ville où se déroule le stage.','index.php?page=create-internship');
 							}
 						}
 
 						else {
-							App::error('Vous devez renseigner le code postal du lieu où se déroule le stage.');
+							$msg->error('Vous devez renseigner le code postal du lieu où se déroule le stage.','index.php?page=create-internship');
 						}
 					}
 
 					else {
-						App::error('Vous devez renseigner l\'adresse où se déroule le stage.');
+						$msg->error('Vous devez renseigner l\'adresse où se déroule le stage.','index.php?page=create-internship');
 					}
 				}
 
 				else {
-					App::error('Vous devez renseigner la description du stage.');
+					$msg->error('Vous devez renseigner la description du stage.','index.php?page=create-internship');
 				}
 			}
 
 			else {
-				App::error('Vous devez renseigner l\'intitulé du stage.');
+				$msg->error('Vous devez renseigner l\'intitulé du stage.','index.php?page=create-internship');
 			}
 		}
 

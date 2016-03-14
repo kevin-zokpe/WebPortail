@@ -51,43 +51,43 @@
 			(!isset($_POST['country']) || empty($_POST['country'])) ||
 			(!isset($_POST['description'])) ||
 			(!isset($_POST['website']))){
-				App::error('Vous devez remplir tous les champs obligatoires');
+				$msg->error('Vous devez remplir tous les champs obligatoires','index.php?page=register-company');
 			}
 
 			if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name'])){
-				App::error("Veuillez entrer un nom approprié");
+				$msg->error("Veuillez entrer un nom approprié",'index.php?page=register-company');
 			}
 
 			if (!preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
-				App::error("Veuillez entrer un email approprié");
+				$msg->error("Veuillez entrer un email approprié",'index.php?page=register-company');
 			}
 
 			if (Company::checkEmailExist($_POST['email'])==true){
-				App::error("Cette adresse email est déjà utilisée");
+				$msg->error("Cette adresse email est déjà utilisée",'index.php?page=register-company');
 			}
 
 			if (!preg_match("#^[a-zA-Z\@._-]{8}#", $_POST['password'])){
-				App::error("Veuillez entrer un mot de passe approprié");
+				$msg->error("Veuillez entrer un mot de passe approprié",'index.php?page=register-company');
 			}
 
 			if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website'])){
-				App::error("Veuillez entrer une adresse web appropriée");
+				$msg->error("Veuillez entrer une adresse web appropriée",'index.php?page=register-company');
 			}
 
 			if ($_POST['email']!=$_POST['email-confirm']){
-				App::error("L'adresse email doit correspondre");
+				$msg->error("L'adresse email doit correspondre",'index.php?page=register-company');
 			}
 
 			if ($_POST['password']!=$_POST['password-confirm']){
-				App::error("Le mot de passe doit correspondre");
+				$msg->error("Le mot de passe doit correspondre",'index.php?page=register-company');
 			}
 
 			if (!isset($_POST['accept_terms'])){
-				App::error("Vous devez accepter les conditions d'utilisation");
+				$msg->error("Vous devez accepter les conditions d'utilisation",'index.php?page=register-company');
 			}
 
 			if (!isset($_POST['g-recaptcha-response'])){
-				App::error("Vous devez confirmer que vous n'êtes pas un robot");
+				$msg->error("Vous devez confirmer que vous n'êtes pas un robot",'index.php?page=register-company');
 			}
 		}
 	}

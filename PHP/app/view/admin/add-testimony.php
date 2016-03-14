@@ -29,11 +29,11 @@
 			else {
 
 				if(!isset($_POST['author']) || !preg_match("#^[a-zA-Z0-9._-]{2,64}#", $_POST['author'])){
-					App::error("Veuillez entrer un nom d'auteur valide.");
+					$msg->error("Veuillez entrer un nom d'auteur valide.",'index.php?page=admin/add-testimony');
 				}
 
 				if(!isset($_POST['description'])){
-					App::error('Veuillez entrer une description.');
+					$msg->error('Veuillez entrer une description.','index.php?page=admin/add-testimony');
 				}
 			}
 		}
