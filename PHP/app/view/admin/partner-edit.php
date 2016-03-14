@@ -56,7 +56,7 @@
 							));
 
 							if ($stt) {
-         						App::success('Le logo du partenaire a bien été modifié.');
+         						$msg->success('Le logo du partenaire a bien été modifié.','index.php?page=admin/partners-list');
          					}
 						}
 						else {
@@ -70,7 +70,7 @@
 					}
 					else {
 						if ($sth) {
-							App::success('Ce partenaire a bien été modifié.');
+							$msg->success('Ce partenaire a bien été modifié.','index.php?page=admin/partners-list');
 						}
 					}
 			}
