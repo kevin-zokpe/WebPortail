@@ -29,7 +29,7 @@
 									));
 									
 									if ($sth) {
-										App::success('Le stage à bien été ajouté.');
+										$msg->success('Le stage à bien été ajouté.','index.php?page=admin/internship-list');
 									}
 								}
 
