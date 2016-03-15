@@ -45,7 +45,7 @@ if (App::isAdmin()) {
 			</thead>
 			<?php
 				foreach (Student::getActivatedStudents(true) as $student) {
-					echo '<tr>';
+					echo '<tr data-id="' . $student->id . '">';
 						echo '<td>' . $student->last_name . '</td>';
 						echo '<td>' . $student->first_name . '</td>';
 						echo '<td>' . $student->country . '</td>';
