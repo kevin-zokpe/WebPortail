@@ -195,5 +195,20 @@
 			return $sth;
 		}
 
+		public static function deleteStudent($id) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'DELETE FROM student WHERE id = :id';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
+			$sth->execute(array(
+				':id' => $id
+			));
+
+			$folder = "../../uploads/cv";
+          		$file = $folder . '/' . $id . '.pdf';
+          		if(file_exists($file)) unlink($file);
+		}
+
 	}
 ?>
