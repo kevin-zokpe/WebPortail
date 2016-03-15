@@ -41,7 +41,7 @@
           					if(file_exists($file)) unlink($file);
          					move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
-         					PDOConnexion::setParameters('phonedeals', 'root', 'root');
+         					PDOConnexion::setParameters('stages', 'root', 'root');
 							$dbh = PDOConnexion::getInstance();
 							$req = "
 								UPDATE partner
