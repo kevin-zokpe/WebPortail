@@ -42,7 +42,7 @@
 					':portfolio' => $_POST['portfolio']
 				));
 
-				$id_stud = Student::getStudentIDByEmail($email);
+				$id_stud = Student::getStudentIDByEmail($_POST['email']);
 
           		$folder = "uploads/cv";
           		$file = $folder . '/' . $id_stud->id . '.pdf';
