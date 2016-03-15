@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
+		<meta name="description" content="<?php echo Settings::getWebsiteDescription(); ?>">
 		<link rel="icon" href="img/favicon.png">
-		<title><?php echo App::$siteTitle; ?></title>
+		<title><?php echo Settings::getWebsiteName(); ?></title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 		
@@ -27,7 +27,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.php?page=home"><img src="img/logo.png" alt="Logo" style="float: left; margin-right: 10px; width: 20px;"><?php echo App::$siteTitle; ?></a>
+					<a class="navbar-brand" href="index.php?page=home"><img src="img/logo.png" alt="Logo" style="float: left; margin-right: 10px; width: 20px;"><?php echo Settings::getWebsiteName(); ?></a>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
