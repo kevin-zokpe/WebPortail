@@ -61,7 +61,7 @@ if (App::isAdmin()) {
 						}
 						echo '<td>' . $student->register_date . '</td>';
 						echo '<td><a href="index.php?page=admin/student-edit&amp;id=' . $student->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash" data-action="delete" data-toggle="tooltip" title="Supprimer"></i></a></td>';
+						echo '<td><a href="#" title="Supprimer" data-action="delete" data-toggle="tooltip" title="Supprimer"><i class="fa fa-trash"></i></a></td>';
 					echo '</tr>';
 				}
 			?>
@@ -101,7 +101,7 @@ if (App::isAdmin()) {
 						echo '<td><a href="index.php?page=admin/student-activate&amp;id=' . $student->id . '"><i class="fa fa-check" data-toggle="tooltip" title="Activer"></i></a></td>';
 						
 						echo '<td><a href="index.php?page=admin/student-edit&amp;id=' . $student->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
-						echo '<td><a href="#"><i class="fa fa-trash" data-action="delete" data-toggle="tooltip" title="Supprimer"></i></a></td>';
+						echo '<td><a href="#" title="Supprimer" data-action="delete" data-toggle="tooltip" title="Supprimer"><i class="fa fa-trash"></i></a></td>';
 					echo '</tr>';
 				}
 			?>
