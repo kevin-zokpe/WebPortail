@@ -7,7 +7,7 @@
 						<a href="index.php?page=about">À propos</a>
 					</div>
 					<div class="col-md-4 text-right">
-						Copyright &copy; <?php echo date('Y') . ' <a href="index.php?page=home">' . App::$siteTitle . '</a>'; ?>
+						Copyright &copy; <?php echo date('Y') . ' <a href="index.php?page=home">' . Settings::getWebsiteName() . '</a>'; ?>
 					</div>
 				</div>
 			</div>
