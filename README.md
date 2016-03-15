@@ -23,7 +23,7 @@ AK
 VALENTIN
 - <b>100%</b> - CV étudiants (Modification, Suppression)
 - <b>0%</b> - Créer une page d'ajout de témoignage
-- <b>0%</b> - Logo (Etudiants, Entreprise)
+- <b>0%</b> - Logo (Entreprise)
 
 SONIA
 - <b>40%</b> - Rapport de projet
