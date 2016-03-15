@@ -20,8 +20,7 @@
     	   	isset($_POST['portfolio']) &&
     	   	preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio']) && 
     	   	isset($_POST['accept_terms']) &&
-    	   	isset($_POST['g-recaptcha-response']),'index.php?page=register-student'
-    	   ) {
+    	   	isset($_POST['g-recaptcha-response'])) {
     	        	    
 			try {
 
