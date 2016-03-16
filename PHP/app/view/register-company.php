@@ -19,8 +19,7 @@
     	   	isset($_POST['country'] ) && !empty($_POST['country']) &&
     	   	isset($_POST['city']) && !empty($_POST['city']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city']) &&
     	   	isset($_POST['description']) && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['description']) &&
-    	   	isset($_POST['website']) && 
-    	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website']) && 
+   	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website']) && 
     	   	isset($_POST['accept_terms']) &&
     	   	isset($_POST['g-recaptcha-response'])
     	   ) {
@@ -92,8 +91,7 @@
 			(!isset($_POST['password']) || empty($_POST['password'])) ||
 			(!isset($_POST['password-confirm']) || empty($_POST['password-confirm'])) ||
 			(!isset($_POST['country']) || empty($_POST['country'])) ||
-			(!isset($_POST['description'])) ||
-			(!isset($_POST['website']))){
+			(!isset($_POST['description']))){
 				$msg->error('Vous devez remplir tous les champs obligatoires','index.php?page=register-company');
 			}
 
