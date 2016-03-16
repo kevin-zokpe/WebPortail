@@ -139,6 +139,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `tag` varchar(64) NOT NULL,
   `value` varchar(256) NOT NULL,
   `placeholder` varchar(128) NOT NULL,
+  `data_type` enum('varchar','int','boolean') NOT NULL DEFAULT 'varchar'
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
@@ -146,13 +147,13 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Contenu de la table `settings`
 --
 
-INSERT INTO `settings` (`id`, `tag`, `value`, `placeholder`) VALUES
-(1, 'website_name', 'Web Portal', 'Titre du site'),
-(2, 'website_description', 'Lorem ipsum dolor sit amet', 'Description du site'),
-(3, 'notification_email', 'hadriien@live.fr', 'Email recevant les notifications'),
-(4, 'activate_notification', 'true', 'Activer les notifications'),
-(5, 'recaptcha_public_key', '6Lc2cBoTAAAAAF9TTSA9CRMbg-jss8X-CmDy_eXI', 'Clé publique Recaptcha'),
-(6, 'recaptcha_private_key', '6Lc2cBoTAAAAAFUipDOigbn4PrJIScG6bwUqWbTQ', 'Clé privée Recaptcha');
+INSERT INTO `settings` (`id`, `tag`, `value`, `placeholder`, `data_type`) VALUES
+(1, 'website_name', 'Web Portal', 'Titre du site', 'varchar'),
+(2, 'website_description', 'Lorem ipsum dolor sit amet', 'Description du site', 'varchar'),
+(3, 'notification_email', 'hadriien@live.fr', 'Email recevant les notifications', 'varchar'),
+(4, 'activate_notification', 'true', 'Activer les notifications', 'boolean'),
+(5, 'recaptcha_public_key', '6Lc2cBoTAAAAAF9TTSA9CRMbg-jss8X-CmDy_eXI', 'Clé publique Recaptcha', 'varchar'),
+(6, 'recaptcha_private_key', '6Lc2cBoTAAAAAFUipDOigbn4PrJIScG6bwUqWbTQ', 'Clé privée Recaptcha', 'varchar');
 
 -- --------------------------------------------------------
 
