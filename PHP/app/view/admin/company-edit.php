@@ -1,5 +1,5 @@
 <?php
-	if (isset($_GET['id']) && !empty($_GET['id']) && App::isAdmin()) {
+	if (isset($_GET['id']) && !empty($_GET['id']) && App::isAdmin()){
 		$id = htmlentities($_GET['id']);
 		$company = Company::getCompanyById($id);
 
@@ -46,7 +46,7 @@
 					':activated' => $_POST['activated']
 				));
 
-				if(isset($_FILES['logo'])){
+				if(isset($_FILES['logo']) && $_FILES['logo']['name']!=''){
 					if($file_ext == '.jpg' || $file_ext == '.png'){
 						if($file_size < $max_file_size){
 
@@ -81,12 +81,15 @@
 					}
 				}
 				else{
+
 					if ($sth) {
 						$msg->success('Cette entreprise a bien été modifié.','index.php?page=admin/companies-list');
 					}
+
 				}
 			}
 			else {
+				
 				if ((!isset($_POST['name']) || empty($_POST['name'])) || 
 				(!isset($_POST['city']) || empty($_POST['city'])) ||
 				(!isset($_POST['email']) || empty($_POST['email'])) ||
@@ -107,8 +110,13 @@
 					$msg->error("Veuillez entrer une adresse web appropriée",'index.php?page=admin/company-edit&amp;id='. $id);
 				}
 
+				if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city'])){
+					$msg->error('Veuillez entrer une ville valide','index.php?page=admin/company-edit&amp;id=' . $id);
+				}
+
 			}
 		}
+
 
 		if ($company) :
 ?>
@@ -148,7 +156,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<label for="signup-logo">Logo</label>
-								<input type="file" name="logo" id="signup-logo" placeholder="Insérer votre logo" required="required" data-validation-error-msg="Vous devez insérer un logo !">
+								<input type="file" name="logo" id="signup-logo" placeholder="Insérer votre logo" data-validation-error-msg="Vous devez insérer un logo !">
 							</div>
 						</div>
 
