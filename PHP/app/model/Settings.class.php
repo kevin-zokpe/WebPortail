@@ -4,6 +4,7 @@
 		private $tag;
 		private $value;
 		private $placeholder;
+		private $data_type;
 
 		public function __construct(array $args = array()) {
 			if (!empty($args)) {
@@ -30,6 +31,19 @@
 			$sth->execute();
 			
 			return $sth->fetchAll();
+		}
+
+		public static function getSettingById($id) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT * FROM settings WHERE id = :id';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':id' => $id
+			));
+			
+			return $sth->fetch();
 		}
 
 		public static function getWebsiteName() {
