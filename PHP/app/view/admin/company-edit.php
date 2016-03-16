@@ -1,12 +1,12 @@
 <?php
-	if (isset($_GET['id']) && !empty($_GET['id']) && App::isAdmin()){
+	if (isset($_GET['id']) && !empty($_GET['id']) && App::isAdmin()) {
 		$id = htmlentities($_GET['id']);
 		$company = Company::getCompanyById($id);
 
 		if (isset($_POST['edit'])) {
 			$_POST['activated'] = (isset($_POST['activated'])) ? true : false;
 
-			if(isset($_FILES['logo'])){
+			if (isset($_FILES['logo'])){
 				$my_file = basename($_FILES['logo']['name']);
 				$max_file_size = 6000000;
 				$file_size = filesize($_FILES['logo']['tmp_name']);
@@ -46,15 +46,19 @@
 					':activated' => $_POST['activated']
 				));
 
-				if(isset($_FILES['logo']) && $_FILES['logo']['name']!=''){
-					if($file_ext == '.jpg' || $file_ext == '.png'){
-						if($file_size < $max_file_size){
-
-          					$folder = "uploads/companies";
-          					if($file_ext == '.jpg')
-        			  			$file = $folder . '/' . $id . '.jpg';
-        			  		if($file_ext == '.png')
+				if (isset($_FILES['logo']) && $_FILES['logo']['name']!=''){
+					if ($file_ext == '.jpg' || $file_ext == '.png') {
+						if ($file_size < $max_file_size) {
+          					$folder = 'uploads/companies';
+          					
+          					if ($file_ext == '.jpg') {
+          						$file = $folder . '/' . $id . '.jpg';
+          					}
+        			  			
+        			  		if ($file_ext == '.png') {
         			  			$file = $folder . '/' . $id . '.png';
+        			  		}
+        			  			
         			 		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
         			 		PDOConnexion::setParameters('stages', 'root', 'root');
@@ -68,55 +72,54 @@
 							));
 
 							if ($stt) {
-         						$msg->success("L'entreprise a bien été modifié.",'index.php?page=admin/companies-list');
+         						$msg->success("L'entreprise a bien été modifié.", 'index.php?page=admin/companies-list');
          					}
 
 						}
 						else{
-							$msg->error("Votre logo est trop lourd, choisissez un autre fichier",'index.php?page=admin/company-edit&amp;id='. $id);
+							$msg->error("Votre logo est trop lourd, choisissez un autre fichier", 'index.php?page=admin/company-edit&amp;id=' . $id);
 						}
 					}
-					else{
-						$msg->error("Le logo doit être au format JPG ou PNG",'index.php?page=admin/company-edit&amp;id='. $id);
+
+					else {
+						$msg->error("Le logo doit être au format JPG ou PNG", 'index.php?page=admin/company-edit&amp;id=' . $id);
 					}
 				}
-				else{
 
+				else {
 					if ($sth) {
-						$msg->success('Cette entreprise a bien été modifié.','index.php?page=admin/companies-list');
+						$msg->success('Cette entreprise a bien été modifié.', 'index.php?page=admin/companies-list');
 					}
 
 				}
 			}
+
 			else {
-				
 				if ((!isset($_POST['name']) || empty($_POST['name'])) || 
 				(!isset($_POST['city']) || empty($_POST['city'])) ||
 				(!isset($_POST['email']) || empty($_POST['email'])) ||
 				(!isset($_POST['country']) || empty($_POST['country'])) ||
-				(!isset($_POST['description']))){
-					$msg->error('Vous devez remplir tous les champs obligatoires','index.php?page=admin/company-edit&amp;id='. $id);
+				(!isset($_POST['description']))) {
+					$msg->error('Vous devez remplir tous les champs obligatoires', 'index.php?page=admin/company-edit&id='. $id);
 				}
 
 				if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name'])){
-					$msg->error("Veuillez entrer un nom approprié",'index.php?page=admin/company-edit&amp;id='. $id);
+					$msg->error("Veuillez entrer un nom approprié", 'index.php?page=admin/company-edit&id='. $id);
 				}
 
 				if (!preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
-					$msg->error("Veuillez entrer un email approprié",'index.php?page=admin/company-edit&amp;id='. $id);
+					$msg->error('Veuillez entrer un email approprié', 'index.php?page=admin/company-edit&id=' . $id);
 				}
 
 				if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website'])){
-					$msg->error("Veuillez entrer une adresse web appropriée",'index.php?page=admin/company-edit&amp;id='. $id);
+					$msg->error("Veuillez entrer une adresse web appropriée", 'index.php?page=admin/company-edit&id='. $id);
 				}
 
 				if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city'])){
-					$msg->error('Veuillez entrer une ville valide','index.php?page=admin/company-edit&amp;id=' . $id);
+					$msg->error('Veuillez entrer une ville valide', 'index.php?page=admin/company-edit&id=' . $id);
 				}
-
 			}
 		}
-
 
 		if ($company) :
 ?>
