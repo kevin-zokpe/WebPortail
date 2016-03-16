@@ -15,7 +15,6 @@
 
 			if (isset($_POST['name']) && !empty($_POST['name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
     			isset($_POST['email']) && !empty($_POST['email']) && preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
-    		   	Company::checkEmailExist($_POST['email'])==false &&
     		   	isset($_POST['country'] ) && !empty($_POST['country']) &&
     		   	isset($_POST['city']) && !empty($_POST['city']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city']) &&
     		   	isset($_POST['description']) && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['description']) &&
@@ -51,13 +50,11 @@
 					if($file_ext == '.jpg' || $file_ext == '.png'){
 						if($file_size < $max_file_size){
 
-							$id_company = Company::getCompanyIDByEmail($_POST['email']);
-
           					$folder = "uploads/companies";
           					if($file_ext == '.jpg')
-        			  			$file = $folder . '/' . $id_company->id . '.jpg';
+        			  			$file = $folder . '/' . $id . '.jpg';
         			  		if($file_ext == '.png')
-        			  			$file = $folder . '/' . $id_company->id . '.png';
+        			  			$file = $folder . '/' . $id . '.png';
         			 		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
         			 		PDOConnexion::setParameters('stages', 'root', 'root');
@@ -67,20 +64,20 @@
 							$stt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
 							$stt->execute(array(
 								':logo' => $file,
-								':id' => $id_company->id
+								':id' => $id
 							));
 
 							if ($stt) {
-         						$msg->success("L'entreprise a bien été modifié.','index.php?page=admin/companies-list");
+         						$msg->success("L'entreprise a bien été modifié.",'index.php?page=admin/companies-list');
          					}
 
 						}
 						else{
-							$msg->error("Votre logo est trop lourd, choisissez un autre fichier",'index.php?page=register-company');
+							$msg->error("Votre logo est trop lourd, choisissez un autre fichier",'index.php?page=admin/company-edit&amp;id='. $id);
 						}
 					}
 					else{
-						$msg->error("Le logo doit être au format JPG ou PNG",'index.php?page=register-company');
+						$msg->error("Le logo doit être au format JPG ou PNG",'index.php?page=admin/company-edit&amp;id='. $id);
 					}
 				}
 				else{
@@ -95,23 +92,19 @@
 				(!isset($_POST['email']) || empty($_POST['email'])) ||
 				(!isset($_POST['country']) || empty($_POST['country'])) ||
 				(!isset($_POST['description']))){
-					$msg->error('Vous devez remplir tous les champs obligatoires','index.php?page=register-company');
+					$msg->error('Vous devez remplir tous les champs obligatoires','index.php?page=admin/company-edit&amp;id='. $id);
 				}
 
 				if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name'])){
-					$msg->error("Veuillez entrer un nom approprié",'index.php?page=register-company');
+					$msg->error("Veuillez entrer un nom approprié",'index.php?page=admin/company-edit&amp;id='. $id);
 				}
 
 				if (!preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
-					$msg->error("Veuillez entrer un email approprié",'index.php?page=register-company');
-				}
-
-				if (Company::checkEmailExist($_POST['email'])==true){
-					$msg->error("Cette adresse email est déjà utilisée",'index.php?page=register-company');
+					$msg->error("Veuillez entrer un email approprié",'index.php?page=admin/company-edit&amp;id='. $id);
 				}
 
 				if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website'])){
-					$msg->error("Veuillez entrer une adresse web appropriée",'index.php?page=register-company');
+					$msg->error("Veuillez entrer une adresse web appropriée",'index.php?page=admin/company-edit&amp;id='. $id);
 				}
 
 			}
