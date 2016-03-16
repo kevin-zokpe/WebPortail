@@ -56,7 +56,7 @@
 							));
 
 							if ($stt) {
-         						$msg->success('Le logo du partenaire a bien été modifié.','index.php?page=admin/partners-list');
+         						$msg->success('Le partenaire a bien été modifié.','index.php?page=admin/partners-list');
          					}
 						}
 						else {
