@@ -40,6 +40,19 @@
 			return $sth->fetch();
 		}
 
+		public static function getCompanyIDByEmail($email) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT id FROM company WHERE email = :email';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute(array(
+				':email' => $email
+			));
+			
+			return $sth->fetch();
+		}
+
 		public static function checkEmailExist($email) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
