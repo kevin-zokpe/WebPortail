@@ -61,10 +61,10 @@
 						}
 						else {
 							if ($file_ext != '.jpg' && $file_ext != '.png'){							
-								$msg->error('Le logo doit être au format JPG ou PNG','index.php?page=admin/partner-edit&amp;id='. $id);
+								$msg->error('Le logo doit être au format JPG ou PNG','index.php?page=admin/partner-edit&id='. $id);
 							}
 							if ($file_size > $max_file_size){							
-								$msg->error('Le logo est trop lourd, choisissez un autre fichier','index.php?page=admin/partner-edit&amp;id='. $id);
+								$msg->error('Le logo est trop lourd, choisissez un autre fichier','index.php?page=admin/partner-edit&id='. $id);
 							}
 						}	
 					}
@@ -76,7 +76,7 @@
 			}
 
 			else {
-				$msg->error('Veuillez entrer un nom valide pour ce partenaire', 'index.php?page=admin/partner-edit&amp;id='. $id);
+				$msg->error('Veuillez entrer un nom valide pour ce partenaire', 'index.php?page=admin/partner-edit&id='. $id);
 			}
 		}
 
