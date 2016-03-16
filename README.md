@@ -11,7 +11,7 @@ Membres du groupe :
 # To do list
 HADRIEN
 - <b>80%</b> - Faire le système de langues
-- <b>0%</b> - Faire la page des réglages généraux (liste, édition)
+- <b>50%</b> - Faire la page des réglages généraux (liste, édition)
 - <b>0%</b> - Faire le système d'envoi de mail automatique au prof
 - <b>0%</b> - Intégration finale
 
