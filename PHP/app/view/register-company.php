@@ -3,10 +3,12 @@
 
 		$recaptchaClass = new Recaptcha('6Lc2cBoTAAAAAFUipDOigbn4PrJIScG6bwUqWbTQ');
 
-		$my_file = basename($_FILES['logo']['name']);
-		$max_file_size = 6000000;
-		$file_size = filesize($_FILES['logo']['tmp_name']);
-		$file_ext = strrchr($_FILES['logo']['name'], '.');
+		if(isset($_FILES['logo'])){
+			$my_file = basename($_FILES['logo']['name']);
+			$max_file_size = 6000000;
+			$file_size = filesize($_FILES['logo']['tmp_name']);
+			$file_ext = strrchr($_FILES['logo']['name'], '.');
+		}
 
 		if (isset($_POST['name']) && !empty($_POST['name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
     		isset($_POST['email']) && !empty($_POST['email']) && preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
@@ -17,7 +19,6 @@
     	   	isset($_POST['country'] ) && !empty($_POST['country']) &&
     	   	isset($_POST['city']) && !empty($_POST['city']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['city']) &&
     	   	isset($_POST['description']) && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['description']) &&
-    	   	isset($_FILES['logo']) && ($file_ext == '.jpg' || $file_ext == '.png') && $file_size < $max_file_size &&
     	   	isset($_POST['website']) && 
     	   		preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website']) && 
     	   	isset($_POST['accept_terms']) &&
@@ -43,24 +44,38 @@
 					':website' => $_POST['website']
 				));
 
-				$id_company = Company::getCompanyIDByEmail($_POST['email']);
+				if(isset($_FILES['logo'])){
+					if($file_ext == '.jpg' || $file_ext == '.png'){
+						if($file_size < $max_file_size){
 
-          		$folder = "uploads/companies";
-          		if($file_ext == '.jpg')
-          			$file = $folder . '/' . $id_company->id . '.jpg';
-          		if($file_ext == '.png')
-          			$file = $folder . '/' . $id_company->id . '.png';
-         		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
+							$id_company = Company::getCompanyIDByEmail($_POST['email']);
 
-         		PDOConnexion::setParameters('stages', 'root', 'root');
-				$dbh = PDOConnexion::getInstance();
-				$req = "UPDATE company SET logo = :logo WHERE id = :id";
-				$st = $dbh->prepare($req);
-				$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
-				$st->execute(array(
-					':logo' => $file,
-					':id' => $id_company->id
-				));
+          					$folder = "uploads/companies";
+          					if($file_ext == '.jpg')
+        			  			$file = $folder . '/' . $id_company->id . '.jpg';
+        			  		if($file_ext == '.png')
+        			  			$file = $folder . '/' . $id_company->id . '.png';
+        			 		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
+
+        			 		PDOConnexion::setParameters('stages', 'root', 'root');
+							$dbh = PDOConnexion::getInstance();
+							$req = "UPDATE company SET logo = :logo WHERE id = :id";
+							$st = $dbh->prepare($req);
+							$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+							$st->execute(array(
+								':logo' => $file,
+								':id' => $id_company->id
+							));
+
+						}
+						else{
+							$msg->error("Votre logo est trop lourd, choisissez un autre fichier",'index.php?page=register-company');
+						}
+					}
+					else{
+						$msg->error("Le logo doit être au format JPG ou PNG",'index.php?page=register-company');
+					}
+				}
 
 				App::redirect('index.php?page=home');
 			}
@@ -109,15 +124,6 @@
 			if ($_POST['password']!=$_POST['password-confirm']){
 				$msg->error("Le mot de passe doit correspondre",'index.php?page=register-company');
 			}
-
-			if ($file_ext != '.jpg' && $file_ext != '.png'){
-				$msg->error("Le logo doit être au format JPG ou PNG",'index.php?page=register-company');
-			}
-
-			if ($file_size < $max_file_size){
-				$msg->error("Votre logo est trop lourd, choisissez un autre fichier",'index.php?page=register-company');
-			}
-
 
 			if (!isset($_POST['accept_terms'])){
 				$msg->error("Vous devez accepter les conditions d'utilisation",'index.php?page=register-company');
