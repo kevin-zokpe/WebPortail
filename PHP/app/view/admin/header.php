@@ -17,67 +17,15 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-inverse">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.php?page=home"><?php echo App::$siteTitle; ?></a>
-				</div>
-				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li<?php App::isCurrentPage('home'); ?>><a href="index.php?page=home">Accueil</a></li>
-						<li<?php App::isCurrentPage('faq'); ?>><a href="index.php?page=faq">FAQ</a></li>
-						<li<?php App::isCurrentPage('archives'); ?>><a href="index.php?page=archives">Archives</a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<?php if (App::isLogged()) : ?>
-							<?php $member = App::getMember(); ?>
-							<?php if (get_class($member) == 'Student') : ?>
-								<li class="dropdown">
-									<a id="student-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-										<?php echo $member->first_name; ?>
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="student-dropdown">
-										<li><a href="index.php?page=profile">Profil</a></li>
-										<?php if (App::isAdmin()) : ?>
-											<li class="divider" role="separator"></li>
-											<li><a href="index.php?page=admin/home">Administration</a></li>
-										<?php endif; ?>
-									</ul>
-								</li>
-							<?php endif; ?>
-							<li><a href="index.php?page=signout">Déconnexion</a></li>
-						<?php else : ?>
-							<li class="dropdown">
-								<a id="login-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-									Me connecter
-									<span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="login-dropdown">
-									<li><a href="index.php?page=login&amp;type=student">Étudiant</a></li>
-									<li><a href="index.php?page=login&amp;type=company">Entreprise</a></li>
-								</ul>
-							</li>
-						<?php endif; ?>
-						<li class="dropdown">
-							<a id="lang-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								FR
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="lang-dropdown">
-								<li><a href="#">EN</a></li>
-							</ul>
-						</li>
-                    </ul>
+		<?php require_once(APP . '/view/navbar.php'); ?>
+
+		<?php if ($msg->hasMessages()) { ?>
+			<div id="notification">
+				<div class="container">
+					<?php $msg->display(); ?>
 				</div>
 			</div>
-		</nav>
+		<?php } ?>
 
 		<div class="container">
 			<div class="row">
@@ -96,5 +44,3 @@
 			</div>
 
 			<div class="row">
-
-			<?php $msg->display(); ?>
