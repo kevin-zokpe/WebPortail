@@ -161,6 +161,12 @@
 			$sth->execute(array(
 				':id' => $id
 			));
+
+			$folder = "../../uploads/companies";
+          		$file = $folder . '/' . $id . '.jpg';
+          		$file2 = $folder . '/' . $id . '.png';
+          		if(file_exists($file)) unlink($file);
+          		if(file_exists($file2)) unlink($file2);
 		}
 	}
 ?>
