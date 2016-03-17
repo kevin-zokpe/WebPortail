@@ -18,6 +18,7 @@ HADRIEN
 AK
 - <b>50%</b> - Récupérer les photos chez les étudiants irlandais 
 - <b>0%</b>  - Faire la désinscription des étudiants et des entreprises *
+- <b>0%</b>  - Faire la page de présentation d'une entreprise 
 
 
 VALENTIN
@@ -25,7 +26,6 @@ VALENTIN
 - <b>100%</b> - Créer une page d'ajout de témoignage
 - <b>100%</b> - Supression/Edition Logo (Entreprise)
 - <b>100%</b>  - Faire la page de présentation d'un étudiant
-- <b>0%</b>  - Faire la page de présentation d'une entreprise (cadeau)
 
 
 SONIA
