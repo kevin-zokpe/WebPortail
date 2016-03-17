@@ -1,7 +1,5 @@
 <?php
 	class App {
-		public static $siteTitle = 'Web Portal';
-
 		public static function isCurrentPage($page) {
 			if ($_GET['page'] == $page) {
 				echo ' class="active"';
@@ -100,7 +98,7 @@
 			return $url;
 		}
 
-		public static function getHeader($code) {
+		public static function getHeader($code, $language, $msg) {
 			require_once(APP . '/view/header.php');
 
 			switch ($code) {
