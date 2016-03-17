@@ -25,7 +25,7 @@ VALENTIN
 - <b>100%</b> - CV étudiants (Modification, Suppression)
 - <b>100%</b> - Créer une page d'ajout de témoignage
 - <b>100%</b> - Supression/Edition Logo (Entreprise)
-- <b>0%</b>  - Faire la page de présentation d'un étudiant
+- <b>100%</b>  - Faire la page de présentation d'un étudiant
 
 SONIA
 - <b>40%</b> - Rapport de projet
