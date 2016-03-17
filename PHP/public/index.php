@@ -26,7 +26,7 @@
 	if (substr($_GET['page'], 0, 6) == 'admin/') {
 		if (App::isAdmin()) {
 			if (!file_exists(APP . '/view/' . $_GET['page'] . '.php')) {
-				App::getHeader(404);
+				App::getHeader(404, $language, $msg);
 			}
 
 			require_once(APP . '/view/admin/header.php');
@@ -35,13 +35,13 @@
 		}
 
 		else {
-			App::getHeader(404);
+			App::getHeader(404, $language, $msg);
 		}
 	}
 
 	else {
 		if (!file_exists(APP . '/view/' . $_GET['page'] . '.php')) {
-			App::getHeader(404);
+			App::getHeader(404, $language, $msg);
 		}
 
 		else {
