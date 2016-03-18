@@ -4,10 +4,8 @@
 		$partner = Partner::getPartnerById($id);
 
 		if (isset($_POST['edit'])) {
-
 			if (isset($_POST['name']) && $_POST['name']!='' && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
-				isset($_POST['country'])){
-
+				isset($_POST['country'])) {
 					PDOConnexion::setParameters('stages', 'root', 'root');
 					$db = PDOConnexion::getInstance();
 					$sql = "
@@ -24,21 +22,27 @@
 						':country' => $_POST['country']
 					));
 
-					if (isset($_FILES['logo']) && $_FILES['logo']['name']!=''){
-
+					if (isset($_FILES['logo']) && !empty($_FILES['logo']['name'])) {
 						$my_file = basename($_FILES['logo']['name']);
 						$max_file_size = 6000000;
 						$file_size = filesize($_FILES['logo']['tmp_name']);
 						$file_ext = strrchr($_FILES['logo']['name'], '.'); 
 
-						if (($file_ext == '.jpg' || $file_ext == '.png') && $file_size < $max_file_size){
-
+						if (($file_ext == '.jpg' || $file_ext == '.png') && $file_size < $max_file_size) {
 							$folder = "uploads/partners";
-							if($file_ext == '.jpg')
-          						$file = $folder . '/' . $id . '.jpg';
-          					if($file_ext == '.png')
+							
+							if ($file_ext == '.jpg') {
+								$file = $folder . '/' . $id . '.jpg';
+							}
+
+          					if ($file_ext == '.png') {
           						$file = $folder . '/' . $id . '.png';
-          					if(file_exists($file)) unlink($file);
+          					}
+          						
+          					if (file_exists($file)) {
+          						unlink($file);
+          					}
+
          					move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
          					PDOConnexion::setParameters('stages', 'root', 'root');
@@ -56,21 +60,24 @@
 							));
 
 							if ($stt) {
-         						$msg->success('Le partenaire a bien été modifié.','index.php?page=admin/partners-list');
+         						$msg->success('Le partenaire a bien été modifié.', 'index.php?page=admin/partners-list');
          					}
 						}
+
 						else {
 							if ($file_ext != '.jpg' && $file_ext != '.png'){							
-								$msg->error('Le logo doit être au format JPG ou PNG','index.php?page=admin/partner-edit&id='. $id);
+								$msg->error('Le logo doit être au format JPG ou PNG', 'index.php?page=admin/partner-edit&id='. $id);
 							}
+
 							if ($file_size > $max_file_size){							
-								$msg->error('Le logo est trop lourd, choisissez un autre fichier','index.php?page=admin/partner-edit&id='. $id);
+								$msg->error('Le logo est trop lourd, choisissez un autre fichier', 'index.php?page=admin/partner-edit&id='. $id);
 							}
 						}	
 					}
+
 					else {
 						if ($sth) {
-							$msg->success('Ce partenaire a bien été modifié.','index.php?page=admin/partners-list');
+							$msg->success('Ce partenaire a bien été modifié.', 'index.php?page=admin/partners-list');
 						}
 					}
 			}
@@ -93,11 +100,12 @@
 					<form action="index.php?page=admin/partner-edit&amp;id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="partner-logo">Logo</label>
-							<input type="file" id="partner-logo" value="<?php echo $partner->logo; ?>" name="logo" placeholder="Logo du partenaire">
+							<p><img src="<?php echo $partner->logo; ?>" alt="<?php echo $partner->name; ?>" style="height: 50px; margin-bottom: 10px;"></p>
+							<input type="file" id="partner-logo" name="logo">
 						</div>
 
 						<div class="form-group">
-							<label for="partner-last-name">Nom</label>
+							<label for="partner-name">Nom</label>
 							<input type="text" class="form-control" id="partner-name" required="required" value="<?php echo $partner->name; ?>" name="name" placeholder="Nom du partenaire">
 						</div>
 
