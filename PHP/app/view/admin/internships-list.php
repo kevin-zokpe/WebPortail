@@ -1,23 +1,23 @@
 <?php
 	if (!isset($_GET['country']) && App::isAdmin()) {
-		App::redirect('index.php?page=admin/internships-list&country=France');
+		App::redirect('index.php?page=admin/internships-list&country=france');
 	}
 	
-	$country = ($_GET['country'] == 'France') ? 'France' : 'Irlande';
+	$country = ($_GET['country'] == 'ireland') ? 'ireland' : 'france';
 ?>
 <div class="col-md-12">
 	<div class="page-header">
 		<h1>
 			Stages disponibles en
 			<?php
-				if ($country == 'Irlande') {
-					echo '<small> France </small>';
-					echo '<a href="index.php?page=admin/internships-list&country=France" class="btn btn-primary pull-right">Voir la liste des stages en France <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
+				if ($country == 'france') {
+					echo '<small>France</small>';
+					echo '<a href="index.php?page=admin/internships-list&country=ireland" class="btn btn-primary pull-right">Voir la liste des stages en Irlande <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
 				}
 
 				else {
-					echo '<small>Irlande</small>';
-					echo '<a href="index.php?page=admin/internships-list&country=Irlande" class="btn btn-primary pull-right">Voir la liste des stages en Irlande <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
+					echo '<small>Ireland</small>';
+					echo '<a href="index.php?page=admin/internships-list&country=france" class="btn btn-primary pull-right">Voir la liste des stages en France <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
 				}
 			?>
 		</h1>
