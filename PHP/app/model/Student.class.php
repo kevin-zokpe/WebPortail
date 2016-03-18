@@ -22,11 +22,11 @@
 			}
 		}
 
-		public function __get($nom){
+		public function __get($nom) {
 			return $this->$nom;
 		}
 
-		public function __set($n, $v){
+		public function __set($n, $v) {
 			$this->$n = $v;
 		}
 
@@ -195,6 +195,62 @@
 			return $sth;
 		}
 
+		public static function editStudent($id, $first_name, $last_name, $country, $skill, $email, $portfolio, $activated) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE student
+				SET first_name = :first_name,
+					last_name = :last_name,
+					country = :country,
+					skill = :skill,
+					email = :email,
+					portfolio = :portfolio,
+					activated = :activated
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':id' => $id,
+				':first_name' => $first_name,
+				':last_name' => $last_name,
+				':country' => $country,
+				':skill' => $skill,
+				':email' => $email,
+				':portfolio' => $portfolio,
+				':activated' => $activated
+			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function editCv($id, $cv) {
+			PDOConnexion::setParameters('stage', 'root', 'root');
+			$dbh = PDOConnexion::getInstance();
+			$req = "
+				UPDATE student
+				SET cv = :cv
+				WHERE id = :id
+			";
+			$sth = $dbh->prepare($req);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':id' => $id,
+				':cv' => $file
+			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function deleteStudent($id) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
@@ -205,10 +261,12 @@
 				':id' => $id
 			));
 
-			$folder = "../../uploads/cv";
-          		$file = $folder . '/' . $id . '.pdf';
-          		if(file_exists($file)) unlink($file);
+			$folder = dirname(dirname('../../uploads/cv'));
+          	$file = $folder . '/' . $id . '.pdf';
+          	
+          	if (file_exists($file)) {
+          		unlink($file);
+          	}
 		}
-
 	}
 ?>
