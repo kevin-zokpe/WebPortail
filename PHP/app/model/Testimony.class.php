@@ -45,6 +45,27 @@
 			return $sth->fetchAll();
 		}
 
+		public static function addTestimony($author, $description) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				INSERT INTO testimony(author, description, register_date)
+				VALUES (:author, :description, NOW())
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Testimony');
+			$sth->execute(array(
+				':author' => $author,
+				':description' => $description
+			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function editTestimony($id, $description, $author) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
