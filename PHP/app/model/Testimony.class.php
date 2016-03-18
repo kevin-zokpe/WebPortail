@@ -13,11 +13,11 @@
 			}
 		}
 
-		public function __get($nom){
+		public function __get($nom) {
 			return $this->$nom;
 		}
 
-		public function __set($n, $v){
+		public function __set($n, $v) {
 			$this->$n = $v;
 		}
 
@@ -45,6 +45,24 @@
 			return $sth->fetchAll();
 		}
 
+		public static function editTestimony($id, $description, $author) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE testimony
+				SET description = :description,
+					author = :author
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Testimony');
+			$sth->execute(array(
+				':id' => $id,
+				':description' => $description,
+				':author' => $author
+			));
+		}
+
 		public static function deleteTestimony($id) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
@@ -55,6 +73,5 @@
 				':id' => $id
 			));
 		}
-
 	}
 ?>
