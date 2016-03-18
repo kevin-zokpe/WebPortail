@@ -1,43 +1,46 @@
 <?php
+	if (App::isLogged()) :
+		$type = $_SESSION['type'];
 
-	if (isset($_POST['add'])) {
-		if (isset($_POST['testimony']) && !empty($_POST['testimony'])) {
+		if (isset($_POST['add'])) {
+			if (isset($_POST['testimony']) && !empty($_POST['testimony'])) {
+				$member = App::getMember();
 
-			$member = App::getMember();
+				if ($type == 'student') {
+					$name = $member->first_name . ' ' . $member->last_name;
+				}
 
-			if($_GET['type']=='student'){
-				$name = $member->first_name . ' ' . $member->last_name;
+				if ($type == 'company'){
+					$name = $member->name;
+				}
+	    	    	    
+				try {
+					PDOConnexion::setParameters('stages', 'root', 'root');
+					$db = PDOConnexion::getInstance();
+					$sql = "
+						INSERT INTO testimony(description, author, register_date)
+						VALUES (:description, :author, NOW())
+					";
+					$sth = $db->prepare($sql);
+					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+					$sth->execute(array(
+						':description' => $_POST['testimony'],
+						':author' => $name,
+					));
+
+					App::redirect('index.php?page=testimonials');
+				}
+
+				catch(PDOException$e) {
+					echo '<p>Erreur : ' . $e->getMessage() . '</p>';
+					die();
+				}
 			}
 
-			if($_GET['type']=='company'){
-				$name = $member->name;
-			}
-    	    	    
-			try {
-				PDOConnexion::setParameters('stages', 'root', 'root');
-				$db = PDOConnexion::getInstance();
-				$sql = "
-					INSERT INTO testimony(description, author, register_date)
-					VALUES (:description, :author, NOW())
-				";
-				$sth = $db->prepare($sql);
-				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
-				$sth->execute(array(
-					':description' => $_POST['testimony'],
-					':author' => $name,
-				));
-
-				App::redirect('index.php?page=testimonials');
-			}
-			catch(PDOException$e) {
-				echo '<p>Erreur : ' . $e->getMessage() . '</p>';
-				die();
+			else {
+				App::error('Veuillez rédiger votre témoignage !');
 			}
 		}
-		else {
-			App::error('Veuillez rédiger votre témoignage !');
-		}
-	}
 ?>
 <style type="text/css">
 	form .row {
@@ -55,7 +58,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<form name="login" method="POST" action="index.php?page=create-testimony&amp;type=<?php echo $_GET['type']; ?>">
+			<form name="login" method="POST" action="index.php?page=create-testimony&amp;type=<?php echo $type; ?>">
 				<div class="row">
 					<div class="col-md-12">
 						<label for="testimony">Rédigez votre témoignage</label>
@@ -72,3 +75,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+<?php
+	else :
+		$msg->error('Vous devez êtré connecté pour poster un témoignage.', 'index.php?page=home');
+	endif;
+?>
