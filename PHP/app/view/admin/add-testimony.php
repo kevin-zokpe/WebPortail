@@ -1,48 +1,31 @@
 <?php
 	if (App::isAdmin()) {
-
 		if (isset($_POST['add']) && App::isAdmin()) {
+			if (isset($_POST['author']) && !empty($_POST['author']) && preg_match("#^[a-zA-Z0-9._-]{2,64}#", $_POST['author']) && isset($_POST['description']) && !empty($_POST['description'])){
+				$author = htmlentities($_POST['author']);
+				$description = htmlentities($_POST['description']);
 
-			if (isset($_POST['author']) && preg_match("#^[a-zA-Z0-9._-]{2,64}#", $_POST['author']) && isset($_POST['description'])){
-
-				$author = $_POST['author'];
-				$description = $_POST['description'];
-
-				PDOConnexion::setParameters('stages', 'root', 'root');
-				$db = PDOConnexion::getInstance();
-				$sql = "
-					INSERT INTO testimony(author, description, register_date)
-					VALUES (:author, :description, NOW())
-				";
-				$sth = $db->prepare($sql);
-				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Testimony');
-				$sth->execute(array(
-					':author' => $author,
-					':description' => $description
-				));
+				$add = Testimony::addTestimony($author, $description);
 			
-				if ($sth) {
-					$msg->success('Ce témoignage a bien été ajouté','index.php?page=admin/testimonials-list');
+				if ($add) {
+					$msg->success('Ce témoignage a bien été ajouté', 'index.php?page=admin/testimonials-list');
 				}
 			}
 			
 			else {
-
-				if(!isset($_POST['author']) || !preg_match("#^[a-zA-Z0-9._-]{2,64}#", $_POST['author'])){
-					$msg->error("Veuillez entrer un nom d'auteur valide.",'index.php?page=admin/add-testimony');
+				if (!isset($author) || empty($author) || !preg_match("#^[a-zA-Z0-9._-]{2,64}#", $author)){
+					$msg->error('Veuillez entrer un nom d\'auteur valide.', 'index.php?page=admin/add-testimony');
 				}
 
-				if(!isset($_POST['description'])){
-					$msg->error('Veuillez entrer une description.','index.php?page=admin/add-testimony');
+				if (!isset($description) || empty($description)){
+					$msg->error('Veuillez entrer une description.', 'index.php?page=admin/add-testimony');
 				}
 			}
 		}
 ?>
 				<div class="col-md-8">
 					<div class="page-header">
-						<h1>
-							Ajouter une Témoignage
-						</h1>
+						<h1>Ajouter un témoignage</h1>
 					</div>
 
 					<form action="index.php?page=admin/add-testimony" method="POST">
@@ -53,7 +36,7 @@
 
 						<div class="form-group">
 							<label for="testimony-description">Témoignage</label>
-							<input type="text" class="form-control" id="testimony-description" required="required" name="description" placeholder="Description">
+							<textarea class="form-control" id="testimony-description" name="description" placeholder="Description" required></textarea>
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-primary" name="add">Ajouter</button>
