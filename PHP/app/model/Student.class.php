@@ -55,10 +55,11 @@
 			
 			$res = $sth->fetch();
 			
-			if(isset($res->id)){
+			if (isset($res->id)) {
 				return true;
 			}
-			else{
+
+			else {
 				return false;
 			}
 		}
@@ -163,9 +164,9 @@
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
 			$sql = "
-			UPDATE student
-			SET password = :password
-			WHERE id = :id
+				UPDATE student
+				SET password = :password
+				WHERE id = :id
 			";
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
@@ -181,9 +182,9 @@
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
 			$sql = "
-			UPDATE student
-			SET portfolio = :portfolio
-			WHERE id = :id
+				UPDATE student
+				SET portfolio = :portfolio
+				WHERE id = :id
 			";
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
@@ -241,7 +242,7 @@
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 			$sth->execute(array(
 				':id' => $id,
-				':cv' => $cv
+				':cv' => $file
 			));
 
 			if ($sth) {
@@ -261,7 +262,7 @@
 				':id' => $id
 			));
 
-			$folder = dirname(dirname('../../uploads/cv'));
+			$folder = dirname(dirname(BASE_URL . '/uploads/cv'));
           	$file = $folder . '/' . $id . '.pdf';
           	
           	if (file_exists($file)) {
