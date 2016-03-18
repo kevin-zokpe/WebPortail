@@ -46,17 +46,17 @@
 						}
 
 						else {
-							$msg->error('Votre compte n\'a pas encore été confirmé par l\'administrateur.', 'index.php?page=login');
+							$msg->error('Votre compte n\'a pas encore été confirmé par l\'administrateur.', 'index.php?page=login&type=' . $type);
 						}
 					}
 
 					else {
-						$msg->error('Identifiants incorrects !','index.php?page=login');
+						$msg->error('Identifiants incorrects !', 'index.php?page=login&type=' . $type);
 					}
 				}
 
 				else {
-					$msg->error('Cet utilisateur n\'existe pas','index.php?page=login');
+					$msg->error('Cet utilisateur n\'existe pas', 'index.php?page=login&type=' . $type);
 				}
 			}
 
