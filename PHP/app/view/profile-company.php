@@ -1,17 +1,19 @@
 <?php
 	if (App::isCompany()) :
 		$company = Company::getCompanyById($_SESSION['id']);
+		
 		if (isset($_POST['edit'])) :
 			if ($_POST['password'] == $_POST['password-confirm']) {
 				if (Bcrypt::checkPassword($_POST['password'], $company->password)) {
-					if(isset($_POST['new-password']) && $_POST['new-password']!=''){
-						if(preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['new-password'])){
+					if (isset($_POST['new-password']) && $_POST['new-password']!=''){
+						if (preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['new-password'])){
 							$new_password = Bcrypt::hashPassword($_POST['new-password']);
 							Company::changePassword($new_password, $company->id);							
-							App::success('Votre mot de passe a bien été modifié');
+							$msg->success('Votre mot de passe a bien été modifié', 'index.php?page=profile-company');
 						}
-						else{
-							$msg->error('Veuillez entrer un nouveau mot de passe approprié','index.php?page=profile-company');
+
+						else {
+							$msg->error('Veuillez entrer un nouveau mot de passe approprié', 'index.php?page=profile-company');
 						}	
 					}
 
@@ -30,16 +32,19 @@
 						':description' => $_POST['description'],
 						':website' => $_POST['website']
 					));
+
 					if ($sth) {
-						App::success('Vos informations ont bien été modifiées');
+						$msg->success('Vos informations ont bien été modifiées', 'index.php?page=profile-company');
 					}
 				}
+
 				else {
-					echo $msg->error('Le mot de passe entré est incorrect, veuillez réessayer.','index.php?page=profile-company');
+					echo $msg->error('Le mot de passe entré est incorrect, veuillez réessayer.', 'index.php?page=profile-company');
 				}
 			}
+
 			else {
-				echo $msg->error('Les deux mots de passes ne correspondent pas','index.php?page=profile-company');
+				echo $msg->error('Les deux mots de passes ne correspondent pas', 'index.php?page=profile-company');
 			}
 		else:
 ?>
