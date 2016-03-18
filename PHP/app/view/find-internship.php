@@ -31,7 +31,7 @@
 			<div class="col-md-12">
 				<div class="page-header">
 					<h1>
-						Rechercher des stages
+						Rechercher un stage
 						<form action="index.php?page=find-student" method="POST" class="pull-right">
 							<select name="skill" class="form-control">
 								<option value="" disabled selected>Domaine de compétence</option>
