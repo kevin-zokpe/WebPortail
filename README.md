@@ -21,7 +21,8 @@ AK
 
 
 VALENTIN
-- <b>100%</b> - Glandage
+- <b>0%</b> - Renommer CV avant téléchargement
+- <b>\infty %</b> - A la recherche de bugs
 
 
 SONIA
