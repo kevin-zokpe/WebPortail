@@ -22,7 +22,7 @@
 						if (preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio'])) {
 							Student::changePortfolio($_POST['portfolio'], $student->id);							
 							
-							App::success('Votre portfolio a bien été modifié', 'index.php?page=profile-student');
+							$msg->success('Votre portfolio a bien été modifié', 'index.php?page=profile-student');
 						}
 
 						else {
@@ -46,7 +46,7 @@
 
          					move_uploaded_file($_FILES['cv']['tmp_name'], $file);
 
-							App::success('Votre CV a bien été modifié', 'index.php?page=profile-student');
+							$msg->success('Votre CV a bien été modifié', 'index.php?page=profile-student');
 						}
 
 						else {
