@@ -4,21 +4,9 @@
 		$setting = Settings::getSettingById($id);
 
 		if (isset($_POST['edit'])) {
-			PDOConnexion::setParameters('stages', 'root', 'root');
-			$db = PDOConnexion::getInstance();
-			$sql = "
-				UPDATE settings
-				SET value = :value
-				WHERE id = :id
-			";
-			$sth = $db->prepare($sql);
-			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Settings');
-			$sth->execute(array(
-				':id' => $id,
-				':value' => $_POST[$setting->tag]
-			));
-			
-			if ($sth) {
+			$edit = Settings::editSetting($id, $_POST[$setting->tag]);
+		
+			if ($edit) {
 				$msg->success('Le réglage "' . lcfirst($setting->placeholder) . '" a bien été modifié.', 'index.php?page=admin/settings-list');
 			}
 		}
