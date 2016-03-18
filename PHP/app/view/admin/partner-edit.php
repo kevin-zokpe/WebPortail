@@ -6,21 +6,7 @@
 		if (isset($_POST['edit'])) {
 			if (isset($_POST['name']) && $_POST['name']!='' && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) &&
 				isset($_POST['country'])) {
-					PDOConnexion::setParameters('stages', 'root', 'root');
-					$db = PDOConnexion::getInstance();
-					$sql = "
-						UPDATE partner
-						SET name = :name,
-							country = :country
-						WHERE id = :id
-					";
-					$sth = $db->prepare($sql);
-					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
-					$sth->execute(array(
-						':id' => $id,
-						':name' => $_POST['name'],
-						':country' => $_POST['country']
-					));
+					$editPartner = Partner::editPartner($id, $_POST['name'], $_POST['country']);
 
 					if (isset($_FILES['logo']) && !empty($_FILES['logo']['name'])) {
 						$my_file = basename($_FILES['logo']['name']);
@@ -29,7 +15,7 @@
 						$file_ext = strrchr($_FILES['logo']['name'], '.'); 
 
 						if (($file_ext == '.jpg' || $file_ext == '.png') && $file_size < $max_file_size) {
-							$folder = "uploads/partners";
+							$folder = 'uploads/partners';
 							
 							if ($file_ext == '.jpg') {
 								$file = $folder . '/' . $id . '.jpg';
@@ -45,21 +31,9 @@
 
          					move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
-         					PDOConnexion::setParameters('stages', 'root', 'root');
-							$dbh = PDOConnexion::getInstance();
-							$req = "
-								UPDATE partner
-								SET logo = :logo
-								WHERE id = :id
-							";
-							$stt = $dbh->prepare($req);
-							$stt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
-							$stt->execute(array(
-								':id' => $id,
-								':logo' => $file
-							));
+         					$editLogo = Partner::editLogo($id, $file);
 
-							if ($stt) {
+							if ($editLogo) {
          						$msg->success('Le partenaire a bien été modifié.', 'index.php?page=admin/partners-list');
          					}
 						}
@@ -76,7 +50,7 @@
 					}
 
 					else {
-						if ($sth) {
+						if ($editPartner) {
 							$msg->success('Ce partenaire a bien été modifié.', 'index.php?page=admin/partners-list');
 						}
 					}
