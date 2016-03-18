@@ -5,67 +5,69 @@
 		if (isset($_POST['edit'])) :
 			if (isset($_POST['password']) && $_POST['password'] == $_POST['password-confirm']) {
 				if (Bcrypt::checkPassword($_POST['password'], $student->password)) {
-					if(isset($_POST['new-password']) && $_POST['new-password']!=''){
-						if(preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['new-password'])){
+					if (isset($_POST['new-password']) && !empty($_POST['new-password'])) {
+						if (preg_match("#^[a-zA-Z\@._-]{2,32}#", $_POST['new-password'])) {
 							$new_password = Bcrypt::hashPassword($_POST['new-password']);
 							Student::changePassword($new_password, $student->id);							
-							App::success('Votre mot de passe a bien été modifié');
+							
+							$msg->success('Votre mot de passe a bien été modifié', 'index.php?page=profile-student');
 						}
-						else{
-							$msg->error('Veuillez entrer un nouveau mot de passe approprié','index.php?page=profile-student'
-);
+
+						else {
+							$msg->error('Veuillez entrer un nouveau mot de passe approprié', 'index.php?page=profile-student');
 						}	
 					}
 
-					if(isset($_POST['portfolio']) && $_POST['portfolio']!='' && $_POST['portfolio']!=$student->portfolio){
-						if(preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio'])){
+					if (isset($_POST['portfolio']) && !empty($_POST['portfolio']) && $_POST['portfolio'] != $student->portfolio) {
+						if (preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio'])) {
 							Student::changePortfolio($_POST['portfolio'], $student->id);							
-							App::success('Votre portfolio a bien été modifié');
+							
+							App::success('Votre portfolio a bien été modifié', 'index.php?page=profile-student');
 						}
-						else{
-							$msg->error('Veuillez entrer un url approprié','index.php?page=profile-student');
+
+						else {
+							$msg->error('Veuillez entrer un url approprié', 'index.php?page=profile-student');
 						}	
 					}
 
-					if(isset($_FILES['cv']) && $_FILES['cv']['name']!=''){
-
+					if (isset($_FILES['cv']) && !empty($_FILES['cv']['name'])) {
 						$my_file = basename($_FILES['cv']['name']);
 						$max_file_size = 6000000;
 						$file_size = filesize($_FILES['cv']['tmp_name']);
 						$file_ext = strrchr($_FILES['cv']['name'], '.'); 
 
-						if($file_ext == '.pdf' && $file_size < $max_file_size){	
-							$folder = "uploads/cv";
-          						$file = $folder . '/' . $student->id . '.pdf';
-          						if(file_exists($file)){
-          							unlink($file);
-          						}
-         						move_uploaded_file($_FILES['cv']['tmp_name'], $file);
+						if ($file_ext == '.pdf' && $file_size < $max_file_size){	
+							$folder = 'uploads/cv';
+          					$file = $folder . '/' . $student->id . '.pdf';
+          					
+          					if (file_exists($file)) {
+          						unlink($file);
+          					}
 
-							$editCv = Student::editCv($student->id, $file);
+         					move_uploaded_file($_FILES['cv']['tmp_name'], $file);
 
-							if ($editCv) {
-     								$msg->success('Votre CV a bien été modifié.', 'index.php?page=profile-student&id=' . $_SESSION['id']);
-     							}
+							App::success('Votre CV a bien été modifié', 'index.php?page=profile-student');
 						}
-						else{
-							if($file_ext != '.pdf'){							
-								$msg->error('Votre CV doit être au format PDF','index.php?page=profile-student');
+
+						else {
+							if ($file_ext != '.pdf') {							
+								$msg->error('Votre CV doit être au format PDF', 'index.php?page=profile-student');
 							}
-							if($file_size > $max_file_size){							
-								$msg->error('Votre CV est trop lourd, choisissez un autre fichier','index.php?page=profile-student');
+
+							if ($file_size > $max_file_size) {							
+								$msg->error('Votre CV est trop lourd, choisissez un autre fichier', 'index.php?page=profile-student');
 							}
 						}	
 					}
 				}
 
 				else {
-					echo $msg->error('Le mot de passe entré est incorrect, veuillez réessayer','index.php?page=profile-student');
+					echo $msg->error('Le mot de passe entré est incorrect, veuillez réessayer', 'index.php?page=profile-student');
 				}
 			}
 
 			else {
-				echo $msg->error('Les deux mots de passe ne correspondent pas','index.php?page=profile-student');
+				echo $msg->error('Les deux mots de passe ne correspondent pas', 'index.php?page=profile-student');
 			}
 		else:
 ?>
