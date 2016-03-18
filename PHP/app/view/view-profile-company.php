@@ -50,7 +50,7 @@
 						<div class="form-group">
 							<label for="profile-portfolio" class="col-sm-2 control-label">Site internet</label>
 							<div class="col-sm-10">
-								<p class="form-control-static"><a href="<?php echo $company->website; ?>"><?php echo $company->website; ?></a></p>
+								<p class="form-control-static"><a href="<?php echo $company->website; ?>" target="_blank"><?php echo $company->website; ?></a></p>
 							</div>
 						</div>
 
