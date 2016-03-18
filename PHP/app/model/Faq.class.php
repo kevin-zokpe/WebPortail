@@ -56,6 +56,32 @@
 			return $sth->fetchAll();
 		}
 
+		public static function editFaq($id, $question, $answer, $target) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE faq
+				SET question = :question,
+					answer = :answer,
+					target = :target
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
+			$sth->execute(array(
+				':id' => $id,
+				':question' => $question,
+				':answer' => $answer,
+				':target' => $target
+			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function deleteFaq($id) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
