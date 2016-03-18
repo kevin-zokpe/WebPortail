@@ -22,7 +22,7 @@ AK
 
 VALENTIN
 - <b>0%</b> - Renommer CV avant téléchargement
-- <b>\infty %</b> - A la recherche de bugs
+- <b>300 %</b> - A la recherche de bugs
 
 
 SONIA
