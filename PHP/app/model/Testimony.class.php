@@ -61,6 +61,12 @@
 				':description' => $description,
 				':author' => $author
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 		public static function deleteTestimony($id) {
