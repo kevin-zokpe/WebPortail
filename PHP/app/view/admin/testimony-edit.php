@@ -4,35 +4,20 @@
 		$testimony = Testimony::getTestimonyById($id);
 
 		if (isset($_POST['edit'])) {
-			if(isset($_POST['description']) && isset($_POST['author']) && preg_match("#^[a-zA-Z0-9._-]{2,64}#", $_POST['author'])){
-
-				PDOConnexion::setParameters('stages', 'root', 'root');
-				$db = PDOConnexion::getInstance();
-				$sql = "
-					UPDATE testimony
-					SET description = :description,
-						author = :author
-					WHERE id = :id
-				";
-				$sth = $db->prepare($sql);
-				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Testimony');
-				$sth->execute(array(
-					':id' => $id,
-					':description' => $_POST['description'],
-					':author' => $_POST['author']
-				));
+			if (isset($_POST['description']) && isset($_POST['author']) && preg_match("#^[a-zA-Z0-9._-]{2,64}#", $_POST['author'])) {
+				$edit = Testimony::editTestimony($id, $_POST['description'], $_POST['author']);
 			
-				if ($sth) {
+				if ($edit) {
 					$msg->success('Ce témoignage a bien été modifié.','index.php?page=admin/testimonials-list');
 				}
 			}
-			else{
 
-				if(!isset($_POST['description'])){
+			else {
+				if (!isset($_POST['description'])) {
 					$msg->error('Veuillez entrer une description.', 'index.php?page=admin/testimony-edit' . $id);
 				}
 
-				if(!isset($_POST['author']) || !preg_match("#^[a-zA-Z0-9._-]{2,64}#", $_POST['author'])){
+				if (!isset($_POST['author']) || !preg_match("#^[a-zA-Z0-9._-]{2,64}#", $_POST['author'])) {
 					$msg->error("Veuillez entrer un nom d'auteur valide.", 'index.php?page=admin/testimony-edit' . $id);
 				}
 			}
