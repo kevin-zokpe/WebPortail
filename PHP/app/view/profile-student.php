@@ -36,13 +36,17 @@
 
 						if($file_ext == '.pdf' && $file_size < $max_file_size){	
 							$folder = "uploads/cv";
-          					$file = $folder . '/' . $student->id . '.pdf';
-          					if(file_exists($file)){
-          						unlink($file);
-          					}
-         					move_uploaded_file($_FILES['cv']['tmp_name'], $file);
+          						$file = $folder . '/' . $student->id . '.pdf';
+          						if(file_exists($file)){
+          							unlink($file);
+          						}
+         						move_uploaded_file($_FILES['cv']['tmp_name'], $file);
 
-							App::success('Votre CV a bien été modifié');
+							$editCv = Student::editCv($id, $file);
+
+							if ($editCv) {
+     								$msg->success('Votre CV a bien été modifié.', 'index.php?page=profile-student&id=' . $_SESSION['id']);
+     							}
 						}
 						else{
 							if($file_ext != '.pdf'){							
