@@ -241,7 +241,7 @@
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 			$sth->execute(array(
 				':id' => $id,
-				':cv' => $file
+				':cv' => $cv
 			));
 
 			if ($sth) {
