@@ -21,6 +21,7 @@
 							<th></th>
 						</tr>
 					</thead>
+					
 					<?php
 						foreach (Company::getActivatedCompanies() as $company) {
 							echo '<tr data-id=' . $company->id . '>';
