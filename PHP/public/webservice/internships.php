@@ -28,6 +28,7 @@
 	if ($internship) {
 		foreach ($internship as $id => $result) {
 			$array[$id] = array(
+				'id' => $result->id,
 				'id_company' => $result->company,
 				'name' => $result->name,
 				'description' => $result->description,
