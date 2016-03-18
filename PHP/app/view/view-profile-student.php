@@ -43,7 +43,7 @@
 						<div class="form-group">
 							<label for="profile-portfolio" class="col-sm-2 control-label">Portfolio</label>
 							<div class="col-sm-10">
-								<p class="form-control-static"><a href="<?php echo $student->portfolio; ?>"><?php echo $student->portfolio; ?></a></p>
+								<p class="form-control-static"><a href="<?php echo $student->portfolio; ?>" target="_blank"><?php echo $student->portfolio; ?></a></p>
 							</div>
 						</div>
 
