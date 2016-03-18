@@ -42,7 +42,7 @@
           						}
          						move_uploaded_file($_FILES['cv']['tmp_name'], $file);
 
-							$editCv = Student::editCv($id, $file);
+							$editCv = Student::editCv($student->id, $file);
 
 							if ($editCv) {
      								$msg->success('Votre CV a bien été modifié.', 'index.php?page=profile-student&id=' . $_SESSION['id']);
