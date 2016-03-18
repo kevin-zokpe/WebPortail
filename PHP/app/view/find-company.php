@@ -11,6 +11,7 @@
 					<thead>
 						<tr>
 							<th>Nom</th>
+							<th>Logo</th>
 							<th>Email</th>
 							<th>Pays</th>
 							<th>Ville</th>
@@ -24,6 +25,7 @@
 						foreach (Company::getActivatedCompanies() as $company) {
 							echo '<tr data-id=' . $company->id . '>';
 								echo '<td>' . $company->name . '</td>';
+								echo '<td><img alt="Aucun" src="' . $company->logo . '" style="width:40px;"/></td>';
 								echo '<td><a href="mailto:' . $company->email . '">' . $company->email . '</a></td>';
 								echo '<td>' . $company->country . '</td>';
 								echo '<td>' . $company->city . '</td>';
