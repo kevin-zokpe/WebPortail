@@ -4,8 +4,7 @@
 		$faq = Faq::getFaqById($id);
 
 		if (isset($_POST['edit'])) {
-			if(isset($_POST['question']) && isset($_POST['answer'])){
-
+			if (isset($_POST['question']) && isset($_POST['answer'])) {
 				PDOConnexion::setParameters('stages', 'root', 'root');
 				$db = PDOConnexion::getInstance();
 				$sql = "
@@ -25,16 +24,16 @@
 				));
 			
 				if ($sth) {
-					$msg->success('Cette question a bien été modifié.','index.php?page=admin/faq-list');
+					$msg->success('Cette question a bien été modifié.', 'index.php?page=admin/faq-list');
 				}
 			}
-			else{
 
-				if(!isset($_POST['question']){
+			else {
+				if (!isset($_POST['question'])) {
 					$msg->error('Veuillez entrer une question.', 'index.php?page=admin/faq-edit&id=' . $id);
 				}
 
-				if(!isset($_POST['answer']){
+				if (!isset($_POST['answer'])) {
 					$msg->error('Veuillez entrer une réponse.', 'index.php?page=admin/faq-edit&id=' . $id);
 				}
 			}
