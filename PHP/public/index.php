@@ -3,6 +3,7 @@
     define('ROOT', dirname(PUBLIC_ROOT));
     define('DS', DIRECTORY_SEPARATOR);
     define('BASE_URL', dirname(dirname($_SERVER['SCRIPT_NAME'])));
+    define('BASE_LINK', dirname($_SERVER['REQUEST_URI']));
     define('DOMAIN', $_SERVER['HTTP_HOST']);
     define('PROTOCOLE', (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ? 'https' : 'http');
 	define('SYSTEM', ROOT . DS . 'system');
