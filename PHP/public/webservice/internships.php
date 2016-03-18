@@ -28,6 +28,7 @@
 	if ($internship) {
 		foreach ($internship as $id => $result) {
 			$array[$id] = array(
+				'id_company' => $result->company,
 				'name' => $result->name,
 				'description' => $result->description,
 				'company' => Company::getCompanyById($result->company)->name,
