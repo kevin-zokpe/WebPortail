@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label for="profile-cv" class="col-sm-2 control-label">CV</label>
 							<div class="col-sm-10">
-								<a class="btn btn-primary" name="CV" href="/uploads/cv/<?php echo $student->id; ?>.pdf">Télécharger</a>
+								<a class="btn btn-primary" name="CV" href="<?php echo BASE_LINK . '/public/uploads/cv/' . $student->id; ?>.pdf" target="_blank">Télécharger</a>
 							</div>
 						</div>
 
