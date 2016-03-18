@@ -14,11 +14,11 @@
 			}
 		}
 
-		public function __get($nom){
+		public function __get($nom) {
 			return $this->$nom;
 		}
 
-		public function __set($n, $v){
+		public function __set($n, $v) {
 			$this->$n = $v;
 		}
 
@@ -88,6 +88,28 @@
 			$sth->execute();
 
 			if ($sth->fetch()->value == 'true') {
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function editSetting($id, $tag) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE settings
+				SET value = :value
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Settings');
+			$sth->execute(array(
+				':id' => $id,
+				':value' => $tag
+			));
+
+			if ($sth) {
 				return true;
 			}
 
