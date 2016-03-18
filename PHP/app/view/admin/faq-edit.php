@@ -5,25 +5,9 @@
 
 		if (isset($_POST['edit'])) {
 			if (isset($_POST['question']) && isset($_POST['answer'])) {
-				PDOConnexion::setParameters('stages', 'root', 'root');
-				$db = PDOConnexion::getInstance();
-				$sql = "
-					UPDATE faq
-					SET question = :question,
-						answer = :answer,
-						target = :target
-					WHERE id = :id
-				";
-				$sth = $db->prepare($sql);
-				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
-				$sth->execute(array(
-					':id' => $id,
-					':question' => $_POST['question'],
-					':answer' => $_POST['answer'],
-					':target' => $_POST['target']
-				));
-			
-				if ($sth) {
+				$edit = Faq::editFaq($id, $_POST['question'], $_POST['answer'], $_POST['target']);
+
+				if ($edit) {
 					$msg->success('Cette question a bien été modifié.', 'index.php?page=admin/faq-list');
 				}
 			}
