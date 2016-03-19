@@ -1,136 +1,118 @@
 <?php
-	if (isset($_POST['register'])) {
-		$recaptchaClass = new Recaptcha('6Lc2cBoTAAAAAFUipDOigbn4PrJIScG6bwUqWbTQ');
+	if (!App::isLogged()) :
+		if (isset($_POST['register'])) {
+			$recaptchaClass = new Recaptcha(Settings::getRecaptchaKey('private'));
 
-		$my_file = basename($_FILES['cv']['name']);
-		$max_file_size = 6000000;
-		$file_size = filesize($_FILES['cv']['tmp_name']);
-		$file_ext = strrchr($_FILES['cv']['name'], '.'); 
+			$my_file = basename($_FILES['cv']['name']);
+			$max_file_size = 6000000;
+			$file_size = filesize($_FILES['cv']['tmp_name']);
+			$file_ext = strrchr($_FILES['cv']['name'], '.'); 
 
-		if (isset($_POST['first_name']) && !empty($_POST['first_name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name']) &&
-    		isset($_POST['last_name']) && !empty($_POST['last_name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['last_name']) &&
-    		isset($_POST['email']) && !empty($_POST['email']) && preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
-    		isset($_POST['email-confirm']) && $_POST['email-confirm'] == $_POST['email'] &&
-    		Student::checkEmailExist($_POST['email'])==false &&
-    	   	isset($_POST['password']) && !empty($_POST['password']) && preg_match("#^[a-zA-Z\@._-]{8}#", $_POST['password']) &&
-    	   	isset($_POST['password-confirm']) && $_POST['password-confirm'] == $_POST['password'] &&
-    	   	isset($_POST['country'] ) && !empty($_POST['country']) &&
-    	   	isset($_POST['skill']) && !empty($_POST['skill']) &&
-    	   	isset($_FILES['cv']) && $file_ext == '.pdf' && $file_size < $max_file_size &&
-    	   	isset($_POST['portfolio']) &&
-    	   	preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio']) && 
-    	   	isset($_POST['accept_terms']) &&
-    	   	isset($_POST['g-recaptcha-response'])) {
-    	        	    
-			try {
+			if (isset($_POST['first_name']) && !empty($_POST['first_name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name']) &&
+	    		isset($_POST['last_name']) && !empty($_POST['last_name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['last_name']) &&
+	    		isset($_POST['email']) && !empty($_POST['email']) && preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']) &&
+	    		isset($_POST['email-confirm']) && $_POST['email-confirm'] == $_POST['email'] &&
+	    		!Student::checkEmailExist($_POST['email']) &&
+	    	   	isset($_POST['password']) && !empty($_POST['password']) && preg_match("#^[a-zA-Z\@._-]{8}#", $_POST['password']) &&
+	    	   	isset($_POST['password-confirm']) && $_POST['password-confirm'] == $_POST['password'] &&
+	    	   	isset($_POST['country'] ) && !empty($_POST['country']) &&
+	    	   	isset($_POST['skill']) && !empty($_POST['skill']) &&
+	    	   	isset($_FILES['cv']) && $file_ext == '.pdf' && $file_size < $max_file_size &&
+	    	   	isset($_POST['portfolio']) &&
+	    	   	preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio']) && 
+	    	   	isset($_POST['accept_terms']) &&
+	    	   	isset($_POST['g-recaptcha-response'])) {
 
-				PDOConnexion::setParameters('stages', 'root', 'root');
-				$db = PDOConnexion::getInstance();
-				$sql = "
-					INSERT INTO student(first_name, last_name, country, skill, email, password, portfolio, admin, available, activated, register_date)
-					VALUES (:first_name, :last_name, :country, :skill, :email, :password, :portfolio, false, false, false, NOW())
-				";
-				$sth = $db->prepare($sql);
-				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
-				$sth->execute(array(
-					':first_name' => $_POST['first_name'],
-					':last_name' => $_POST['last_name'],
-					':country' => $_POST['country'],
-					':skill' => $_POST['skill'],
-					':email' => $_POST['email'],
-					':password' => Bcrypt::hashPassword($_POST['password']),
-					':portfolio' => $_POST['portfolio']
-				));
+				try {
+					$addStudent = Student::addStudent($_POST['first_name'], $_POST['last_name'], $_POST['country'], $_POST['skill'], $_POST['email'], $_POST['password'], $_POST['portfolio']);
 
-				$id_stud = Student::getStudentIDByEmail($_POST['email']);
+					if ($addStudent) {
+						$studentId = Student::getStudentIDByEmail($_POST['email']);
 
-          		$folder = "uploads/cv";
-          		$file = $folder . '/' . $id_stud->id . '.pdf';
-         		move_uploaded_file($_FILES['cv']['tmp_name'], $file);
+		          		$folder = 'uploads/cv';
+		          		$file = $folder . '/' . $studentId->id . '.pdf';
+		         		move_uploaded_file($_FILES['cv']['tmp_name'], $file);
+						$editCv = Student::editCv($studentId->id, $file);
 
-         		PDOConnexion::setParameters('stages', 'root', 'root');
-				$dbh = PDOConnexion::getInstance();
-				$req = "UPDATE student SET cv = :cv WHERE id = :id";
-				$st = $dbh->prepare($req);
-				$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
-				$st->execute(array(
-					':cv' => $file,
-					':id' => $id_stud->id
-				));
+						if ($editCv) {
+							$msg->success('Votre inscription s\'est bien déroulée ! Votre compte doit maintenant être validé par l\'administrateur du site', 'index.php?page=home');
+						}
+					}
 
+					else {
+						$msg->error('Votre inscription a rencontré un problème. Veuillez réessayer.', 'index.php?page=register-student');
+					}
+				}
 
-				App::redirect('index.php?page=home');
+				catch(PDOException$e) {
+					echo '<p>Erreur : ' . $e->getMessage() . '</p>';
+					die();
+				}
 			}
+			
+			else {
+				if ((!isset($_POST['first_name']) || empty($_POST['first_name'])) || 
+				(!isset($_POST['last_name']) || empty($_POST['last_name'])) ||
+				(!isset($_POST['email']) || empty($_POST['email'])) ||
+				(!isset($_POST['email-confirm']) || empty($_POST['email-confirm'])) ||
+				(!isset($_POST['password']) || empty($_POST['password'])) ||
+				(!isset($_POST['password-confirm']) || empty($_POST['password-confirm'])) ||
+				(!isset($_POST['country']) || empty($_POST['country'])) ||
+				(!isset($_POST['skill']) || empty($_POST['skill'])) ||
+				(!isset($_FILES['cv'])) ||
+				(!isset($_POST['portfolio']) || empty($_POST['portfolio']))) {
+					$msg->error('Vous devez remplir tous les champs obligatoires', 'index.php?page=register-student');
+				}
 
-			catch(PDOException$e) {
-				echo '<p>Erreur : ' . $e->getMessage() . '</p>';
-				die();
-			}
-		}
-		
-		else {
-			if ((!isset($_POST['first_name']) || empty($_POST['first_name'])) || 
-			(!isset($_POST['last_name']) || empty($_POST['last_name'])) ||
-			(!isset($_POST['email']) || empty($_POST['email'])) ||
-			(!isset($_POST['email-confirm']) || empty($_POST['email-confirm'])) ||
-			(!isset($_POST['password']) || empty($_POST['password'])) ||
-			(!isset($_POST['password-confirm']) || empty($_POST['password-confirm'])) ||
-			(!isset($_POST['country']) || empty($_POST['country'])) ||
-			(!isset($_POST['skill']) || empty($_POST['skill'])) ||
-			(!isset($_FILES['cv'])) ||
-			(!isset($_POST['portfolio']) || empty($_POST['portfolio']))) {
-				$msg->error('Vous devez remplir tous les champs obligatoires','index.php?page=register-student');
-			}
+				if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name'])){
+					$msg->error('Veuillez entrer un prénom approprié', 'index.php?page=register-student');
+				}
 
-			if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['first_name'])){
-				$msg->error("Veuillez entrer un prénom approprié",'index.php?page=register-student');
-			}
+				if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['last_name'])){
+					$msg->error('Veuillez entrer un nom approprié', 'index.php?page=register-student');
+				}
 
-			if (!preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['last_name'])){
-				$msg->error("Veuillez entrer un nom approprié",'index.php?page=register-student');
-			}
+				if (!preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
+					$msg->error('Veuillez entrer un email approprié', 'index.php?page=register-student');
+				}
 
-			if (!preg_match("#^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
-				$msg->error("Veuillez entrer un email approprié",'index.php?page=register-student');
-			}
+				if (Student::checkEmailExist($_POST['email'])==true){
+					$msg->error('Cette adresse email est déjà utilisée', 'index.php?page=register-student');
+				}
 
-			if (Student::checkEmailExist($_POST['email'])==true){
-				$msg->error("Cette adresse email est déjà utilisée",'index.php?page=register-student');
-			}
+				if (!preg_match("#^[a-zA-Z\@._-]{8}#", $_POST['password'])){
+					$msg->error('Veuillez entrer un mot de passe approprié', 'index.php?page=register-student');
+				}
 
-			if (!preg_match("#^[a-zA-Z\@._-]{8}#", $_POST['password'])){
-				$msg->error("Veuillez entrer un mot de passe approprié",'index.php?page=register-student');
-			}
+				if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio'])){
+					$msg->error('Veuillez entrer une adresse web appropriée', 'index.php?page=register-student');
+				}
 
-			if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['portfolio'])){
-				$msg->error("Veuillez entrer une adresse web appropriée",'index.php?page=register-student');
-			}
+				if ($_POST['email']!=$_POST['email-confirm']){
+					$msg->error('L\'adresse email doit correspondre', 'index.php?page=register-student');
+				}
 
-			if ($_POST['email']!=$_POST['email-confirm']){
-				$msg->error("L'adresse email doit correspondre",'index.php?page=register-student');
-			}
+				if ($_POST['password']!=$_POST['password-confirm']){
+					$msg->error('Le mot de passe doit correspondre', 'index.php?page=register-student');
+				}
 
-			if ($_POST['password']!=$_POST['password-confirm']){
-				$msg->error("Le mot de passe doit correspondre",'index.php?page=register-student');
-			}
+				if ($file_ext != '.pdf'){
+					$msg->error('Votre CV doit être au format PDF', 'index.php?page=register-student');
+				}
 
-			if ($file_ext != '.pdf'){
-				$msg->error("Votre CV doit être au format PDF",'index.php?page=register-student');
-			}
+				if ($file_size > $max_file_size){
+					$msg->error('Votre CV est trop lourd, choisissez un autre fichier', 'index.php?page=register-student');
+				}
 
-			if ($file_size > $max_file_size){
-				$msg->error("Votre CV est trop lourd, choisissez un autre fichier",'index.php?page=register-student');
-			}
+				if (!isset($_POST['accept_terms'])){
+					$msg->error('Vous devez accepter les conditions d\'utilisation', 'index.php?page=register-student');
+				}
 
-			if (!isset($_POST['accept_terms'])){
-				$msg->error("Vous devez accepter les conditions d'utilisation",'index.php?page=register-student');
-			}
-
-			if (!isset($_POST['g-recaptcha-response'])){
-				$msg->error("Vous devez confirmer que vous n'êtes pas un robot",'index.php?page=register-student');
+				if (!isset($_POST['g-recaptcha-response'])){
+					$msg->error('Vous devez confirmer que vous n\'êtes pas un robot', 'index.php?page=register-student');
+				}
 			}
 		}
-	}
 
 ?>
 <style type="text/css">
@@ -244,7 +226,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<label>Code de vérification</label>
-						<div class="g-recaptcha" data-sitekey="6Lc2cBoTAAAAAF9TTSA9CRMbg-jss8X-CmDy_eXI"></div>
+						<div class="g-recaptcha" data-sitekey="<?php echo Settings::getRecaptchaKey('public'); ?>"></div>
 						<p class="help-block">Vérifiez que vous êtes un humain</p>
 					</div>
 				</div>
@@ -258,3 +240,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+<?php
+	else:
+		App::redirect('index.php?page=home');
+	endif;
+?>
