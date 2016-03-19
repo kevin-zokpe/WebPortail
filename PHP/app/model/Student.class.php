@@ -196,6 +196,26 @@
 			return $sth;
 		}
 
+		public static function addStudent($first_name, $last_name, $country, $skill, $email, $password, $portfolio) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				INSERT INTO student(first_name, last_name, country, skill, email, password, portfolio, admin, available, activated, register_date)
+				VALUES (:first_name, :last_name, :country, :skill, :email, :password, :portfolio, false, false, false, NOW())
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':first_name' => $first_name,
+				':last_name' => $last_name,
+				':country' => $country,
+				':skill' => $skill,
+				':email' => $email,
+				':password' => Bcrypt::hashPassword($password),
+				':portfolio' => $portfolio
+			));
+		}
+
 		public static function editStudent($id, $first_name, $last_name, $country, $skill, $email, $portfolio, $activated) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
