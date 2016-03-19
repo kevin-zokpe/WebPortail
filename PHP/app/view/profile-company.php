@@ -1,10 +1,24 @@
 <?php
 	if (App::isCompany()) :
 		$company = Company::getCompanyById($_SESSION['id']);
-		
+
 		if (isset($_POST['delete'])){
-				Company::deleteCompany($_SESSION['id']);
-				$msg->success('Votre compte à bien été supprimé', 'index.php?page=home');
+			if (isset($_POST['password']) && $_POST['password'] == $_POST['password-confirm']) {
+				if (Bcrypt::checkPassword($_POST['password'], $student->password)) {
+					Company::deleteCompany($_SESSION['id']);
+
+					session_unset();
+					$msg->success('Votre compte à bien été supprimé', 'index.php?page=home');
+				}
+
+				else {
+					echo $msg->error('Le mot de passe entré est incorrect, veuillez réessayer', 'index.php?page=profile-company');
+				}
+			}
+
+			else {
+				echo $msg->error('Les deux mots de passe ne correspondent pas', 'index.php?page=profile-company');
+			}
 		}
 
 		if (isset($_POST['edit'])) :
