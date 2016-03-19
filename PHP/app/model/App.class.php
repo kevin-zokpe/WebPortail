@@ -60,6 +60,35 @@
 			return false;
 		}
 
+		public static function login($email, $type) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+
+			if ($type == 'student') {
+				$sql = "SELECT id, password, activated FROM student WHERE email = :email";
+				$sth = $db->prepare($sql);
+				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+				$sth->execute(array(
+					':email' => $email
+				));
+			}
+
+			elseif ($type == 'company') {
+				$sql = "SELECT id, password, activated FROM company WHERE email = :email";
+				$sth = $db->prepare($sql);
+				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+				$sth->execute(array(
+					':email' => $email
+				));
+			}
+
+			else {
+				App::redirect('index.php?page=home');
+			}
+
+			return $sth->fetch();
+		}
+
 		public static function error($message) {
 			echo '
 				<div class="erreur">
