@@ -17,7 +17,7 @@ HADRIEN
 - <b>0%</b> - Intégration finale
 
 AK
-- <b>0%</b> Rapatrier tous les sql
+
 
 VALENTIN
 - <b>0%</b> - Renommer CV avant téléchargement
