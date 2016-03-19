@@ -186,14 +186,13 @@
 				<div class="row">
 					<div class="col-md-6">
 						<label for="signup-skill">Domaine de compétences*</label>
-						<select name="skill" id="signup-skill" required="required" class="form-control">
+						<select name="skill" id="signup-skill" class="form-control" required>
 							<option value="" disabled selected>Choisissez votre domaine de compétences</option>
-							<?php
-                                PDOConnexion::setParameters('stages', 'root', 'root');
-								foreach (Skill::getSkillsList() as $skill) {
-									echo '<option value="' . $skill->id . '">' . $skill->name . '</option>';
-								}
-							?>
+								<?php
+									foreach (Skill::getSkillsList() as $skill) {
+										echo '<option value="' . $skill->id . '">' . $skill->name . '</option>';
+									}
+								?>
 						</select>
 					</div>
 				</div>
