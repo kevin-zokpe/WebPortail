@@ -21,11 +21,12 @@ AK
 
 VALENTIN
 - <b>0%</b> - Renommer CV avant téléchargement
+- <b>80%</b> - Trouver des photos pour les formations en France
 - <b>300 %</b> - A la recherche de bugs
 
 
 SONIA
-- <b>40%</b> - Rapport de projet
+- <b>60%</b> - Rapport de projet
 - <b>0%</b> - Diapo de présentation
 
 MIKHAIL
