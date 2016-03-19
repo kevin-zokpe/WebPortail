@@ -16,8 +16,7 @@ HADRIEN
 - <b>0%</b> - Intégration finale
 
 AK
-- <b>50%</b> - Récupérer les photos chez les étudiants irlandais 
-- <b>0%</b>  - Faire la désinscription des étudiants et des entreprises *
+- <b>70%</b>  - Faire la désinscription des étudiants et des entreprises *
 
 
 VALENTIN
