@@ -1,6 +1,5 @@
 <?php
-	session_destroy();
 	session_unset();
-	
-	App::redirect('index.php?page=home');
+
+	$msg->success('Vous êtes maintenant déconnecté.', 'index.php?page=home');
 ?>
