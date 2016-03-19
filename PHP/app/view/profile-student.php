@@ -3,7 +3,8 @@
 		$student = Student::getStudentById($_SESSION['id']);
 
 		if (isset($_POST['delete'])){
-				App::redirect('index.php?page=home');
+				Student::deleteStudent($_SESSION['id']);
+				$msg->success('Votre compte à bien été supprimé', 'index.php?page=home');
 		}
 
 		if (isset($_POST['edit'])) :
@@ -164,15 +165,16 @@
 
 									<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse" name="delete"> Supprimer votre profil </button>
 								</div>
+
 							</div>
 
 							<div class="collapse" id="collapse">
 							  <div class="well">
 							    La suppression de votre profil est irreversible, vous ne pourrez plus avoir accès à vos données et votre compte sera supprimé.
-							    <button type="button" class="btn btn-default btn-sm" name="delete"> Supprimer </button>
+							    <button type="submit" class="btn btn-default btn-sm" name="delete"> Supprimer </button>
 							  </div>
 							</div>
-							
+
 						</form>
 					</div>
 				</div>

@@ -74,6 +74,7 @@
 						</ul>
 					</li>
 				<?php endif; ?>
+				
 				<li class="dropdown">
 					<a id="lang-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						<?php echo $language->getCurrentLanguage()['name']; ?>
