@@ -1,4 +1,8 @@
 <?php
+	if (!$_GET['id']) {
+		App::redirect('index.php?page=home');
+	}
+
 	$student = Student::getStudentById($_GET['id']);
 ?>
 <div class="container">
