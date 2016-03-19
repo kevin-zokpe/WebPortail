@@ -2,6 +2,10 @@
 	if (App::isStudent()) :
 		$student = Student::getStudentById($_SESSION['id']);
 
+		if (isset($_POST['delete'])){
+				App::redirect('index.php?page=home');
+		}
+
 		if (isset($_POST['edit'])) :
 			if (isset($_POST['password']) && $_POST['password'] == $_POST['password-confirm']) {
 				if (Bcrypt::checkPassword($_POST['password'], $student->password)) {
@@ -157,8 +161,18 @@
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button type="submit" class="btn btn-primary" name="edit">Mettre à jour</button>
+
+									<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse" name="delete"> Supprimer votre profil </button>
 								</div>
 							</div>
+
+							<div class="collapse" id="collapse">
+							  <div class="well">
+							    La suppression de votre profil est irreversible, vous ne pourrez plus avoir accès à vos données et votre compte sera supprimé.
+							    <button type="button" class="btn btn-default btn-sm" name="delete"> Supprimer </button>
+							  </div>
+							</div>
+							
 						</form>
 					</div>
 				</div>
