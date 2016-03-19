@@ -6,32 +6,7 @@
 				$password = $_POST['password'];
 				$type = $_POST['type'];
 
-				PDOConnexion::setParameters('stages', 'root', 'root');
-				$db = PDOConnexion::getInstance();
-
-				if ($type == 'student') {
-					$sql = "SELECT id, password, activated FROM student WHERE email = :email";
-					$sth = $db->prepare($sql);
-					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
-					$sth->execute(array(
-						':email' => $email
-					));
-				}
-
-				elseif ($type == 'company') {
-					$sql = "SELECT id, password, activated FROM company WHERE email = :email";
-					$sth = $db->prepare($sql);
-					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
-					$sth->execute(array(
-						':email' => $email
-					));
-				}
-
-				else {
-					App::redirect('index.php?page=home');
-				}
-
-				$member = $sth->fetch();
+				$member = App::login($email, $type);
 
 				if ($member) {
 					if (Bcrypt::checkPassword($password, $member->password)) {
