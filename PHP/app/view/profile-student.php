@@ -3,8 +3,22 @@
 		$student = Student::getStudentById($_SESSION['id']);
 
 		if (isset($_POST['delete'])){
-				Student::deleteStudent($_SESSION['id']);
-				$msg->success('Votre compte à bien été supprimé', 'index.php?page=home');
+			if (isset($_POST['password']) && $_POST['password'] == $_POST['password-confirm']) {
+				if (Bcrypt::checkPassword($_POST['password'], $student->password)) {
+					Student::deleteStudent($_SESSION['id']);
+
+					session_unset();
+					$msg->success('Votre compte à bien été supprimé', 'index.php?page=home');
+				}
+
+				else {
+					echo $msg->error('Le mot de passe entré est incorrect, veuillez réessayer', 'index.php?page=profile-student');
+				}
+			}
+
+			else {
+				echo $msg->error('Les deux mots de passe ne correspondent pas', 'index.php?page=profile-student');
+			}
 		}
 
 		if (isset($_POST['edit'])) :
