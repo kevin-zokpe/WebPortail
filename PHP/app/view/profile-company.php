@@ -152,12 +152,11 @@
 							</div>
 
 							<div class="collapse" id="collapse">
-							  <div class="well">
+							  <div class="form-group">
 							    La suppression de votre profil est irreversible, vous ne pourrez plus avoir accès à vos données et votre compte sera supprimé.
-							    <button type="submit" class="btn btn-default btn-sm" name="delete"> Supprimer </button>
+							    <button type="submit" class="btn btn-default btn-sm" name="delete" style="color:#d9534f"> Supprimer </button>
 							  </div>
 							</div>
-							
 						</form>
 					</div>
 				</div>

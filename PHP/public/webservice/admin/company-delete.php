@@ -18,6 +18,7 @@
 	
 	header('Content-Type: application/json');
 
+
 	if (isset($_POST['delete']) && isset($_POST['id']) && App::isAdmin()) {
 		Company::deleteCompany(htmlentities($_POST['id']));
 		
