@@ -89,6 +89,28 @@
 			return $sth->fetch();
 		}
 
+		public static function notification($subject, $body) {
+			if (Settings::isActivatedNotification) {
+				$to = Settings::getNotificationEmail();
+
+				$message = '
+					<html>
+						<head>
+							<title>' . $subject . '</title>
+						</head>
+						<body>' . $body . '</body>
+					</html>
+				';
+
+				$headers  = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+				$headers .= 'From: Internship Web Portal <internshipwebportal@unicaen.fr>' . "\r\n";
+
+				mail($to, $subject, $message, $headers);
+			}
+		}
+
 		public static function error($message) {
 			echo '
 				<div class="erreur">
