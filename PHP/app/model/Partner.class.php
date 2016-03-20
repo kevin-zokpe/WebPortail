@@ -4,6 +4,7 @@
 		private $name;
 		private $logo;
 		private $country;
+		private $type;
 		private $register_date;
 		
 		public function __construct(array $args = array()) {
@@ -48,10 +49,18 @@
 			return $sth->fetch();
 		}
 
-		public static function getPartnersList() {
+		public static function getPartnersList($type = '') {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
-			$sql = 'SELECT * FROM partner';
+			
+			if ($type == 'university' || $type == 'company') {
+				$sql = "SELECT * FROM partner WHERE type = '{$type}'";
+			}
+
+			else {
+				$sql = 'SELECT * FROM partner';
+			}
+			
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
 			$sth->execute();
