@@ -138,9 +138,9 @@
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
 			$sql = "
-			UPDATE company
-			SET password = :password
-			WHERE id = :id
+				UPDATE company
+				SET password = :password
+				WHERE id = :id
 			";
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
@@ -150,6 +150,40 @@
 			));
 			
 			return $sth;
+		}
+
+		public static function addCompany($name, $email, $country, $city, $description, $password, $website) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				INSERT INTO company(name, email, country, city, description, password, website, activated, register_date)
+				VALUES (:name, :email, :country, :city, :description, :password, :website, false, NOW())
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':name' => $name,
+				':email' => $email,
+				':country' => $country,
+				':city' => $city,
+				':description' => $description,
+				':password' => Bcrypt::hashPassword($password),
+				':website' => $website
+			));
+
+			App::notification('Une entreprise vient de s\'inscrire', 'Une nouvelle entreprise vient de s\'inscrire sur le site. Connectez-vous pour la confirmer.');
+		}
+
+		public static function editLogo($id, $file) {
+	 		PDOConnexion::setParameters('stages', 'root', 'root');
+			$dbh = PDOConnexion::getInstance();
+			$req = "UPDATE company SET logo = :logo WHERE id = :id";
+			$st = $dbh->prepare($req);
+			$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$st->execute(array(
+				':logo' => $file,
+				':id' => $id
+			));
 		}
 
 		public static function deleteCompany($id) {
@@ -162,11 +196,18 @@
 				':id' => $id
 			));
 
-			$folder = "../../uploads/companies";
-          		$file = $folder . '/' . $id . '.jpg';
-          		$file2 = $folder . '/' . $id . '.png';
-          		if(file_exists($file)) unlink($file);
-          		if(file_exists($file2)) unlink($file2);
+			$folder = dirname(dirname(BASE_URL . '/uploads/companies'));
+          	
+          	$file = $folder . '/' . $id . '.jpg';
+          	$file2 = $folder . '/' . $id . '.png';
+          	
+          	if (file_exists($file)) {
+          		unlink($file);
+          	}
+          	
+          	if (file_exists($file2)) {
+          		unlink($file2);
+          	}
 		}
 	}
 ?>
