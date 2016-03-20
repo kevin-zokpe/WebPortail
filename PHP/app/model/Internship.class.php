@@ -7,6 +7,7 @@
 		private $adress;
 		private $city;
 		private $zip_code;
+		private $country;
 		private $skill;
 		private $student;
 		
