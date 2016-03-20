@@ -1,14 +1,27 @@
 <?php
 	if (App::isAdmin()) :
-		if (!isset($_GET['type']) || $_GET['type'] != 'awaiting') {
-			$_GET['type'] = 'activated';
+		if (!isset($_GET['type']) || $_GET['type'] != 'university') {
+			$_GET['type'] = 'company';
 		}
 
 		$type = htmlentities($_GET['type']);
 ?>
 	<div class="col-md-12">
 		<div class="page-header">
-			<h1>Liste des partenaires</h1>
+			<h1>
+				Liste des partenaires
+				<?php
+					if ($type == 'university') {
+						echo '<small>Universités</small>';
+						echo '<a href="index.php?page=admin/partners-list&amp;type=company" class="btn btn-primary pull-right">Voir les entreprises</a>';
+					}
+
+					else {
+						echo '<small>Entreprises</small>';
+						echo '<a href="index.php?page=admin/partners-list&amp;type=university" class="btn btn-primary pull-right">Voir les universités</a>';
+					}
+				?>
+			</h1>
 		</div>
 
 		<table class="table table-striped">
@@ -23,7 +36,7 @@
 				</tr>
 			</thead>
 			<?php
-				foreach (Partner::getPartnersList() as $partner) {
+				foreach (Partner::getPartnersList($type) as $partner) {
 					echo '<tr data-id=' . $partner->id . '>';
 						echo '<td><img alt="' . $partner->name . '" src="' . $partner->logo . '" style="width:80px;"/></td>';
 						echo '<td>' . $partner->name . '</td>';
