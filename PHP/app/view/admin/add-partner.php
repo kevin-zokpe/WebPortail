@@ -22,6 +22,7 @@
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
 			$sth->execute(array(
 				':name' => $name,
+				':type' => $type,
 				':country' => $country
 			));
 
