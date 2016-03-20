@@ -40,7 +40,8 @@
 					}
 
 					else {
-						$msg->error('Votre inscription a rencontré un problème. Veuillez réessayer.', 'index.php?page=register-student');
+						Student::deleteStudentError($_POST['email']);
+						$msg->error('Votre inscription a rencontré un problème. Veuillez réessayer. Si le problème persiste merci de contacter l\'administrateur', 'index.php?page=register-student');
 					}
 				}
 

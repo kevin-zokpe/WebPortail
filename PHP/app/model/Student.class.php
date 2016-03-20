@@ -291,5 +291,23 @@
           		unlink($file);
           	}
 		}
+
+		public static function deleteStudentError($email) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'DELETE FROM student WHERE email = :email';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$sth->execute(array(
+				':email' => $email
+			));
+
+			$folder = dirname(dirname(BASE_URL . '/uploads/cv'));
+          	$file = $folder . '/' . $id . '.pdf';
+          	
+          	if (file_exists($file)) {
+          		unlink($file);
+          	}
+		}
 	}
 ?>

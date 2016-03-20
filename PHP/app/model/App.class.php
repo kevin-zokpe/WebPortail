@@ -90,7 +90,7 @@
 		}
 
 		public static function notification($subject, $body) {
-			if (Settings::isActivatedNotification) {
+			if (Settings::isActivatedNotification()) {
 				$to = Settings::getNotificationEmail();
 
 				$message = '
