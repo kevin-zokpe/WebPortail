@@ -214,6 +214,8 @@
 				':password' => Bcrypt::hashPassword($password),
 				':portfolio' => $portfolio
 			));
+
+			App::notification('Un étudiant vient de s\'inscrire', 'Un nouvel étudiant vient de s\'inscrire sur le site. Connectez-vous pour le confirmer.');
 		}
 
 		public static function editStudent($id, $first_name, $last_name, $country, $skill, $email, $portfolio, $activated) {
