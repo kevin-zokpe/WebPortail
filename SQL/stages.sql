@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Mer 16 Mars 2016 à 15:56
+-- Généré le :  Dim 20 Mars 2016 à 10:12
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -70,7 +70,7 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `target`) VALUES
 (6, 'Comment contacter facilement une entreprise en Irlande ?', 'Notre portail web est la solution ! Si toi aussi tu as envie de faire parti de l’aventure il te suffit de créer un compte et déposer ton CV et ta lettre de motivation pour avoir accès à plusieurs stages étrangers. ', 'student'),
 (7, 'Vais-je percevoir des bourses durant mon séjour ?', 'Les bourses dépendent du pays dans lequel tu te trouves, nous t’invitons à prendre contact avec le représentant de ton école pour avoir plus de modalités sur les différents moyens d’obtenir des bourses', 'student'),
 (8, 'Ou vais-je séjourner durant mon stage ? ', 'Plusieurs moyens d’hébergements existent. Selon ton profil les entreprises peuvent te proposer des logements proches de ton futur lieu de travail. Ce qui te permettra de travailler sans te soucier du mauvais temps qu’il fait dehors par exemple', 'student'),
-(9, 'Ou puis-je trouver plus de témoignages et de bonnes adresses ? ', 'Des élèves ayant effectué leurs stages à l’étranger remplissent des fiches à leur retour nous t’invitons à te renseigner auprès de ton école pour bénéficier de ses fiches de témoignages et t’imprégner de leurs expériences', 'student');
+(9, 'Ou puis-je trouver plus de témoignages et de bonnes adresses ?', 'Des élèves ayant effectué leurs stages à l’étranger remplissent des fiches à leur retour nous t’invitons à te renseigner auprès de ton école pour bénéficier de ses fiches de témoignages et t’imprégner de leurs expériences', 'student');
 
 -- --------------------------------------------------------
 
@@ -86,6 +86,7 @@ CREATE TABLE `internship` (
   `address` varchar(128) NOT NULL,
   `city` varchar(128) NOT NULL,
   `zip_code` varchar(32) NOT NULL,
+  `country` enum('France','Irlande') NOT NULL,
   `skill` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -93,9 +94,9 @@ CREATE TABLE `internship` (
 -- Contenu de la table `internship`
 --
 
-INSERT INTO `internship` (`id`, `name`, `description`, `company`, `address`, `city`, `zip_code`, `skill`) VALUES
-(1, 'Community Manager', 'Test', 1, '12 Wood Quay', 'Dublin', '15', 13),
-(2, 'Codeur Laravel', 'Nous recherchons un codeur Laravel pour migrer notre site actuel vers Laravel 5.', 2, '15 rue des Trentes', 'Rennes', '35000', 8);
+INSERT INTO `internship` (`id`, `name`, `description`, `company`, `address`, `city`, `zip_code`, `country`, `skill`) VALUES
+(1, 'Community Manager', 'Test', 1, '12 Wood Quay', 'Dublin', '15', 'Irlande', 13),
+(2, 'Codeur Laravel', 'Nous recherchons un codeur Laravel pour migrer notre site actuel vers Laravel 5.', 2, '15 rue des Trentes', 'Rennes', '35000', 'France', 8);
 
 -- --------------------------------------------------------
 
@@ -108,15 +109,17 @@ CREATE TABLE `partner` (
   `name` varchar(64) CHARACTER SET utf8 NOT NULL,
   `logo` varchar(128) CHARACTER SET utf8 NOT NULL,
   `country` enum('France','Irlande') CHARACTER SET utf8 NOT NULL,
+  `type` enum('company','university') NOT NULL DEFAULT 'company',
   `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `partner`
 --
 
-INSERT INTO `partner` (`id`, `name`, `logo`, `country`, `register_date`) VALUES
-(1, 'IUT Cherbourg-Manche', 'uploads/partners/1.png', 'France', '2016-03-11');
+INSERT INTO `partner` (`id`, `name`, `logo`, `country`, `type`, `register_date`) VALUES
+(1, 'IUT Cherbourg-Manche', 'uploads/partners/1.png', 'France', 'university', '2016-03-11'),
+(2, 'Conseil général de la Manche', 'uploads/partners/2.png', 'France', 'company', '2016-03-20');
 
 -- --------------------------------------------------------
 
@@ -196,7 +199,7 @@ CREATE TABLE `student` (
   `available` tinyint(1) NOT NULL DEFAULT '1',
   `activated` tinyint(1) NOT NULL,
   `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `student`
@@ -205,7 +208,8 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `email`, `password`, `cv`, `portfolio`, `admin`, `available`, `activated`, `register_date`) VALUES
 (1, 'Valentin', 'Gougeon', 'France', 1, 'val.gougeon@hotmail.fr', '$2y$12$cnad250ZDSyikBC6anzZ5.BjprYibKhYkEjPfZ1bVPzarrTvcYQbi', '', 'http://youtube.com', 1, 1, 1, '2016-02-18'),
 (2, 'Hadrien', 'Rannou', 'France', 1, 'hadriien@live.fr', '$2y$12$iG3tJq9C3iH1OzFqa2s0ruSa1zblb4XlF2Q0uZtvbW1KXy7KI/zW6', '', 'http://hadrien.info/portfolio/', 1, 1, 1, '2016-02-20'),
-(3, 'Ange Kevin', 'Zokpe', 'France', 13, 'kzokpe@gmail.com', '$2y$12$svwYSh7MopBR0UIc9rSuWuS2qnVQ5Wa/6Cntlofw3SPYTRgE/0Y0e', '', 'https://akdesign.com', 1, 1, 1, '2016-03-08');
+(3, 'Ange Kevin', 'Zokpe', 'France', 13, 'kzokpe@gmail.com', '$2y$12$svwYSh7MopBR0UIc9rSuWuS2qnVQ5Wa/6Cntlofw3SPYTRgE/0Y0e', '', 'https://akdesign.com', 1, 1, 1, '2016-03-08'),
+(6, 'Test', 'Test', 'France', 1, 'test@test.fr', '$2y$12$svwYSh7MopBR0UIc9rSuWuS2qnVQ5Wa/6Cntlofw3SPYTRgE/0Y0e', '', '', 0, 1, 1, '2016-03-19');
 
 -- --------------------------------------------------------
 
@@ -218,14 +222,15 @@ CREATE TABLE `testimony` (
   `description` text CHARACTER SET utf8 NOT NULL,
   `author` varchar(64) CHARACTER SET utf8 NOT NULL,
   `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `testimony`
 --
 
 INSERT INTO `testimony` (`id`, `description`, `author`, `register_date`) VALUES
-(2, 'C''était trop cool ! Génial !', 'Valentin Gougeon', '2016-03-12');
+(2, 'C''était trop cool ! Génial !', 'Valentin Gougeon', '2016-03-12'),
+(4, 'Hello world!', 'Hadrien', '2016-03-18');
 
 --
 -- Index pour les tables exportées
@@ -304,7 +309,7 @@ ALTER TABLE `internship`
 -- AUTO_INCREMENT pour la table `partner`
 --
 ALTER TABLE `partner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `settings`
 --
@@ -319,12 +324,12 @@ ALTER TABLE `skill`
 -- AUTO_INCREMENT pour la table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `testimony`
 --
 ALTER TABLE `testimony`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables exportées
 --
