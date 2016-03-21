@@ -32,7 +32,6 @@ AK
 - <b>0%</b> - Inverser les stages disponibles selon la France et l’Irlande
 - <b>0%</b> - Statistiques sur le dashboard
 - <b>0%</b> - Mettre tous les PDO dans les classes
-- <b>1000%</b> - Dire à Valentin d'Ajouter les photos pour les formations en France
 
 
 
