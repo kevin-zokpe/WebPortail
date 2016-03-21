@@ -8,7 +8,8 @@ Membres du groupe :
 - [Ange Kévin Zokpé](https://github.com/Ange-Kevin)
 - [Hadrien Rannou](https://github.com/HadrienX)
 
-# To do list
+# A faire pour le 25 Mars 2016
+
 HADRIEN
 - <b>0%</b> - Demander à Philou infos SMTP
 - <b>0%</b> - Vérifier les inscriptions
@@ -34,7 +35,7 @@ AK
 - <b>0%</b> - Mettre tous les PDO dans les classes
 
 
-
+# Faire des photos ? 
 
 
 
