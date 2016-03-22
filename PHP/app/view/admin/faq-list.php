@@ -25,8 +25,10 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Question</th>
-				<th>Réponse</th>
+				<th>Question en français</th>
+				<th>Question en anglais</th>
+				<th>Réponse en français</th>
+				<th>Réponse en anglais</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -36,8 +38,10 @@
 				if ($type == 'student') {
 					foreach (Faq::getStudentsFaq() as $faq) {
 						echo '<tr data-id="' . $faq->id . '">';
-							echo '<td>' . $faq->question . '</td>';
-							echo '<td>' . $faq->answer . '</td>';
+							echo '<td>' . $faq->question_fr . '</td>';
+							echo '<td>' . $faq->question_en . '</td>';
+							echo '<td>' . $faq->answer_fr . '</td>';
+							echo '<td>' . $faq->answer_en . '</td>';
 							echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
 							echo '<td><a href="#" title="Supprimer" data-action="delete"><i class="fa fa-trash"  data-toggle="tooltip" title="Supprimer"></i></a></td>';
 						echo '</tr>';
@@ -47,8 +51,10 @@
 				else {
 					foreach (Faq::getCompaniesFaq() as $faq) {
 						echo '<tr data-id="' . $faq->id . '">';
-							echo '<td>' . $faq->question . '</td>';
-							echo '<td>' . $faq->answer . '</td>';
+							echo '<td>' . $faq->question_fr . '</td>';
+							echo '<td>' . $faq->question_en . '</td>';
+							echo '<td>' . $faq->answer_fr . '</td>';
+							echo '<td>' . $faq->answer_en . '</td>';
 							echo '<td><a href="index.php?page=admin/faq-edit&amp;id=' . $faq->id . '"><i class="fa fa-pencil" data-toggle="tooltip" title="Modifier"></i></a></td>';
 							echo '<td><a href="#" title="Supprimer" data-action="delete"><i class="fa fa-trash" data-toggle="tooltip" title="Supprimer"></i></a></td>';
 						echo '</tr>';
