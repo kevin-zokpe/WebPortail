@@ -68,6 +68,32 @@
 			return $sth->fetchAll();
 		}
 
+		public static function getPartnersByCountry($country) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT * FROM partner WHERE country = :country';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
+			$sth->execute(array(
+				':country' => $country
+			));
+			
+			return $sth->fetchAll();
+		}
+
+		public static function getPartnersUniversityByCountry($country) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT * FROM partner WHERE country = :country AND type LIKE "university"';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
+			$sth->execute(array(
+				':country' => $country,
+			));
+			
+			return $sth->fetchAll();
+		}
+
 		public static function editPartner($id, $name, $country) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
