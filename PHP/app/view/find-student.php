@@ -3,9 +3,10 @@
 		$(document).ready(function() {
 			$('select[name="skill"]').change(function() {
 				var selectedSkill = $(this).val();
+				var country = $(this).attr('data-country');
 
 				$.getJSON(
-					"public/webservice/students.php", {"skill": selectedSkill}, function(result) {
+					"public/webservice/students.php", {"skill": selectedSkill, "country": country}, function(result) {
 						if (result.no_result) {
 							$('#results').html('Aucun étudiant.');
 						}
@@ -33,7 +34,7 @@
 					<h1>
 						Rechercher des étudiants
 						<form action="index.php?page=find-student" method="POST" class="pull-right">
-							<select name="skill" class="form-control">
+							<select name="skill" class="form-control" data-country="<?php echo $_SESSION['country']; ?>">
 								<option value="" disabled selected>Domaine de compétence</option>
 								<?php
 									foreach (Skill::getSkillsList() as $skill) {
