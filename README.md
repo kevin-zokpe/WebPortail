@@ -13,7 +13,7 @@ Membres du groupe :
 HADRIEN
 - <b>0%</b> - Demander à Philou infos SMTP
 - <b>0%</b> - Vérifier les inscriptions
-- <b>0%</b> - Intégration finale
+- <b>50%</b> - Intégration finale
 
 VALENTIN
 -  <b>0%</b> - Renommer CV avant téléchargement
