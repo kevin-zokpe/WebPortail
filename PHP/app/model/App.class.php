@@ -65,7 +65,7 @@
 			$db = PDOConnexion::getInstance();
 
 			if ($type == 'student') {
-				$sql = "SELECT id, password, activated FROM student WHERE email = :email";
+				$sql = "SELECT id, password, country, activated FROM student WHERE email = :email";
 				$sth = $db->prepare($sql);
 				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 				$sth->execute(array(
@@ -74,7 +74,7 @@
 			}
 
 			elseif ($type == 'company') {
-				$sql = "SELECT id, password, activated FROM company WHERE email = :email";
+				$sql = "SELECT id, password, country, activated FROM company WHERE email = :email";
 				$sth = $db->prepare($sql);
 				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
 				$sth->execute(array(
