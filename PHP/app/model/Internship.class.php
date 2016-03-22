@@ -64,14 +64,15 @@
 			return $sth->fetchAll();
 		}
 
-		public static function getInternshipBySkill($skill) {
+		public static function getInternshipBySkill($skill, $country) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
-			$sql = 'SELECT * FROM internship WHERE skill = :skill';
+			$sql = 'SELECT I.* FROM internship I, company C WHERE I.skill = :skill AND I.company = C.id AND C.country != :country';
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Internship');
 			$sth->execute(array(
-				':skill' => $skill
+				':skill' => $skill,
+				':country' => $country
 			));
 			
 			return $sth->fetchAll();
