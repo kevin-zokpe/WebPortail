@@ -22,7 +22,8 @@
 	header('Content-Type: application/json');
 
 	$skill = htmlentities($_GET['skill']);
-	$internship = Internship::getInternshipBySkill($skill);
+	$country = htmlentities($_GET['country']);
+	$internship = Internship::getInternshipBySkill($skill, $country);
 
 
 	if ($internship) {
