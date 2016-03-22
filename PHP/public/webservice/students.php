@@ -20,7 +20,8 @@
 	header('Content-Type: application/json');
 
 	$skill = htmlentities($_GET['skill']);
-	$student = Student::getStudentsBySkill($skill);
+	$country = htmlentities($_GET['country']);
+	$student = Student::getStudentsBySkill($skill, $country);
 
 
 	if ($student) {
