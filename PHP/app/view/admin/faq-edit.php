@@ -4,8 +4,9 @@
 		$faq = Faq::getFaqById($id);
 
 		if (isset($_POST['edit'])) {
-			if (isset($_POST['question']) && !empty($_POST['question']) && isset($_POST['answer']) && !empty($_POST['answer'])) {
-				$edit = Faq::editFaq($id, $_POST['question'], $_POST['answer'], $_POST['target']);
+			if (isset($_POST['question_fr']) && !empty($_POST['question_fr']) && isset($_POST['answer_fr']) && !empty($_POST['answer_fr']) &&
+				isset($_POST['question_en']) && !empty($_POST['question_en']) && isset($_POST['answer_en']) && !empty($_POST['answer_en'])) {
+				$edit = Faq::editFaq($id, $_POST['question_fr'], $_POST['answer_fr'], $_POST['question_en'], $_POST['answer_en'], $_POST['target']);
 
 				if ($edit) {
 					$msg->success('Cette question a bien été modifiée.', 'index.php?page=admin/faq-list&type=' . $faq->target);
@@ -13,12 +14,20 @@
 			}
 
 			else {
-				if (!isset($_POST['question']) || empty($_POST['question'])) {
-					$msg->error('Veuillez entrer une question.', 'index.php?page=admin/faq-edit&id=' . $id);
+				if (!isset($_POST['question_fr']) || empty($_POST['question_fr'])) {
+					$msg->error('Veuillez entrer une question en français.', 'index.php?page=admin/faq-edit&id=' . $id);
 				}
 
-				if (!isset($_POST['answer']) || empty($_POST['answer'])) {
-					$msg->error('Veuillez entrer une réponse.', 'index.php?page=admin/faq-edit&id=' . $id);
+				if (!isset($_POST['answer_fr']) || empty($_POST['answer_fr'])) {
+					$msg->error('Veuillez entrer une réponse en français.', 'index.php?page=admin/faq-edit&id=' . $id);
+				}
+
+				if (!isset($_POST['question_en']) || empty($_POST['question_en'])) {
+					$msg->error('Veuillez entrer une question en anglais.', 'index.php?page=admin/faq-edit&id=' . $id);
+				}
+
+				if (!isset($_POST['answer_en']) || empty($_POST['answer_en'])) {
+					$msg->error('Veuillez entrer une réponse en anglais.', 'index.php?page=admin/faq-edit&id=' . $id);
 				}
 			}
 		}
@@ -45,13 +54,23 @@
 						</div>
 
 						<div class="form-group">
-							<label for="faq-question">Question</label>
-							<input type="text" class="form-control" id="faq-question" value="<?php echo $faq->question; ?>" name="question" placeholder="Votre question" required>
+							<label for="faq-question_fr">Question en français</label>
+							<input type="text" class="form-control" id="faq-question_fr" value="<?php echo $faq->question_fr; ?>" name="question_fr" placeholder="Votre question en français" required>
 						</div>
 
 						<div class="form-group">
-							<label for="faq-answer">Réponse</label>
-							<textarea class="form-control" id="faq-answer" name="answer" placeholder="Réponse de votre question" required><?php echo $faq->answer; ?></textarea>
+							<label for="faq-answer_fr">Réponse en français</label>
+							<textarea class="form-control" id="faq-answer_fr" name="answer_fr" placeholder="Réponse de votre question en français" required><?php echo $faq->answer_fr; ?></textarea>
+						</div>
+
+						<div class="form-group">
+							<label for="faq-question_en">Question en anglais</label>
+							<input type="text" class="form-control" id="faq-question_en" value="<?php echo $faq->question_en; ?>" name="question_en" placeholder="Votre question en anglais" required>
+						</div>
+
+						<div class="form-group">
+							<label for="faq-answer_en">Réponse en anglais</label>
+							<textarea class="form-control" id="faq-answer_en" name="answer_en" placeholder="Réponse de votre question en anglais" required><?php echo $faq->answer_en; ?></textarea>
 						</div>
 
 						<button type="submit" class="btn btn-lg btn-primary" name="edit">Éditer</button>
