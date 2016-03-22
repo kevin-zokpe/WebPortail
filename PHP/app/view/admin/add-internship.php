@@ -35,7 +35,7 @@
 										));
 										
 										if ($sth) {
-											$msg->success('Le stage à bien été ajouté.', 'index.php?page=admin/internship-list&country=' . $country);
+											$msg->success('Le stage à bien été ajouté.', 'index.php?page=admin/internships-list&country=' . $country);
 										}
 									}
 
@@ -90,7 +90,7 @@
 								<select name="company" class="form-control">
 									<option value="internship-company" disabled selected>Sélectionnez une entreprise</option>
 									<?php
-									if ($country=="France") {
+									if ($country=="france") {
 										foreach (Company::getCompaniesListInFrance() as $company) {
 											echo '<option value="' . $company->id . '">' . $company->name . '</option>';
 										}

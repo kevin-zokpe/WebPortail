@@ -12,12 +12,12 @@
 			<?php
 				if ($country == 'france') {
 					echo '<small> en France</small>';
-					echo '<a href="index.php?page=admin/internships-list&country=irlande" class="btn btn-primary pull-right">Voir la liste des stages en Irlande <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
+					echo '<a href="index.php?page=admin/internships-list&country=irlande" class="btn btn-primary pull-right">Voir la liste des stages en Irlande <span class="badge">' . count(Internship::getInternshipByCompanyCountry('irlande')) . '</span></a>';
 				}
 
 				else {
 					echo '<small> en Irlande</small>';
-					echo '<a href="index.php?page=admin/internships-list&country=france" class="btn btn-primary pull-right">Voir la liste des stages en France <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
+					echo '<a href="index.php?page=admin/internships-list&country=france" class="btn btn-primary pull-right">Voir la liste des stages en France <span class="badge">' . count(Internship::getInternshipByCompanyCountry('france')) . '</span></a>';
 				}
 			?>
 		</h1>
