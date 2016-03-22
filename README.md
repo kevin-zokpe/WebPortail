@@ -16,8 +16,8 @@ HADRIEN
 - <b>50%</b> - Intégration finale
 
 VALENTIN
--  <b>0%</b> - Renommer CV avant téléchargement
-- <b>0%</b> - Modifier la table FAQ pour permettre le multi-langue
+- <b>0%</b> - Renommer CV avant téléchargement
+- <b>100%</b> - Modifier la table FAQ pour permettre le multi-langue
 - <b>0%</b> - Rajouter vérification du pays pour la recherche d’entreprises et de stage
 
 SONIA
