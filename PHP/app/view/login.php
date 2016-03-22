@@ -15,6 +15,7 @@
 								$_SESSION['id'] = $member->id;
 								$_SESSION['email'] = $email;
 								$_SESSION['type'] = $type;
+								$_SESSION['country'] = $member->country;
 							}
 
 							$msg->info('Vous êtes maintenant connecté.', 'index.php?page=home');
