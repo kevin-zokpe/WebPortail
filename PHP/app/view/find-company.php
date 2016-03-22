@@ -23,7 +23,7 @@
 					</thead>
 					
 					<?php
-						foreach (Company::getActivatedCompanies() as $company) {
+						foreach (Company::getForeignCompanies($_SESSION['country']) as $company) {
 							echo '<tr data-id=' . $company->id . '>';
 								echo '<td>' . $company->name . '</td>';
 								echo '<td><img alt="Aucun" src="' . $company->logo . '" style="width:40px;"/></td>';
