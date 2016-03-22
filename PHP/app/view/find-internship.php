@@ -3,9 +3,10 @@
 		$(document).ready(function() {
 			$('select[name="skill"]').change(function() {
 				var selectedSkill = $(this).val();
+				var country = $(this).attr('data-country');
 
 				$.getJSON(
-					"public/webservice/internships.php", {"skill": selectedSkill}, function(result) {
+					"public/webservice/internships.php", {"skill": selectedSkill, "country": country}, function(result) {
 						if (result.no_result) {
 							$('#results').html('Aucun stage disponible dans ce domaine');
 						}
