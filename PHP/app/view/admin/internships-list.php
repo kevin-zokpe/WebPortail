@@ -3,20 +3,20 @@
 		App::redirect('index.php?page=admin/internships-list&country=france');
 	}
 	
-	$country = ($_GET['country'] == 'ireland') ? 'ireland' : 'france';
+	$country = $_GET['country'];
 ?>
 <div class="col-md-12">
 	<div class="page-header">
 		<h1>
-			Stages disponibles en
+			Stages disponibles
 			<?php
 				if ($country == 'france') {
-					echo '<small>France</small>';
-					echo '<a href="index.php?page=admin/internships-list&country=ireland" class="btn btn-primary pull-right">Voir la liste des stages en Irlande <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
+					echo '<small> en France</small>';
+					echo '<a href="index.php?page=admin/internships-list&country=irlande" class="btn btn-primary pull-right">Voir la liste des stages en Irlande <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
 				}
 
 				else {
-					echo '<small>Ireland</small>';
+					echo '<small> en Irlande</small>';
 					echo '<a href="index.php?page=admin/internships-list&country=france" class="btn btn-primary pull-right">Voir la liste des stages en France <span class="badge">' . count(Internship::getInternshipByCompanyCountry($country)) . '</span></a>';
 				}
 			?>
@@ -38,7 +38,7 @@
 		</thead>
 		<tbody>
 			<?php
-				if ($country == 'France') {
+				if ($country == 'france') {
 					foreach (Internship::getInternshipByCompanyCountry($country) as $internship) {
 						echo '<tr data-id="' . $internship->id . '">';
 							echo '<td>' . Company::getCompanyById($internship->company)->name . '</td>';

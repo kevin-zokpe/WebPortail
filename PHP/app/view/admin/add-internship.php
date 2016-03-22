@@ -2,11 +2,11 @@
 	if (App::isAdmin()) :
 		$country = htmlentities($_GET['country']);
 
-		if ($country != 'france' || $country != 'irelande') {
+		if ($country != 'france' && $country != 'irlande') {
 			$country = 'france';
 		}
 
-		$countryName = ($country == 'irelande') ? 'Irlande' : 'France';
+		$countryName = ($country == 'irlande') ? 'Irlande' : 'France';
 
 		if (isset($_POST['add-internship'])) {
 			if (isset($_POST['name']) && !empty($_POST['name'])) {
