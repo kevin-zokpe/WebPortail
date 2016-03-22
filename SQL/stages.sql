@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.10
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost:3306
--- Généré le :  Dim 20 Mars 2016 à 10:12
--- Version du serveur :  5.5.42
--- Version de PHP :  7.0.0
+-- Client :  127.0.0.1
+-- Généré le :  Mar 22 Mars 2016 à 19:07
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données :  `stages`
@@ -20,8 +26,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `company`
 --
 
-CREATE TABLE `company` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `company` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `email` varchar(128) NOT NULL,
   `password` varchar(64) NOT NULL,
@@ -31,8 +37,9 @@ CREATE TABLE `company` (
   `description` text NOT NULL,
   `website` varchar(64) NOT NULL,
   `activated` tinyint(1) NOT NULL,
-  `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `register_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `company`
@@ -50,27 +57,30 @@ INSERT INTO `company` (`id`, `name`, `email`, `password`, `country`, `city`, `lo
 -- Structure de la table `faq`
 --
 
-CREATE TABLE `faq` (
-  `id` int(11) NOT NULL,
-  `question` text NOT NULL,
-  `answer` text NOT NULL,
-  `target` enum('student','company') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `faq` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_fr` text NOT NULL,
+  `answer_fr` text NOT NULL,
+  `question_en` text NOT NULL,
+  `answer_en` text NOT NULL,
+  `target` enum('student','company') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `faq`
 --
 
-INSERT INTO `faq` (`id`, `question`, `answer`, `target`) VALUES
-(1, 'Pourquoi prendre un stagiaire d’un pays étranger ? ', 'Donner une image dynamique à votre entreprise et bénéficier d’un savoir-faire extérieur pour apporter du frais dans l’entreprise.', 'company'),
-(2, 'Devrez-vous rémunérer l’étudiant ?', 'La rémunération dépend du pays dans lequel vous effectuerez votre stage. Les stages sont rémunérés en a un minimum 540 à condition que le stage est une durée de 10 semaines.', 'company'),
-(3, 'Pourquoi utiliser notre portail de stage ? ', 'Nous vous offrons une plateforme qui vous permettra de trouver des étudiants sérieux et prêts à réaliser des projets innovants. Notre portail vous permettra de proposer vos offres de stage en toutes sécurités et bien entendu vous serrez sûr d’assurer d’atteindre les bonnes cibles.', 'company'),
-(4, 'À qui poser des questions plus précises ?', 'Vous pouvez contacter M. Clouet Jérôme, professeur d’anglais a l’IUT de Saint-Lô qui a été l’initiateur de ce projet. Il prendra plaisir à répondre à toutes vos questions. Vous pouvez le contacter à l’adresse suivante : JérômeClouet @unicaen.fr', 'company'),
-(5, 'Pourquoi effectuer son stage à l’étranger ?', 'De nos jours les stages à l’étranger sont très appréciés par les entreprises. Effectuer votre stage dans un pays étranger vous permettra ainsi de valoriser votre CV tout en vous permettant de découvrir une nouvelle culture', 'student'),
-(6, 'Comment contacter facilement une entreprise en Irlande ?', 'Notre portail web est la solution ! Si toi aussi tu as envie de faire parti de l’aventure il te suffit de créer un compte et déposer ton CV et ta lettre de motivation pour avoir accès à plusieurs stages étrangers. ', 'student'),
-(7, 'Vais-je percevoir des bourses durant mon séjour ?', 'Les bourses dépendent du pays dans lequel tu te trouves, nous t’invitons à prendre contact avec le représentant de ton école pour avoir plus de modalités sur les différents moyens d’obtenir des bourses', 'student'),
-(8, 'Ou vais-je séjourner durant mon stage ? ', 'Plusieurs moyens d’hébergements existent. Selon ton profil les entreprises peuvent te proposer des logements proches de ton futur lieu de travail. Ce qui te permettra de travailler sans te soucier du mauvais temps qu’il fait dehors par exemple', 'student'),
-(9, 'Ou puis-je trouver plus de témoignages et de bonnes adresses ?', 'Des élèves ayant effectué leurs stages à l’étranger remplissent des fiches à leur retour nous t’invitons à te renseigner auprès de ton école pour bénéficier de ses fiches de témoignages et t’imprégner de leurs expériences', 'student');
+INSERT INTO `faq` (`id`, `question_fr`, `answer_fr`, `question_en`, `answer_en`, `target`) VALUES
+(1, 'Pourquoi prendre un stagiaire d’un pays étranger ? ', 'Donner une image dynamique à votre entreprise et bénéficier d’un savoir-faire extérieur pour apporter du frais dans l’entreprise.', 'Why would you take an foreign intern ?', 'It''ll give an dynamic look to your company and you''ll benefit from outside expertise. This will give a refreshing image!', 'company'),
+(2, 'Devrez-vous rémunérer l’étudiant ?', 'La rémunération dépend du pays dans lequel vous effectuerez votre stage. Les stages sont rémunérés en a un minimum 540 à condition que le stage est une durée de 10 semaines.', 'Do you have to pay the intern ?', 'The pay depends on the country where the intern passes his internship. In France, the internship is payed at least 540 per month on condition that it lasts 10 weeks.', 'company'),
+(3, 'Pourquoi utiliser notre portail de stage ? ', 'Nous vous offrons une plateforme qui vous permettra de trouver des étudiants sérieux et prêts à réaliser des projets innovants. Notre portail vous permettra de proposer vos offres de stage en toutes sécurités et bien entendu vous serrez sûr d’assurer d’atteindre les bonnes cibles.', 'Why use our internship webportal ?', 'We offer you a platform that''ll help you to find serious students, ready to realise innovating projects. Our webportal will allow you put your internship offers, in complete safety, and so you''ll be sure to reach the right people.', 'company'),
+(4, 'À qui poser des questions plus précises ?', 'Vous pouvez contacter M. Clouet Jérôme, professeur d’anglais a l’IUT de Saint-Lô qui a été l’initiateur de ce projet. Il prendra plaisir à répondre à toutes vos questions. Vous pouvez le contacter à l’adresse suivante : JérômeClouet @unicaen.fr', 'To who ask some precise questions ?', 'You can contact M. Clouet Jérôme, english teacher at IUT Saint-Lô, who also was the pioneer of this project. He would answer all of your questions with pleasure. You can contact him at the following email: jerome.clouet@unicaen.fr', 'company'),
+(5, 'Pourquoi effectuer son stage à l’étranger ?', 'De nos jours les stages à l’étranger sont très appréciés par les entreprises. Effectuer votre stage dans un pays étranger vous permettra ainsi de valoriser votre CV tout en vous permettant de découvrir une nouvelle culture', 'Why do my internship abroad ?', 'Nowadays internships abroad are very appreciated by companies. To intern abroad will help you to develop your CV while allowing you to discover a new culture.', 'student'),
+(6, 'Comment contacter facilement une entreprise en Irlande ?', 'Notre portail web est la solution ! Si toi aussi tu as envie de faire parti de l’aventure il te suffit de créer un compte et déposer ton CV et ta lettre de motivation pour avoir accès à plusieurs stages étrangers. ', 'How to easily contact a company in France ?', 'Our webportal is the solution! If you too you want to be part of the adventure, all you need to do is to create an account and to deposit your CV so you can acces the different interships abroad.', 'student'),
+(7, 'Vais-je percevoir des bourses durant mon séjour ?', 'Les bourses dépendent du pays dans lequel tu te trouves, nous t’invitons à prendre contact avec le représentant de ton école pour avoir plus de modalités sur les différents moyens d’obtenir des bourses', 'Will I get my scholarships during my stay ?', 'The scholarships depend on the country where you live. We invite you to contact the representative at your school for more information on how to get you scholarships', 'student'),
+(8, 'Ou vais-je séjourner durant mon stage ? ', 'Plusieurs moyens d’hébergements existent. Selon ton profil les entreprises peuvent te proposer des logements proches de ton futur lieu de travail. Ce qui te permettra de travailler sans te soucier du mauvais temps qu’il fait dehors par exemple', 'Where will I stay during my internship ?', 'Several means of housing exist. According to your profile, the companies can offer you housing close to your futur workplace. That''ll  allow you to work without worrying about bad weather for example.', 'student'),
+(9, 'Ou puis-je trouver plus de témoignages et de bonnes adresses ?', 'Des élèves ayant effectué leurs stages à l’étranger remplissent des fiches à leur retour nous t’invitons à te renseigner auprès de ton école pour bénéficier de ses fiches de témoignages et t’imprégner de leurs expériences', 'Where can I find more testimonials and good adresses ?', 'Students that have done their internships abroad will complete some files at their return. We invite you to inform you at your school to benefit from these files and to learn from this experience. Otherwise, we''ll have some testimonials on our website that you can read.', 'student');
 
 -- --------------------------------------------------------
 
@@ -78,8 +88,8 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `target`) VALUES
 -- Structure de la table `internship`
 --
 
-CREATE TABLE `internship` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `internship` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `description` text NOT NULL,
   `company` int(11) NOT NULL,
@@ -87,8 +97,9 @@ CREATE TABLE `internship` (
   `city` varchar(128) NOT NULL,
   `zip_code` varchar(32) NOT NULL,
   `country` enum('France','Irlande') NOT NULL,
-  `skill` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `skill` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `internship`
@@ -104,14 +115,15 @@ INSERT INTO `internship` (`id`, `name`, `description`, `company`, `address`, `ci
 -- Structure de la table `partner`
 --
 
-CREATE TABLE `partner` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `partner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) CHARACTER SET utf8 NOT NULL,
   `logo` varchar(128) CHARACTER SET utf8 NOT NULL,
   `country` enum('France','Irlande') CHARACTER SET utf8 NOT NULL,
   `type` enum('company','university') NOT NULL DEFAULT 'company',
-  `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `register_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `partner`
@@ -127,13 +139,14 @@ INSERT INTO `partner` (`id`, `name`, `logo`, `country`, `type`, `register_date`)
 -- Structure de la table `settings`
 --
 
-CREATE TABLE `settings` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `tag` varchar(64) NOT NULL,
   `value` varchar(256) NOT NULL,
   `placeholder` varchar(128) NOT NULL,
-  `data_type` enum('varchar','int','boolean') NOT NULL DEFAULT 'varchar'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `data_type` enum('varchar','int','boolean') NOT NULL DEFAULT 'varchar',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `settings`
@@ -153,10 +166,11 @@ INSERT INTO `settings` (`id`, `tag`, `value`, `placeholder`, `data_type`) VALUES
 -- Structure de la table `skill`
 --
 
-CREATE TABLE `skill` (
-  `id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `skill` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Contenu de la table `skill`
@@ -185,8 +199,8 @@ INSERT INTO `skill` (`id`, `name`) VALUES
 -- Structure de la table `student`
 --
 
-CREATE TABLE `student` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `student` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(64) NOT NULL,
   `last_name` varchar(64) NOT NULL,
   `country` enum('France','Irlande') NOT NULL,
@@ -198,8 +212,10 @@ CREATE TABLE `student` (
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   `available` tinyint(1) NOT NULL DEFAULT '1',
   `activated` tinyint(1) NOT NULL,
-  `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `register_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `skill` (`skill`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `student`
@@ -217,12 +233,14 @@ INSERT INTO `student` (`id`, `first_name`, `last_name`, `country`, `skill`, `ema
 -- Structure de la table `testimony`
 --
 
-CREATE TABLE `testimony` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `testimony` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` text CHARACTER SET utf8 NOT NULL,
   `author` varchar(64) CHARACTER SET utf8 NOT NULL,
-  `register_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `register_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `student` (`author`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `testimony`
@@ -233,104 +251,6 @@ INSERT INTO `testimony` (`id`, `description`, `author`, `register_date`) VALUES
 (4, 'Hello world!', 'Hadrien', '2016-03-18');
 
 --
--- Index pour les tables exportées
---
-
---
--- Index pour la table `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `faq`
---
-ALTER TABLE `faq`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `internship`
---
-ALTER TABLE `internship`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `partner`
---
-ALTER TABLE `partner`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `settings`
---
-ALTER TABLE `settings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `skill`
---
-ALTER TABLE `skill`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `skill` (`skill`);
-
---
--- Index pour la table `testimony`
---
-ALTER TABLE `testimony`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `student` (`author`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `company`
---
-ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT pour la table `faq`
---
-ALTER TABLE `faq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT pour la table `internship`
---
-ALTER TABLE `internship`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT pour la table `partner`
---
-ALTER TABLE `partner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT pour la table `settings`
---
-ALTER TABLE `settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT pour la table `skill`
---
-ALTER TABLE `skill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT pour la table `student`
---
-ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT pour la table `testimony`
---
-ALTER TABLE `testimony`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
 -- Contraintes pour les tables exportées
 --
 
@@ -339,3 +259,7 @@ ALTER TABLE `testimony`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`skill`) REFERENCES `skill` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
