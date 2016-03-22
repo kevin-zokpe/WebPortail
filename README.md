@@ -30,7 +30,6 @@ MIKHAIL
 - <b>0%</b> - Expliquer le projet dans la page a propos
 
 AK
-- <b>0%</b> - Inverser les stages disponibles selon la France et l’Irlande
 - <b>0%</b> - Statistiques sur le dashboard
 - <b>0%</b> - Mettre tous les PDO dans les classes
 
