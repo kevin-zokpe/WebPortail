@@ -88,14 +88,15 @@
 			return $sth->fetchAll();
 		}
 
-		public static function getStudentsBySkill($skill) {
+		public static function getStudentsBySkill($skill, $country) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
-			$sql = 'SELECT * FROM student WHERE skill = :skill && activated && available';
+			$sql = 'SELECT * FROM student WHERE skill = :skill && country != :country && activated && available';
 			$sth = $db->prepare($sql);
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
 			$sth->execute(array(
-				':skill' => $skill
+				':skill' => $skill,
+				':country' => $country
 			));
 			
 			return $sth->fetchAll();
