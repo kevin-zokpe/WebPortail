@@ -117,6 +117,19 @@
 			return $sth->fetchAll();
 		}
 
+		public static function getForeignCompanies($country) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = 'SELECT * FROM company WHERE country != :country AND activated';
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute(array(
+				':country' => $country
+			));
+			
+			return $sth->fetchAll();
+		}
+
 		public static function activateCompany($companyId) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
