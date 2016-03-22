@@ -56,13 +56,15 @@
 			return $sth->fetchAll();
 		}
 
-		public static function editFaq($id, $question, $answer, $target) {
+		public static function editFaq($id, $question_fr, $answer_fr, $question_en, $answer_en, $target) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
 			$sql = "
 				UPDATE faq
-				SET question = :question,
-					answer = :answer,
+				SET question_fr = :question_fr,
+					answer_fr = :answer_fr,
+					question_en = :question_en,
+					answer_en = :answer_en,
 					target = :target
 				WHERE id = :id
 			";
@@ -70,8 +72,10 @@
 			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
 			$sth->execute(array(
 				':id' => $id,
-				':question' => $question,
-				':answer' => $answer,
+				':question_fr' => $question_fr,
+				':answer_fr' => $answer_fr,
+				':question_en' => $question_en,
+				':answer_en' => $answer_en,
 				':target' => $target
 			));
 
