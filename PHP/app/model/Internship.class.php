@@ -101,5 +101,49 @@
 				':id' => $id
 			));
 		}
+
+		public static function addInternship($name,$description,$company,$address,$zip_code,$city,$skill){
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				INSERT INTO internship (name, description, company, address, zip_code, city, skill)
+				VALUES (:name, :description, :company, :address, :zip_code, :city, :skill)
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Internship');
+			$sth->execute(array(
+				':name' => $name,
+				':description' => $description,
+				':company' => $company,
+				':address' => $address,
+				':zip_code' => $zip_code,
+				':city' => $city,
+				':skill' => $skill
+			));
+		}
+
+		public static function editInternship($id,$description,$address,$city,$zip_code,$domain){
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE internship
+				SET description = :description,
+					address = :address,
+					city = :city,
+					zip_code = :zip_code,
+					skill = :skill
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Internship');
+			$sth->execute(array(
+				':id' => $id,
+				':description' => $description,
+				':address' => $address,
+				':city' => $city,
+				':zip_code' => $zip_code,
+				':skill' => $domain
+			));
+		}
 	}
 ?>

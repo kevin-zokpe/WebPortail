@@ -4,31 +4,10 @@
 		$internship = internship::getInternshipById($id);
 		
 		if (isset($_POST['edit'])) {
+			$editInternship = Internship::editInternship($id,$_POST['internship_description'],$_POST['internship_address'],$_POST['internship_city'],$_POST['internship_zipcode'],$_POST['internship_domain']); 
 
-			PDOConnexion::setParameters('stages', 'root', 'root');
-			$db = PDOConnexion::getInstance();
-			$sql = "
-				UPDATE internship
-				SET description = :description,
-					address = :address,
-					city = :city,
-					zip_code = :zip_code,
-					skill = :skill
-				WHERE id = :id
-			";
-			$sth = $db->prepare($sql);
-			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Internship');
-			$sth->execute(array(
-				':id' => $id,
-				':description' => $_POST['internship_description'],
-				':address' => $_POST['internship_address'],
-				':city' => $_POST['internship_city'],
-				':zip_code' => $_POST['internship_zipcode'],
-				':skill' => $_POST['internship_domain']
-			));
-			
-			if ($sth) {
-				$msg->success('Ce stage a bien été modifié.','index.php?page=admin/internships-list');
+			if ($editInternship) {
+				$msg->success('Ce stage a bien été modifié.','index.php?page=admin/internships-list'); 
 			}
 		}
 

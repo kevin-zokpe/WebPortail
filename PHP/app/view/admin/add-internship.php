@@ -16,25 +16,9 @@
 							if (isset($_POST['zip_code']) && !empty($_POST['zip_code'])) {
 								if (isset($_POST['city']) && !empty($_POST['city'])) {
 									if (isset($_POST['skill']) && !empty($_POST['skill'])) {
-										PDOConnexion::setParameters('stages', 'root', 'root');
-										$db = PDOConnexion::getInstance();
-										$sql = "
-											INSERT INTO internship (name, description, company, address, zip_code, city, skill)
-											VALUES (:name, :description, :company, :address, :zip_code, :city, :skill)
-										";
-										$sth = $db->prepare($sql);
-										$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Internship');
-										$sth->execute(array(
-											':name' => $_POST['name'],
-											':description' => $_POST['description'],
-											':company' => $_POST['company'],
-											':address' => $_POST['address'],
-											':zip_code' => $_POST['zip_code'],
-											':city' => $_POST['city'],
-											':skill' => $_POST['skill']
-										));
+										$addInternship=Internship::addInternship($_POST['name'],$_POST['description'],$_POST['company'],$_POST['address'],$_POST['zip_code'],$_POST['city'],$_POST['skill']);
 										
-										if ($sth) {
+										if ($addInternship) {
 											$msg->success('Le stage à bien été ajouté.', 'index.php?page=admin/internships-list&country=' . $country);
 										}
 									}

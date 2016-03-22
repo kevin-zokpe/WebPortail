@@ -17,24 +17,7 @@
 						if (isset($_POST['city']) && !empty($_POST['city'])) {
 							if (isset($_POST['description']) && !empty($_POST['description'])) {
 								if (isset($_POST['website']) && !empty($_POST['website'])) {
-				
-									PDOConnexion::setParameters('stages', 'root', 'root');
-									$db = PDOConnexion::getInstance();
-									$sql = "
-										INSERT INTO company(name, email, country, city, description, password, website, activated, register_date)
-										VALUES (:name, :email, :country, :city, :description, :password, :website, true, NOW())
-									";
-									$sth = $db->prepare($sql);
-									$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
-									$sth->execute(array(
-										':name' => $_POST['name'],
-										':email' => $_POST['email'],
-										':country' => $_POST['country'],
-										':city' => $_POST['city'],
-										':description' => $_POST['description'],
-										':password' => $admin_password,
-										':website' => $_POST['website']
-									));
+									$addCompany = Company::addCompanyForAdmin($_POST['name'],$_POST['email'],$_POST['country'],$_POST['city'],$_POST['description'],$admin_password,$_POST['website']);
 
 									if (isset($_FILES['logo']) && ($file_ext == '.jpg' || $file_ext == '.png') && $file_size < $max_file_size){
 
@@ -47,16 +30,7 @@
           									$file = $folder . '/' . $id_company->id . '.png';
          								move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
-         								PDOConnexion::setParameters('stages', 'root', 'root');
-										$dbh = PDOConnexion::getInstance();
-										$req = "UPDATE company SET logo = :logo WHERE id = :id";
-										$st = $dbh->prepare($req);
-										$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
-										$st->execute(array(
-											':logo' => $file,
-											':id' => $id_company->id
-										));
-
+         								$editLogo = Company::editLogoForAdmin($file,$id_company->id);
 									}
 									else {
 										if ($file_ext != '.jpg' && $file_ext != '.png'){							
@@ -67,7 +41,7 @@
 										}
 									}
 									
-									if ($sth) {
+									if ($addCompany) {
 										$msg->success('L\'entreprise à bien été ajoutée. <br /> Son mot de passe est le vôtre. <br /> Vous pourez le changer ultérieurement', 'index.php?page=admin/companies-list');
 									}
 								

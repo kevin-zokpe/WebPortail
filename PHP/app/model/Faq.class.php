@@ -56,6 +56,24 @@
 			return $sth->fetchAll();
 		}
 
+		public function addFaq($question_fr,$answer_fr,$question_en,$answer_en,$type){
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				INSERT INTO faq(question_fr, answer_fr, question_en, answer_en, target)
+				VALUES (:question_fr, :answer_fr, :question_en, :answer_en, :type)
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Faq');
+			$sth->execute(array(
+				':question_fr' => $question_fr,
+				':answer_fr' => $answer_fr,
+				':question_en' => $question_en,
+				':answer_en' => $answer_en,
+				':type' => $type
+			));
+		}
+
 		public static function editFaq($id, $question_fr, $answer_fr, $question_en, $answer_en, $target) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();

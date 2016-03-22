@@ -187,8 +187,70 @@
 			App::notification('Une entreprise vient de s\'inscrire', 'Une nouvelle entreprise vient de s\'inscrire sur le site. Connectez-vous pour la confirmer.');
 		}
 
+		public static function addCompanyForAdmin($name,$email,$country,$city,$description,$admin_password,$website) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				INSERT INTO company(name, email, country, city, description, password, website, activated, register_date)
+				VALUES (:name, :email, :country, :city, :description, :password, :website, true, NOW())
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute(array(
+				':name' => $name,
+				':email' => $email,
+				':country' => $country,
+				':city' => $city,
+				':description' => $description,
+				':password' => $admin_password,
+				':website' => $website
+			));
+		}
+
+		public static function editCompany($id,$name,$email,$country,$city,$description,$website,$activated){
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				UPDATE company
+				SET name = :name,
+					email = :email,
+					country = :country,
+					city = :city,
+					description = :description,
+					website = :website,
+					activated = :activated
+				WHERE id = :id
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$sth->execute(array(
+				':id' => $id,
+				':name' => $name,
+				':email' => $email,
+				':country' => $country,
+				':city' => $city,
+				':description' => $description,
+				':website' => $website,
+				':activated' => $activated
+			));
+		}
+
 		public static function editLogo($id, $file) {
 	 		PDOConnexion::setParameters('stages', 'root', 'root');
+			$dbh = PDOConnexion::getInstance();
+			$req = "UPDATE company SET logo = :logo WHERE id = :id";
+			$st = $dbh->prepare($req);
+			$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
+			$st->execute(array(
+				':logo' => $file,
+				':id' => $id
+			));
+		}
+
+			
+
+		public static function editLogoForAdmin($file,$id) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
 			$dbh = PDOConnexion::getInstance();
 			$req = "UPDATE company SET logo = :logo WHERE id = :id";
 			$st = $dbh->prepare($req);

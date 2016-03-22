@@ -20,31 +20,7 @@
     		   	isset($_POST['description']) && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['description']) &&
   	   			preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website'])) {
 
-				PDOConnexion::setParameters('stages', 'root', 'root');
-				$db = PDOConnexion::getInstance();
-				$sql = "
-					UPDATE company
-					SET name = :name,
-						email = :email,
-						country = :country,
-						city = :city,
-						description = :description,
-						website = :website,
-						activated = :activated
-					WHERE id = :id
-				";
-				$sth = $db->prepare($sql);
-				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
-				$sth->execute(array(
-					':id' => $id,
-					':name' => $_POST['name'],
-					':email' => $_POST['email'],
-					':country' => $_POST['country'],
-					':city' => $_POST['city'],
-					':description' => $_POST['description'],
-					':website' => $_POST['website'],
-					':activated' => $_POST['activated']
-				));
+				$editCompany = Company::editCompany($id,$_POST['name'],$_POST['email'],$_POST['country'],$_POST['city'],$_POST['description'],$_POST['website'],$_POST['activated']));
 
 				if (isset($_FILES['logo']) && $_FILES['logo']['name']!=''){
 					if ($file_ext == '.jpg' || $file_ext == '.png') {
@@ -61,17 +37,9 @@
         			  			
         			 		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
-        			 		PDOConnexion::setParameters('stages', 'root', 'root');
-							$dbh = PDOConnexion::getInstance();
-							$req = "UPDATE company SET logo = :logo WHERE id = :id";
-							$stt = $dbh->prepare($req);
-							$stt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Company');
-							$stt->execute(array(
-								':logo' => $file,
-								':id' => $id
-							));
+        			 		$editLogo =Company::editLogo($id, $file);
 
-							if ($stt) {
+							if ($editLogo) {
          						$msg->success("L'entreprise a bien été modifié.", 'index.php?page=admin/companies-list');
          					}
 
@@ -87,7 +55,7 @@
 				}
 
 				else {
-					if ($sth) {
+					if ($editCompany) {
 						$msg->success('Cette entreprise a bien été modifié.', 'index.php?page=admin/companies-list');
 					}
 

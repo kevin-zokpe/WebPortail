@@ -4,29 +4,9 @@
 		if (isset($_POST['add']) && App::isAdmin()) {
 
 			if (isset($_POST['question_fr']) && isset($_POST['answer_fr']) && isset($_POST['question_en']) && isset($_POST['answer_en'])){
-
-				$question_fr = $_POST['question_fr'];
-				$answer_fr = $_POST['answer_fr'];
-				$question_en = $_POST['question_en'];
-				$answer_en = $_POST['answer_en'];
-
-				PDOConnexion::setParameters('stages', 'root', 'root');
-				$db = PDOConnexion::getInstance();
-				$sql = "
-					INSERT INTO faq(question_fr, answer_fr, question_en, answer_en, target)
-					VALUES (:question_fr, :answer_fr, :question_en, :answer_en, :type)
-				";
-				$sth = $db->prepare($sql);
-				$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
-				$sth->execute(array(
-					':question_fr' => $question_fr,
-					':answer_fr' => $answer_fr,
-					':question_en' => $question_en,
-					':answer_en' => $answer_en,
-					':type' => $type
-				));
-			
-				if ($sth) {
+				$addFaq=Faq::addFaq($_POST['question_fr'],$_POST['answer_fr'],$_POST['question_en'],$_POST['answer_en'],$type);
+				
+				if ($addFaq) {
 					$msg->success('Cette question a bien été ajouté.','index.php?page=admin/faq-list');
 				}
 			}
