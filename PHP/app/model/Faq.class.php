@@ -72,6 +72,12 @@
 				':answer_en' => $answer_en,
 				':type' => $type
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 		public static function editFaq($id, $question_fr, $answer_fr, $question_en, $answer_en, $target) {

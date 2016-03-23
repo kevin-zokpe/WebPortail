@@ -20,7 +20,7 @@
     		   	isset($_POST['description']) && preg_match("#^[a-zA-Z0-9._-]{2,128}#", $_POST['description']) &&
   	   			preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $_POST['website'])) {
 
-				$editCompany = Company::editCompany($id,$_POST['name'],$_POST['email'],$_POST['country'],$_POST['city'],$_POST['description'],$_POST['website'],$_POST['activated']));
+				$editCompany = Company::editCompany($id,$_POST['name'],$_POST['email'],$_POST['country'],$_POST['city'],$_POST['description'],$_POST['website'],$_POST['activated']);
 
 				if (isset($_FILES['logo']) && $_FILES['logo']['name']!=''){
 					if ($file_ext == '.jpg' || $file_ext == '.png') {
@@ -39,7 +39,7 @@
 
         			 		$editLogo =Company::editLogo($id, $file);
 
-							if ($editLogo) {
+							if ($editCompany) {
          						$msg->success("L'entreprise a bien été modifié.", 'index.php?page=admin/companies-list');
          					}
 

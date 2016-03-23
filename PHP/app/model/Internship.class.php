@@ -120,6 +120,12 @@
 				':city' => $city,
 				':skill' => $skill
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 		public static function editInternship($id,$description,$address,$city,$zip_code,$domain){
@@ -144,6 +150,12 @@
 				':zip_code' => $zip_code,
 				':skill' => $domain
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 	}
 ?>

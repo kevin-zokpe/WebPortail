@@ -108,6 +108,12 @@
 				':type' => $type,
 				':country' => $country
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 		public static function editPartner($id, $name, $country) {
@@ -166,6 +172,12 @@
 				':logo' => $file,
 				':id' => $id
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 		public static function deletePartner($id) {

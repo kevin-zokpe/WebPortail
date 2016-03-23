@@ -205,6 +205,12 @@
 				':password' => $admin_password,
 				':website' => $website
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 		public static function editCompany($id,$name,$email,$country,$city,$description,$website,$activated){
@@ -233,6 +239,12 @@
 				':website' => $website,
 				':activated' => $activated
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 		public static function editLogo($id, $file) {
@@ -245,6 +257,12 @@
 				':logo' => $file,
 				':id' => $id
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 			
@@ -259,6 +277,12 @@
 				':logo' => $file,
 				':id' => $id
 			));
+
+			if ($sth) {
+				return true;
+			}
+
+			return false;
 		}
 
 		public static function deleteCompany($id) {
