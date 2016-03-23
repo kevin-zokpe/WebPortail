@@ -29,9 +29,6 @@ MIKHAIL
 - <b>0%</b> - Traduire tout le site en Anglais FAQ, termes du site + contenu
 - <b>0%</b> - Expliquer le projet dans la page a propos
 
-AK
-- <b>0%</b> - Mettre tous les PDO dans les classes
-
 
 # Faire des photos ? 
 
