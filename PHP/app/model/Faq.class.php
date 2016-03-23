@@ -1,8 +1,10 @@
 <?php	
 	class Faq {
 		private $id;
-		private $question;
-		private $answer;
+		private $question_fr;
+		private $question_en;
+		private $answer_fr;
+		private $answer_en;
 		private $target;
 		
 		public function __construct(array $args = array()) {
