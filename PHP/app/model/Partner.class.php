@@ -94,6 +94,22 @@
 			return $sth->fetchAll();
 		}
 
+		public static function addPartner($name, $type, $country) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$db = PDOConnexion::getInstance();
+			$sql = "
+				INSERT INTO partner(name, type, country, register_date)
+				VALUES (:name, :type, :country, NOW())
+			";
+			$sth = $db->prepare($sql);
+			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
+			$sth->execute(array(
+				':name' => $name,
+				':type' => $type,
+				':country' => $country
+			));
+		}
+
 		public static function editPartner($id, $name, $country) {
 			PDOConnexion::setParameters('stages', 'root', 'root');
 			$db = PDOConnexion::getInstance();
@@ -138,6 +154,18 @@
 			}
 
 			return false;
+		}
+
+		public function addLogo($id,$file) {
+			PDOConnexion::setParameters('stages', 'root', 'root');
+			$dbh = PDOConnexion::getInstance();
+			$req = "UPDATE partner SET logo = :logo WHERE id = :id";
+			$st = $dbh->prepare($req);
+			$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
+			$st->execute(array(
+				':logo' => $file,
+				':id' => $id
+			));
 		}
 
 		public static function deletePartner($id) {

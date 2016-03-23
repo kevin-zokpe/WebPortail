@@ -8,23 +8,8 @@
 		}
 
 		if (isset($_POST['name']) && !empty($_POST['name']) && preg_match("#^[a-zA-Z._-]{2,32}#", $_POST['name']) && isset($_POST['country']) && isset($_POST['type'])) {
-			$name = $_POST['name'];
-			$type = $_POST['type'];
-			$country = $_POST['country'];
 
-			PDOConnexion::setParameters('stages', 'root', 'root');
-			$db = PDOConnexion::getInstance();
-			$sql = "
-				INSERT INTO partner(name, type, country, register_date)
-				VALUES (:name, :type, :country, NOW())
-			";
-			$sth = $db->prepare($sql);
-			$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Partner');
-			$sth->execute(array(
-				':name' => $name,
-				':type' => $type,
-				':country' => $country
-			));
+			$addPartner = Partner::addpartner($_POST['name'],$_POST['type'],$_POST['country']);
 
 			if (isset($_FILES['logo']) && ($file_ext == '.jpg' || $file_ext == '.png') && $file_size < $max_file_size){
 				$id_partner = Partner::getPartnerIDByName($name);
@@ -40,15 +25,7 @@
           			
          		move_uploaded_file($_FILES['logo']['tmp_name'], $file);
 
-         		PDOConnexion::setParameters('stages', 'root', 'root');
-				$dbh = PDOConnexion::getInstance();
-				$req = "UPDATE partner SET logo = :logo WHERE id = :id";
-				$st = $dbh->prepare($req);
-				$st->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
-				$st->execute(array(
-					':logo' => $file,
-					':id' => $id_partner->id
-				));
+         		Partner::addLogo($file,$id_partner->id);
 			}
 
 			else {
@@ -61,7 +38,7 @@
 				}
 			}
 			
-			if ($sth) {
+			if ($addPartner) {
 				$msg->success('Ce partenaire a bien été ajouté.', 'index.php?page=admin/partners-list');
 			}
 		}

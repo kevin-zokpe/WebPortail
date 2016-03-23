@@ -15,19 +15,7 @@
 				}
 	    	    	    
 				try {
-					PDOConnexion::setParameters('stages', 'root', 'root');
-					$db = PDOConnexion::getInstance();
-					$sql = "
-						INSERT INTO testimony(description, author, register_date)
-						VALUES (:description, :author, NOW())
-					";
-					$sth = $db->prepare($sql);
-					$sth->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Student');
-					$sth->execute(array(
-						':description' => $_POST['testimony'],
-						':author' => $name,
-					));
-
+					Testimony::addTestimony($name, $_POST['testimony']);
 					App::redirect('index.php?page=testimonials');
 				}
 
