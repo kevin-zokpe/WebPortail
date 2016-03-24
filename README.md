@@ -15,11 +15,6 @@ HADRIEN
 - <b>0%</b> - Vérifier les inscriptions
 - <b>95%</b> - Intégration finale
 
-VALENTIN
-- <b>90%</b> - Renommer CV avant téléchargement
-- <b>100%</b> - Modifier la table FAQ pour permettre le multi-langue
-- <b>100%</b> - Rajouter vérification du pays pour la recherche d’entreprises et de stage
-
 SONIA
 - <b>60%</b> - Rapport de projet
 - <b>0%</b> - Diapo de présentation final
