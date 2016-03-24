@@ -1,182 +1,207 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <link rel="icon" type="image/png" href="img/favicon.png">
-        <title>Portail Stages</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <header id="header">
-            <div id="header-content">
-                <nav id="header-navbar" class="navbar">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Faire apparaître le menu</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="#">
-                                <img src="img/logo.png" alt="Brand">
-                            </a>
-                        </div>
-                        <div id="navbar" class="collapse navbar-collapse navbar-right">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Accueil</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Archives</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="flag fr"></span>Français <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><span class="flag en"></span>English</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <div id="header-internship">
-                    <!-- <h1>Déposer &amp; rechercher<br />un stage</h1> -->
-                    <h1>Portail Stages</h1>
-                    <p>Je suis</p>
-                    <a href="assets/connexion" class="btn btn-default">Un étudiant</a>
-                    <a href="#" class="btn btn-default">Une entreprise</a>
-                </div>
-                <a href="#presentation-title" class="scroll"><span class="sr-only">Descendre à la section suivante</span></a>
-            </div>
-        </header>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<link rel="icon" href="img/favicon.png">
+		<title>Internship WebPortal</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Internship WebPortal</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="#">Accueil</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Témoignages</a></li>
+						<li class="dropdown">
+							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">Formations <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">En France</a></li>
+								<li><a href="#">En Irlande</a></li>
+							</ul>
+						</li>
+						<li class="dropdown member">
+							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><img src="img/icons/member.svg" alt="Membre"> Hadrien <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Profil</a></li>
+								<li><a href="#">Ma recherche de stage</a></li>
+								<li><a href="#">Rechercher un stage</a></li>
+								<li><a href="#">Rechercher une entreprise</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Administration</a></li>
+							</ul>
+						</li>
+						<li class="dropdown language">
+							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="language-flag fr"></span>
+								Français
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><span class="language-flag en"></span>English</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="overlay"></div>
 
-        <section id="presentation" class="grid-section">
-            <div class="container">
-                <div id="presentation-title" class="row section-title">
-                    <h2>Présentation</h2>
-                </div>
+		<div id="home-slider">
+			<a href="#about" class="scroll down"><i class="fa fa-angle-down"></i></a>
 
-                <div class="row">
-                    <div class="grid col-md-6 col-sm-6">
-                        <span class="section-number">1</span>
-                        <h3>Quoi ?</h3>
-                        <p>Ce portail a pour but de favoriser la mobilité étudiante dans le cadre du Programme Erasmus +.</p>
-                        <p>Les entreprises partenaires pourront contacter et être contactées par des étudiants, en fonction de leurs compétences, et les accueillir en stage. Les entreprises pourront aussi proposer un ou plusieurs stages sur cette plateforme.</p>
-                        <p>Cette ouverture culturelle et professionnelle internationale sera tout autant bénéfique pour les étudiants que pour les entreprises.</p>
-                    </div>
-                    <div class="grid col-md-6 col-sm-6">
-                        <span class="section-number">2</span>
-                        <h3>Qui ?</h3>
-                        <p>Plusieurs protagonistes participent à cette plateforme :</p>
-                        <ul>
-                            <li>L'IUT Cherbourg Manche (Basse-Normandie, France)</li>
-                            <li>Letterkenny IT (Donegal, Irlande)</li>
-                            <li>Other school ? (Irlande)</li>
-                        </ul>
-                    </div>
-                    <div class="grid col-md-6 col-sm-6">
-                        <span class="section-number">3</span>
-                        <h3>Pour qui ?</h3>
-                        <p>Ce portail s'adresse aux étudiants de l'IUT Cherbourg-Manche, de Letterkenny IT et aux entreprises partenaires.</p>
-                        <p>Si vous souhaitez rejoindre notre plateforme, vous pouvez prendre contact avec les personnes responsables de ce projet.</p>
-                    </div>
-                    <div class="grid col-md-6 col-sm-6">
-                        <span class="section-number">4</span>
-                        <h3>Comment</h3>
-                        <p>Pour vous inscrire sur ce portail, rien de plus simple !<br />Allez dans la catégorie « Déposer & Chercher un stage » et cliquez sur le bouton correspondant à votre statut.</p>
-                        <p>Il vous suffit ensuite de remplir le formulaire d'inscription. En fonction de votre choix, vous pourrez alors chercher un stage, déposer une proposition de stage, consulter le profil d'étudiants, contacter une entreprise partenaire ou un étudiant.</p>
-                        <p>Maintenant, à vous de jouer !</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+			<div class="container">
+				<div class="home-content">
+					<h2 class="home-title"><span>Internship</span> Web Portal</h2>
+					<span class="login-type">Je suis</span>
+					<a class="btn btn-primary btn-lg" href="#" data-hover="Je me connecte"><span>Un étudiant</span></a>
+					<a class="btn btn-primary btn-lg" href="#" data-hover="Je me connecte"><span>Une entreprise</span></a>
+					<div id="partners">
+						<img src="img/partners/1.png" alt="">
+						<img src="img/partners/8.png" alt="">
+						<img src="img/partners/9.png" alt="">
+					</div>
+				</div>
+			</div>
 
-        <section id="internship-places" class="grid-section">
-            <div class="container">
-                <div class="row">
-                    <div class="grid col-md-6 col-sm-6">
-                        <div id="ireland-shape"></div>
-                        <span class="internships-number">3</span>
-                        <span class="internships-available">stages disponibles</span>
-                        <span class="internships-country">en Irlande</span>
-                    </div>
-                    <div class="grid col-md-6 col-sm-6">
-                        <div id="france-shape"></div>
-                        <span class="internships-number">5</span>
-                        <span class="internships-available">stages disponibles</span>
-                        <span class="internships-country">en France</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+			<div id="slider">
+				<ul class="slides">
+					<li class="slide1"></li>
+					<li class="slide2"></li>
+					<li class="slide3"></li>
+				</ul>
+			</div>
+		</div>
+		
 
-        <section id="partners">
-            <div class="container">
-                <div id="partners-title" class="row section-title">
-                    <h2>Partenaires</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 col-sm-4">
-                        <a href="#" class="partner-case">
-                            <img src="img/partners/1.png" alt="Partenaire 1">
-                        </a>
-                    </div>
-                    <div class="col-md-2 col-sm-4">
-                        <a href="#" class="partner-case">
-                            <img src="img/partners/2.png" alt="Partenaire 2">
-                        </a>
-                    </div>
-                    <div class="col-md-2 col-sm-4">
-                        <a href="#" class="partner-case">
-                            <img src="img/partners/3.png" alt="Partenaire 3">
-                        </a>
-                    </div>
-                    <div class="col-md-2 col-sm-4">
-                        <a href="#" class="partner-case">
-                            <img src="img/partners/4.png" alt="Partenaire 4">
-                        </a>
-                    </div>
-                    <div class="col-md-2 col-sm-4">
-                        <a href="#" class="partner-case">
-                            <img src="img/partners/5.png" alt="Partenaire 5">
-                        </a>
-                    </div>
-                    <div class="col-md-2 col-sm-4">
-                        <a href="#" class="partner-case">
-                            <img src="img/partners/6.png" alt="Partenaire 6">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+		<div id="about" class="section-content">
+			<div class="container">
+				<div class="section-title">
+					<h2>À propos</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut tellus enim. Aenean id mi porttitor, commodo sem a, rutrum erat.</p>
+				</div>
+				<div id="about-content" class="row">
+					<div class="about-case col-md-4 col-sm-6">
+						<div class="about-icon">
+							<img src="img/icons/europe.svg" alt="Europe">
+						</div>
+						<div class="about-description">
+							<h4>Un stage ailleurs en Europe</h4>
+							<p>Ce portail a pour but de favoriser la mobilité étudiante dans le cadre du Programme Erasmus +.</p>
+							<p>Les entreprises partenaires pourront contacter et être contactées par des étudiants, en fonction de leurs compétences, et les accueillir en stage.</p>
+						</div>
+					</div>
+					<div class="about-case col-md-4 col-md-offset-4 col-sm-6">
+						<div class="about-icon">
+							<img src="img/icons/plane.svg" alt="Avion">
+						</div>
+						<div class="about-description">
+							<h4>En France et en Irlande</h4>
+							<p>Plusieurs protagonistes participent à cette plateforme :</p>
+							<ul>
+								<li>L'IUT Cherbourg Manche (Normandie, France)</li>
+								<li>Letterkenny IT (Donegal, Irlande)</li>
+								<li>Other school ? (Irlande)</li>
+							</ul>
+						</div>
+					</div>
+					<div class="about-case col-md-4 col-sm-6">
+						<div class="about-icon">
+							<img src="img/icons/student.svg" alt="Étudiant">
+						</div>
+						<div class="about-description">
+							<h4>Étudiants et entreprises</h4>
+							<p>Ce portail s'adresse aux étudiants de l'IUT Cherbourg-Manche, de Letterkenny IT et aux entreprises partenaires.</p>
+							<p>Si vous souhaitez rejoindre notre plateforme, vous pouvez prendre contact avec les personnes responsables de ce projet.</p>
+						</div>
+					</div>
+					<div class="about-case col-md-4 col-md-offset-4 col-sm-6">
+						<div class="about-icon">
+							<img src="img/icons/login.svg" alt="Connexion">
+						</div>
+						<div class="about-description">
+							<h4>Inscription très simple</h4>
+							<p>Pour vous inscrire sur ce portail, remplissez le formulaire d'inscription.</p>
+							<p>Vous pourrez alors chercher un stage, déposer une proposition de stage, consulter le profil d'étudiants, contacter une entreprise partenaire ou un étudiant.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <footer id="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">Portail Stages &copy; Copyright 2016</div>
-                    <div class="col-md-7">
-                        <ul>
-                            <li><a href="#" class="active">Accueil</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Archives</a></li>
-                            <li><a href="#">À propos</a></li>
-                            <li><a href="#">Mentions légales</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
+		<div id="available-internships">
+			<div id="internships-ireland">
+				<img src="img/icons/ireland-shape.svg" alt="Irlande">
+				<div class="available-text">
+					<strong>3</strong>
+					stages disponibles
+					<small>en Irlande</small>
+				</div>
+			</div>
+			<div id="internships-france">
+				<img src="img/icons/france-shape.svg" alt="France">
+				<div class="available-text">
+					<strong>5</strong>
+					stages disponibles
+					<small>en France</small>
+				</div>
+			</div>
+		</div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
-    </body>
+		<div id="partners" class="section-content">
+			<div class="container">
+				<div class="section-title">
+					<h2>Partenaires</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut tellus enim. Aenean id mi porttitor, commodo sem a, rutrum erat.</p>
+				</div>
+				<div class="row">
+					<div class="partner-case col-md-2 col-sm-2"><img src="img/partners/2.png" alt="Conseil général de La Manche"></div>
+					<div class="partner-case col-md-2 col-sm-2"><img src="img/partners/3.png" alt="Ville de Saint-Lô"></div>
+					<div class="partner-case col-md-2 col-sm-2"><img src="img/partners/4.png" alt="CoLab"></div>
+					<div class="partner-case col-md-2 col-sm-2"><img src="img/partners/5.png" alt="Agglo 21"></div>
+					<div class="partner-case col-md-2 col-sm-2"><img src="img/partners/7.png" alt="Lecapitaine"></div>
+					<div class="partner-case col-md-2 col-sm-2"><img src="img/partners/10.png" alt="Région Normandie"></div>
+				</div>
+			</div>
+		</div>
+
+		<footer id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6"><a href="#">Internship Web Portal</a> - Copyright &copy; 2015</div>
+					<div class="col-md-6">
+						<ul id="footer-nav">
+							<li class="active"><a href="#">Accueil</a></li>
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">Témoignages</a></li>
+							<li><a href="#">À propos</a></li>
+							<li><a href="#">Mentions légales</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/flexslider.min.js"></script>
+		<script src="js/script.js"></script>
+	</body>
 </html>
