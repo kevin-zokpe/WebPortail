@@ -1,0 +1,112 @@
+<?php
+	if (!App::isLogged()) {
+		if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['type'])) {
+			try {
+				$email = $_POST['email'];
+				$password = $_POST['password'];
+				$type = $_POST['type'];
+
+				$member = App::login($email, $type);
+
+				if ($member) {
+					if (Bcrypt::checkPassword($password, $member->password)) {
+						if ($member->activated) {
+							if ($member->id > 0) {
+								$_SESSION['id'] = $member->id;
+								$_SESSION['email'] = $email;
+								$_SESSION['type'] = $type;
+								$_SESSION['country'] = $member->country;
+							}
+
+							$msg->info('Vous êtes maintenant connecté.', 'index.php?page=home');
+						}
+
+						else {
+							$msg->error('Votre compte n\'a pas encore été confirmé par l\'administrateur.', 'index.php?page=login&type=' . $type);
+						}
+					}
+
+					else {
+						$msg->error('Identifiants incorrects !', 'index.php?page=login&type=' . $type);
+					}
+				}
+
+				else {
+					$msg->error('Cet utilisateur n\'existe pas', 'index.php?page=login&type=' . $type);
+				}
+			}
+
+			catch(PDOException $e) {
+				echo 'Erreur de connexion : ' . $e->getMessage() . '<br />';
+				die();
+			}
+		}
+
+		else {
+			if (isset($_GET['type']) && !empty($_GET['type']) && ($_GET['type'] == 'student' || $_GET['type'] == 'company')) {
+				$type = htmlentities($_GET['type']);
+
+				if ($type == 'student') {
+					$otherType = 'company';
+					$asOther = 'en tant qu\'entreprise';
+				}
+
+				else {
+					$otherType = 'student';
+					$asOther = 'en tant qu\'étudiant';
+				}
+?>
+
+<header id="header">
+    <div class="section-title">
+        <h1>
+	        Connexion
+		  	<?php
+			  	if ($type == 'student') {
+			  		echo '<small>en tant qu\'étudiant</small>';
+			  	}
+
+			  	else {
+			  		echo '<small>en tant qu\'entreprise</small>';
+			  	}
+		  	?>
+	  	</h1>
+    </div>
+</header>
+
+<div id="main-content" class="section-content">
+    <div class="container">
+        <div class="row">
+			<form class="form-signin" method="POST" action="index.php?page=login">
+				<p>
+					<label class="sr-only" for="inputEmail">Adresse email</label>
+					<input type="email" placeholder="Adresse email" class="form-control" id="inputEmail" name="email" autofocus required />
+				</p>
+				<p>
+					<label class="sr-only" for="inputPassword">Mot de passe</label>
+					<input type="password" placeholder="Mot de passe" class="form-control" id="inputPassword" name="password" required />
+				</p>
+				<p style="font-size: 12px; margin-bottom: 30px;">
+					<a href="index.php?page=register-<?php echo $type; ?>">Je veux m'inscrire</a> | <a href="index.php?page=login&amp;type=<?php echo $otherType; ?>">Me connecter <?php echo $asOther; ?></a>
+				</p>
+				<p>
+					<input type="hidden" name="type" value="<?php echo $type; ?>" />
+					<button type="submit" class="btn btn-lg btn-primary btn-block">Me connecter</button>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<?php
+			}
+
+			else {
+				App::redirect('index.php?page=home');
+			}
+		}
+	}
+
+	else {
+		App::redirect('index.php?page=home');
+	}
+?>
