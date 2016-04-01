@@ -10,71 +10,35 @@
 <div id="main-content" class="section-content">
     <div class="container">
         <div id="about-content" class="row">
-            <div class="col-md-offset-1 col-md-8">Les étudiants Irlandais que vous trouverez sur Webportal sont ici de prestigieuses universités Irlandaises. <br/>Ici sont détaillés l'ensemble des cours dispensés à vos futurs stagiaires Irlandais !</div>
-            <h3>Carlow IT - <a href="http://www.itcarlow.ie/courses/department/wexford-campus.htm" target="_blank"> Wexford campus courses</a></h3><br />
-            
-            <div class="col-xs-6 col-md-4">
-            <a href="http://www.itcarlow.ie/courses/department/business.htm" target="_blank" class="thumbnail">
-            <img src="public/img/formations-irlande/business.jpg" alt="Business">
+            <div class="col-md-offset-2 col-md-8">Les étudiants Irlandais que vous trouverez sur Webportal sont ici de prestigieuses universités Irlandaises. <br/>Ici sont détaillés l'ensemble des cours dispensés à vos futurs stagiaires Irlandais !</div>
+           
+            <div class="col-xs-12 col-md-4" style="margin-top:50px;">
+            <a href="http://www.itcarlow.ie/courses/department.htm" target="_blank" class="thumbnail">
+            <img src="public/img/formations-irlande/carlow.jpg" alt="Carlow IT">
             <div class="caption">
-            <h3>Business</h3>
+            <h3>Carlow IT</h3>
             </div>
             </a>
             </div>
 
-            <div class="col-xs-6 col-md-4">
-            <a href="http://www.itcarlow.ie/courses/department/humanities.htm" target="_blank" class="thumbnail">
-            <img src="public/img/formations-irlande/humanities.jpg" alt="Humanities">
+            <div class="col-xs-12 col-md-4" style="margin-top:50px;">
+            <a href="http://www.itcarlow.ie/courses/type/undergraduate-cao-courses/wexford-courses.htm" target="_blank" class="thumbnail">
+            <img src="public/img/formations-irlande/wexford.jpg" alt="Carlow IT">
             <div class="caption">
-            <h3>Humanities</h3>
+            <h3>Wexford Campus</h3>
             </div>
             </a>
             </div>
 
-            <div class="col-xs-6 col-md-4">
-            <a href="http://www.itcarlow.ie/courses/department/science-health.htm" target="_blank" class="thumbnail">
-            <img src="public/img/formations-irlande/science.jpg" alt="Science &amp; Health">
+            <div class="col-xs-12 col-md-4" style="margin-top:50px;">
+            <a href="http://www.lyit.ie/full-timecourses/" target="_blank" class="thumbnail">
+            <img src="public/img/formations-irlande/lyit.jpg" alt="Carlow IT">
             <div class="caption">
-            <h3>Science &amp; Health</h3>
+            <h3>LYIT - Letterkenny IT</h3>
             </div>
             </a>
             </div>
 
-            <div class="col-xs-6 col-md-4">
-            <a href="http://www.itcarlow.ie/courses/department/sport-media-marketing.htm" target="_blank" class="thumbnail">
-            <img src="public/img/formations-irlande/sport.jpg" alt="Sport Media">
-            <div class="caption">
-            <h3>Sport Media</h3> 
-            </div>
-            </a>
-            </div>
-
-            <div class="col-xs-6 col-md-4">
-            <a href="http://www.itcarlow.ie/courses/department/computing-networking.htm" target="_blank" class="thumbnail">
-            <img src="public/img/formations-irlande/game.jpg" alt="Computing &amp; Networking">
-            <div class="caption">
-            <h3>Computing &amp; Networking</h3>
-            </div>
-            </a>
-            </div>
-
-            <div class="col-xs-6 col-md-4">
-            <a href="http://www.itcarlow.ie/courses/department/electronic-mechanical-and-aerospace-engineering.htm" target="_blank" class="thumbnail">
-            <img src="public/img/formations-irlande/plane.jpg" alt="Aerospace, Mechanical">
-            <div class="caption">
-            <h3>Aerospace, Mechanical</h3>
-            </div>
-            </a>
-            </div>
-
-            <div class="col-xs-6 col-md-4">
-            <a href="http://www.itcarlow.ie/courses/department/built-environment.htm" target="_blank" class="thumbnail">
-            <img src="public/img/formations-irlande/build.jpg" alt="Built Environment &amp; Extended Campus">
-            <div class="caption">
-            <h3>Built Environment &amp; Extended Campus</h3>
-            </div>
-            </a>
-            </div>
         </div>
     </div>
 </div>
